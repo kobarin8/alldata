@@ -1,0 +1,59 @@
+20180714**ログイン認証機能復習
+
+
+
+■web.xmlで画面に表示するjspの設定をする
+
+□最初に見る画面ファイルを設定する
+<display-name>login</display-name>
+
+<welcome-file-list>
+<welcome-file>login.jsp</welcome-file>
+</welcome-file-list>
+
+
+
+■struts,xmlで処理結果に応じたjspの設定を記述する
+
+□使用用途に分けたパッケージからjavaファイルを指定し、その中で最初に呼び出すメソッドを指定する
+
+<action name="LoginAction" ←javaファイル名
+ class="com.internousdev.login.action.LoginAction"←パッケージ名とjavaファイル名
+ method="execute">←最初に呼び出すメソッド名
+
+<result name="success">loginSuccess.jsp</result>←指定したメソッド名と、jspファイルの指定をする
+<resulet name="error">loginError.jsp</result>←上記と同じ
+
+※executeとは英語で「実行」を意味する
+
+
+■サーバーサイドでの挙動(Action DAO DTO)
+
+□それぞれについて
+
+・Actionとは、一番最初に実行するクラスファイルであり、DBConnectorなどが起動している
+
+・DAO(データアクセスオブジェクト)とは、Actionクラスから呼び出され、DBConnectorクラスが所得して情報をこのクラス(DTO)に格納する
+
+・DTO(データトランスファーオブジェクト)とは、DAOから情報を格納し、Actionクラスに情報を受け渡す
+
+□基本的な連携の流れ
+
+jsp→Action(DBConnector)→DAO→DTO→Action→処理結果を表すjsp
+
+□作る順番
+
+基本はDTO DAO ACtionの順番になる。
+
+
+
+■DAO
+
+□DBからの情報所得
+
+PreparedStatement　ps＝con.
+
+
+
+
+index.jspでパスワードなどの情報を入力してもらい、それを

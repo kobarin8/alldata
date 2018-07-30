@@ -1,0 +1,792 @@
+<br>改行タグ
+
+<p>段落タグ　文章を囲うことで文章の上下に一段階の行間ができる
+
+
+<a href=""> </a>
+内部リンク　絶対パス
+
+外部リンク　絶対パス　あるいは相対パス
+
+相対パスとは二通りある
+
+
+./index2.html  ./ファイル名
+
+  index2.html　　ファイル名
+
+一階層下のパスの記述
+./company/index.html
+　company/index.html
+
+
+一階層上へのパスの記述
+
+../ファイル名
+　
+二階層上へのパスの記述
+
+../../ファイル名
+
+
+<table>
+詳細な指定
+
+</table>
+
+<td></td> 表の個々のデータを書くとき
+
+<tr></tr> 横一行のデータを書くとき　最初と最後につける(改行的使用)
+
+使用例
+<table>
+<tr>
+ <td>あああ</td>
+</tr>
+</table>
+
+bgcolor="値"　背景色の設定
+
+使用例
+<tr bgcolor=""></tr>
+<td bgcolor=""></td>
+<table bgcolor=""></table>
+
+
+<th></th>　見出しタグ　文字が太く表示され、中央寄せで表示される
+
+
+<table border="値" cellspacing="値" cellpadding="値" ></table>
+
+border      テーブルの枠線の太さを定義する　普段は0
+
+cellspacing border とcellpaddingの間の空白領域を定義する
+
+cellpadding 文字の周りの空白スペースの定義
+
+
+フォームとは
+入力欄　登録ボタン　ログインボタンなどの組み合わせのことを指す
+
+<form>
+</form>
+
+入力欄
+<input type="text" name="xxx"　size="値" placeholder="文章" value="文章">
+
+size 枠の横幅を広げる
+placeholder 文字を入力する前にあるヒントメモ文章を指定できる
+value="消えないヒントメモ"入力済み文
+
+<textarea name="xxx" rows="高さ" cols="40"></textarea>
+縦に長い長方形のようなテキスト入力フォームを作る
+
+<input type="password">
+入力した文字が見えなくなる
+
+<input type="file">
+パソコン上のファイルをフォームに呼び出す
+
+<input type="radio">
+選択肢をひとつだけ選ばす項目を作る
+
+使用例
+<input type="radio" name="xxx" value="xxx">男
+<input type="radio" name="xxx" value="xxx">女
+
+<input type="checkbox">
+選択肢を選ばせる項目リストを作る
+
+<label></label> 文字をクリックできるようになり、ボックスをクリックしなくてもよくなる
+
+<input type="submit" value="ボタン名"> ボタンを作成する
+
+使用例
+<p>お住まいの都道府県
+<select name="xxx">
+<option vakue="xxx">東京都</option>
+<option vakue="xxx">東京都</option>
+<option vakue="xxx">東京都</option>
+</select>
+</p>
+
+リスト(箇条書き)
+
+コンマが前頭について並ぶ
+<ul>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+
+数字で並ぶ
+<ol>
+<li></li>
+<li></li>
+<li></li>
+</ol>
+
+プルダウンメニューを作成する。optionタグ内に中身を書いていく。そしてそれらをselectタグで囲む
+
+タイプセレクタ
+Idセレクタ　一度しか使えない #xxx
+クラスセレクタ　何度でも使える .xxx
+
+<div id=""></div>
+<div class=""></div>
+
+<span></span>
+spanはdivと同じように扱えるが、divと違い、改行されないため、divで囲んだ物同士をつなげることができる。
+
+
+
+===========================================================
+
+css研修
+
+
+{color:値;} 字の色を変える
+{background-color:値;} 背景職を変える
+
+
+{text-align:左中右;}　指定した方向に字を寄せる
+{line-align:値;}　指定した値の空白を字間に付け足す
+
+{list-style-type:disc circle square none;} ulタグ内の箇条書きの前頭につく点を変更する。
+
+
+.abc,.xyz{}
+コロンで二つ以上のクラスを指定できる
+
+使用例
+<div class="a">
+
+<p>あいうえお</p>
+かきくけこ
+
+</div>
+
+
+
+line-height と　要素の　heightの値を同じにすると、中間に固定できる
+
+
+
+
+
+
+
+
+.a p{font-size:10px} クラスaの中のpタグにのみ適用させる
+
+
+
+
+
+連結
+
+<h2 class="color1">「あ」から始まる県</h2>
+愛知、青森、秋田
+
+<h2 class="color2">「い」から始まる県</h2>
+石川、茨城、岩手
+
+
+h2タグ内のcolor1、color2クラスでなければ効果が出ない
+
+h2.color1{color:blue;}
+
+クラスセレクタの連結
+
+<div class="a">hello</div>
+
+<div class="b">hello</div>
+
+<div class="a b">hello</div> 下三つが適用される
+
+.a{font-size:30px;}
+
+.b{color:blue;}
+
+.a.b{background-color:green;}
+
+h2.color2{color:red;}
+
+
+
+枠を作ったり、スペースを空けるために使う
+
+border 外枠線
+
+margin　
+
+padding
+
+
+border:px;上下左右の四方向を指定した線で囲む　pxは太さ
+
+border-top:px;上のみ
+
+border-bottom:px;下のみ
+
+border-left:px;左のみ
+
+border-right:px;右のみ
+
+
+
+border:solid;単線
+
+border:double;二重線
+
+border:dotted;点線
+
+border:dashed; 波線
+
+
+margin:px; borderの周りに空白を置く
+
+margin-top:px;上のみ
+
+margin-bottom:px;下のみ
+
+margin-left:px;左のみ
+
+margin-right:px;右のみ
+
+
+
+padding-top:px;上のみ
+
+padding-bottom:px;下のみ
+
+padding-left:px;左のみ
+
+padding-right:px;右のみ
+
+
+position:absolute 画面の左を基点に位置を指定する。
+
+position:relative 動かすものがあるものの左上を基点に位置を指定する。
+
+position:fixed 画面左上を基点に固定化されたバーを作る。固定化されたバーはスクロールしない。
+
+
+
+
+
+
+
+
+floatを使うと四方向を指定して寄せることができる。
+
+また、css内でfloatを使った次の要素で　clear:方向値;
+を打つことで、回り込みを解除することができる。
+
+
+
+
+2カラムレイアウト
+
+ヘッダーフッターボディのようなレイアウト分け
+
+
+ブロック要素
+この要素は仏以上続けて書くと、自動的に改行されるもの　(横並びにならない)
+<h1> <div> <form> <table> <p> <ul <li>など
+
+インライン要素
+改行されずに横並びに表示されるもの
+<img> <a href> <strong>など
+
+
+ブロック要素を横並びさせるためにはfloatを使う
+
+
+
+インラインを改行させたい場合は
+<p>タグで囲んだり　<div>タグで囲んだり(ただしcssでセレクタを指定し、中身を空白にしておく必要がある)
+
+<ul>で囲みつつ　<li>でも囲み、さらにcssでlist-style:noneを使うこと改行することができる。
+
+
+また、cssでdisplay:blockと指定することで、インライン要素をブロック要素化するこどができるため、改行することができる。
+
+
+display:block;        インラインをブロックとして使うために使用
+display:inline;　　　 ブロックをインラインとして使うために使用
+display:inline-block; ブロックをインラインとして扱え、上下左右の間隔をpaddingで指定できる。
+
+
+display:block;には　text-alignによって中央寄せができないため
+
+margin-left:auto;
+margin-right:auto;の二つを使って、真ん中へ寄せる
+
+
+ブロック要素自体を画面の中央寄せにしたい場合
+
+margin:0 auto;を使用する
+
+
+複数のブロック要素を画面の中央寄せにしたい場合
+
+使用例
+
+<body>
+<div class="box>
+  <div class="left"></div>
+  <div class="right"></div>
+</div>
+</body>
+
+
+.box{text-align:center;}
+
+.left{display:inline-block;
+      width:300px;
+      height:300px;
+      background-color:skyblue;}
+
+.left{display:inline-block;
+      width:300px;
+      height:300px;
+      background-color:lightgray;}
+
+二つのブロック要素を囲む箱をalignで中央寄せにし、
+中身のブロックをinline-block化する。
+
+
+positionは画面に固定化するために使うものであり、画面全体において絶対に動かないようにさせるものである
+
+
+absoluteとrelativeはサイトに貼り付け、動かないようにしているもので、
+
+fixedは見ている人の画面に固定させるというイメージで考える。
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+JavaScript
+
+jsファイルはbodyを閉じる直前に置く。
+
+
+
+ブラウザに文字出力
+
+document.write("xxx");
+
+コンソールに出力
+
+console.log("xxx");
+
+
+改行させるためにはbrタグを使用する　javascript内で改行をくりかえしてはいけない。エラーとなる
+
+document.write("あいうえお<br>");
+
+document.write("<h1>あいうえお</h1>");
+
+
+アラート
+
+alert("xxx");
+
+確認ダイアログ
+
+confirm("xxx");
+
+コメント方法
+
+//　短文用　前頭にのみつける
+
+/* xxx */　長文用　前後につける
+
+
+
+
+
+
+数字は少数点があろうが、マイナス記号等がついていても　"" で囲まずに表示できる
+
+
+var 直前に数字は禁止　また　_ 以外の記号も禁止
+
+
++-*/
+
+*　掛け算
+
+% 余りを表示する
+
+
+6%3 = 0(余り0の意味)
+
+
+
+
+前置加算子
+
+
+
+
+数字には<br>がつけられないので、その代わりに　document.write("<br>")を書く
+
+
+条件　状況を表す文を頭で考えられるようにする。　以上　以下　の意味の理解
+
+＝＝で平等　＝ひとつでは　代入　の意味になってしまう
+
+
+!= 等しくないという意味
+
+
+論理演算子でif文の幅を広げられるので、if文を作る練習をし、いろいろなif文を見て写経するべきである
+
+
+
+　　 if (条件文)　{実行内容}
+else if (条件文)　{実行内容}
+
+
+より大きい
+より小さい
+
+以下　<=
+以上　>=
+未満 
+
+
+
+　if (条件文)　{実行内容}
+else {実行内容}
+
+ifでなければ、elseの内容を表示する。(最後の判断)
+
+
+
+
+入れ子　(if の中に ifを書く)
+
+
+もしAがBかつ、もしAがCなら　Dの処理をする　というイメージ
+
+
+
+if(条件){
+
+
+ if(条件){処理内容}
+
+}
+
+
+例文
+
+もし、"ある数"(a)が10より大きい場合で
+かつ、"ある数"(a)が30未満の場合、Aと表示する
+
+
+var a =20; (20以上だと何も表示されない。　falseのため)
+
+
+
+
+
+switch文　A==Bという等価式に特化した条件分岐
+
+もしAとBが等しければCという処理をしなさい
+
+
+
+switch(A){
+
+case B : C ;
+break;(処理内容を終わらすのと同時に書く)
+}
+
+
+
+
+同じ例文
+
+
+
+var a=1;
+if(a==0){document.write("aは0に等しい");}
+else if (a==1){document.write("aは1に等しい");}
+
+
+
+
+car a=1
+
+switch(a){case 0 :document.write("aは0に等しい"); break;
+ 
+          case 1 :document.write("aは1に等しい"); break;}
+
+
+
+switchは変数の中身を入れ替わっている時の結果を個々に提示し、個々に判定させて表示させるイメージ
+
+switch(x)に変えたい変数をいれ、case x に変えた同系等を書く　そしてcに処理内容を書く
+
+if(a>10){
+ 
+ if(a<30){document.write("A");}
+
+}
+
+
+例文
+
+もし、"ある数"(age)が20未満なら、未成年と表示。
+そうでない場合で、20以上で80以下のであれば、成人と表示。
+それ以外の場合は、高齢者と表示する。
+
+
+var age =x
+
+if(age<20) {document.write("未成年");}
+else if(age>=20 && age<=80){document.write("成人");}
+else{document.write("高齢者");}
+
+
+例文
+
+if(a%2 ==0) 2で割り切れる場合
+
+偶数奇数を判別するif文
+if(a%2==0){document.write("偶数"):}
+else{document.write("奇数");}
+
+
+例文switch
+
+
+var a="青"
+
+switch(a){
+
+case"赤"　:document.write("赤組です");　break;
+case"白"　:document.write("白組です");　break;
+
+default :document.write("エラーです");
+
+}
+
+defaultはelseと同じように使う最後の判断
+
+
+
+
+
+
+
+
+
+
+
+
+
+for文(ループ処理)
+
+1~100までの数字を表示、各数字の後ろに-(ハイフン)を入れて表示したい時
+
+for(var i=1; <=100; i++){
+document.write(i);
+document.erite("-")
+
+}
+
+条件とは繰り返しを続ける為の処理
+
+for(初期値; 条件式; 増減式;){処理内容}
+
+
+
+二ずつ増加
+for(var i =1; i<10; i+=2){document.write(i);}
+
+二ずつ減少
+for(var i =1; i<10; i-=2){document.write(i);}
+ 
+10 8 6 4 2
+
+☆マークを連続で出力
+
+for(var i=1; i<=5; i++){document.write("☆");}
+
+５はループ回数を表している
+
+
+var b=1 b<7; b++ bが７になるまで一を足し続ける
+
+
+
+
+
+
+
+
+while文のイメージ
+forと同様にループ処理ができる。
+
+
+初期値; while(条件式){処理内容;増減式;}
+
+
+
+var i=0;
+
+while(i<3){document.write(i); i++}
+      間隔　　 処理内容　  　増減量
+
+初期値0で3まで１ずつ増える
+
+
+配列とは　varをひとつの箱に並べることである
+
+var myouji=["田中","高橋","斉藤"];
+順番          0      1      2
+
+document,write(myouji[1]); 
+
+高橋　が出る
+
+
+
+myouji[3]="鈴木";　追加、更新に使える
+
+
+
+var myouji= {"A組":"田中", "B組":"高橋", "C組":"斉藤"};
+:を使うことで、箱に名前をつけることができる。
+
+delete myouji[0]　消すことができる
+
+またdocument.write(myouji["A組"]);と書くことで　田中　が出る
+
+document.write(myouji)
+
+,高橋,斉藤　と出る
+
+
+要素の追加　先頭に　
+
+myouji.unshift("鈴木");
+
+
+要素の追加　最後列に　
+
+myouji.push("鈴木");
+
+
+要素の末尾を削除
+
+myoji.pop(); このまま使用
+
+
+一部の要素のみを切り取って表示
+
+document.write(myoji.slice(1,2));  高橋のみが出る
+
+
+
+
+var myoji=["田中","高橋","斉藤"];
+
+document.write(myoji.slice(0,2));
+
+
+田中　斉藤が出る
+
+
+
+var age=[18,26,33,41,50];
+
+document.write(age.slice(1,4));
+
+26 33 41 が出る
+
+
+
+
+
+
+
+
+
+
+関数
+
+
+例文
+
+function namehello(name){return name + "さん。こんにちは";}
+　　　　　 関数名
+
+
+document.write(namehello("山田"));     山田さん。こんにちは
+
+
+例文
+
+function jikoshokai(shugo,myoji)
+{return shugo + "の名前は" + myoji +"です。";}
+
+document.write(jikoshokai("私","山田"));  私の名前は山田です。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+for(var a=1; a<=2; a++){
+ for(var b=1; b<=5; b++)
+    {document.write("☆");}
+
+{document.write("<br>");}}
+
+
+
+
+return文の中で　文字列と　数字の計算と　文字列にしたい場合は、計算をvarで入れるほうがいい
+
+
+
+mysql
+
+データベースの中にテーブルがある
+
+テーブルの中に一行としてあるレコードというデータ。
+
+そしてその見出しに見当するデータをフィールドという。
+
+crud とは　create read update delete
+
+
+select * from　テーブル名　*は指定したテーブルから全データを取るとい意味
+
+select 名前 from 名簿
+
+sqlファイルを読み込む
+
+mysql -u ユーザー名 -p データベース名 <外部ファイル名
+
+データベースはデータを溜め込むためのもの

@@ -1,0 +1,4 @@
+オブジェクトの考え方
+サイコロゲームの作り方
+
+http://www.media.osaka-cu.ac.jp/~matsuura/2008-PP/8.html
