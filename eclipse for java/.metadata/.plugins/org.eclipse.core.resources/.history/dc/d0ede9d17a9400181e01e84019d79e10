@@ -1,0 +1,19 @@
+package note;
+
+public class note4 {
+
+	public static void main(String[] args) {
+		// TODO 自動生成されたメソッド・スタ
+
+		int returnvalue =methodA();
+		System.out.println(returnvalue);
+
+	}
+
+	public static int methodA(){
+		int x =100;
+		return x;
+	}
+
+}
+

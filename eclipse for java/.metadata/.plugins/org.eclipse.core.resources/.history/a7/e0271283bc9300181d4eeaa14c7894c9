@@ -1,0 +1,18 @@
+package note;
+
+public class note1 {
+
+	public static void main(String[] args) {
+		// TODO 自動生成されたメソッド・スタブ
+
+
+		int randam = new java.util.Random().nextInt(6);
+
+		System.out.println("サイコロの出目は"+randam+"ですよ。");
+
+
+
+
+
+	}
+}

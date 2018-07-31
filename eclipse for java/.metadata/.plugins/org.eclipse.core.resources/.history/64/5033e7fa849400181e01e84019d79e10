@@ -1,0 +1,12 @@
+package rpg;
+
+public class owner {
+
+	public static void main(String[] args) {
+		// TODO 自動生成されたメソッド・スタブ
+
+		hero1 h =new hero1();
+
+	}
+
+}

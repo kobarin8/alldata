@@ -1,0 +1,16 @@
+package note;
+
+public class note1 {
+
+	public static void main(String[] args) {
+		// TODO 自動生成されたメソッド・スタブ
+
+int kazu =19;
+
+if(kazu>15){System.out.println("あなたは15以上です");}
+
+else(kazu<20){System.out.println("あなたは20以上です");}
+
+	}
+
+}

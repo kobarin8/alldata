@@ -1,0 +1,19 @@
+package note;
+
+public class note3 {
+
+	public static void main(String[] args) {
+		// TODO 自動生成されたメソッド・スタブ
+
+		int [] subject = {59,24,90,28,25};
+
+		System.out.println("国語の点数は"+subject[0]);
+		System.out.println("数学の点数は"+subject[1]);
+		System.out.println("理科の点数は"+subject[2]);
+		System.out.println("社会の点数は"+subject[3]);
+		System.out.println("体育の点数は"+subject[4]);
+		System.out.println("数学の点数は"+subject[5]);
+
+	}
+
+}

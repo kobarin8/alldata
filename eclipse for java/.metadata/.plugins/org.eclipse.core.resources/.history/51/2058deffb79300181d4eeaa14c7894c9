@@ -1,0 +1,23 @@
+package note;
+
+public class note1 {
+
+	public static void main(String[] args) {
+		// TODO 自動生成されたメソッド・スタブ
+
+		int tate;
+		int yoko;
+
+		tate=3;
+		yoko=5;
+
+		int menseki = tate*yoko;
+
+		System.out.println("縦幅"+tate+"横幅"+yoko+"の長方形の面積は"+menseki);
+
+
+
+
+	}
+
+}

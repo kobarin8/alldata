@@ -1,0 +1,17 @@
+package note;
+
+public class note4 {
+
+	public static void main(String[] args) {
+		// TODO 自動生成されたメソッド・スタ
+
+		for(int a=0; a==98;){
+			int input = new java.util.Scanner(System.in).nextInt();
+			a =input;
+
+			System.out.println(a);
+		}
+
+	}
+
+}

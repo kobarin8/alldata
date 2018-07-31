@@ -1,0 +1,15 @@
+package note;
+
+public class note4 {
+
+	public static void main(String[] args) {
+		// TODO 自動生成されたメソッド・スタ
+System.out.println("書いた事が表記されます");
+		for(int i=0; i<10; i++){
+			int input = new java.util.Scanner(System.in).nextInt();
+			System.out.println(input);
+		}
+
+	}
+
+}

@@ -1,0 +1,15 @@
+package note;
+
+public class note2 {
+
+	public static void main(String[] args) {
+		// TODO 自動生成されたメソッド・スタブ
+
+String s ="夕日";
+
+if(s.equals("夕日")){System.out.println("夕日ですな");}
+else{System.out.println("なにもなし");}
+
+	}
+
+}

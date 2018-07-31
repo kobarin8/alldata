@@ -1,0 +1,17 @@
+package note;
+
+public class ds {
+
+	public static void main(String[] args) {
+		// TODO 自動生成されたメソッド・スタブ
+
+System.out.println("数当てゲーム");
+int random = new java.util.Random().nextInt(10);
+
+for(int i=1; i<=5; i++){
+
+}
+
+	}
+
+}

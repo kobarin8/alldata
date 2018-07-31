@@ -1,0 +1,22 @@
+package note;
+
+public class ds {
+
+	public static void main(String[] args) {
+		// TODO 自動生成されたメソッド・スタブ
+
+		int seibetsu =0;
+		int age =56;
+
+		System.out.println("こんにちは");
+		if(seibetsu==0){
+			System.out.println("私は男です"+age+"歳です");
+		}
+		else{
+			System.out.println("私は女です");
+		}
+
+
+	}
+
+}

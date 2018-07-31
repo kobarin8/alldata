@@ -1,0 +1,20 @@
+package note;
+
+public class note1 {
+
+	public static void main(String[] args) {
+		// TODO 自動生成されたメソッド・スタブ
+		final int age;
+		age =30;
+
+		System.out.println(age);
+
+		age = 49;
+
+		System.out.println(age);
+
+
+
+	}
+
+}

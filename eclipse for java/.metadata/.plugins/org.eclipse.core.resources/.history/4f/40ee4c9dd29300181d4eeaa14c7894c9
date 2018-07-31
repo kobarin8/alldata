@@ -1,0 +1,11 @@
+package note;
+
+public class ds {
+
+	public static void main(String[] args) {
+		// TODO 自動生成されたメソッド・スタブ
+		int fortune = new java.util.Random().nextInt(4);
+		System.out.println(fortune);
+	}
+
+}

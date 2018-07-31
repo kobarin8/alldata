@@ -1,0 +1,29 @@
+package note;
+
+public class note4 {
+
+	public static void main(String[] args) {
+		// TODO 自動生成されたメソッド・スタ
+
+		System.out.println("メソッドを呼び出します");
+		hello("高橋");
+		hello("稲端");
+		System.out.println("メソッドの呼び出しが終わりました");
+
+		}
+
+	public static void hello(String namae){
+		System.out.println(namae+"さん、こんにちは");
+	}
+
+	public static place(String place){
+		place="天国";
+
+
+
+
+		return System.out.println("ここは"+place+"だよ");
+	}
+
+}
+

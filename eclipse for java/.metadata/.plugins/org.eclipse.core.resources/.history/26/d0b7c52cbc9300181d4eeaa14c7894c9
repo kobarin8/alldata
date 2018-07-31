@@ -1,0 +1,15 @@
+package note;
+
+public class note1 {
+
+	public static void main(String[] args) {
+		// TODO 自動生成されたメソッド・スタブ
+
+		int a=100;
+		int b=287;
+
+int m =Math.max(a,b);
+
+System.out.println(m);
+	}
+}

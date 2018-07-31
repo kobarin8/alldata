@@ -1,0 +1,23 @@
+package note;
+
+public class note1 {
+
+	public static void main(String[] args) {
+		// TODO 自動生成されたメソッド・スタブ
+
+		int randam = new java.util.Random().nextInt(6);
+		System.out.println("あなたが振ったサイコロの出目は"+randam+"です");
+
+		System.out.println("あなたの名前を入力してください");
+		String name =new java.util.Scanner(System.in).nextLine();
+		System.out.println("あなたの年齢を入力してください");
+		int age =new java.util.Scanner(System.in).nextInt();
+		if(age==444){System.out.println("お前はなんと不吉な年齢なんじゃ。来世から出直してくるのじゃ。");}
+		else{System.out.println("ようこそ、"+age+"歳な"+name+"よ");}
+
+
+
+
+
+	}
+}

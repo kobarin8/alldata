@@ -1,0 +1,18 @@
+package note;
+
+public class note1 {
+
+	public static void main(String[] args) {
+		// TODO 自動生成されたメソッド・スタブ
+
+int tate1=4;
+int tate2=5;
+int yoko1=6;
+int yoko2=7;
+
+ int suubunkai = tate1*yoko1+tate1*yoko2+tate2*yoko1+tate2*yoko2;
+
+
+	}
+
+}

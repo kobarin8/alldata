@@ -1,0 +1,14 @@
+package note;
+
+public class note1 {
+
+	public static void main(String[] args) {
+		// TODO 自動生成されたメソッド・スタブ
+
+int yoko1 =4;
+int yoko2 =yoko1;
+
+System.out.println(yoko1*yoko2);
+	}
+
+}

@@ -1,0 +1,12 @@
+package note;
+
+public class note1 {
+
+	public static void main(String[] args) {
+		// TODO 自動生成されたメソッド・スタブ
+
+String henkan ="31";
+int henkan2 =Integer.parseInt(henkan);
+System.out.println(henkan2*3);
+	}
+}
