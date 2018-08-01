@@ -1,0 +1,36 @@
+20180712 
+
+
+method="post" action="xxx.php"
+
+
+actionにはファイルの送付先を指定している
+これが入った要素はactionで指定した先で使うことができる。
+これによって変数名をsqlで運び、データベースに書き込むことができる
+
+
+戻るボタン
+
+<form action="ファイル名">
+<input type="submit" class="button1" value="戻る"/>
+</form>
+
+postによる変数の引継ぎ
+
+<?php echo $_POST['引き継いだ変数名']; ?>
+
+
+
+
+$pdo = new PDO("mysql:dbname=lesson668; host=localhost; ","root","mysql");
+データベースを指定し、変数にしたもの。
+
+
+
+
+
+
+
+pdoでselect文を使うものを指名するコード
+
+$stmt = $pdo->query("select * from 4each_keijiban");

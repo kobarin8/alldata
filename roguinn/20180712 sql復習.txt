@@ -1,0 +1,172 @@
+20180712 sql php 復習ノート
+
+insert テーブルに書き込む
+
+read  書き込まれた情報を呼び出す
+
+update データを上書きする
+
+delete 書き込まれた情報を削除する
+
+
+create table テーブル名 (一列目名 データ型　, 二列目名 データ型);
+
+例文
+
+create table addresslist
+
+(
+
+user_id int(11),
+name varchar(255),
+mail varchar(255),
+tell varchar(255),
+preference varchar(255)
+
+);
+
+insert into テーブル名 (一列名,二列名,三列名,四列名)
+values ("a","b","c","d");
+
+例文
+
+insert into addresslist　(user_id, name, mail, preference)
+value ("1","山田太郎","abcd123@yahoo.co.jp","03-0000-0000","東京");
+
+select * from テーブル名;  指定したテーブルのデータをすべて抽出する
+
+select カラム名 from テーブル名; 指定したテーブルの指定したカラムだけを抽出する
+
+複数のvalueを入れる場合
+
+例文
+
+INSERT into test_table (user_id,user_name,password)
+
+values ("1","taro","123"),
+
+("2","jiro","456"),
+
+("3","hanako","789");
+
+
+
+
+例文
+
+select * from  addresslist;
+
+select name from addresslist;
+
+select カラム名 from テーブル名 where カラム名="検索したいワード";
+
+例文
+
+select mail from addresslist where prefecture = "千葉";
+sellect name from addresslist where user_id="3";
+
+*　=　の代わりにさまざまな演算子が使える
+
+= 等しい
+> 大きい
+< 小さい
+>=大きい、もしくは等しい
+<=小さい、もしくは等しい
+
+!=　><　等しくない
+
+AND 二つの条件を結合し、両方の条件がtrue
+OR  二つの条件の内、どちらかがtrue
+NOT 式の結果を反転
+BETWEEN a AND b 対象のフィールドがaとbの範囲内にする
+LIKE 対象のフィールドがパターンに一致
+
+例文 where以降は指定条件
+
+select name from addresslist where user_id > 2;
+select name from addresslist where name !="山田太郎";
+select name from addresslist where user_id = 1 AND prefecture ="埼玉";
+select name from addresslist where user_id = 1 OR user_id =3;
+select mail from addresslist where user_id between 1 and 4;
+select name from addresslist where mail like "%yahoo%";
+
+nameカラムの中から2より大きい値をuser_idから抽出
+nameカラムの中から山田太郎以外の値をnameから抽出
+nameカラムの中からuser_idが1でかつ、prefectureが埼玉になるもののみを抽出(and検索)
+nameカラムの中から1か3の値のuser_idを抽出(or検索)
+mailカラムの中から1から4の値になっているものを抽出
+nameカラムの中からyahooの文字が入っているものを抽出(部分一致検索)
+
+update テーブル名 set 指定するカラム名 = "更新したい値"
+
+例文
+
+update addreslist set prefecture = "埼玉"
+where user_id = 1;
+
+delete from テーブル名　テーブルを削除したい時
+delete from テーブル名 where カラム名 = 値の名前; 指定したデータのみを削除したい時
+
+例文
+
+delete from addresslist where user_id =3;
+
+addresslist内のuser_idが3のデータを削除する
+
+select カラム名 from テーブル名 order by カラム名(数字を扱っているべき)asc;   小さい順に並べる
+select カラム名 from テーブル名 order by カラム名(数字を扱っているべき)desc;　大きい順に並べる
+
+例文
+
+select * from fruit_stock order by number asc;
+select * from fruit_stock order by number desc;
+select * from fruit_stock where number >=25 order by price desc;
+
+fruit_stockからnumberのデータをすべて抽出し、それらを小さい順に並べる
+fruit_stockからnumberのデータをすべて抽出し、それらを大きい順に並べる
+fruit_stockから値が25以上のものをすべて抽出し、それらをpriceの値が大きい順に並べる
+
+select count (カラム名。もしくは*) from テーブル名; 件数を取得する
+
+例文
+
+select count(fruit) from fruit_stock;
+select count(fruit) from fruit_stock where price>=200 and madein="日本";
+
+fruit_stockのfruitのデータ件数を取得する
+priceの値が200以上かつ、madeinの値が日本であるfruit_stockのfruitのデータ件数を所得する
+
+select sum (カラム名) from テーブル名; 
+
+例文
+
+select sum (number) from fruit_stock;
+
+fruit_stockのnumberの値の合計値を所得する
+
+select max (カラム名) from テーブル名;
+select min (カラム名) from テーブル名;
+
+例文
+
+select max (price) from fruit_stock;
+select min (price) from fruit_stock;
+
+fruit_stockのpriceの値で一番大きい値を所得する
+fruit_stockのpriceの値で一番小さい値を所得する
+
+select avg (カラム名) from テーブル名;
+
+例文
+
+select avg (price) from fruit_stock;
+
+fruit_stockのpriceの平均値を所得する
+
+もしtestdbというデータベースがすでにある場合は削除しますという意味
+drop database if exists testdb;
+create database testdb;
+use testdb;
+
+
+javqでsql文を書いたときは、随時保存をして情報を更新すること
