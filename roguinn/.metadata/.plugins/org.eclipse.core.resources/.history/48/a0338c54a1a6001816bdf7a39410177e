@@ -1,0 +1,29 @@
+package com.internousdev.ecsite.action;
+
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+public class DeleteItemAction  extends ActionSupport implements SessionAware{
+
+	private String ItemName;
+	private String ItemPrice;
+	private String ItemStock;
+
+	public Map<String,Object> session;
+
+	public String execute() {
+
+		session.put("ItemNameKey", ItemName);
+
+
+		return SUCCESS;
+
+		}
+
+
+
+
+}

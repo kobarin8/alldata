@@ -1,0 +1,22 @@
+#box1{
+    width:300px;
+    height:300px;
+    background-color: deepskyblue;
+    transition-duration: 0.3s;
+}
+
+#box2.move{
+    border: inset 4px;
+    border-radius:30px;
+    background-color: aquamarine;
+    opacity:0.3;
+    transform: translateX(300px);
+}
+
+
+#box2{
+    width:300px;
+    height:300px;
+    background-color: darkred;
+    transition-duration: 0.3s;
+}

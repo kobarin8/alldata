@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="3.0.1" sequence="1" timestamp="1534396579675" analysisTimestamp="1534396561110" release="">
+  <Project projectName="01understandJSP">
+    <Jar>C:\Users\internousdev\Desktop\workspace\workspace-kobayashi\alldata\roguinn\01understandJSP\build\classes\dto\kakuninDTO.class</Jar>
+    <AuxClasspathEntry>C:\Users\internousdev\Desktop\workspace\workspace-kobayashi\alldata\roguinn\01understandJSP\build\classes</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\pleiades\tomcat\6\lib\annotations-api.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\pleiades\tomcat\6\lib\catalina-ant.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\pleiades\tomcat\6\lib\catalina-ha.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\pleiades\tomcat\6\lib\catalina-tribes.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\pleiades\tomcat\6\lib\catalina.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\pleiades\tomcat\6\lib\ecj-4.3.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\pleiades\tomcat\6\lib\el-api.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\pleiades\tomcat\6\lib\jasper-el.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\pleiades\tomcat\6\lib\jasper.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\pleiades\tomcat\6\lib\jsp-api.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\pleiades\tomcat\6\lib\servlet-api.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\pleiades\tomcat\6\lib\tomcat-coyote.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\pleiades\tomcat\6\lib\tomcat-dbcp.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\pleiades\tomcat\6\lib\tomcat-i18n-es.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\pleiades\tomcat\6\lib\tomcat-i18n-fr.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\pleiades\tomcat\6\lib\tomcat-i18n-ja.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\internousdev\Desktop\workspace\workspace-kobayashi\alldata\roguinn\01understandJSP\WebContent\WEB-INF\lib\commons-fileupload-1.3.2.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\internousdev\Desktop\workspace\workspace-kobayashi\alldata\roguinn\01understandJSP\WebContent\WEB-INF\lib\commons-io-2.2.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\internousdev\Desktop\workspace\workspace-kobayashi\alldata\roguinn\01understandJSP\WebContent\WEB-INF\lib\commons-lang3-3.2.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\internousdev\Desktop\workspace\workspace-kobayashi\alldata\roguinn\01understandJSP\WebContent\WEB-INF\lib\commons-logging-1.1.3.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\internousdev\Desktop\workspace\workspace-kobayashi\alldata\roguinn\01understandJSP\WebContent\WEB-INF\lib\freemarker-2.3.22.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\internousdev\Desktop\workspace\workspace-kobayashi\alldata\roguinn\01understandJSP\WebContent\WEB-INF\lib\javassist-3.11.0.GA.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\internousdev\Desktop\workspace\workspace-kobayashi\alldata\roguinn\01understandJSP\WebContent\WEB-INF\lib\mysql-connector-java-5.1.46-bin.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\internousdev\Desktop\workspace\workspace-kobayashi\alldata\roguinn\01understandJSP\WebContent\WEB-INF\lib\ognl-3.0.21.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\internousdev\Desktop\workspace\workspace-kobayashi\alldata\roguinn\01understandJSP\WebContent\WEB-INF\lib\struts2-core-2.3.34.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\internousdev\Desktop\workspace\workspace-kobayashi\alldata\roguinn\01understandJSP\WebContent\WEB-INF\lib\xwork-core-2.3.34.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\pleiades\java\6\jre\lib\rt.jar</AuxClasspathEntry>
+    <SrcDir>C:\Users\internousdev\Desktop\workspace\workspace-kobayashi\alldata\roguinn\01understandJSP\src</SrcDir>
+    <Cloud id="edu.umd.cs.findbugs.cloud.doNothingCloud" online="false"></Cloud>
+  </Project>
+  <BugInstance type="NM_CLASS_NAMING_CONVENTION" priority="2" rank="16" abbrev="Nm" category="BAD_PRACTICE" first="1">
+    <Class classname="dto.kakuninDTO">
+      <SourceLine classname="dto.kakuninDTO" start="2" end="7" sourcefile="kakuninDTO.java" sourcepath="dto/kakuninDTO.java"/>
+    </Class>
+  </BugInstance>
+  <Errors errors="0" missingClasses="0"></Errors>
+  <FindBugsSummary timestamp="Tue, 14 Aug 2018 15:53:21 +0900" total_classes="1" referenced_classes="10" total_bugs="1" total_size="8" num_packages="1" java_version="1.8.0_74" vm_version="25.74-b02" cpu_seconds="18.77" clock_seconds="18.64" peak_mbytes="813.95" alloc_mbytes="910.50" gc_seconds="1.50" priority_2="1">
+    <PackageStats package="dto" total_bugs="1" total_types="1" total_size="8" priority_2="1">
+      <ClassStats class="dto.kakuninDTO" sourceFile="kakuninDTO.java" interface="false" size="8" bugs="1" priority_2="1"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="de.tobject.findbugs.builder.FindBugs2Eclipse" totalMilliseconds="2855" invocations="2" avgMicrosecondsPerInvocation="1427868" maxMicrosecondsPerInvocation="1822267" standardDeviationMircosecondsPerInvocation="394397"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="640" invocations="10" avgMicrosecondsPerInvocation="64026" maxMicrosecondsPerInvocation="492181" standardDeviationMircosecondsPerInvocation="144153"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="609" invocations="277" avgMicrosecondsPerInvocation="2198" maxMicrosecondsPerInvocation="60671" standardDeviationMircosecondsPerInvocation="5814"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="498" invocations="276" avgMicrosecondsPerInvocation="1807" maxMicrosecondsPerInvocation="119586" standardDeviationMircosecondsPerInvocation="8508"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History>
+    <AppVersion sequence="0" timestamp="1534396579659" release="" codeSize="0" numClasses="0"/>
+  </History>
+</BugCollection>

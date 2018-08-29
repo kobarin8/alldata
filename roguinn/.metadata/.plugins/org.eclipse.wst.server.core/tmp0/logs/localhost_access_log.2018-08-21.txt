@@ -1,0 +1,6 @@
+127.0.0.1 - - [21/Aug/2018:16:55:06 +0900] "GET / HTTP/1.1" 404 1019
+127.0.0.1 - - [21/Aug/2018:16:55:08 +0900] "GET /01understandJSP/ HTTP/1.1" 200 1157
+127.0.0.1 - - [21/Aug/2018:16:55:33 +0900] "POST /01understandJSP/kakunin.action;jsessionid=6CF3D883A141F8CD177C08997AE3D577 HTTP/1.1" 200 847
+127.0.0.1 - - [21/Aug/2018:16:55:34 +0900] "POST /01understandJSP/kaerou.action HTTP/1.1" 200 1069
+127.0.0.1 - - [21/Aug/2018:17:59:28 +0900] "GET / HTTP/1.1" 404 1019
+127.0.0.1 - - [21/Aug/2018:17:59:31 +0900] "GET /ecsite/buyItem.jsp HTTP/1.1" 200 2708

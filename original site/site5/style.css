@@ -1,0 +1,385 @@
+*{
+    font-family: fantasy;
+}
+
+body{
+    height:1080px;
+    width:1680px;
+    margin:0px;  
+}
+.canvas{
+    position: relative;
+    height:1080px;
+    width:1680px;
+    background-image:url("sikitume.png");
+    background-repeat:repeat;
+}
+
+header{
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:240px;
+    height:1080px;
+    background-color: cadetblue;
+}
+.logo{
+    position:relative;
+    width:240px;
+    height:240px;
+    background-color:#FAE5C2;
+    
+}
+.logo h2{
+    position: absolute;
+    top:25%;
+    left:7.5%;
+    font-size:100px;
+    margin: 0;
+    transform:scaley(1.6);
+    
+}
+.headermenu{
+    position: absolute;
+    top:240px;
+    left:0px;
+}
+.headerbox{
+    position: relative;
+    width:240px;
+    height:120px;
+    background-color: deepskyblue
+
+}
+.headerbox h2{
+    position: absolute;
+    top:25%;
+    left:4%;
+    font-size:45px;
+    margin: 0;
+    transform: skew(-9.30deg); 
+    color:white;
+    
+}
+
+main{
+    position:absolute;
+    top:0px;
+    left:240px;
+    width:1440px;
+    height:1080px;
+    background-color:lightblue;
+}
+.topmenu{
+    position:relative;
+    top:0px;
+    left:0px;
+    width:1440px;
+    height:120px;
+    background-color:skyblue;
+    
+}
+
+.topmenu h1{
+    position: absolute;
+    top:40%;
+    left:1%;
+    font-size:30px;
+    margin: 0;
+    transform: skew(-10.30deg); 
+}
+.choice{
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:480px;
+    height:120px;
+    background-color:aliceblue;
+}
+.choice h1{
+    position:absolute;
+    top:70%;
+    left:1%;
+}
+.search{
+    position:absolute;
+    top:0px;
+    left:480px;
+    width:480px;
+    height:60px;
+    background-color:#ff8000;
+}
+.login{
+    position:absolute;
+    top:60px;
+    left:480px;
+    width:240px;
+    height:60px;
+    background-color:#ff8000;
+}
+.usercreate{
+    position:absolute;
+    top:60px;
+    left:720px;
+    width:240px;
+    height:60px;
+    background-color:#ff8000;
+}
+.yourbox{
+    position:absolute;
+    top:0px;
+    left:960px;
+    width:240px;
+    height:120px;
+    background-color: deepskyblue
+}
+.yourbox h1{
+    position:absolute;
+    top:70%;
+    left:1%;
+}
+.time{
+    position:absolute;
+    top:0px;
+    left:1200px;
+    width:240px;
+    height:120px;
+    background-color:#FAE5C2;
+}
+.time h1{
+    position:absolute;
+    top:70%;
+    left:1%;
+}
+
+.rightmenu{
+    position:absolute;
+    top:120px;
+    left:1200px;
+    width:240px;
+    height:960px;
+    background-color:#ff8000;
+}
+
+.contents{
+    position:relative;
+    width:1200px;
+    height:960px;
+    background-color:#99dfff;
+}
+.colortone1{
+    position: absolute;
+    top:0;
+    left:0px;
+    transform: translateY(100%);
+    width:50px;
+    height:960px;
+}
+.colortone2{
+    position: absolute;
+    top:0px;
+    left:50px;
+    transform: translateY(100%);
+    width:50px;
+    height:960px;
+    background-color:#B43104;
+}
+.colortone3{
+    position: absolute;
+    top:0px;
+    left:100px;
+    transform: translateY(100%);
+    width:50px;
+    height:960px;
+    background-color:#B45F04;
+}
+.colortone4{
+    position: absolute;
+    top:0px;
+    left:150px;
+    transform: translateY(100%);
+    width:50px;
+    height:960px;
+    background-color:#B18904;
+}
+.colortone5{
+    position: absolute;
+    top:0px;
+    left:200px;
+    transform: translateY(100%);
+    width:50px;
+    height:960px;
+    background-color:#AEB404;
+}
+.colortone6{
+    position: absolute;
+    top:0px;
+    left:250px;
+    transform: translateY(100%);
+    width:50px;
+    height:960px;
+    background-color:#86B404;
+}
+.colortone7{
+    position: absolute;
+    top:0px;
+    left:300px;
+    transform: translateY(100%);
+    width:50px;
+    height:960px;
+    background-color:#5FB404;
+}
+.colortone8{
+    position: absolute;
+    top:0px;
+    left:350px;
+    transform: translateY(100%);
+    width:50px;
+    height:960px;
+    background-color:#31B404;
+}
+.colortone9{
+    position: absolute;
+    top:0px;
+    left:400px;
+    transform: translateY(100%);
+    width:50px;
+    height:960px;
+    background-color:#04B404;
+}
+.colortone10{
+    position: absolute;
+    top:0px;
+    left:450px;
+    transform: translateY(100%);
+    width:50px;
+    height:960px;
+    background-color:#04B431;
+}
+.colortone11{
+    position: absolute;
+    top:0px;
+    left:500px;
+    transform: translateY(100%);
+    width:50px;
+    height:960px;
+    background-color:#04B45F;
+}
+.colortone12{
+    position: absolute;
+    top:0px;
+    left:550px;
+    transform: translateY(100%);
+    width:50px;
+    height:960px;
+    background-color:#04B486;
+}
+.colortone13{
+    position: absolute;
+    top:0px;
+    left:600px;
+    transform: translateY(100%);
+    width:50px;
+    height:960px;
+    background-color:#04B4AE;
+}
+.colortone14{
+    position: absolute;
+    top:0px;
+    left:650px;
+    transform: translateY(100%);
+    width:50px;
+    height:960px;
+    background-color:#0489B1;
+}
+.colortone15{
+    position: absolute;
+    top:0px;
+    left:700px;
+    transform: translateY(100%);
+    width:50px;
+    height:960px;
+    background-color:#045FB4;
+}
+.colortone16{
+    position: absolute;
+    top:0px;
+    left:750px;
+    transform: translateY(100%);
+    width:50px;
+    height:960px;
+    background-color:#0431B4;
+}
+.colortone17{
+    position: absolute;
+    top:0px;
+    left:800px;
+    transform: translateY(100%);
+    width:50px;
+    height:960px;
+    background-color:#0404B4;
+}
+.colortone18{
+    position: absolute;
+    top:0px;
+    left:850px;
+    transform: translateY(100%);
+    width:50px;
+    height:960px;
+    background-color:#3104B4;
+}
+.colortone19{
+    position: absolute;
+    top:0px;
+    left:900px;
+    transform: translateY(100%);
+    width:50px;
+    height:960px;
+    background-color:#5F04B4;
+}
+.colortone20{
+    position: absolute;
+    top:0px;
+    left:950px;
+    transform: translateY(100%);
+    width:50px;
+    height:960px;
+    background-color:#8904B1;
+}
+.colortone21{
+    position: absolute;
+    top:0px;
+    left:1000px;
+    transform: translateY(100%);
+    width:50px;
+    height:960px;
+    background-color:#B404AE;
+}
+.colortone22{
+    position: absolute;
+    top:0px;
+    left:1050px;
+    transform: translateY(100%);
+    width:50px;
+    height:960px;
+    background-color:#B40486;
+}
+.colortone23{
+    position: absolute;
+    top:0px;
+    left:1100px;
+    transform: translateY(100%);
+    width:50px;
+    height:960px;
+    background-color:#B4045F;
+}
+.colortone24{
+    position: absolute;
+    top:0px;
+    left:1150px;
+    transform: translateY(100%);
+    width:50px;
+    height:960px;
+    background-color:#B40431;
+}
+

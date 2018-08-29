@@ -1,0 +1,146 @@
+
+
+document.getElementById("aaaa").bbbb =function(){cccc}
+
+イベントが起きるID要素を選び、イベントの種類を指定しつつ
+
+処理内容を指定する。
+
+function xxx(){}
+
+xxx(); 関数を起動
+
+
+変数に代入する書式で書く方法
+
+var hogefunc2 = function() {
+    document.write("変数に代入する場合と同じ書式でかく");
+}
+hogefunc2();/* 『変数に代入する場合と同じ書式でかく』と表示される */
+
+
+関数を戻り値で返す関数
+
+var sotofunc = function() {
+     
+    return function() {
+        document.write("関数を返す関数");
+    }
+}
+ 
+var func = sotofunc(); /* return の横にある関数が、func変数に代入される */
+func(); /* 代入された関数が実行され『関数を返す関数』が表示される */
+
+□event
+
+onclick
+onmouseover
+onmouseout
+onmousemove
+onscroll
+onkeydown
+onkeypress	
+onkeyup
+
+
+□animation
+
+function xxx(){}
+function yyy(){}
+
+var z = document.getElementById('aaa');
+z.addEventListener('click',xxx,false);
+z.addEventListener('click',yyy,false);
+
+□DOM
+
+function xxx(){document.form1.input1.value="test";}  代入式という処理内容
+<form action="#" name="form1">
+<input type="text" name="input1">
+
+getElementByIdメソッド
+
+.innerHTML="";
+
+直接htmlを書き込むという荒業なのだ
+.innerHTML = "<span>span要素に変更したよ！</span>";
+
+例文
+answersheet.innerHTML　=　num1+"+"+num2+"="+sum
+hanteisheet.innerHTML ="正解です！"
+
+後ろのセミコロンは実は必要ない
+
+input id="xx"
+document.getElementById("xx").value;  input要素の所得
+
+基本的にjavascriptは所得したものを文字列扱いしているので、数字として扱いたい時は変換する必要がある
+
+parseInt(num1, 10)　これを指定することでしっかり数字として扱うことができる
+
+
+例文
+var sum = parseInt(num1, 10) + parseInt(num2, 10);
+
+if(parseInt(num3, 10) == sum)
+
+
+□function・関数・変数
+
+javascriptの変数のスコープは、その中のみである。(javaでいうprivate)
+
+function xxx(){alert('test1');}
+
+function sum(a,b){return a+b;}
+alert sum(100.10);
+
+function xxx(){alert('test');}
+<button type="button" onclick="xxx()"></button>
+
+
+オブジェクトの生成 new を使う
+var obj = new Object();
+obj.aaa = "test";　　　　新しくできたobj というnewなオブジェクトは何も値を持っていないので、この行と次の行で値を入力する必要がある
+obj.b = 123;
+alert(obj.aaa);
+alert(obj.b);
+
+obj.aaaとobj.bに何の変哲もない値を代入しています。これは、配列のときでいうarr[0]みたいなノリで、「objの中のaaaという名前の値に"test"を代入する」みたいな意味になります。
+
+先ほどオブジェクトは値を1つも持っていないと述べました。オブジェクトは柔軟なので、objはもともとaaaとかbとかいう値を持っていなかったのですが、代入しようとした時点で自動的に作成されます。
+
+もちろん、次のように、すでにある値に再び代入して値を変えることもできます。
+
+var obj = new Object();
+obj.aaa = "test"; // ←ここでaaaという名前の値をobjに作成
+alert(obj.aaa);
+obj.aaa = "foo"; // ←ここですでにあるaaaの値を書き換える
+alert(obj.aaa);
+このような、オブジェクトが中に持っている値のことをプロパティといいます。きわめて基本的な言葉なので、ぜひ頭に入れておきましょう。
+
+さて、このプロパティの表し方を改めて書くと、次のようになります。
+
+オブジェクト.プロパティ名
+
+オブジェクトとプロパティ名が「.」（ピリオド）でつながっています。
+
+つまり、上のサンプルで「obj.aaa」は「オブジェクトobjのプロパティaaa」、「obj.b」は「オブジェクトobjのプロパティb」を表していたことになります。これらは、上で見たように、普通の変数と同じように扱う、すなわち代入したり値を取得したりすることができます。
+
+ただし、新しいプロパティを作るときであっても、新しく「変数」を作っているわけではないので、代入するときに「var」はつけません。
+
+オブジェクトの作り方　モダンなやつver オブジェクトリテラル
+
+var aa = {
+    "aaa": "test",
+    "bbb": 123
+};
+
+alert(aa.aaa);
+alert(aa.bbb);
+
+この書き方でオブジェクトを表現する方法をオブジェクトリテラルといいます。実際のプログラムではオブジェクトはほぼ全てオブジェクトリテラルで書かれます。new Object()で書く人はほとんどいません。
+
+□気になる収集シリーズ
+
+setInterval
+

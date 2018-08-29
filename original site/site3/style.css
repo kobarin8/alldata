@@ -1,0 +1,31 @@
+body{
+
+    height:600px;
+    width:600px;
+    border: inset 10px #ff0000;
+}
+
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.car1{
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1700;
+  stroke-dashoffset: 1700;
+  animation: dash 5s linear forwards;
+  animation-iteration-count : infinite;
+}
+
+.car2{
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1700;
+  stroke-dashoffset: 1700;
+  animation: dash 5s linear forwards;
+  animation-iteration-count : infinite;
+}

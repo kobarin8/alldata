@@ -1,0 +1,111 @@
+
+.colortone{
+    transition-duration: 0.2s;
+    transform: rotateX(deg );
+}
+
+.colortone1:hover .colortone{
+}
+
+.poly{
+    transition-duration: 0.1s;
+    transform:translatex(-100%);
+}
+.headerbox:hover .poly{
+    transform:translatex(0);
+}
+.headerbox h2{
+    transition-duration: 0.2s;
+    transition-delay: 0.1s;
+}
+
+.headermenu:hover .headerbox h2{
+    color:black;
+}
+
+.contents{
+    transition-duration: 0.2s;
+}
+.contents:hover{
+    background-color:#CAEBFC;
+}
+
+.colortone1,.colortone2,.colortone3,.colortone4,.colortone5,.colortone6,.colortone7,.colortone8,.colortone9,.colortone10,.colortone11,.colortone12,.colortone13,.colortone14,.colortone15,.colortone16,.colortone17,.colortone18,.colortone19,.colortone20,.colortone21,.colortone22,.colortone23,.colortone24{
+    transition: 0.5s;
+}
+.contents:hover .colortone1{
+    transform:translateY(80%)
+}
+.contents:hover .colortone2{
+    transform:translateY(79.6%)
+}
+.contents:hover .colortone3{
+    transform:translateY(79.2%)
+}
+.contents:hover .colortone4{
+    transform:translateY(78.8%)
+}
+.contents:hover .colortone5{
+    transform:translateY(78.4%)
+}
+.contents:hover .colortone6{
+    transform:translateY(78%)
+}
+.contents:hover .colortone7{
+    transform:translateY(77.6%)
+}
+.contents:hover .colortone8{
+    transform:translateY(77.2%)
+}
+.contents:hover .colortone9{
+    transform:translateY(76.8%)
+}
+.contents:hover .colortone10{
+    transform:translateY(76.4%)
+}
+.contents:hover .colortone11{
+    transform:translateY(76%)
+}
+.contents:hover .colortone12{
+    transform:translateY(75.6%)
+}
+.contents:hover .colortone13{
+    transform:translateY(75.2%)
+}
+.contents:hover .colortone14{
+    transform:translateY(74.8%)
+}
+.contents:hover .colortone15{
+    transform:translateY(74.4%)
+}
+.contents:hover .colortone16{
+    transform:translateY(74%)
+}
+.contents:hover .colortone17{
+    transform:translateY(73.6%)
+}
+.contents:hover .colortone18{
+    transform:translateY(73.2%)
+}
+.contents:hover .colortone19{
+    transform:translateY(72.8%)
+}
+.contents:hover .colortone20{
+    transform:translateY(72.4%)
+}
+.contents:hover .colortone21{
+    transform:translateY(72%)
+}
+.contents:hover .colortone22{
+    transform:translateY(71.6%)
+}
+.contents:hover .colortone23{
+    transform:translateY(71.2%)
+}
+.contents:hover .colortone24{
+    transform:translateY(70.8%)
+}
+
+.colortone1:hover{
+    transform:translateY(30%)
+}

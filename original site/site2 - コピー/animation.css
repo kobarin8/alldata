@@ -1,0 +1,25 @@
+#up2{
+    transition:0.8s;
+}
+
+#up1{
+    transition:1.3s;
+}
+
+body:hover #up1{
+    transform:translateY(-100%);
+}
+
+body:hover #up2{
+    transform:translateY(-100%);
+}
+
+.left{transition:0.5s;}
+.right{transition:0.5s;}
+.bg{transition: background-color 0.2s ease-out;}
+
+.desk:hover .left{
+    transform:translatex(-100%);}
+.desk:hover .right{
+    transform:translatex(100%);}
+.desk:hover .bg{background-color: lightblue;}

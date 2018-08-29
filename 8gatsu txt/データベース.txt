@@ -1,0 +1,201 @@
+20180727 データベース復習
+
+◇JDBC　javaで書く必要があるもの
+
+
+Driver Maneger
+
+Connection
+
+PreparedStatement
+
+ResultSet
+
+(SQLException)　この例外処理を使うと、全ての例外処理を書いた事になる
+
+
+◇mysqlドライバetc
+
+あとはjavaからデータベースに繋げるために必要なドライバがある。
+ドライバはmysql oracleなどに適したものがあるので、それは各自導入する。
+
+ドライバは基本自分で書くものではない。
+
+□jarファイルとは(JavaArchive)
+
+様々なjavaのクラスが集まっているもの(zipのようなもの)
+
+■JDBCのなかみの解説
+
+JDBCはインスタンス化された時に通路を作成する。常に通路を作っているわけではない
+
+・Connection　javaからmysqlへの通路的役割
+
+□importしてくるクラス
+これさえあればmysqlには繋がる
+
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Connection;
+
+■自分で書くコード
+
+□変数をとりあえず書く
+
+private static String driverName = "com.mysql.jdbc.Driver";　　　　　　　　　　　　　　　　　           ドライバー名
+private static String url 　　　 ="jdbc:mysql://localhost/testdb;〔?autoReconnect=true&useSSL=false";〕 ただのオプションです　データベースURL　※localhostとは自分のパソコンの　という意味
+private static String user       = "root";　　　　　　　　　　　　　　　　　　　　　　　　　　　　      ユーザー名
+private static String password   = "mysql";　　　　　　　　　　　　　　　　　　　　　　　　　　         sql接続パスワード
+
+public Connection getConnection() {                          上に書かれた変数を基に、データベースへ接続しに行くメソッド(getConnectionメソッド)
+
+Connection con = null;　　　　　　　　　　　　　　　　　　　 変数conを作成する。中身は空にしておく
+
+try{　　　　　　　　　　　　　　　　　　　　　　　　　　　　 try catch構文　エラー(例外)(想定外のアクシデント)(Exception)を対象にしている構文のこと　try{例外が発生　し そ う な　処理を書く}
+Class.forName(driverName);　　　　　　　　　　　　　　　　　 Class.forName(driverName);　 おおっざぱではあるが()の中に指定したドライバがパソコンで使えるようになるという命令
+
+con = DriverManager.getConnection(url,user,password);}　　　 まず、これはconという変数である。DriverManagerはドライバー名。.getConnectionはDriverManagerにあるクラスである。※上の同一のものとは全く違う物
+
+catch(ClassNotFoundException e) {e.printStackTrace() ;}　　　catch(例外処理を指定する※1 それらを予測して書く必要がある。e){例外が発生した際の処理を書く}
+
+catch(SQLException e){e.printStackTrace() ;}                〔 e 〕とは例外の内容を変数にするもの(別にeでなくてもいいが、Exceptionの頭文字なので、変えるべきではない)
+
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 複数の例外がおきるかもしれない時は、複数のcatchを種類ごとに書くことができる。
+
+                                                             e.printStackTrace() コンソール上にeに代入された例外処理を表示してくれるもの
+
+return con ;}　　　　　　　　　　　　　　　　　　　　　　　　メソッドに戻り値として代入している
+
+
+※1 例外処理の種類　https://docs.oracle.com/javame/config/cdc/ref-impl/cdc1.1.2/jsr218/ja/java/lang/class-use/Exception.html
+
+・Driver Maneger
+・PreparedStatement
+・ResultSet
+・(SQLException)
+
+□TestUserDAO(データベース処理(通路を通り、sql文などを書き、アクセスと処理)を担当するクラス)
+
+DAOもJDBCと同じで、インスタンス化されて使われるものである。
+
+
+◇文構造
+
+↓こいつらはJREシステムの中のmysqlフォルダに存在する
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+
+public class TestUserDAO {
+
+String name = "";
+String password = "";
+
+public void select(String name,String password) {　　　　　　　　　　　　　 ここに設定された引数は、setStringを通り、sqlに設定される
+
+DBConnector db = new DBConnector();
+Connection con = db.getConnection();　　　　　　　　　　　　　　　　　　　　DBConnectorのgetConnection()をconとして定義している
+
+String sql ="select * from test_table where user_name=? and password=?";　　where a=?の?とは、パラメーターといい、値を自由に設定できるようになる
+
+try {
+
+PreparedStatement ps = con.prepareStatement(sql);                           上で定義したsqlをprepareStatementクラスで格上げをする
+ こっちはクラス　上で定義したcon  conのメソッド　　　　　　　　　　　　　　 
+
+ps.setString(1, name);　　　　　　　setStringはprepareStatementのメソッド　 setString(x,y) xは引数のセットしたものの順番、yは入れたい値。今回の場合、初期に設定した引数がその値に当たる
+　　　　　　　　　　　　　
+ps.setString (2, password);
+
+ResultSet rs=ps.executeQuery();　　　　　　　　　　　　　　　　　　　　　　 .executeQuery()とはsqlにおけるselect文を実行するためのものである
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　ResultSetとは
+
+if (rs.next()) {　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　next()とは値がしっかり入っているかの確認をするものであり、データがあれば、true、なければfalse。値を上から確認していくようなイメージ
+System.out.println(rs.getString("user_name"));　　　　　　　　　　　　　　　getString("")とは、()内のカラムの値を所得するものである　()の中はしっかりデータ型をあわせる事
+System.out.println(rs.getString("password"));
+}
+
+}
+
+catch (SQLException e ) {e.printStackTrace();
+
+try {con.close() ;}
+catch (SQLException e ) {e.printStackTrace();}
+
+}
+}
+
+◇インスタンス化して使用
+
+public class Test {
+
+public static void main(String[] args) {
+
+TestUserDAO dao = new TestUserDAO();
+dao.select("taro", "123");
+
+}
+}
+
+◇selectALL()の場合
+
+public void selectAll() {
+
+DBConnector db = new DBConnector();
+Connection con = db.getConnection();
+
+String sql ="select * from test_table";
+
+try {
+PreparedStatement ps = con.prepareStatement(sql);
+ResultSet rs=ps.executeQuery();
+
+while (rs.next()) {　　　　　　　　　　　　　　　　whileを使えば、trueであるかぎり、中身をsysoする。
+System.out.println(rs.getString("user_name"));
+System.out.println(rs.getString("password"));
+}
+}
+
+catch (SQLException e ) {e.printStackTrace();}
+try {con.close();}
+catch(SQLException e ){e.printStackTrace();}
+}
+
+■insertする場合(データの新規追加)
+
+
+
+
+DBConnector db = new DBConnector();
+Connection con = db.getConnection();
+
+
+
+public void insert(int user_id,String name, String password) {　　　　　　　挿入するカラムと、追加するフィールドを引数で指定
+
+String sql ="insert into test_table values(?,?,?)";　　　　　　　　　　　　 テーブルを指定し、追加したい値に当たる場所に?を設定する。
+
+try {
+
+PreparedStatement ps = con.prepareStatement(sql);
+
+ps.setInt(1, user_id);　　　　　　　　　　　　　　　　　　　　　　　　　　　一個目がintなのは、最穂に指定したフィールドがint型だから
+ps.setString(2, name);
+ps.setString (3, password);
+
+int i=ps.executeUpdate();　　　　　　　　　　　　　　　　　　　　　　　　　 executeUpdate()とはsqlにおける、update insert delete などのデータの値に変更を加えるsql文を実行する時に使う
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　また、変数で指定すると、戻り値として件数を戻す特徴がある。
+
+if (i>0) {System.out.println(i + "件登録されました");}　　　　　　　　　　　件数の数字が出力される
+
+}
+
+
+catch(SQLException e ){e.printStackTrace();}
+try{con.close();}
+catch(SQLException e ){e.printStackTrace();}
+
+}

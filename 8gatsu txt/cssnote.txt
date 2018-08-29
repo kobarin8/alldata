@@ -1,0 +1,299 @@
+20180801 css note
+
+z-index レイヤー処理
+
+z-index:xx;
+
+数値が少ないほどレイヤーとして後ろにいく
+
+calc(xx) calcを使うことで計算式を大きさとして表示させることができる
+
+例文
+
+width:calc(100%/3); 要素の100％の三分の一を表示する
+
+font-weight:xx; フォントの字の太さを指定する
+
+:focus{}
+指定したセレクタの入力時にのみ適用する
+
+.hoge {
+  background: conic-gradient(red, orange, yellow, green, blue, purple, red);
+}
+
+コニックグラデーション　css ビックリマン風の背景の作成
+
+https://qiita.com/TSHiYK/items/0fb74cc8be797ad79fda
+
+□hover note
+
+クラス名1:hover{}　クラス名1に処理内容を書く。または更新内容を書く。
+
+クラス名1:hover クラス名2{}
+
+
+:hover{transform:translatex(px,%,em,calc記号を必ずつけること)
+
+:hover{transform: rotateX(180deg); y軸で要素を回転させる
+
+
+
+□html5
+
+<p></p> 段落
+
+<a href="リンク先">xxx</a>
+
+<table border="1" cellspacing="0" cellpadding="0">
+<th></th> 見出し
+<td></td> 種類名
+<tr></tr> 値
+</table>
+
+<form method="xx" action="yy">
+
+</form>
+
+
+<input type="text" name="xxx" soze="yy" placeholder="zzz" value="aaa">
+
+<input type="password">
+
+<input type="file">
+
+<input type="radio" name="xxx" value="yyy>テキスト
+
+<input type="checkbox" name="xxx" value="yyy>テキスト
+
+
+<label><input type="radio" name="xxx" value="yyy>テキスト</label>
+
+<label><input type="checkbox" name="xxx" value="yyy>テキスト</label> 文字のクリックを可能にする
+
+<input type="submit" value="xxx">
+
+<textarea name="yy" rows="2" cols="30"></textarea>
+
+<select name="zzz">
+<option value="aaa">テキスト</option>
+<option value="bbb">テキスト</option>
+<option value="ccc">テキスト</option>
+</select>
+
+<button type="button" name="xxx" value="xxx">
+テキストなど
+</button>
+
+<ul>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+
+<ol>
+<li></li>
+<li></li>
+<li></li>
+</ol>      前頭が番号に
+
+<input type="text" id="xxx">
+<button type="button" id="yyy"></button>
+
+□javascript
+
+document,write("");
+
+console.log("");
+
+alert("");
+
+confirm("");
+
+//
+
+/* :/
+
+var xxx = yy;
+
+
+function xxx(){}　関数名を指定し、関数の内容を書く
+
+target=
+
+document.getElementById("");
+
+target.classname
+
+htmlでonclick="xxx;"　というセレクタを指定する。
+
+innerHTML="xxx"
+
+this.classList.toggle("xxx"); あらかじめ#で始まるタグセレクタを作っておき、コンマで区切ったものを選び、選ばれたcssを適用させる
+
+例文
+CSS
+
+#square-button {
+  width: 80px;
+  height: 80px;
+  background: #232323;
+}
+#square-button.blue {
+  background: #21759b;
+}
+
+JavaScript
+document.getElementById("square-button").onclick = function() {
+  this.classList.toggle("blue");
+};
+
+書いたものをコピーさせる
+HTML
+<p>あなたの名前は？</p>
+<input type="text" id="name">                             name
+
+<button type="button" id="form-button">入力</button>      form-button
+
+<div id="form-text"></div>                                form-text
+
+Javascript
+
+document.getElementById("form-button").onclick = function() {
+  document.getElementById("form-text").innerHTML = "こんにちは " + document.getElementById("name").value + " さん！";
+}
+
+
+<body>
+  <form name="myform">
+    <input name="title" type="text" value="Hello World1" />
+    <input name="btn" type="button" value="実行" />
+  </form>
+ 
+  <script>
+    //Form要素を取得
+    var form = document.forms.myform;
+    
+    //テキスト入力のvalue値を取得
+    console.log( form.title.value );
+ 
+    //ボタンのvalue値を取得
+    console.log( form.btn.value );
+  </script>
+</body>
+
+
+<body>
+  <form name="myform">
+    <input name="title" type="text" value="Hello World1" />
+    
+    <button id="btn">実行</button>
+  </form>
+  
+  <script>
+    //button要素を取得
+    var btn = document.getElementById('btn');
+    var form = document.forms.myform;
+    
+    btn.addEventListener('click', function() {
+ 
+        //submitを実行する
+        form.submit();
+ 
+    })
+  </script>
+</body>
+
+
+htmlとjavascript間でデータを行き来させることを　DOMという
+
+.style.visibility = "hidden"
+.style.backgroundColor = "white";
+
+□javascript　html　イベント種類
+
+イベントの種類
+　　"マウスをクリックした"，"キーを押し下げた" などの事象をイベントと言い，その際に実行すべき処理をイベント処理と言います．「 HTML を理解しよう！の中の「グローバル属性」に関する説明において，HTML の各要素で共通に使用できる属性について述べましたが，以下に示すイベント処理を記述するためのインベント・ハンドラ・コンテンツ属性も，HTML のすべての要素で使用できます．ただし，すべての要素で意味を持つものとは限りません．また，アスタリスクが付けられた属性は，BODY 要素に指定されたときは，違う意味を持ちます．
+
+onabort　　中断した際
+oncancel　　ダイアログボックスでユーザーが [キャンセル] をクリックした際
+oncanplay　　再生可能であるが，バッファリングのために途中で停止する可能性がある際
+oncanplaythrough　　停止せずに最後まで再生できる際
+onchange　　入力フォーカスを失った時に，フォーカスを得た時と比べて値が変化していた際
+
+onclick　　クリックされた際
+onclose　　アプリケーションを終了した際
+oncontextmenu　　マウスの右ボタンが押された際
+oncuechange　　テキストトラックキューが変化した際
+
+ondblclick　　ダブルクリックされた際
+ondrag　　ドラッグ中の際
+ondragend　　ドラッグが終了した際
+
+ondragenter　　ドラッグ可能なオブジェクトに重なった際
+ondragleave　　ドラッグ可能なオブジェクトから離れた際
+ondragover　　ドラッグ可能なオブジェクトに重なっている際
+
+ondragstart　　ドラッグが開始された際
+ondrop　　ドロップした際
+ondurationchange　　メディアの長さが変わった際
+onemptied　　再生中にネットワークが利用不可となった際
+onended　　メディアの最後に到達した際
+oninput　　フォームの要素にユーザーが入力した際
+oninvalid　　フォームの要素の値が不正になった際
+onkeydown　　キーが押し下げられる際
+onkeypress　　キーが押されて放された際
+onkeyup　　キーが解放される際
+
+onload*　　読み込みが終了した際
+onloadeddata　　メディアのデータの読み込みが終わった際
+onloadedmetadata　　メディアを再生するに十分な量のデータが得られた際
+onloadstart　　メディアの読み込みが始まった際
+
+onmousedown　　ポインティングデバイスのボタンが押し下げられる際
+onmousemove　　ポインティングデバイスが要素の上を移動する際
+onmouseout　　ポインティングデバイスが要素の上から離れていく際
+onmouseover　　ポインティングデバイスが要素の上に移動してきた際
+onmouseup　　ポインティングデバイスのボタンが要素の上で放される際
+
+onmousewheel　　マウスのホイールが回された際
+onpause　　メディアの再生が一時停止した際
+onplay　　メディアの再生の準備が出来た際
+onplaying　　メディアの再生が始まっている際
+onprogress　　メディアのデータを処理している際
+onratechange　　再生レートが変化した際
+onreset　　フォームがリセットされる際
+onseeked　　メディアの頭出しが終わった際
+onseeking　　メディアの頭出しが始まった際
+onselect　　テキストフィールド中のテキストを選んだ際
+onshow　　表示される際
+onstalled　　メディアデータの読み込みができなくなった際
+onsubmit　　フォームが提出される際
+onsuspend　　メディアデータの読み込みが止まった際
+ontimeupdate　　再生位置が変化した際
+onvolumechange　　ボリュームが変化した際
+onwaiting　　再生が一時中断した際
+　　次に示すインベント・ハンドラ・コンテンツ属性は，BODY 要素以外のすべての要素で使用できます．
+onblur　　要素がフォーカスを失った際
+onerror　　ファイル読み込み中にエラーが起きた際
+onfocus　　フォーカスを受けた際
+onload　　読み込みが終了した際
+onscroll　　スクロールバーが操作された際
+　　次に示すインベント・ハンドラ・コンテンツ属性は，Window オブジェクトで使用できます．
+onafterprint　　印刷後
+onbeforeprint　　印刷前
+onbeforeunload　　アンロード前
+onblur　　要素がフォーカスを失った際
+onerror　　ファイル読み込み中にエラーが起きた際
+onfocus　　フォーカスを受けた際
+onhashchange　　ハッシュに変化があった際
+onload　　読み込みが終了した際
+onmessage　　メッセージを送った際
+onoffline　　オフラインになった際
+ononline　　オンラインになった際
+onpagehide　　ページが隠された際
+onpageshow　　ページが表示された際
+onpopstate　　ポップアップが生じた際
+onresize　　サイズが変更された際
+onscroll　　スクロールバーが操作された際
+onstorage　　保存領域が変更された際
+onunload　　アンロードされた際

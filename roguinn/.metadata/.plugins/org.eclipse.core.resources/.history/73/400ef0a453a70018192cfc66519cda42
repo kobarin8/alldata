@@ -1,0 +1,86 @@
+package com.internousdev.ecsite.action;
+
+import java.sql.SQLException;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.internousdev.ecsite.dao.DeleteItemDAO;
+
+public class ProductDetailAction implements SessionAware{
+
+	private String ItemName;
+	private String ItemPrice;
+	private String ItemStock;
+
+	public Map<String,Object> session;
+
+
+
+	public String execute() throws SQLException {
+
+		DeleteItemDAO DAO = new DeleteItemDAO();
+
+		session.put("ItemNameKey", ItemName);
+		session.put("ItemPriceKey", ItemPrice);
+		session.put("ItemStockKey", ItemStock);
+
+		System.out.println(name);
+		System.out.println(price);
+		System.out.println(stock);
+
+		return SUCCESS;
+
+		}
+
+
+
+	public String getItemName() {
+		return ItemName;
+	}
+
+
+
+	public void setItemName(String itemName) {
+		ItemName = itemName;
+	}
+
+
+
+	public String getItemPrice() {
+		return ItemPrice;
+	}
+
+
+
+	public void setItemPrice(String itemPrice) {
+		ItemPrice = itemPrice;
+	}
+
+
+
+	public String getItemStock() {
+		return ItemStock;
+	}
+
+
+
+	public void setItemStock(String itemStock) {
+		ItemStock = itemStock;
+	}
+
+
+
+	public Map<String, Object> getSession() {
+		return session;
+	}
+
+
+
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
+
+
+
+}

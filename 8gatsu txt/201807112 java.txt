@@ -1,0 +1,1000 @@
+System.out.println("内容");
+
+lnは改行して表示するという意味
+
+コンソールに出力される
+
+System.out.println("内
+容");
+
+内容に改行を入れると、エラーが出るので気をつける
+
+改行を入れたいときは　\r\n を入れると改行される
+
+変数
+
+先頭に数字を使用しない、アンダーバー以外の記号を使わないこと
+
+
+
+文字列(複数の文字を含む)をいれる時は　stringを使う
+
+String x = "z";
+
+
+
+単独文字の場合
+
+char x ='z'; シングルクオーテーションで挟むこと
+
+
+数字の場合
+
+int　x = z; 
+
+例文　
+int a =2*5; System.out.println(a); 10
+
+
+文字の連結　例文
+
+String abc = "山田";
+System.out.println(abc+"さん");     山田さん
+
+
+
+割り算
+
+int a = 10/3;  3.3だが、小数点は切り捨てなので、　3が出力される
+
+
+
+
+少数点の話
+
+float a = (float)10/3; 3.33333　floatを使うと、小数点も表示される
+
+あるかないかの違い
+
+例文
+
+float a = 5/2;  2.0
+float a = (float) 5/2;   2.5
+
+doubleを使うとさらに詳細な結果が出る
+
+
+例文
+
+float a = (float)10/3;  3.3333333
+double a = (double)10/3; 3.3333333333333335
+
+加算子　インクリメント
+
+++a 前置加算子
+
+a++ 後置加算子
+
+
+減算子　デクリメント
+
+--a 前置減算子
+
+a-- 後置減算子
+
+
+代入演算子(=)
+
+イコールという等号の意味ではないイコールは代入を意味する
+
+参考サイトhttps://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Assignment_Operators
+https://www.grapecity.com/tools/support/powernews/column/clang/004/page01.htm#1
+
+等価演算子は　==  である。絶対に間違えないようにしよう！
+if文
+
+string b ="山田";
+
+if(b.equals("山田")){System.out.println( b+"さん");}
+
+もしbが山田と等しい時、b+さんを出力する
+
+論理演算子
+
+a && b a bが共にtrueの場合、処理が実行される　　　and
+a || b aかbのどちらかがtrueの場合、処理が実行される or
+!a　aがtrueの場合、処理を実行しない                 not
+
+
+if を重ねて表示すると、かつという意味になり、andの意味になる
+else ifを重ねて表示すると、そうでない場合はという orの意味になる
+
+if(a == b)
+if(a == c)のように、 ==　のみを使った文をわかりやすく使えるのが、switch文
+
+
+switch(x) { case y: 処理内容; break;}
+
+ifにおけるelseは　default:処理内容;
+
+
+
+if文とswitch文の使い分け
+ソースコードの読みさすさと
+実行速度から、
+
+・二分岐の場合は、『if文』が適している
+
+・多分岐の場合は、『switch文』が適している
+
+ということが言えます。
+
+
+参考サイトhttps://www.linuxacademy.ne.jp/lablog/programmer/807/
+
+for やwhile文は制御構文という
+http://java-code.jp/category/syntax
+
+
+配列
+
+
+二通りの書き方があり、前述は詳細に決めることができる
+
+String[]name = new String[3];　要素量を指定する(インデックス番号の数)
+name[0]="田中";　
+name[1]="高橋";
+name[2]="斉藤";
+
+String[]name = {"田中","高橋","斉藤"};  要素の数分、キーの数が決まる
+
+呼び出し法
+
+System.out.println(name[0]);
+
+
+単独文字配列の場合
+
+char[] c ={'x','y','z'};
+
+System.out.println(c[0]);     xが出る
+
+整数配列の場合
+
+int[] i ={1,5,10};
+System.out.println(i[0]);     1が出る
+
+データの更新
+
+String[]name={"田中","高橋","斉藤"};
+
+name[0]="加藤";
+
+System.out.println(name[0]);    加藤が出る
+
+
+多次元配列
+
+二通りの書き方
+
+String[][]conutry=
+
+{
+{"日本","タイ"}
+{"アメリカ","ブラジル"}
+{"フランス","ロシア"}
+};
+
+System.out.println(country[0][0]);    日本が出る
+
+
+String[][]country = new String{3][2];　3は大きい箱　2は大きい箱に入ってる二つの箱
+
+country[0][0]="日本";
+country[0][1]="タイ";
+country[1][0]="アメリカ";
+country[1][1]="ブラジル";
+country[2][0]="フランス";
+country[2][1]="ロシア";
+
+System.out.println(country[0][0]);      日本が出る
+
+
+
+for文(ループ処理)
+
+
+forのブロック構造の解説サイトhttps://eng-entrance.com/java-for-block
+
+例文
+
+for(int i =1; i<=100; i++)
+{
+System.out.println(i);
+System.out.println("-");
+}
+
+
+fo(int i=1; i<=10; i++)　中の処理を10回実行する。
+{
+if(i%2==0){System.out.println(i +"\n");}
+}
+
+\n　は改行を意味する
+
+条件演算子　　or?のようなもの？　判別プラグラム？
+
+例文
+
+int a=10;
+
+a>=0 ? "プラス":"マイナス";
+
+System.out.prinln(a);
+
+プラス　　が出力される
+
+
+例文２
+
+int a=2;
+
+a%2==0 ? "偶数":"奇数";
+
+System.out.println(a);
+
+偶数　　　が出力される
+
+
+条件演算子とforの組み合わせ
+
+
+for(int i =0; i<=5; i++)
+{
+
+String b = i%2==0 ? "☆":"★";
+文字列として扱う指定をする。　そして条件演算子を書く
+
+System.out.println(b);
+
+}
+
+
+
+
+while文
+
+int i=1;
+while(i<=5)
+{
+System.out.priintln(i);
+i++;
+}
+
+1
+2
+3
+4
+5
+
+が出力される
+
+
+
+do while文
+
+必ず一度は実行させたい処理がある時に使用する。
+
+
+例文
+
+int i=1; 　　　　　　　　ループ初期地点
+
+do
+{
+System.out.println(i);
+i--;
+}
+while(i>1); 　　　　　　i>1の間ループする
+
+例文２
+
+int i=0;
+do
+{
+System.out.println(i);
+i++;
+}
+while(i<10);
+
+
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+が出力される
+
+
+
+例文3
+
+int i=0;
+do
+{
+System.out.println(i);
+i++;
+}
+shile(i<0);
+
+
+0
+
+が出力される
+
+
+javaにはひとつだけクラスを作り、中に複数のメソッドを書くことができる
+
+
+
+package xxx 入っているパッケージ名を書く
+
+public class xxx クラス名を書く
+
+
+///////////////////////////////////////////////////////////////////////////// しおり
+
+メソッドの書き方
+
+public static データ型(int やstring)　メソッド名(任意の名前) () {
+return 処理結果;
+}
+
+基本型１
+メソッド名(){処理内容}
+
+データ型
+public データ型 メソッド名(引数,引数){処理内容 return 戻り値}
+
+returnは処理内容の結果を渡してくれるもの
+電卓でいう処理内容が足し算だとしたら、rerurnは計算結果を画面に表示させるための結果を送るもの
+
+データ型２
+public void メソッド名(引数,引数){処理内容 return}
+
+戻り値がない場合(計算系じゃない時にこの型を使う)
+例文
+public void talk(){System.out.println(this.name+"が話す");}
+public void walk(){System.out.println(this.name+"が歩く");}
+public void run(){System.out.println(this.name+"が走る");}
+
+例文２
+
+public void internet(){System.out.println("インターネット");}
+
+上記を書いた上で.internet()を使うと処理内容がされる為、インターネット　が出力される
+
+****************************************************************************************************************
+mainメソッド(超重要)
+
+
+public static void main(String[] args){}はプロジェクト内の主役的存在？
+
+
+
+
+main(){}
+
+クラスが実行されただけで、呼んでもないのに必ず実効されるもの
+このクラスには司令塔のような役割があり、データを多く所有し、また多くのプログラムの実行をさせる役割がある
+
+例文
+
+\\原本クラス
+
+public String name = null;　       \\nullとは、使用される際に値の代入を許可するために使われ、代入されなかった際、何も表示しない
+public int age = 10;　　　　　　　 \\値が入っている場合、それを使う。
+
+\\原本クラス
+
+public static void main(String[] args){
+	
+Person taro = new Person();　　　　\\インスタンスの使用を宣言する(原本のコピーを宣言)
+
+taro.name="山田太郎";　　　　　　　\\原本のnullに対し、山田太郎を代入している。その為、この時の値はnullから山田太郎になる
+taro.age=20;　　　　　　　　　　　 \\ageの値に対し、20を代入している。この為、このときの値は20になる。
+
+System.out.println(taro.name);　　 \\上で作られた taro というインスタンス化されたものを使用している
+System.out.println(taro.age);　　　\\上で作られた taro というインスタンス化されたものを使用している
+
+}
+
+****************************************************************************************************************
+
+this.とは噛み砕いた意味だと (thisの)であり、また　(使う側のインスタンス名の)という意味で捉えるといい
+使われるところのインスタンス名.変数名　という意味になり。使う側に意味があるもの？
+
+(このインスタンスの)
+
+□コンストラクタ(インスタンス化(コピー)の際の初期値設定の事)
+コンストラクタとは原本側で書くメソッドのことであり、
+使うためには、書かれたコンストラクタを指定し、条件に適した引数(順番、値、データ型をしっかり合わすこと)
+を入力したインスタンス化をする
+コンストラクタを使うことで、使用側でローカル変数を指定しなくて済む
+
+このようにひとつのクラスの中に同じ名前のメソッドを複数定義することを、
+
+オーバーロードという(多重定義)
+
+※引数の条件を異なるものにする必要がある
+※全く同じ条件を書くのはあまりよろしくない為、引数の指定のパターンを異なるようにする事！
+
+コンストラクタは戻り値を持たないメソッド(計算系じゃないメソッド)を書くことを推奨としていない為、voidは書かない
+
+基本型
+public Person(){}　　　　　　　　　    \\コンストラクタ1
+	
+public Person(String name, int age){   \\コンストラクタ2
+	this.name=name;
+	this.age=age;        ↑のnameの値
+}			      |
+　　　　　　　　　　　　　　　|
+※thisのイメージ
+
+	this.	　　name = 　name;
+このインスタンスの　name に　引数の値(name)を代入してください
+
+
+
+
+インスタンス化では
+
+メソッド名　インスタンス名　=　new メソッド名()を書くが
+
+コンストラクタを実行する時
+
+メソッド名　インスタンス名　=　new メソッド名(因数)を書く
+
+コンストラクタはいくつかのパターンを書くことができるものであり、いくつか書く必要性がある。
+書いた分のルールを使い初期値を指定することができるので、文も短く、とても良い
+
+インスタンス化した際、なぜコンストラクタを書かなくていいのかというと
+javaがデフォルトコンストラクタというものを書いてくれているからである。
+デフォルトコンストラクタが出る条件は、「ひとつもコンストラクタを書いていない」である。
+
+その為、ひとつでも書いてしまった場合は、前にやったインスタンス化はできないので、
+基本型をしっかり書く必要がある。↓
+
+基本型
+
+public クラス名(){}
+
+例文
+
+public Person(){}
+
+
+■比較例文　インスタンス化
+
+**原本**
+public String name=null;
+public int age=0;
+
+**使用者**
+Person taro = new Person();
+taro.name = "taro";
+taro.age = 18;
+System.out.println(taro.name);
+System.out.println(taro.age);
+
+■比較例文　コンストラクタ化
+
+**原本**
+public Person(String name, int age){
+this.name=name;
+this.age=age;}
+
+**使用者**
+Person taro = new Person("taro", 18);
+System.out.println(taro.name);
+System.out.println(taro.age);
+
+
+※this とはインスタンス名のことである
+
+***************************************************************************************************************
+
+☆カプセル化
+
+インスタンス化やコンストラクタは使うものを作ってきた感じだったが、
+カプセル化においては、これらを使うようになる？
+
+情報を隠すことが主であり、全員に公開するのではなく、一部にのみ情報を使えるようにしているようなイメージ？
+
+
+<フィールドの書き方>
+アクセス修飾子 データ型 変数名 = 値/情報;
+
+カプセル化という概念を完全に理解するのは大変だと思いますが、
+フィールドは全てprivateにしてしまうカプセル化の大原則です。
+フィールドをprivateにすると、他のクラスからそのフィールドにアクセスすることができなくなります。
+
+
+スコープという考え方を使うもの
+プログラムの使用範囲を決めるものと言える(アクセス権利)(アクセス修飾子)
+オブジェクトの中のフィールドにアクセス権利を設定するものと捉える
+
+public　　　全てのプログラムが使える
+private　　 クラス内のプログラムのみが使える　他のクラスからはアクセスできない（private）「private」をつけると、その変数は他のクラスからアクセスできなくなります。
+protected　 同じパッケージ内のプログラム、または特別に許可されたプログラムが使える
+何もなし　　同じパッケージ内のプログラムが使える
+
+privateには通常の方法ではアクセスできないので、
+メソッドを経由して情報を所得する方法がある？
+
+↓
+
+
+■ゲッターとセッター
+
+参考サイトhttps://nobuo-create.net/java-beginner-22/
+
+--privateなフィールドの値をゲットするメソッド、それがゲッターです。--
+
+
+getName
+
+public String getName(){return this.name;}
+戻り値が設定されているので、処理内容を通して使う側のプログラムのnameを所得する
+
+setName
+
+public void setName(String name){this.name=name;}
+voidなので戻り値を持たない　
+
+
+
+
+そして使う側でgetName()を使うことで、privateのフィールドを使うことができる
+
+
+※privateがある所でgetとsetを使う
+
+パッケージでフォルダ分けを用途に合わしてしっかり分ける
+
+
+□ゲッターとセッターの使い方
+
+
+get setはしっかり小文字で書く
+
+後ろに付くフィールド名の先頭は大文字で入力する。(フィールド名に大文字があろうが、先頭はしっかり変えて、それ以外はそのまま書く)
+
+例文
+
+getName()
+
+setName(String name)
+
+
+*********************************************************************************************************************
+
+
+setNameは結果を変更するもの
+
+getNameはデータ型を利用するもの
+http://www3.nit.ac.jp/~tamura/java/scope.html
+
+*******************************************************************************************************************
+
+
+解説サイト
+https://nobuo-create.net/java-beginner-23/
+
+***************************************************************************************************************
+
+□継承(拡張)　extends
+
+public class SmartPhone extends Mp3Player{
+
+Mp3Playerのことを親クラス、スーパークラスと呼ぶ
+Smartphoneのことを　子クラス、サブクラスと呼ぶ
+
+
+上書きすることも可能
+基本は親クラスに書かれたこと異なる値で子クラスに書くことで、上書きすることができる
+コピーした一部の手入れができるという考え方
+
+これをオーバーライド(再定義)という
+
+関係ない話だが、このようにひとつのクラスの中に同じ名前のメソッドを複数定義することは
+
+オーバーロードという(多重定義)
+
+
+超重要
+
+extendsで継承できる数は原則一つ！できなくはないが常識として禁じられている
+
+なぜか？　複数の同じメソッドでかつ処理内奥が異なると、内容の優先度がわからなくなるから。
+
+
+ちなみに　implementsは複数を選ぶことができる　なぜならメソッド名だけが重複しても、上書きされるだけで何も起きないからである？
+
+
+■実装　abstract interface
+
+interfaceクラス(抽象メソッドをまとめたクラスの事)のabstractメソッド(抽象メソッド(具体的な処理内容を持たないメソッドのこと))
+には処理内容を書かない。なぜこんなことをする必要があるのか？何のために？
+
+例文
+
+public interface Mp3Player {public abstract void play();}
+
+interfaceクラスは他に引き継ぐという名の　実装(implements)　をする必要がある
+
+例文
+
+public class SmartPhone implements Mp3Player
+
+implements(子クラス)は、interface(親クラス)で定義されたメソッドを、全て書く義務がある。
+
+親インターフェースで定義したメソッドを再定義(オーバーライド)し、
+処理内容を書くことが義務づけられる
+
+
+→　実装することで、特定の機能を持っていることが保障される。また、ルール付けされていることが分かる
+※ひとつも漏れがないように書かなければ、エラーが出る
+
+例文
+public class SmartPhone extends Phone implements Mp3Player,NewFunction {}
+
+Phoneに処理内容をしっかり書いていれば、{}の中に書く必要はない(手入れしたいときは別)
+
+implementsで　Mp3PlayerとNewFunctionのメソッドを実装しなければならないので
+処理内容がなにも書かれていないSmartPhoneクラスの代わりに、implementsのメソッドに適した処理内容が書かれた
+Phoneクラスをextendsで継承する。そのため、実装はしっかり完結されている。
+
+SmartPhoneクラスは、これらの動きをひとまとめにしたものと考えるといい。
+
+最後にSmartPhoneインスタンス化して使えばok
+
+
+
+///////////////////////////////////////////////////////////////////////////// しおり
+
+三つの変数
+
+
+ローカル変数
+
+string name = xxx
+
+宣言したメソッド内でのみ使用可能
+
+プライベート変数
+
+private String name = xxx
+
+宣言したクラス内で流用可能
+
+
+パブリック変数
+
+public String name = xxx
+
+他のクラスでも流用することができる
+
+
+コレクションフレームワークとは
+
+
+
+その前に、要素を使うときは、値を指定するのではなく、keyを指定して所得する
+
+
+配列を簡単に操作できるようにしたもの？
+
+listインターフェース
+
+配列のようにインデックスがしっかりと決まって収納される　キー名はインデックス
+ArrayList
+
+インスタンス化の型
+
+List<要素のデータ型>　変数名　= newArrayList<要素のデータ型>();
+
+
+例文
+
+List<String>list = new ArrayList<String>();
+
+
+要素の書き込み
+
+変数名.add(データ型によって変える);
+
+mapインターフェース
+
+インデックスのような順序で収納されてなく、キー名で収納されている
+HashMap
+
+
+setインターフェース
+インデックスがなく、また、データの重複を許可しないもの
+HashSet
+
+.addはインデックスを書き込む
+
+
+とりあえずメソッドを作るときに書いとくやつ
+public static void main(String[]args){
+
+listの要素数を提示
+
+変数名.size
+
+要素の全体数が提示される
+
+使用例
+		List<String>list = new ArrayList<String>();
+		
+		list.add("1");
+		list.add("2");
+		list.add("3");
+		list.add("4");
+		list.add("5");
+		
+		for(int i=0; i<list.size()-1; i++){
+　　　　　　　　　　　　要素数が5なので、ここは5の扱いになっている
+
+
+拡張for文
+
+型
+
+for(要素に合ったデータ型 変数名 : 指定する要素)
+{処理内容;}
+
+
+指定要素を変数として定義し、すべての要素を指定する。　そのため、処理内容を書くことで、すべての要素を対象に実行される文
+
+ただのfor文との比較(内容は一緒) listの要素数を5と定義した場合
+
+for(int i=0; i<=5; i++){
+System.out.println(i);}
+
+
+拡張のforの場合
+
+for(int kakuchou :list){
+System.out.println(kakuchou);}
+
+Mapの書き方
+
+
+インスタンス化の型
+
+Map<keyのデータ型,値のデータ型> 変数名 = new HashMap<keyのデータ型,値のデータ型>();
+
+listの場合と違い、keyだけではなく、値も指定しなくてはいけないので、基本は二つのデータ型を書かなければならない
+また、listと違い、要素を書き込むためには.addではなく、.put(,)を使う
+
+.putはインデックスと値を書き込むもの
+
+
+
+
+要素を使うときは
+
+指定した変数名.get(使いたいkey名｛複数のkeyを使いたい時はカンマ区切りを使うこと｝)
+
+例文
+
+String value = map.get("key1");    String型のvalueに対しmapの中のkey1を所得させる
+
+System.out.println(value);   valueを出力する
+
+
+
+
+
+
+
+Setの書き方
+
+
+インスタンス化の型
+
+Set<String> set = newHashSet<String>();
+
+
+setはkeyを指定しなくていいので、.addを使って値を書き込む
+
+
+
+
+
+
+オブジェクト指向
+
+
+他のメソッドを流用するため、インスタンス化をする
+
+//////////////////////////////////////////////////
+
+Person.java
+ 
+public class Person
+
+Test.java
+
+Person xxx = new Person();
+流用したいクラス名　変数名 = new 流用したいクラス名();
+
+//////////////////////////////////////////////////
+
+
+20180717
+
+
+
+コンストラクタの作り方
+
+
+最初に値を判定する場所を書く
+
+public String xxx = yyy;
+public int xxx = zzz;
+
+その次に、その値の使い方を書く。このような値の使い方を書いたものをコンストラクタと呼ぶ
+
+public xxx(String yyy,int zzz){}
+
+public xxx(String yyy){}
+
+public xxx(int zzz){}
+
+色んなパターンをしっかり書いておかなければ、使う側は使うことができず、未定義扱いとみなしてしまうため、エラーとなる
+
+
+
+
+継承　extends
+
+
+他のクラスを繋げることができる。これをすることでクラスをひとまとめに使用することができる
+
+例文
+
+public class Smartphone 
+
+public class Mp3Plyaer extends SmartPhone
+
+
+Mp3PlyaerクラスがSmartPhoneクラスを引き継いでいる
+
+
+また、同じメソッドがある場合、継承する側が上である(例文の場合、Mp3Plyarが継承する側であり、smartphoneに書かれた同一の処理内容は使われない)
+
+
+継承はimplumentsのルールを追加するなどの補強、追加を得意としている
+
+
+ルールを作る
+
+public interface xxx {}
+
+まずこれを最初に書く
+そして中に
+
+public abstract yyy();
+
+でルールを書いていく
+
+そしてabstractで書いたものをどう使用したらいいかを定義する
+そこでimplumentsを使う　(implumentsは abstractで書かれた値の実行内容を書き込むイメージ)
+
+
+インスタンスメソッドとstaticメソッド
+
+インスタンスメソッドはそのクラス内でしか使えないやつ
+例　public String xxx = "zzz" などのように、staticがついていない
+
+インスタンスメソッドは、newを使わないと使うことができないが、
+staticメソッドはnewなしで使うことができる(例文における.count_arms)
+
+public class Human{
+    static int count_Human = 0;
+    static int count_arms = 2;
+    static int count_legs = 2;
+    String name;                                      
+    int birthday;                                     
+    int manpukudo;
+
+    //省略
+
+}
+
+
+class HumanTest{
+    public static void main(String[] args){
+        Human human1 = new Human("Nobuo");
+        System.out.println(human1.name + "の腕は" + human1.count_arms + "本です");
+    }
+}
+
+?????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+
+boolean 
+
+
+
+Action support のおかげで value stackが作られる
+
+Action support は xwork-core struts-core　の中に存在する
+
+submitボタンで送信された値は、勝手にvalue stackに入る。そしてAction.javaはvalue stackの中身を参照して
+値を所得、使用することができる。action.javaの中でgetter setterを使うことで、valuestackから値を引き継がせることができる。
+
+valuestackはjspとjavaを結ぶ値の運び屋さんであり、彼は姿を現さずに値を渡してくれている。
+
+sturutsの主な役割はこのvaluestackにある
+
+
+
+□sessionとは？
+
+valuestackの中にしまわれた通信箱
+
+valuestackを少しいじって違う形にしたようなものがsession。
+元は似ているかもしれないが、機能、やっていることはほぼ同じに近い。
+
+ActionSupport implements SessionAware　これを宣言することで使用することができる。　actionsupportのsessionawareを利用
+
+sesssionは　public Map<String,Object> session;
+
+session.put("loginUserId", loginUserId);　map型のsession変数に入れるとき
+session.get("loginUserId");  使うとき
+session.remove("loginUserId");  特定のmapを消す時。
+session.clear(); 全てのmapという箱を消す。 
+
+
+else {setErrorMassage("未入力の項目があります。"); result = ERROR;}とセットであり。
+
+succeseじゃない時の対処の際に表示する値を送るためにある。(javaからjspのやり取り)
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+□配列の復習をしよう(20180817)
+・一次元配列とは？
+
+添え字という箱の順番を指定して、値を所得する並び方の事
+
+奥行き、高さがない次元
+
+・連想配列とは？
+
+添え字を好きな名前で指定することができる配列。
+
+二次元配列以上に使われる
+
+・配列って？
+
+配列は複数の変数がくっついたもの
+
+参考サイトhttps://wa3.i-3-i.info/word11924.html
+
+・書き方
+
+List<[要素の型]> 変数名 = new ArrayList<[要素の型]>();　要素の型とは、キー名である。　stringだからといって配列の中身は決まらない。
+ただ区別しやすいキー名をつける。それだけである
+
+listとはインターフェースであり、.size()などは、メソッドである
+

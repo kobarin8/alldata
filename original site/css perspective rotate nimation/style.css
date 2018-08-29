@@ -1,0 +1,46 @@
+body{
+
+    height:100vh;
+    width:100%;
+    margin: 0;
+}
+
+#top1{
+    position: fixed;
+    top:0px;
+    left:0px;
+    height:100vh;
+    width:100%;
+    background-color:darkred;
+    margin: 0;
+    transition-duration:0.2s;
+    transition-delay: 0.8;
+    transform-origin: left center;
+}
+
+body:hover #top1{
+    transform: translateX(-30%);
+    clip-path: polygon(0 0, 100% 100%, 0% 100%);
+    filter: opacity(70%);
+}
+
+
+#top2{
+    position: fixed;
+    top:0px;
+    left:80%;
+    height:100vh;
+    width:20%;
+    background-color:deepskyblue;
+    margin: 0;
+    transition-duration:0.2s;
+    transition-delay: 0.3;
+    transform-origin: right center;
+    transform: rotatey(90deg);
+    
+}
+
+body:hover #top2{
+    transform: perspective(3000px) rotateY(-20deg);
+    filter: brightness(150%);
+}

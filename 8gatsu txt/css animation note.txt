@@ -1,0 +1,48 @@
+20180802
+参考サイト
+http://cgsc.info/programming/20151215_css_transition
+
+@keyframes xxx{
+
+from{yyy}
+aaaa{bbb}
+to{ccc}
+
+}
+
+キーフレームの変数名を決める
+
+中のフレーム名を決め、中に処理内容を書く。
+
+fromが始まりであり、そこからtoまでを上から順番に実行する
+
+.box{
+	animation-name: xxx;
+	animation-duration: 10s;
+	animation-iteration-count : infinite;
+}
+
+作成したアニメーションは、名前を指定してプロパティとして使用する
+
+７．アニメーション
+CSSアニメーションの種類と違いを簡易的ながら書いておきます。
+
+animation	ループ有り	ページ表示後 即可動
+transform	ループ無し	変形（移動・拡大・回転・傾斜・遠近）が可能
+transition	ループ無し	滑らかに変化させる（移動時間を調整）
+８．transform（変形）の種類
+transformプロパティは要素に変形効果を付与します。効果を連結する場合は半角スペースで区切って複数の効果を適用させることが可能です。逆回りや縮小する場合は数値を－（マイナス）にします。
+
+transform の種類１
+translate	移動	transform: translate(20px,20px)	(右、下)に20px移動
+rotate	回転	transform: rotate(45deg)	(45度)時計回りに回転
+skew	傾斜	skew(0,170deg)	(横、縦)に傾斜
+scale	縮尺	transform: scale(1.2)	(横、縦)に拡大
+perspective	遠近	transform: perspective(200)	数値が小さいほど遠近感が強くなる
+transform の種類２
+transform-origin	基点	transform-origin: 100% 100%;	左上からの位置
+transform-style	描写	transform-style:flat;
+transform-style:preserve-3d;	子要素を平らに表示するか
+子要素を立体に表示するか
+backface-visibility	裏面	backface-visibility: visible;
+backface-visibility: hidden;	裏面の表示／非表示

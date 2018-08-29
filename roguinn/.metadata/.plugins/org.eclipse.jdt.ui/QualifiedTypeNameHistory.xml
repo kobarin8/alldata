@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="com.internousdev.ecsite.action.UserCreateConfirmAction"/>
+<fullyQualifiedTypeName name="dao.kakuninDAO"/>
+<fullyQualifiedTypeName name="dao.toukouDAO"/>
+<fullyQualifiedTypeName name="dto.kakuninDTO"/>
+<fullyQualifiedTypeName name="com.internousdev.ecsite.dao.ProductAddCompleteDAO"/>
+<fullyQualifiedTypeName name="com.internousdev.ecsite.dto.UserListDTO"/>
+<fullyQualifiedTypeName name="com.internousdev.ecsite.dao.DeleteItemDAO"/>
+</qualifiedTypeNameHistroy>

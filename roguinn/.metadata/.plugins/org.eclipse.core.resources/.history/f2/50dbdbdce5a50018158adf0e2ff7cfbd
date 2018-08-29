@@ -1,0 +1,49 @@
+package com.internousdev.ecsite.action;
+
+import java.sql.SQLException;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+public class ProductAddCompleteAction  extends ActionSupport implements SessionAware{
+
+	public Map<String,Object> session;
+
+	private String name;
+	private String price;
+	private String stock;
+
+	public String execute()  throws SQLException{
+
+
+		session.put("namekey", name);
+		session.put("pricekey", price);
+		session.put("stockkey", stock);
+
+//	ProductAddCompleteDAO DAO = new ProductAddCompleteDAO();
+
+//	DAO.createUser(
+//			session.get("namekey").toString(),
+//			session.get("pricekey").toString(),
+//			session.get("stockkey").toString()
+//			);
+
+		return SUCCESS;
+
+		}
+
+	@Override
+	public void setSession(Map<String, Object> session) {this.session = session;}
+
+	public String getname() {return name;}
+	public void setname(String name) {this.name = name;}
+
+	public String getprice() {return price;}
+	public void setprice(String price) {this.price = price;}
+
+	public String getstock() {return stock;}
+	public void setstock(String stock) {this.stock = stock;}
+
+}

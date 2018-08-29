@@ -1,0 +1,43 @@
+package com.internousdev.ecsite.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.internousdev.ecsite.util.DBConnector;
+
+public class DeleteItemDAO implements SessionAware{
+
+	private DBConnector dbConnector = new DBConnector();															//
+	private Connection connection = dbConnector.getConnection();												//
+
+
+	public int ItemDelete() throws SQLException {
+
+		String sql = "DELETE FROM item_info_transaction WHERE item_name = ? AND item_price = ? AND item_stock = ?";
+
+		PreparedStatement preparedStatement;																					//preparedStatementの変数化
+
+
+
+		try {
+
+			preparedStatement = connection.prepareStatement(sql);													//SQL文の実行。値の所得
+			preparedStatement.setString(1, session.get("ItemNameKey").toString());														//バインド変数のパラメーター設定
+			preparedStatement.setString(2, item_price);																//バインド変数のパラメーター設定
+			preparedStatement.setString(3, item_stock);																//バインド変数のパラメーター設定
+
+
+		}
+
+		catch (SQLException e) {e.printStackTrace();}																		//
+		finally {connection.close();}																									//
+
+
+}
+
+}
+
+

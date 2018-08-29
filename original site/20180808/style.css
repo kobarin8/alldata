@@ -1,0 +1,45 @@
+*{
+    font-family: fantasy;
+}
+
+h2{
+    font-size: 70px;
+    margin:0;
+    transform: skew(-3.30deg); }
+
+body{
+    height:100vh;
+    width:100%;
+}
+
+.logo{
+
+}
+
+.color{
+    width:12.5%;
+    height:25vh;
+    border:solid 1px;
+
+}
+
+#colorpick{
+    width:12.4%;
+}
+#pickbutton{
+    position: absolute;
+
+}
+
+.colorselect{
+    margin-top:1%;
+    width:12.5%;
+    height:25vh;
+    border:solid 1px;
+    background-color: white;
+}
+
+.test{
+    
+}
+

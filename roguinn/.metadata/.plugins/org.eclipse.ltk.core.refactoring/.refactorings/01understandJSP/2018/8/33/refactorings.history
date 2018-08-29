@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring accessors="true" comment="Delete element from プロジェクト &apos;01understandJSP&apos;&#x0D;&#x0A;- 元のプロジェクト: &apos;01understandJSP&apos;&#x0D;&#x0A;- オリジナル要素: &apos;dao.toukouDAO.java&apos;" description="要素を削除" element1="/src&lt;dao{toukouDAO.java" elements="1" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1534225925094" subPackages="false" version="1.0"/>&#x0A;<refactoring comment="&apos;sql&apos; を &apos;META-INF&apos; に移動" description="&apos;sql&apos; を &apos;META-INF&apos; に移動" destination="WebContent/META-INF" element1="sql" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1534397952544" updateReferences="true"/>
+</session>

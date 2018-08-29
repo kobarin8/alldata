@@ -1,0 +1,151 @@
+ecsite　機能別コーディング法
+
+----------------------------------------------------------------------------------------------------------------------------------
+□dbへ登録
+
+01.jsp
+ataiAction
+02.jsp
+
+toukouAction
+toukouDAO
+03.jsp
+
+①01jsp側でname属性を指定する
+
+②action側でname属性をgetter setterする
+
+③action側でsession変数を作り、キー名を指定し、②で所得した値をsessionにputする
+
+④02jsp側で<s:property value="session.xxxx"/>を使い、確認画面に値を出す
+
+⑤toukou側で作成したsession変数をgetter setterし、所得する
+
+⑥toukou側でtoukouDAOをインスタンス化し、toukouDAOのメソッドの引数に
+　session変数の値を代入する
+
+⑦toukouDAO側で⑥で設定された引数をpreparedstatementを使い、SQL文の値に代入し
+　DBに登録する
+
+⑧toukou側でtoukouDAOをextendsで継承し、executeする
+
+⑨03jspが画面に表示され、DBへの登録が完了する
+----------------------------------------------------------------------------------------------------------------------------------
+□dbから値を所得
+
+01jsp
+kakuninACTION
+kakuninDAO
+kakuninDTO
+
+①kakuninDAO側でSQL文を書き、DBから情報を所得する準備をする
+
+②preparedStatementを使いresuletsetに値を入れる
+
+③resultsetに入ったSQLの値をkakuninDTOのkakuninをsetterとして定義し、引数としてい定義する
+
+④kakuninDTO側で③で引数としてされたsetterをgetterし、フィールド変数kakuninに代入する
+
+
+⑤kakuninAction側でsession変数を定義し、キー名を決め、値をkakuninDTOから持ってきたものに設定する
+⑥jsp側で<s:property value="session.xxxx"/>を使い、確認画面に値を出す
+----------------------------------------------------------------------------------------------------------------------------------
+□dbの値を削除
+①②③④⑤⑥⑦⑧⑨
+□
+①②③④⑤⑥⑦⑧⑨
+----------------------------------------------------------------------------------------------------------------------------------
+
+<s:iterator value="loginDTOList">
+<td><s:property value="username"/></td>
+<td><s:property value="password"/></td>
+</s:iterator>
+
+iteratorの中はvaluestackで引き継げる範囲内ではなく、iteratorのlist内になるので、しっかりiteratorで変数を定義する必要がある
+
+
+
+メソッドは戻り値がvoid  以外  の場合、必ず値を返さないとならないので、メソッドのどこか（ほとんどの場合はメソッドの最後）でreturnしないといけません。ただし例外をスローする場合は別です。 
+
+戻り値がvoidの場合は、値を返す必要が無いので、一切書かなくてもOKです。ほとんどの場合は、最後のreturnは書きません。途中で戻りたい場合にはreturnを書くことがあります。 
+
+特殊なケースとして、例外を常にスローする場合はreturnを書きません。 
+
+
+
+public xxx yyy(){return}            {}の処理内容を表示する
+public xxx yyy(int,zzz){return}     引数を利用しつつ、{}の処理内容を表示する
+
+returnはxxxに返しているイメージ。引数は処理内容に利用させるスペースなイメージ
+
+
+
+SQL文と変数を組み合わせた処理　はたくさん書かなくてすむ。
+
+if (
+((LoginDTO) session.get("loginUser")).getLoginFlg()	 session変数を定義するのだが、そのsessionの場所を指定しなければいけないので前頭にキャストと呼ばれるものを提示しないといけない。
+
+また、このif文の判断基準は.getLoginFlg()の中がtrueかfalseかで判断される。今回の場合boolean型を提示しているので、if文の中に組み込むことができる。								//
+) {}
+
+
+
+next()メソッドは次の行がない場合にfalseを返します
+
+executeQueryメソッドの戻り値は、データベースから取得したデータ群――結果セット
+
+
+SELECT　*
+FROM　売上表 INNER JOIN 顧客表 ON 売上表.顧客CD=顧客表.顧客CD
+
+または
+
+SELECT　*
+FROM　売上表,顧客表
+WHERE　売上表.顧客CD=顧客表.顧客CD
+このように両方の表で一致する行だけを表示させるのが内部結合である。
+
+
+顧客表のすべての行を表示させたいときには、外部結合であるLEFT JOINまたはRIGHT JOINを指定する。
+
+LEFT JOINとRIGHT JOIN(外部結合)
+LEFT JOINとRIGHT JOINは、左右いずれかの表を優先させたいときに指定する。
+
+LEFT JOIN
+左側に指定された表のすべての行が表示される
+RIGHT JOIN
+右側に指定された表のすべての行が表示される
+LEFT JOINとRIGHTの記述形式は以下のとおりである。
+
+LEFT JOIN記述形式
+SELECT 列名1,列名2,～列名n
+FROM 表名1 LEFT JOIN表名2 ON 表名1.フィールド名 = 表名2.フィールド名
+WHERE 抽出条件
+
+RIGHT JOINの記述形式
+SELECT 列名1,列名2,～列名n
+FROM 表名1 RIGHT JOIN表名2 ON 表名1.フィールド名 = 表名2.フィールド名
+WHERE 抽出条件
+
+LEFT JOINを指定とすると、左側の表名1のすべての行が表示される。これとは逆にRIGHT JOINとすると、右側の表名2のすべての行が表示される。したがって、LEFT JOINおよびRIGHT JOINを使用するときは、表名を左右どちらに記述するか注意しなければならない。
+
+whereは指定しているものである。
+
+sql文のwhereを?というバインド変数にし、setStringで代入することで、指定した内容をDBで検索、所得することができるのだ
+
+
+
+データ型の他に、クラス型というのがある
+
+インスタンス化に使う時のやつである。
+
+□超基礎
+
+jspからのname属性を受け取るときは
+
+getter setterがいるが、
+session変数のgettet setterも必ず用意すること。お前はいつもこれでエラーになるんだよな。馬鹿が
+
+setNameだからな。大文字にしないと効果でねぇから!!!!!!!！！！！！！！！！！！！！！！！！
+
+覚えとけや

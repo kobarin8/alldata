@@ -1,0 +1,87 @@
+package action;
+
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+public class atai extends ActionSupport implements SessionAware{
+
+	private String hatugen;
+	public Map<String,Object> session;
+
+	public String execute() {return SUCCESS;}
+
+	public String getHatugen() {return hatugen;}
+	public void setHatugen(String hatugen) {this.hatugen = hatugen;}
+
+    @Override
+	public void setSession(Map<String, Object> session) {this.session = session;}
+
+}
+
+import java.util.Map;
+import org.apache.struts2.interceptor.SessionAware;
+import com.opensymphony.xwork2.ActionSupport;
+
+extends ActionSupport implements SessionAware
+
+private String xxx;
+public Map<String,Object> session;
+
+public String getxxx() {return xxx;}
+public void setxxx(String xxx) {this.xxxn = xxx;}
+
+@Override
+public void setSession(Map<String, Object> session) {this.session = session;}
+
+値の受け取りは
+
+private変数
+session map変数
+
+getter
+setter
+
+setSession
+
+の5行だけでできる
+
+getter setter だけでは　１ページ間でしか受け渡しができない(※渡した次のjspで値が表示されているが、その値は他のアクションがgetter setter できない)
+
+
+□sql文
+
+.cerateUser
+
+session.get("xxxx").toString(),
+
+public Map<String,Object> session;
+
+
+private String sql = "INSERT INTO login_user_transaction (login_id, login_pass, user_name, insert_date) VALUES(?, ? ,?, ?)";
+
+
+public void cerateUser(String loginUserId, String loginUserPassword, String userName){
+
+PreparedStatement
+
+preparedStatement = connection.prepareStatement(sql);
+
+preparedStatement.setString(1, loginUserId);
+preparedStatement.setString(2, loginUserPassword);
+preparedStatement.setString(3, userName);
+preparedStatement.setString(4, dateUtil.getDate());
+
+preparedStatement.execute();
+
+}
+
+□sessionの理解
+
+
+・コレクションフレームワークの理解が不可欠
+
+
+map.put("key1", "value1");

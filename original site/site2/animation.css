@@ -1,0 +1,31 @@
+@keyframes canvas1test{
+    from{width:100; height:100;}
+
+    act1{width:133; height:133;}
+
+
+    to{width:0; height:0;}
+}
+
+
+@keyframes linemove{
+    to{stroke-dashoffset: 900;}
+    
+    
+}
+
+
+.canvas1 rect:hover{
+	animation-name: canvas1test;
+	animation-duration: 3s;
+	animation-iteration-count : infinite;
+    animation-timing-function:ease-in-out;
+}
+
+
+.canvas6 polygon{
+    animation-name:linemove;
+    animation-duration:5s;
+    animation-iteration-count :infinite;
+    animation-timing-function:linear;
+}

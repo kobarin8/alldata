@@ -1,0 +1,155 @@
+□キャンバス設定
+
+<svg 
+
+width="400" 　　　　　　 デスク横幅設定
+height="400" 　　　　　　デスク縦幅設定
+
+viewBox="0, 0, 400, 400" キャンバス設定 x,y座標はデスク幅から指定する
+
+style="background: #eee" キャンバスカラー設定
+
+>
+</svg>
+
+□基本形
+<svg></svg>で囲むこと
+
+まずは基本となる形を選ぶ
+
+四角形　　rect
+正円    　circle
+楕円    　ellipse
+直線    　line
+折れ線  　polyline
+多角形  　polugon
+
+パス    　path
+テキスト　text
+
+例文
+<svg>
+<polyline />
+</svg>
+
+□四角形の作り方
+<svg>
+<rect
+width=""          横幅の長さ
+height=""　　　　 縦幅の長さ
+x=""              キャンバスの左上からのx座標指定(positionでいうtop)
+y=""        　　　キャンバスの左上からのy座標指定(positionでいうleft)
+fill=""           内際の色設定
+stroke=""　　　　 枠線の色設定
+stroke-width=""　 枠線の太さ指定
+/>
+</svg>
+
+
+□円の作り方
+
+正円の場合
+<svg>
+<circle
+cx=""             円の中心のx座標を指定(positionでいうtop)
+cy=""　　　　　　 円の中心のy座標を指定(positionでいうleft)
+r=""              円の半径の長さを指定
+fill=""           内際の色設定
+stroke=""　　　　 枠線の色設定
+stroke-width=""　 枠線の太さ指定
+/>
+</svg>
+
+楕円の場合
+<svg>
+<ellipse
+cx=""             円の中心のx座標を指定(positionでいうtop)
+cy=""　　　　　　 円の中心のy座標を指定(positionでいうleft)
+rx=""             円の横半径の長さを指定
+ry=""　　　　　　 円の縦半径の長さを指定
+fill=""           内際の色設定
+stroke=""　　　　 枠線の色設定
+stroke-width=""　 枠線の太さ指定
+/>
+</svg>
+
+□線、折れ線、多角形の作り方
+
+線
+<svg>   
+<line      
+x1=""             始点のx座標
+y1=""　　　　　　 始点のy座標
+x2=""　　　　　　 終点のx座標
+y2=""　　　　　　 終点のy座標
+stroke=""　　　　 枠線の色設定
+stroke-width=""　 枠線の太さ指定
+/>
+</svg>
+
+折れ線
+<svg>
+<polyline
+points="
+aaa bbb         一つ目の点のx座標とy座標
+ccc ddd　　　　 二つ目の点のx座標とy座標
+eee fff
+"　　　　 三つ目の点のx座標とy座標
+stroke=""　　　　 枠線の色設定
+stroke-width=""　 枠線の太さ指定
+>
+</svg>
+
+多角形
+<svg>
+<polygon　　　　　polygonはpolyineでいう始点と終点を自動的につなげて多角形を作る
+points="
+aaa,bbb           始点の点のx座標とy座標
+ccc,ddd　　　　   二つ目の点のx座標とy座標
+eee,fff           終点点のx座標とy座標
+"　　　　 
+stroke=""　　　　 枠線の色設定
+stroke-width=""　 枠線の太さ指定
+>
+</svg>
+
+
+□fillタグの種類
+
+□strokeタグの種類
+
+stroke="xxxxxx" 指定した色で枠線を塗りつぶす
+stroke-width="xxx" 指定した幅で枠線の太さを指定する
+stroke-opacity="xx" 0.0~1.0の幅で不透明度を指定する。0.0が透明で1.0で不透明
+stroke-linecap="xxx" 指定したプロパティの効果を線端に影響させる
+xxx= butt　線の部部が線の長さと同じで平ら
+     round 端を丸くする
+     square　線の先を埋めるように、四角形をつける
+stroke-linejoin="xxx" 線が交わった際のつなげ方を指定する
+xxx= miter 先端を尖らすように交わらせる
+　   round 先端を丸くするように交わらす
+     bebel miterでできた先端を平行に切り取ったように交わらす
+stroke-dasharra="xx yy" xxは描写するところであり、yyは描写させないところになる。したがって
+　　　　　　　　間隔で好きな点々を書くことができる
+
+
+
+
+□テンプレ
+
+<svg class="circuit"　　キャンバス設定をする　600x600を作る
+     height="600px"　
+     width="600px"
+>
+    
+<rect
+height="520"
+width="520"
+x="40"
+y="40"
+xr="10"
+xy="10"
+fill="#F7BE81"
+
+/> 
+</svg>

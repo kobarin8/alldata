@@ -1,0 +1,25 @@
+package com.internousdev.ecsite.action;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import com.internousdev.ecsite.dao.ProductListDAO;
+import com.internousdev.ecsite.dto.ProductListDTO;
+import com.opensymphony.xwork2.ActionSupport;
+
+public class ProductListAction extends ActionSupport{
+
+	private ProductListDAO ProductListDAO = new ProductListDAO();														//DAOインスタンス
+	ArrayList<ProductListDTO> ProductListDTOList = new ArrayList<ProductListDTO>();
+
+	public String execute() throws SQLException {
+
+		ProductListDTOList=ProductListDAO.getProductInfo();
+
+		return SUCCESS;
+
+		}
+
+	public ArrayList<ProductListDTO> ProductListDTOList() {return this.ProductListDTOList;}					//
+}
+

@@ -1,0 +1,6 @@
+
+body:hover .blue{background-color:red;}
+
+.red:hover{
+    transform:translateY(-33%);
+}

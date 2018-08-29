@@ -1,0 +1,81 @@
+□変形設定
+
+transform 
+
+translate
+
+scale
+
+rotate
+
+skew
+
+perspective
+
+□要素の範囲設定 トリミング手法
+
+clip-path: circle(40%);
+
+clip-path: ellipse(130px 140px at 10% 20%);
+
+clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+
+作ったsvgで切り取る
+
+clip-path: url(#myPath)
+
+<svg>
+  <clipPath id="myPath" clipPathUnits="objectBoundingBox">
+    <path d="M0.5,1
+      C 0.5,1,0,0.7,0,0.3
+      A 0.25,0.25,1,1,1,0.5,0.3
+      A 0.25,0.25,1,1,1,1,0.3
+      C 1,0.7,0.5,1,0.5,1 Z" />
+  </clipPath>
+</svg>
+
+CSSでpathを指定する
+.sample1 {
+    background: #fbd818;
+    clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    margin: 5px;
+}
+
+□挙動設定
+
+@keyframe xxx{
+0%{}
+50%{}
+100%{}
+}
+
+transition-duration
+
+transition-delay
+
+□色設定
+
+background-color
+
+
+□filter設定
+
+filter: brightness(0%);
+
+filter: contrast(0%);
+
+filter: grayscale(100%);
+
+filter: saturate(0%);　彩度
+
+filter: sepia(100%);
+
+filter: hue-rotate(90deg);　色彩変更　(全ての色の値の式観測をまわしているような感覚)
+
+filter: invert(100%);　色彩反転
+
+filter: blur(1px);　ぼかし　%指定不可　px か em
+
+filter: opacity(75%);　透明度設定
+
+filter: url('xxx');  作成したsvgフィルターを使用する

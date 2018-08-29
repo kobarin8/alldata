@@ -1,0 +1,31 @@
+package com.internousdev.ecsite.action;
+
+import java.util.ArrayList;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.internousdev.ecsite.dao.ProductListDAO;
+import com.internousdev.ecsite.dto.ProductListDTO;
+import com.opensymphony.xwork2.ActionSupport;
+
+public class ProductListAction extends ActionSupport implements SessionAware {
+
+	public Map<String, Object> session;																			//session変数
+
+	private ProductListDAO ProductListDAO = new ProductListDAO();														//DAOインスタンス
+	private ProductListDTO ProductListDTO = new ProductListDTO();															//DTOインスタンス
+	ArrayList<ProductListDTO> ProductListDTOList = new ArrayList<ProductListDTO>();
+
+	public String execute() {
+
+		ProductListDTOList=ProductListDAO.getProductInfo();
+
+		return SUCCESS;
+
+		}
+
+	@Override
+	public void setSession(Map<String, Object> session) {this.session = session;}								//session setter
+}
+

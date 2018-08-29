@@ -1,0 +1,14 @@
+PHPReadOccurrenceIndicationColor=97,97,97
+PHPWriteOccurrenceIndicationColor=97,97,97
+additionIndicationInOverviewRuler=true
+eclipse.preferences.version=1
+glanceColorBackground=255,255,0
+javaScriptOccurrenceIndicationColor=97,97,97
+lineNumberRuler=true
+org.eclipse.cdt.ui.occurrenceIndicationColor=97,97,97
+overviewRuler_migration=migrated_3.1
+printMargin=true
+printMarginColumn=120
+pydevOccurrenceIndicationColor=97,97,97
+quickdiff.defaultProvider=org.eclipse.egit.ui.internal.decorators.GitQuickDiffProvider
+spellingEnabled=false

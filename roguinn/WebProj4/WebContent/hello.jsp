@@ -10,6 +10,8 @@
 <body>
 <h1>HelloStruts2!</h1>
 <br>
+
+<!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
 <table>
 <tbody>
 <tr>
@@ -18,7 +20,8 @@
 <th>PASSWORD</th>
 <th>RESULT</th>
 </tr>
-<s:iterator value="helloStrutsDTOList">
+<s:iterator value="helloStrutsDTOList"><!-- ループ処理がされた配列を指定するメソッド -->
+									   <!-- 配列の要素数分ループされ、要素分jspに書き込まれる。そして、テーブルのセルとして表示される -->
 <tr>
 <td><s:property value="userId"/></td>
 <td><s:property value="userName"/></td>
@@ -29,5 +32,7 @@
 </s:iterator>
 </tbody>
 </table>
+
+<!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
 </body>
 </html>

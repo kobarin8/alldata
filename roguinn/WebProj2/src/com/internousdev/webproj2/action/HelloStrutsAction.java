@@ -5,20 +5,23 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class HelloStrutsAction extends ActionSupport {
 
-public String execute() {
+	public String execute() {
 
-String ret=ERROR;
+		String ret=ERROR;//retの初期値をerrorに
 
-HelloStrutsDAO dao=new HelloStrutsDAO();
+		HelloStrutsDAO dao=new HelloStrutsDAO();//daoのインスタンス化
 
-boolean b=dao.select();
+		boolean b=dao.select();//boolean型の変数bを定義すると共に、dao側のbooleanの判定を決めている
 
-if(b==true){
-ret=SUCCESS;
-}else{
-ret=ERROR;
-}
-return ret;
+		if(b==true){//boolean型の変数bがtrueならば
+			ret=SUCCESS;//String型の変数retにSUCCESSを代入する
+		}
 
-}
+		else{//boolean型の変数bがfalseの場合
+			ret=ERROR;//String型の変数retにERRORを代入する
+		}
+
+		return ret;
+
+	}
 }

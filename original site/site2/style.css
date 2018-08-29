@@ -1,0 +1,57 @@
+body{
+    height:475px;
+    width:700px;
+}
+
+svg{
+    height:200px;
+    width:200px;
+    background-color: white;
+}
+
+.canvas1{
+    position: absolute;
+    top:25px;
+    left:25px;
+}
+
+.canvas2{
+    position: absolute;
+    top:25px;
+    left:250px;
+}
+
+.canvas3{
+    position: absolute;
+    top:25px;
+    left:475px;
+}
+
+.canvas4{
+    position: absolute;
+    top:250px;
+    left:25px;
+}
+
+.canvas5{
+    position: absolute;
+    top:250px;
+    left:250px;
+}
+
+.canvas6{
+    position: absolute;
+    top:250px;
+    left:475px;
+}
+
+
+
+.desk{
+    position: relative;
+    background-color: lightgray;
+    height:475px;
+    width:700px;
+    border: inset 10px #ff0000;
+}
+    
