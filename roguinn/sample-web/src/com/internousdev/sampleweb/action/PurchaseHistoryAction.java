@@ -21,23 +21,33 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 	private Map<String, Object> session;
 	public String execute() {
 
-		PurchaseHistoryInfoDAO purchaseHistoryInfoDao = new PurchaseHistoryInfoDAO();
-		List<PurchaseHistoryInfoDTO> purchaseHistoryInfoDtoList = new ArrayList<PurchaseHistoryInfoDTO>();
-		purchaseHistoryInfoDtoList = purchaseHistoryInfoDao.getPurchaseHistoryList(String.valueOf(session.get("loginId")));
-		Iterator<PurchaseHistoryInfoDTO> iterator = purchaseHistoryInfoDtoList.iterator();
-		if(!(iterator.hasNext())) {
-			purchaseHistoryInfoDtoList = null;
-		}
-		session.put("purchaseHistoryInfoDtoList", purchaseHistoryInfoDtoList);
+		PurchaseHistoryInfoDAO purchaseHistoryInfoDao = new PurchaseHistoryInfoDAO();														//インスタンス化
 
-		if(!session.containsKey("mCategoryList")) {
-			MCategoryDAO mCategoryDao = new MCategoryDAO();
-			mCategoryDtoList = mCategoryDao.getMCategoryList();
-			session.put("mCategoryDtoList", mCategoryDtoList);
+		List<PurchaseHistoryInfoDTO> purchaseHistoryInfoDtoList = new ArrayList<PurchaseHistoryInfoDTO>();					//リスト作成
+
+		purchaseHistoryInfoDtoList = purchaseHistoryInfoDao.getPurchaseHistoryList(String.valueOf(session.get("loginId")));//セッション変数からログイン済みidを引数にする
+
+		Iterator<PurchaseHistoryInfoDTO> iterator = purchaseHistoryInfoDtoList.iterator();		//iteratorメソッドを付加し、コレクション要素を順番に処理させるようにする
+
+		if
+		(!(iterator.hasNext()))																						//要素が続かなければtrue
+		{purchaseHistoryInfoDtoList = null;}																//リストの中身をnullにし、空にする
+
+		session.put("purchaseHistoryInfoDtoList", purchaseHistoryInfoDtoList);		//DtoListにpurchaseHistoryから所得した情報を代入する
+
+		if
+		(!session.containsKey("mCategoryList"))															//セッション変数化されたカテゴリリストがなければtrue カテゴリリストの作成を実行する
+		{
+			MCategoryDAO mCategoryDao = new MCategoryDAO();								//インスタンス化
+			mCategoryDtoList = mCategoryDao.getMCategoryList();								//メソッドを実行する
+			session.put("mCategoryDtoList", mCategoryDtoList);									//セッションに代入し、リストを作成
 		}
+
 		return SUCCESS;
 	}
 
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
 
 	public List<MCategoryDTO> getmCategoryDtoList() {
 		return mCategoryDtoList;

@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html
+  lang="ja"
+
+data-admin-domain="//blog.hatena.ne.jp"
+data-author="bleis-tift"
+data-avail-langs="ja en"
+data-blog="bleis-tift.hatenablog.com"
+data-blog-host="bleis-tift.hatenablog.com"
+data-blog-is-public="1"
+data-blog-name="ぐるぐる～"
+data-blog-owner="bleis-tift"
+data-blog-uri="http://bleis-tift.hatenablog.com/"
+data-blog-uuid="12704346814673882987"
+data-blogs-uri-base="http://bleis-tift.hatenablog.com"
+data-brand="hatenablog"
+data-data-layer="{&quot;hatenablog&quot;:{&quot;admin&quot;:{},&quot;pro&quot;:&quot;free&quot;,&quot;page_id&quot;:&quot;entry&quot;,&quot;blog&quot;:{&quot;lang&quot;:&quot;ja&quot;,&quot;disable_ads&quot;:&quot;&quot;,&quot;enable_ads&quot;:&quot;true&quot;,&quot;name&quot;:&quot;\u3050\u308b\u3050\u308b\uff5e&quot;,&quot;is_public&quot;:&quot;true&quot;,&quot;uri&quot;:&quot;http://bleis-tift.hatenablog.com/&quot;,&quot;is_sleeping&quot;:&quot;false&quot;,&quot;force_pc_view&quot;:&quot;false&quot;,&quot;entry_show_footer_related_entries&quot;:&quot;true&quot;,&quot;is_responsive_view&quot;:&quot;false&quot;,&quot;content_seems_japanese&quot;:&quot;true&quot;,&quot;enable_keyword_link&quot;:&quot;true&quot;,&quot;owner_name&quot;:&quot;bleis-tift&quot;},&quot;brand&quot;:&quot;hatenablog&quot;,&quot;analytics&quot;:{&quot;property_id&quot;:&quot;UA-490809-3&quot;,&quot;non_sampling_property_id&quot;:&quot;&quot;,&quot;brand_property_id&quot;:&quot;&quot;,&quot;separated_property_id&quot;:&quot;UA-29716941-18&quot;},&quot;brand_tracking_category&quot;:&quot;hatenablog&quot;,&quot;permalink_entry&quot;:{&quot;hour&quot;:&quot;15&quot;,&quot;author_name&quot;:&quot;bleis-tift&quot;,&quot;date&quot;:&quot;2009-04-13&quot;,&quot;categories&quot;:&quot;SQL&quot;,&quot;title&quot;:&quot;SQL \u306e\u547d\u540d\u898f\u7d04\u3068\u30d5\u30a9\u30fc\u30de\u30c3\u30c8&quot;,&quot;uri&quot;:&quot;http://bleis-tift.hatenablog.com/entry/20090413/1239604802&quot;},&quot;router_type&quot;:&quot;blogs&quot;}}"
+data-device="pc"
+data-dont-recommend-pro="false"
+data-globalheader-color="b"
+data-globalheader-type="pc"
+data-has-touch-view="1"
+data-page="entry"
+data-parts-domain="https://hatenablog-parts.com"
+data-plus-available=""
+data-pro="false"
+data-router-type="blogs"
+data-static-domain="https://cdn.blog.st-hatena.com"
+data-version="5126803adbca752abb96fe1d720e67f1"
+
+itemscope
+itemtype="http://schema.org/Article"
+
+  data-initial-state="{}"
+
+  >
+  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+  
+
+  
+
+
+
+  
+
+
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=7; IE=9; IE=10; IE=11" />
+  <title>SQL の命名規約とフォーマット - ぐるぐる～</title>
+
+  
+  <link rel="canonical" href="http://bleis-tift.hatenablog.com/entry/20090413/1239604802"/>
+
+
+
+  
+  
+
+<meta itemprop="name" content="SQL の命名規約とフォーマット - ぐるぐる～"/>
+
+  <meta itemprop="image" content="https://cdn.blog.st-hatena.com/images/theme/og-image-1500.png"/>
+
+
+  <meta property="og:title" content="SQL の命名規約とフォーマット - ぐるぐる～"/>
+<meta property="og:type" content="article"/>
+  <meta property="og:url" content="http://bleis-tift.hatenablog.com/entry/20090413/1239604802"/>
+
+  
+  
+  
+  <meta property="og:image" content="https://cdn.blog.st-hatena.com/images/theme/og-image-1500.png"/>
+
+    <meta property="og:description" content="ときどきの雑記帖さん経由で、私のSQLフォーマットをみて、自分の規約もさらしてみる*1 *2。 命名規約 テーブルやビュー、共通表式は Pascal 記法で、複数形とする*3。例えば、Employees とか Works とか ただし、リレーションテーブルはその限りではない。例えば、EmployeeWork とか カラム名はアンダーバー区切りで、単数形を基本とする。例えば、name とか 人工キーを使用する場合、 自身の人工キーは id とする 外部キーはテーブルの頭文字の小文字 _id を付けたものとする。例えば、e_id とか 重複する場合は・・・決めてない (ぉ テーブルに別名を付ける場…" />
+<meta property="og:site_name" content="ぐるぐる～"/>
+
+  <meta property="article:published_time" content="1239604802" />
+
+    <meta property="article:tag" content="SQL" />
+      <meta name="twitter:card"  content="summary" />  <meta name="twitter:title" content="SQL の命名規約とフォーマット - ぐるぐる～" />    <meta name="twitter:description" content="ときどきの雑記帖さん経由で、私のSQLフォーマットをみて、自分の規約もさらしてみる*1 *2。 命名規約 テーブルやビュー、共通表式は Pascal 記法で、複数形とする*3。例えば、Employees とか Works とか ただし、リレーションテーブルはその限りではない。例えば、EmployeeWork とか カラ…" />  <meta name="twitter:app:name:iphone" content="はてなブログアプリ" />
+  <meta name="twitter:app:id:iphone" content="583299321" />
+  <meta name="twitter:app:url:iphone" content="hatenablog:///open?uri=http%3A%2F%2Fbleis-tift.hatenablog.com%2Fentry%2F20090413%2F1239604802" />  <meta name="twitter:site" content="@bleis" />
+  
+    <meta name="description" content="ときどきの雑記帖さん経由で、私のSQLフォーマットをみて、自分の規約もさらしてみる*1 *2。 命名規約 テーブルやビュー、共通表式は Pascal 記法で、複数形とする*3。例えば、Employees とか Works とか ただし、リレーションテーブルはその限りではない。例えば、EmployeeWork とか カラム名はアンダーバー区切りで、単数形を基本とする。例えば、name とか 人工キーを使用する場合、 自身の人工キーは id とする 外部キーはテーブルの頭文字の小文字 _id を付けたものとする。例えば、e_id とか 重複する場合は・・・決めてない (ぉ テーブルに別名を付ける場…" />
+
+  
+<script
+  id="embed-gtm-data-layer-loader"
+  data-data-layer-page-specific="{&quot;hatenablog&quot;:{&quot;blogs_permalink&quot;:{&quot;is_blog_sleeping&quot;:&quot;false&quot;,&quot;blog_hide_afc_func&quot;:&quot;false&quot;,&quot;has_related_entries_with_elasticsearch&quot;:&quot;true&quot;,&quot;is_author_pro&quot;:&quot;false&quot;,&quot;blog_struct_hide_afc&quot;:&quot;false&quot;,&quot;blog_afc_issued&quot;:&quot;false&quot;,&quot;brand_hide_afc&quot;:&quot;false&quot;,&quot;entry_afc_issued&quot;:&quot;false&quot;,&quot;blog_hide_afc_field&quot;:&quot;false&quot;}}}"
+>
+(function() {
+  function loadDataLayer(elem, attrName) {
+    if (!elem) { return {}; }
+    var json = elem.getAttribute(attrName);
+    if (!json) { return {}; }
+    return JSON.parse(json);
+  }
+
+  var globalVariables = loadDataLayer(
+    document.documentElement,
+    'data-data-layer'
+  );
+  var pageSpecificVariables = loadDataLayer(
+    document.getElementById('embed-gtm-data-layer-loader'),
+    'data-data-layer-page-specific'
+  );
+
+  var variables = [globalVariables, pageSpecificVariables];
+
+  if (!window.dataLayer) {
+    window.dataLayer = [];
+  }
+
+  for (var i = 0; i < variables.length; i++) {
+    window.dataLayer.push(variables[i]);
+  }
+})();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P4CXTW');</script>
+<!-- End Google Tag Manager -->
+
+
+
+
+  <link rel="shortcut icon" href="https://cdn.blog.st-hatena.com/images/favicon.ico">
+<link rel="icon" sizes="192x192" href="https://cdn.blog.st-hatena.com/images/common/meta-icon-global.png">
+
+  
+<link rel="alternate" type="application/atom+xml" title="Atom" href="http://bleis-tift.hatenablog.com/feed"/>
+<link rel="alternate" type="application/rss+xml" title="RSS2.0" href="http://bleis-tift.hatenablog.com/rss"/>
+<link rel="alternate" type="application/json+oembed" href="http://hatenablog.com/oembed?url=http%3A%2F%2Fbleis-tift.hatenablog.com%2Fentry%2F20090413%2F1239604802&amp;format=json" title="oEmbed Profile of SQL の命名規約とフォーマット"/>
+<link rel="alternate" type="text/xml+oembed" href="http://hatenablog.com/oembed?url=http%3A%2F%2Fbleis-tift.hatenablog.com%2Fentry%2F20090413%2F1239604802&amp;format=xml" title="oEmbed Profile of SQL の命名規約とフォーマット"/>
+  
+  <link rel="author" href="http://www.hatena.ne.jp/bleis-tift/">
+
+
+  
+    <link rel="stylesheet" type="text/css" href="https://cdn.blog.st-hatena.com/css/blog.css?version=59100317491bf488a0d9af0a81e58e565865b113&amp;env=production"/>
+
+    
+  <link rel="stylesheet" type="text/css" href="//blog.hatena.ne.jp/-/blog_style/12704346814673882987/fb6cb19a65771aa167c5cf3b3042c33b786b0f30"/>
+  
+
+  
+
+  
+<script> </script>
+
+  
+<style>
+  div#google_afc_user,
+  div.google-afc-user-container,
+  div.google_afc_image,
+  div.google_afc_blocklink {
+      display: block !important;
+  }
+</style>
+
+
+  
+    <script src="https://cdn.pool.st-hatena.com/valve/valve.js" async></script>
+<script id="test-valve-definition">
+  var valve = window.valve || [];
+
+  valve.push(function(v) {
+    v.config({ service: 'blog' });
+    
+    
+
+    
+    v.defineDFPSlot({"unit":"/4374287/blog_user","slotId":"google_afc_user_container_0","lazy":"","sizes":[[300,250],[336,280],[468,60],"fluid"]});
+    
+
+    
+
+    v.sealDFPSlots();
+  });
+</script>
+
+  
+
+  
+</head>
+
+  <body class="page-entry category-SQL">
+    
+    <div id="header-container">
+     <div id="sp-suggest" style="display: none;"><a id="sp-suggest-link" href="#">スマートフォン用の表示で見る</a></div>
+    </div>
+
+    <div id="globalheader-container"
+  data-brand="hatenablog"
+  
+  
+  >
+  <iframe id="globalheader" height="37" frameborder="0" allowTransparency="true"></iframe>
+</div>
+
+
+    <div id="container">
+      <div id="container-inner">
+        <header id="blog-title" data-brand="hatenablog">
+  <div id="blog-title-inner" >
+    <div id="blog-title-content">
+      <h1 id="title"><a href="http://bleis-tift.hatenablog.com/">ぐるぐる～</a></h1>
+      
+    </div>
+  </div>
+</header>
+
+        
+
+        
+  
+
+
+        
+
+
+
+
+<div id="content" class="hfeed"
+  
+  >
+  <div id="content-inner">
+    <div id="wrapper">
+      <div id="main">
+        <div id="main-inner">
+          
+
+
+          
+  
+  <!-- google_ad_section_start -->
+  <!-- rakuten_ad_target_begin -->
+  
+  
+  
+
+  
+
+  
+    
+      
+        <article class="entry hentry js-entry-article date-first autopagerize_page_element chars-1600 words-200 mode-hatena entry-odd" id="entry-12704830469097461591" data-keyword-campaign="" data-uuid="12704830469097461591" data-publication-type="entry">
+  <div class="entry-inner">
+    <header class="entry-header">
+  
+    <div class="date entry-date first">
+    <a href="http://bleis-tift.hatenablog.com/archive/2009/04/13" rel="nofollow">
+      <time pubdate datetime="2009-04-13T06:40:02Z" title="2009-04-13T06:40:02Z">
+        <span class="date-year">2009</span><span class="hyphen">-</span><span class="date-month">04</span><span class="hyphen">-</span><span class="date-day">13</span>
+      </time>
+    </a>
+  </div>
+  <h1 class="entry-title">
+  <a href="http://bleis-tift.hatenablog.com/entry/20090413/1239604802" class="entry-title-link bookmark">SQL の命名規約とフォーマット</a>
+</h1>
+
+  
+  
+
+  <div class="entry-categories categories">
+    
+    <a href="http://bleis-tift.hatenablog.com/archive/category/SQL" class="entry-category-link category-SQL">SQL</a>
+    
+  </div>
+
+
+  
+
+  
+
+</header>
+
+    
+
+    <div class="entry-content">
+  
+    <p>ときどきの雑記帖さん経由で、<a href="http://blogs.wankuma.com/masaru/archive/2009/04/12/171281.aspx">&#x79C1;&#x306E;SQL&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;</a>をみて、自分の規約もさらしてみる<a href="#f1" name="fn1" title="未だに揺れ動く">*1</a> <a href="#f2" name="fn2" title="結構変態的かも">*2</a>。</p>
+
+<div class="seemore">
+    
+<div class="section">
+    <h4>命名規約</h4>
+    
+<ul>
+<li>テーブルやビュー、共通表式は <a class="keyword" href="http://d.hatena.ne.jp/keyword/Pascal">Pascal</a> 記法で、複数形とする<a href="#f3" name="fn3" title="例によく使ってる SomeTable だけど、実は規約違反w">*3</a>。例えば、Employees とか Works とか
+<ul>
+<li>ただし、リレーションテーブルはその限りではない。例えば、EmployeeWork とか</li>
+</ul></li>
+<li><a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%AB%A5%E9%A5%E0%CC%BE">カラム名</a>はアンダーバー区切りで、単数形を基本とする。例えば、name とか</li>
+<li>人工キーを使用する場合、
+<ul>
+<li>自身の人工キーは id とする</li>
+<li>外部キーはテーブルの頭文字の小文字 _id を付けたものとする。例えば、e_id とか
+<ul>
+<li>重複する場合は・・・決めてない (ぉ</li>
+</ul></li>
+</ul></li>
+<li>テーブルに別名を付ける場合、テーブル名の単数形を使用する</li>
+<li>自己結合等でテーブルの区別が必要な場合、子テーブル側に C と付ける
+<ul>
+<li>孫には GC、GGC と付けていく (実際、そんなに深い自己結合なんてしないけど)</li>
+</ul></li>
+</ul>
+</div>
+<div class="section">
+    <h4>フォーマット</h4>
+    
+<div class="section">
+    <h5>インデント、カンマ</h5>
+    
+<ul>
+<li>インデントはトップレベルはスペース 4 つ、それ以降は基本スペース 2 つ分とするが、タブは使用しない</li>
+<li>カンマは<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%AB%A5%E9%A5%E0%CC%BE">カラム名</a>の前に置き、インデントの一部として考える</li>
+</ul><pre class="code lang-sql" data-lang="sql" data-unlink><span class="synStatement">SELECT</span>
+    Employee.id <span class="synSpecial">AS</span> employee_id
+  , Employee.name <span class="synSpecial">AS</span> employee_name
+  , Work.id <span class="synSpecial">AS</span> work_id
+  , Work.name <span class="synSpecial">AS</span> work_name
+<span class="synSpecial">FROM</span>
+    Employees Employee
+      INNER JOIN Works Work <span class="synSpecial">ON</span> Employee.id = Work.e_id
+;
+</pre>
+</div>
+<div class="section">
+    <h5>関数</h5>
+    
+<ul>
+<li>関数は大文字で記述する。例えば、MAX(hoge) とか COALESCE(piyo, '') とか</li>
+<li>ユーザ定義関数の使用をためらわない<a href="#f4" name="fn4" title="フォーマットとは関係ないな">*4</a></li>
+</ul>
+</div>
+<div class="section">
+    <h5>SELECT 等、トップレベルの要素</h5>
+    
+<ul>
+<li>基本的に単一行に記述する</li>
+<li>サブクエリの場合、逆に単一行には記述しない
+<ul>
+<li>サブクエリは簡単なものしか記述しない</li>
+<li>複雑になる場合、共通表式やビューなどにくくりだす</li>
+</ul></li>
+</ul><pre class="code lang-sql" data-lang="sql" data-unlink><span class="synStatement">SELECT</span>
+    Employee.name
+<span class="synSpecial">FROM</span>
+    Employees Employee
+<span class="synSpecial">WHERE</span>
+    <span class="synStatement">NOT</span> <span class="synStatement">EXISTS</span>(
+      <span class="synStatement">SELECT</span> * <span class="synSpecial">FROM</span> Employee C
+      <span class="synSpecial">WHERE</span> Employee.age &lt; C.age <span class="synStatement">AND</span> Employee.id &lt;&gt; C.id
+    )
+;
+</pre>
+</div>
+<div class="section">
+    <h5>JOIN</h5>
+    
+<ul>
+<li>RIGHT OUTER JOIN は使用しない</li>
+<li>OUTER を省略せず、常に LEFT OUTER JOIN と記述する</li>
+<li>JOIN の条件は ON に記述する</li>
+</ul>
+</div>
+<div class="section">
+    <h5>条件式</h5>
+    
+<ul>
+<li>決まらない・・・</li>
+<li>ON と WHERE/HAVING で書き方が違うような・・・</li>
+<li>読みやすく書く！</li>
+</ul>
+</div>
+<div class="section">
+    <h5>CASE 式</h5>
+    
+<ul>
+<li>必ず ELSE を記述する</li>
+<li>ELSE は直前の THEN に合わせる</li>
+<li>単純 CASE 式固有
+<ul>
+<li>WHEN をインデントする</li>
+<li>THEN は改行しない</li>
+</ul></li>
+<li>検索 CASE 式固有
+<ul>
+<li>WHEN をインデントしない</li>
+<li>THEN を改行し、インデントする</li>
+</ul></li>
+</ul><pre class="code lang-sql" data-lang="sql" data-unlink><span class="synComment">-- 単純CASE式</span>
+<span class="synStatement">SELECT</span>
+    CASE Employee.age
+      WHEN <span class="synConstant">30</span> <span class="synSpecial">THEN</span> <span class="synConstant">1</span>
+              <span class="synSpecial">ELSE</span> <span class="synConstant">0</span>
+    <span class="synSpecial">END</span> <span class="synSpecial">AS</span> is_30
+<span class="synSpecial">FROM</span>
+    Employees Employee
+;
+<span class="synComment">-- 検索CASE式</span>
+<span class="synStatement">SELECT</span>
+    CASE
+    WHEN Employee.age &lt; <span class="synConstant">30</span>
+      <span class="synSpecial">THEN</span> <span class="synConstant">1</span>
+      <span class="synSpecial">ELSE</span> <span class="synConstant">0</span>
+    <span class="synSpecial">END</span> <span class="synSpecial">AS</span> is_under_30
+<span class="synSpecial">FROM</span>
+    Employees Employee
+;
+</pre>
+</div>
+<div class="section">
+    <h5>SELECT 以外</h5>
+    <p>面倒なのでまた暇があれば。</p>
+
+</div>
+</div>
+</div><div class="footnote">
+<p class="footnote"><a href="#fn1" name="f1" class="footnote-number">*1</a><span class="footnote-delimiter">:</span><span class="footnote-text">未だに揺れ動く</span></p>
+<p class="footnote"><a href="#fn2" name="f2" class="footnote-number">*2</a><span class="footnote-delimiter">:</span><span class="footnote-text">結構変態的かも</span></p>
+<p class="footnote"><a href="#fn3" name="f3" class="footnote-number">*3</a><span class="footnote-delimiter">:</span><span class="footnote-text">例によく使ってる SomeTable だけど、実は<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B5%AC%CC%F3%B0%E3%C8%BF">規約違反</a>w</span></p>
+<p class="footnote"><a href="#fn4" name="f4" class="footnote-number">*4</a><span class="footnote-delimiter">:</span><span class="footnote-text">フォーマットとは関係ないな</span></p>
+</div>
+    
+
+  
+</div>
+
+    
+  <footer class="entry-footer">
+    
+    <p class="entry-footer-section">
+  <span class="author vcard"><span class="fn" data-load-nickname="1" data-user-name="bleis-tift">bleis-tift</span></span>
+  <span class="entry-footer-time"><a href="http://bleis-tift.hatenablog.com/entry/20090413/1239604802"><time data-relative datetime="2009-04-13T06:40:02Z" title="2009-04-13T06:40:02Z" pubdate class="updated">2009-04-13 15:40</time></a></span>
+</p>
+
+    
+  <div class="hatena-star-container">
+  </div>
+  <div class="hatena-star-metadata" style="display: none">
+    <a class="hatena-star-permalink" href="http://bleis-tift.hatenablog.com/entry/20090413/1239604802">SQL の命名規約とフォーマット</a>
+  </div>
+
+
+    
+<div class="social-buttons">
+  
+  
+    <div class="social-button-item">
+      <a href="http://b.hatena.ne.jp/entry/http://bleis-tift.hatenablog.com/entry/20090413/1239604802" class="hatena-bookmark-button" data-hatena-bookmark-layout="vertical-balloon" data-hatena-bookmark-lang="ja" title="この記事をはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only.gif" alt="この記事をはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+    </div>
+  
+  
+    <div class="social-button-item">
+      <div class="fb-share-button" data-layout="box_count" data-href="http://bleis-tift.hatenablog.com/entry/20090413/1239604802"></div>
+    </div>
+  
+  
+    <div class="social-button-item">
+      <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://bleis-tift.hatenablog.com/entry/20090413/1239604802" data-count="vertical" data-text="SQL の命名規約とフォーマット - ぐるぐる～" data-lang="ja">Tweet</a>
+    </div>
+  
+  
+    <div class="social-button-item">
+      <div class="g-plusone" data-size="tall" data-href="http://bleis-tift.hatenablog.com/entry/20090413/1239604802"></div>
+    </div>
+  
+  
+  
+  
+</div>
+
+    
+  
+  
+    
+    <div class="google-afc-image test-google-rectangle-ads">      
+      
+      <div id="google_afc_user_container_0" class="google-afc-user-container google_afc_blocklink2_5 google_afc_boder" data-test-unit="/4374287/blog_user"></div>
+      
+        <a href="http://blog.hatena.ne.jp/guide/pro" class="open-pro-modal" data-guide-pro-modal-ad-url="https://hatenablog.com/guide/pro/modal/ad">広告を非表示にする</a>
+      
+    </div>
+  
+  
+
+
+    <div class="customized-footer">
+      
+
+        
+
+        
+
+          <div class="entry-footer-modules" id="entry-footer-secondary-modules">      
+<div class="hatena-module hatena-module-related-entries" >
+      
+  <!-- Hatena-Epic-has-related-entries-with-elasticsearch:true -->
+  <div class="hatena-module-title">
+    関連記事
+  </div>
+  <div class="hatena-module-body">
+    <ul class="related-entries hatena-urllist urllist-with-thumbnails">
+  
+  
+    
+    <li class="urllist-item related-entries-item">
+      <div class="urllist-item-inner related-entries-item-inner">
+        
+                      <div class="urllist-date-link related-entries-date-link">
+  <a href="http://bleis-tift.hatenablog.com/archive/2010/04/26" rel="nofollow">
+    <time pubdate datetime="2010-04-26T11:03:38Z" title="2010-04-26T11:03:38Z">
+      2010-04-26
+    </time>
+  </a>
+</div>
+
+          <a href="http://bleis-tift.hatenablog.com/entry/20100426/1272279818" class="urllist-title-link related-entries-title-link  urllist-title related-entries-title">Hudson の NUnit Plugin を使うとテストケースの数が減る問題とその解決方法</a>
+
+
+          
+          
+
+                      <div class="urllist-entry-body related-entries-entry-body">仕事で Hudson を使い始めた頃 (去年の 10 月だか 11 月だか) …</div>
+      </div>
+    </li>
+  
+    
+    <li class="urllist-item related-entries-item">
+      <div class="urllist-item-inner related-entries-item-inner">
+        
+                      <div class="urllist-date-link related-entries-date-link">
+  <a href="http://bleis-tift.hatenablog.com/archive/2009/07/02" rel="nofollow">
+    <time pubdate datetime="2009-07-01T22:58:36Z" title="2009-07-01T22:58:36Z">
+      2009-07-02
+    </time>
+  </a>
+</div>
+
+          <a href="http://bleis-tift.hatenablog.com/entry/20090702/1246489116" class="urllist-title-link related-entries-title-link  urllist-title related-entries-title">インデント</a>
+
+
+          
+          
+
+                      <div class="urllist-entry-body related-entries-entry-body">SQL の命名規約とフォーマットの続き・・・になるのかな。 SQL …</div>
+      </div>
+    </li>
+  
+    
+    <li class="urllist-item related-entries-item">
+      <div class="urllist-item-inner related-entries-item-inner">
+        
+                      <div class="urllist-date-link related-entries-date-link">
+  <a href="http://bleis-tift.hatenablog.com/archive/2009/06/16" rel="nofollow">
+    <time pubdate datetime="2009-06-16T13:24:16Z" title="2009-06-16T13:24:16Z">
+      2009-06-16
+    </time>
+  </a>
+</div>
+
+          <a href="http://bleis-tift.hatenablog.com/entry/20090616/1245158656" class="urllist-title-link related-entries-title-link  urllist-title related-entries-title">10 分間コーディングで 30 分かかった SQL を読み下す</a>
+
+
+          
+          
+
+                      <div class="urllist-entry-body related-entries-entry-body">再帰 CTE の入門が済んだところで、10 分間コーディングで 30 …</div>
+      </div>
+    </li>
+  
+    
+    <li class="urllist-item related-entries-item">
+      <div class="urllist-item-inner related-entries-item-inner">
+        
+                      <div class="urllist-date-link related-entries-date-link">
+  <a href="http://bleis-tift.hatenablog.com/archive/2009/06/13" rel="nofollow">
+    <time pubdate datetime="2009-06-13T05:06:07Z" title="2009-06-13T05:06:07Z">
+      2009-06-13
+    </time>
+  </a>
+</div>
+
+          <a href="http://bleis-tift.hatenablog.com/entry/20090613/1244869567" class="urllist-title-link related-entries-title-link  urllist-title related-entries-title">BrainCrash in SQL</a>
+
+
+          
+          
+
+                      <div class="urllist-entry-body related-entries-entry-body">Brainf*ck in SQL を改造して、BrainCrash in SQL を書いてみま…</div>
+      </div>
+    </li>
+  
+    
+    <li class="urllist-item related-entries-item">
+      <div class="urllist-item-inner related-entries-item-inner">
+        
+                      <a class="urllist-image-link related-entries-image-link" href="http://bleis-tift.hatenablog.com/entry/20090612/1244743847">
+  <img alt="行持ち・列持ち (横持ち)" src="https://cdn.image.st-hatena.com/image/square/bec918926f1da748a8d63ca95cb52f33b7c01dc6/backend=imagemagick;height=100;version=1;width=100/http%3A%2F%2Fcdn-ak.f.st-hatena.com%2Fimages%2Ffotolife%2Fb%2Fbleis-tift%2F20090612%2F20090612022409.png" class="urllist-image related-entries-image" title="行持ち・列持ち (横持ち)" width="100">
+</a>
+            <div class="urllist-date-link related-entries-date-link">
+  <a href="http://bleis-tift.hatenablog.com/archive/2009/06/12" rel="nofollow">
+    <time pubdate datetime="2009-06-11T18:10:47Z" title="2009-06-11T18:10:47Z">
+      2009-06-12
+    </time>
+  </a>
+</div>
+
+          <a href="http://bleis-tift.hatenablog.com/entry/20090612/1244743847" class="urllist-title-link related-entries-title-link  urllist-title related-entries-title">行持ち・列持ち (横持ち)</a>
+
+
+          
+          
+
+                      <div class="urllist-entry-body related-entries-entry-body">ちょっとまとめ。 行・列 行と列は漢字からイメージすると覚え…</div>
+      </div>
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+  </div>
+        
+
+      
+    </div>
+    
+  <div class="comment-box">
+    
+    <ul class="comment">
+      <li class="read-more-comments" style="display: none;"><a>もっと読む</a></li>
+    </ul>
+    
+      <a class="leave-comment-title">コメントを書く</a>
+    
+  </div>
+
+  </footer>
+
+  </div>
+</article>
+
+      
+      
+    
+  
+
+  
+  <!-- rakuten_ad_target_end -->
+  <!-- google_ad_section_end -->
+  
+  
+  
+  <div class="pager pager-permalink permalink">
+    
+      
+      <span class="pager-prev">
+        <a href="http://bleis-tift.hatenablog.com/entry/20090414/1239679912" rel="prev">
+          <span class="pager-arrow">&laquo; </span>
+          CleanCode Chapter 3:Functions
+        </a>
+      </span>
+    
+    
+      
+      <span class="pager-next">
+        <a href="http://bleis-tift.hatenablog.com/entry/20090412/1239466462" rel="next">
+          わんくま同盟 名古屋勉強会 #07 に行って…
+          <span class="pager-arrow"> &raquo;</span>
+        </a>
+      </span>
+    
+  </div>
+
+
+  
+
+
+
+        </div>
+      </div>
+
+      <aside id="box1">
+  <div id="box1-inner">
+  </div>
+</aside>
+
+    </div><!-- #wrapper -->
+
+    
+<aside id="box2">
+  
+  <div id="box2-inner">
+    
+      
+
+<div class="hatena-module hatena-module-profile">
+  <div class="hatena-module-title">
+    プロフィール
+  </div>
+  <div class="hatena-module-body">
+    
+    <a href="http://bleis-tift.hatenablog.com/about" class="profile-icon-link">
+      <img src="https://cdn.profile-image.st-hatena.com/users/bleis-tift/profile.png"
+      alt="id:bleis-tift" class="profile-icon" />
+    </a>
+    
+
+    
+    <span class="id">
+      <a href="http://bleis-tift.hatenablog.com/about" class="hatena-id-link"><span data-load-nickname="1" data-user-name="bleis-tift">id:bleis-tift</span></a>
+      
+  
+    
+    
+  
+
+
+    </span>
+    
+
+    
+
+    
+
+    
+      <div class="hatena-follow-button-box btn-subscribe js-hatena-follow-button-box"
+  
+  >
+
+  <a href="#" class="hatena-follow-button js-hatena-follow-button">
+    <span class="subscribing">
+      <span class="foreground">読者です</span>
+      <span class="background">読者をやめる</span>
+    </span>
+    <span class="unsubscribing" data-track-name="profile-widget-subscribe-button" data-track-once>
+      <span class="foreground">読者になる</span>
+      <span class="background">読者になる</span>
+    </span>
+  </a>
+  <div class="subscription-count-box js-subscription-count-box">
+    <i></i>
+    <u></u>
+    <span class="subscription-count js-subscription-count">
+    </span>
+  </div>
+</div>
+
+    
+
+    
+
+    
+  </div>
+</div>
+
+    
+      
+
+<div class="hatena-module hatena-module-category">
+  <div class="hatena-module-title">
+    カテゴリー
+  </div>
+  <div class="hatena-module-body">
+    <ul class="hatena-urllist">
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/etc">
+            etc (380)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/C%23">
+            C# (127)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/Program">
+            Program (115)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/Book">
+            Book (113)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/Java">
+            Java (113)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/SQL">
+            SQL (89)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/PC">
+            PC (87)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/F%23">
+            F# (69)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/C%2B%2B">
+            C++ (40)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/.NET">
+            .NET (27)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/Web%20Site">
+            Web Site (26)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/Memo">
+            Memo (25)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/Git">
+            Git (22)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/TDD">
+            TDD (14)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/Scala">
+            Scala (12)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/PowerShell">
+            PowerShell (11)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/DB">
+            DB (11)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/%E5%A6%84%E6%83%B3">
+            妄想 (9)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/JavaScript">
+            JavaScript (7)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/Security">
+            Security (6)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/Excel">
+            Excel (6)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/XSLT">
+            XSLT (6)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/Python">
+            Python (5)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/OOP">
+            OOP (5)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/Ruby">
+            Ruby (4)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/JSX">
+            JSX (4)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/XML">
+            XML (4)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/Test">
+            Test (3)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/%E8%AC%8E">
+            謎 (3)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/SML%23">
+            SML# (3)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/RDB">
+            RDB (3)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/IL">
+            IL (3)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/VB.NET">
+            VB.NET (3)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/Vim">
+            Vim (2)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/Debian">
+            Debian (2)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/WPF">
+            WPF (2)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/Hudson">
+            Hudson (2)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/VirtualBox">
+            VirtualBox (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/C">
+            C (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/%E3%81%A6%E3%81%99%E3%81%A8">
+            てすと (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/nagoyarubykaigi01">
+            nagoyarubykaigi01 (1)
+          </a>
+        </li>
+      
+        <li>
+          <a href="http://bleis-tift.hatenablog.com/archive/category/Jenkins">
+            Jenkins (1)
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+    
+      <div class="hatena-module hatena-module-search-box">
+  <div class="hatena-module-title">
+    検索
+  </div>
+  <div class="hatena-module-body">
+    <form class="search-form" role="search" action="http://bleis-tift.hatenablog.com/search" method="get">
+  <input type="text" name="q" class="search-module-input" value="" placeholder="記事を検索" required>
+  <input type="submit" value="検索" class="search-module-button" />
+</form>
+
+  </div>
+</div>
+
+    
+    
+  </div>
+</aside>
+
+
+  </div>
+</div>
+
+
+
+
+        
+
+        
+
+      </div>
+    </div>
+    
+<footer id="footer" data-brand="hatenablog">
+  <div id="footer-inner">
+    
+      <div style="display:none !important" class="guest-footer js-guide-register test-blogs-register-guide" data-action="guide-register">
+  <div class="guest-footer-content">
+    <h3>はてなブログをはじめよう！</h3>
+    <p>bleis-tiftさんは、はてなブログを使っています。あなたもはてなブログをはじめてみませんか？</p>
+    <div class="guest-footer-btn-container">
+      <div  class="guest-footer-btn">
+        <a class="btn btn-register" href="http://blog.hatena.ne.jp/register?via=200227" target="_blank">はてなブログをはじめる（無料）</a>
+      </div>
+      <div  class="guest-footer-btn">
+        <a href="http://hatenablog.com/guide" target="_blank">はてなブログとは</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+    <address class="footer-address">
+      <a href="http://bleis-tift.hatenablog.com/">
+        <img src="https://cdn.blog.st-hatena.com/images/admin/blog-icon-noimage.png" width="16" height="16" alt="ぐるぐる～"/>
+        <span class="footer-address-name">ぐるぐる～</span>
+      </a>
+    </address>
+    <p class="services">
+      Powered by <a href="http://hatenablog.com/">Hatena Blog</a>
+      |
+        <a href="https://blog.hatena.ne.jp/-/abuse_report?target_url=http%3A%2F%2Fbleis-tift.hatenablog.com%2Fentry%2F20090413%2F1239604802" class="report-abuse-link test-report-abuse-link" target="_blank">ブログを報告する</a>
+    </p>
+  </div>
+</footer>
+
+
+    
+
+    
+  <script src="https://s.hatena.ne.jp/js/HatenaStar.js?20180530"></script>
+
+
+    
+      <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&appId=719729204785177&version=v2.7";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+    
+    
+
+<div class="quote-box">
+  <div class="tooltip-quote tooltip-quote-star">
+    <i class="blogicon-star" title="引用スターをつける"></i>
+  </div>
+  <div class="tooltip-quote tooltip-quote-stock">
+    <i class="blogicon-quote" title="引用をストック"></i>
+  </div>
+  <div class="tooltip-quote tooltip-quote-tweet js-tooltip-quote-tweet">
+    <a class="js-tweet-quote" target="_blank" data-track-name="quote-tweet" data-track-once><i class="blogicon-twitter" title="引用してツイートする"></i></a>
+  </div>
+</div>
+
+<div class="message-box" id="quote-star-message-box" style="display: none; position: absolute;">
+  スターをつけました
+</div>
+
+<div class="quote-stock-panel" id="quote-stock-message-box" style="position: absolute; z-index: 3000">
+  <div class="message-box" id="quote-stock-succeeded-message" style="display: none">
+    <p>引用をストックしました</p>
+    <button class="btn btn-primary" id="quote-stock-show-editor-button" data-track-name="curation-quote-edit-button">ストック一覧を見る</button>
+    <button class="btn quote-stock-close-message-button">閉じる</button>
+  </div>
+
+  <div class="message-box" id="quote-login-required-message" style="display: none">
+    <p>引用するにはまずログインしてください</p>
+    <button class="btn btn-primary" id="quote-login-button">ログイン</button>
+    <button class="btn quote-stock-close-message-button">閉じる</button>
+  </div>
+
+  <div class="error-box" id="quote-stock-failed-message" style="display: none">
+    <p>引用をストックできませんでした。再度お試しください</p>
+    <button class="btn quote-stock-close-message-button">閉じる</button>
+  </div>
+
+  <div class="error-box" id="unstockable-quote-message-box" style="display: none; position: absolute; z-index: 3000;">
+    <p>限定公開記事のため引用できません。</p>
+  </div>
+</div>
+
+<script type="x-underscore-template" id="js-requote-button-template">
+  <div class="requote-button js-requote-button">
+    <button class="requote-button-btn tipsy-top" title="引用する"><i class="blogicon-quote"></i></button>
+  </div>
+</script>
+
+
+
+    
+    <div id="hidden-subscribe-button" style="display: none;">
+      <div class="hatena-follow-button-box btn-subscribe js-hatena-follow-button-box"
+  
+  >
+
+  <a href="#" class="hatena-follow-button js-hatena-follow-button">
+    <span class="subscribing">
+      <span class="foreground">読者です</span>
+      <span class="background">読者をやめる</span>
+    </span>
+    <span class="unsubscribing" data-track-name="profile-widget-subscribe-button" data-track-once>
+      <span class="foreground">読者になる</span>
+      <span class="background">読者になる</span>
+    </span>
+  </a>
+  <div class="subscription-count-box js-subscription-count-box">
+    <i></i>
+    <u></u>
+    <span class="subscription-count js-subscription-count">
+    </span>
+  </div>
+</div>
+
+    </div>
+
+    
+  <script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>
+
+<script src="https://apis.google.com/js/platform.js" async defer>
+  { lang: 'ja', "parsetags": "explicit" }
+</script>
+<script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+
+
+
+  <script type="text/javascript" src="https://cdn.blog.st-hatena.com/js/external/react-with-addons.min.js?version=15.4.1"></script>
+  <script type="text/javascript" src="https://cdn.blog.st-hatena.com/js/external/react-dom.min.js?version=15.4.1"></script>
+
+
+<script type="text/javascript" src="https://cdn.blog.st-hatena.com/js/external/jquery.min.js?version=1.12.3"></script>
+<script type="text/javascript" src="//cdn7.www.st-hatena.com/js/jquery/jquery-ui.1.10.0.custom.min.js"></script>
+<script type="text/javascript" src="https://cdn.blog.st-hatena.com/js/external/jquery.flot.js?version=0.8.3"></script>
+<script type="text/javascript" src="https://cdn.blog.st-hatena.com/js/external/jquery.flot.time.js?version=0.8.3"></script>
+
+
+
+
+
+<script type="text/javascript" src="https://cdn.blog.st-hatena.com/js/texts-ja.js?version=557ff16305966401b2167640dfbecb8f6a3749ab&amp;env=production"></script>
+<script id="hatenablog-js" data-env="production"
+  type="text/javascript" src="https://cdn.blog.st-hatena.com/js/hatenablog.js?version=0e87c2403392bb4425ff90332c8a3ca313b772dc&amp;env=production" crossorigin="anonymous"></script>
+
+
+  <script type="text/javascript">Hatena.Diary.GlobalHeader.init()</script>
+
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+
+
+
+    
+  <script id="valve-dmp" data-service="blog" src="https://cdn.pool.st-hatena.com/valve/dmp.js" data-test-id="dmpjs" async></script>
+
+
+    
+
+
+
+
+
+  </body>
+</html>
+

@@ -49,7 +49,7 @@ public class SearchItemAction extends ActionSupport implements SessionAware{
 		switch
 		(categoryId)
 		{
-			case "1":
+			case "1"://replaceallとsplitを使って単語検索の際に付いた全角スペースを、半角スペースに置換し、splitで半角スペースごとに単語を切り分け、配列化する。
 				productInfoDtoList = productInfoDAO.getProductInfoListAll(keywords.replaceAll("　", " ").split(" "));
 				result = SUCCESS;
 				break;

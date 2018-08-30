@@ -1,0 +1,866 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0046)http://d.hatena.ne.jp/n314/20140225/1393316807 -->
+<html xmlns:og="http://ogp.me/ns#"><head><meta http-equiv="Content-Type" content="text/html; charset=EUC-JP"><script src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/1733466696949178" async=""></script><script async="" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/fbevents.js.ダウンロード"></script><script async="" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/uwt.js.ダウンロード"></script><script type="text/javascript" async="" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/pageviews"></script><script type="text/javascript" async="" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/segment"></script><script async="" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/gtm.js.ダウンロード"></script><script async="" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/gtm.js.ダウンロード"></script><script type="text/javascript" async="" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/publishertag.prebid.js.ダウンロード"></script>
+
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<title> SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて</title>
+<link rel="start" href="http://d.hatena.ne.jp/" title="より良い環境を求めて">
+<link rel="help" href="http://d.hatena.ne.jp/help" title="ヘルプ">
+<link rel="prev" href="http://d.hatena.ne.jp/n314/20140109/1389236577" title="Docker周辺のような最近の仮想化...">
+<link rel="next" href="http://d.hatena.ne.jp/n314/20140305/1394035048" title="Bitcoinについて">
+
+<link rel="stylesheet" href="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/base.css" type="text/css" media="all">
+
+<link rel="stylesheet" href="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/hatena.css" type="text/css" media="all">
+
+
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://d.hatena.ne.jp/n314/rss">
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://d.hatena.ne.jp/n314/rss2">
+
+<link rel="meta" type="application/rdf+xml" title="FOAF" href="http://d.hatena.ne.jp/n314/foaf">
+<link rel="search" type="application/opensearchdescription+xml" href="http://d.hatena.ne.jp/n314/opensearch/diary.xml" title="より良い環境を求めて内日記検索">
+<link rel="search" type="application/opensearchdescription+xml" href="http://d.hatena.ne.jp/n314/opensearch/archive.xml" title="より良い環境を求めて内一覧検索">
+
+
+
+<link rel="shortcut icon" href="http://d.hatena.ne.jp/images/de_favicon.ico">
+
+
+
+<link rel="canonical" href="http://d.hatena.ne.jp/n314/20140225/1393316807">
+
+
+<style type="text/css">
+<!-- 
+span.highlight {
+	color: black;
+	background-color: yellow;
+}
+img.photo {
+	float: right;
+	margin: 10px;
+	border: 0;
+}
+a.keyword {
+	text-decoration: none;
+	border-bottom: 1px solid #d0d0d0;
+}
+
+div.myheader{
+border: 1px solid #BBBB99;
+}
+h2.myheader{
+background-color: #BBBB99;
+}
+
+
+-->
+</style>
+
+
+<script src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/f.txt"></script><script type="text/javascript" async="" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/pageviews(1)"></script><script src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/pubads_impl_rendering_243.js.ダウンロード"></script><script type="text/javascript" async="" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/get"></script><script type="text/javascript" async="" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/segment(1)"></script><script type="text/javascript" async="" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/td.min.js.ダウンロード"></script><script async="" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/tdim-1.1.0.min.js.ダウンロード"></script><script type="text/javascript" async="" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/gtm.js(1).ダウンロード"></script><script type="text/javascript" async="" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/gtm.js(1).ダウンロード"></script><script type="text/javascript" async="" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/dc.js.ダウンロード"></script><script type="text/javascript" async="" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/analytics.js.ダウンロード"></script><script type="text/javascript" async="" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/audience"></script><script type="text/javascript" async="" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/audience"></script><script type="text/javascript" async="" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/ga.js.ダウンロード"></script><script id="facebook-jssdk" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/sdk.js.ダウンロード"></script><script async="" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/gtm.js(2).ダウンロード"></script><script type="text/javascript">if(/[\x3c\x3e\x22]/.test(location.hash))location.hash=location.hash.replace(/[\x3c\x3e\x22]/g,'');if(/[\x3c\x3e]/.test(document.referrer))location.href=location.href;</script>
+
+
+<meta property="og:type" content="article">
+<meta property="og:title" content=" SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて">
+<meta property="og:url" content="http://d.hatena.ne.jp/n314/20140225/1393316807">
+<meta property="og:description" content="ときどきSELECt * FROM item as T1 ||http://d.zeromemory.info/2007/01/19/coding-rule-sql.html&amp;gt; オブ..">
+<meta property="og:site_name" content="はてなダイアリー">
+
+
+<!--
+<rdf:RDF
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:foaf="http://xmlns.com/foaf/0.1/">
+<rdf:Description rdf:about="http://d.hatena.ne.jp/n314/20140225/1393316807">
+   <foaf:maker rdf:parseType="Resource">
+     <foaf:holdsAccount>
+       <foaf:OnlineAccount foaf:accountName="n314">
+         <foaf:accountServiceHomepage rdf:resource="http://www.hatena.ne.jp/" />
+       </foaf:OnlineAccount>
+     </foaf:holdsAccount>
+   </foaf:maker>
+</rdf:Description>
+</rdf:RDF>
+-->
+
+<link rel="alternate" media="handheld" type="text/html" href="http://d.hatena.ne.jp/n314/mobile?date=20140225&amp;section=1393316807">
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+<rdf:Description
+  rdf:about="http://d.hatena.ne.jp/n314/20140225/1393316807"
+  trackback:ping="http://d.hatena.ne.jp/n314/20140225/1393316807"
+  dc:title="[SQL] SQLテーブル名の別名、命名規則、T1とか"
+  dc:identifier="http://d.hatena.ne.jp/n314/20140225/1393316807" />
+</rdf:RDF>
+-->
+
+
+
+<meta name="twitter:card" content="summary">
+
+<meta name="twitter:site" content="@hatenadiary">
+
+
+
+<script type="text/javascript" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/HatenaStar.js.ダウンロード"></script>
+<script type="text/javascript">
+Hatena.Star.SiteConfig = {
+  entryNodes: {
+    'div.section': {
+      uri: 'h3 a',
+      title: 'h3',
+      container: 'h3'
+    }
+  }
+};
+Hatena.Author  = new Hatena.User('n314');
+Hatena.DiaryName  = new Hatena.User('n314');
+
+</script>
+
+
+
+
+
+<script type="text/javascript" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/adcolor.js.ダウンロード"></script>
+
+
+<script type="text/javascript" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/quick_pager.js.ダウンロード"></script>
+<script type="text/javascript" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/diary_utils.js.ダウンロード"></script>
+<script type="text/javascript" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/max_width_fotolife.js.ダウンロード"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/jquery-1.4.2.min.js.ダウンロード"></script>
+<script type="text/javascript">
+  jQuery.noConflict()(function($){
+    var j$ = jQuery;
+  });
+</script>
+
+
+
+
+<script type="text/javascript" async="" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/itm.js.ダウンロード"></script><script type="text/javascript" async="" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/itm.js.ダウンロード"></script><script type="text/javascript" async="" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/gpt.js.ダウンロード"></script><script type="text/javascript" async="" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/apstag.js.ダウンロード"></script><link rel="preload" href="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/f(1).txt" as="script"><script type="text/javascript" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/f(1).txt"></script><link rel="preload" href="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/f(2).txt" as="script"><script type="text/javascript" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/f(2).txt"></script><script src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/pubads_impl_243.js.ダウンロード" async=""></script><script type="text/javascript" async="" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/td_htn_access.js.ダウンロード"></script><script type="text/javascript" async="" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/hatena_bigmining.js.ダウンロード"></script><script type="text/javascript" async="" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/td_htn_access.js.ダウンロード"></script><script type="text/javascript" async="" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/hatena_bigmining.js.ダウンロード"></script><link rel="prefetch" href="http://tpc.googlesyndication.com/safeframe/1-0-29/html/container.html"><script src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/entries.json" type="text/javascript"></script><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, "hiragino kaku gothic pro",meiryo,"ms pgothic",sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_loader{background-color:#f5f6f7;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{width:auto;height:auto;min-height:initial;min-width:initial;background:none}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{color:#fff;display:block;padding-top:20px;clear:both;font-size:18px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;bottom:0;left:0;right:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:-webkit-sticky;top:0}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29487d;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-repeat:no-repeat;background-position:50% 50%;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}
+.fb_customer_chat_bounce_in_v2{animation-duration:300ms;animation-name:fb_bounce_in_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_v2{animation-duration:300ms;animation-name:fb_bounce_out_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_v2_mobile_chat_started{animation-duration:300ms;animation-name:fb_bounce_in_v2_mobile_chat_started;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_v2_mobile_chat_started{animation-duration:300ms;animation-name:fb_bounce_out_v2_mobile_chat_started;transition-timing-function:ease-in}.fb_customer_chat_bubble_pop_in{animation-duration:250ms;animation-name:fb_customer_chat_bubble_bounce_in_animation}.fb_customer_chat_bubble_animated_no_badge{box-shadow:0 3px 12px rgba(0, 0, 0, .15);transition:box-shadow 150ms linear}.fb_customer_chat_bubble_animated_no_badge:hover{box-shadow:0 5px 24px rgba(0, 0, 0, .3)}.fb_customer_chat_bubble_animated_with_badge{box-shadow:-5px 4px 14px rgba(0, 0, 0, .15);transition:box-shadow 150ms linear}.fb_customer_chat_bubble_animated_with_badge:hover{box-shadow:-5px 8px 24px rgba(0, 0, 0, .2)}.fb_invisible_flow{display:inherit;height:0;overflow-x:hidden;width:0}.fb_mobile_overlay_active{background-color:#fff;height:100%;overflow:hidden;position:fixed;visibility:hidden;width:100%}@keyframes fb_bounce_in_v2{0%{opacity:0;transform:scale(0, 0);transform-origin:bottom right}50%{transform:scale(1.03, 1.03);transform-origin:bottom right}100%{opacity:1;transform:scale(1, 1);transform-origin:bottom right}}@keyframes fb_bounce_in_v2_mobile_chat_started{0%{opacity:0;top:20px}100%{opacity:1;top:0}}@keyframes fb_bounce_out_v2{0%{opacity:1;transform:scale(1, 1);transform-origin:bottom right}100%{opacity:0;transform:scale(0, 0);transform-origin:bottom right}}@keyframes fb_bounce_out_v2_mobile_chat_started{0%{opacity:1;top:0}100%{opacity:0;top:20px}}@keyframes fb_customer_chat_bubble_bounce_in_animation{0%{bottom:6pt;opacity:0;transform:scale(0, 0);transform-origin:center}70%{bottom:18pt;opacity:1;transform:scale(1.2, 1.2)}100%{transform:scale(1, 1)}}</style></head>
+<body>
+
+  <script>Hatena.Diary.UaTrakingID = 'UA-46127385-8';</script>
+ 
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-58NPH6"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-58NPH6');</script>
+<!-- End Google Tag Manager -->
+
+<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/0P3pVtbsZok.html" style="border: none;"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.6&appId=189164841141201";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0" id="banner">
+<tbody><tr>
+<td bgcolor="#1841CE" nowrap="">
+<a href="http://www.hatena.ne.jp/"><img border="0" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/hatena_de.gif" width="104" height="40" alt="Hatena::"></a><a href="http://d.hatena.ne.jp/"><img border="0" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/diaryde.gif" width="60" height="40" alt="ブログ(Diary)"></a></td>
+<td valign="bottom" align="left" bgcolor="#1841CE" width="60%" nowrap=""><form method="GET" action="http://d.hatena.ne.jp/search" style="margin: 0;"><font color="#5279E7" size="2">&nbsp;&nbsp;<input type="text" name="word" value="" size="18" style="font-size: 8pt">&nbsp;<input type="hidden" name="name" value="n314"><input type="image" name="diary" alt="日記" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/search_diaryde.gif" align="top" style="width:34px;height:20px;border:0px">&nbsp;<input type="image" name="submit" alt="検索" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/searchde.gif" align="top" style="width:34px;height:20px;border:0px"><br><img border="0" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/dot.gif" width="1" height="3" alt=""></font></form></td>
+<td align="right" bgcolor="#1841CE"><a href="http://www.hatena.ne.jp/"><img border="0" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/hatenade.gif" width="82" height="40" alt="はてな"></a></td>
+</tr>
+<tr>
+<td width="100%" bgcolor="#06289B" colspan="3"><img border="0" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/dot.gif" width="1" height="1" alt=""></td>
+</tr>
+<tr>
+<td width="100%" bgcolor="#ffffff" colspan="3">
+<div align="center">
+<center>
+<table cellspacing="0" cellpadding="2" width="100%" border="0">
+<tbody>
+<tr>
+<td bgcolor="#5279E7" width="50%" nowrap=""><font color="#C9D5F8" size="2">&nbsp;ようこそゲストさん&nbsp;</font></td>
+<td bgcolor="#5279E7" nowrap="" align="center"><a href="http://d.hatena.ne.jp/n314/" style="text-decoration:none; font-weight:100;"><font size="2" color="#C9D5F8">ブログトップ</font></a></td>
+<td bgcolor="#5279E7" nowrap="" align="center"><a href="http://d.hatena.ne.jp/n314/archive" style="text-decoration:none; font-weight:100;"><font size="2" color="#C9D5F8">記事一覧</font></a></td>
+<td bgcolor="#5279E7" nowrap="" align="center"><a href="https://www.hatena.ne.jp/login?backurl=http%3A%2F%2Fd.hatena.ne.jp%2Fn314%2F20140225%2F1393316807&amp;add_timestamp=1" style="text-decoration:none; font-weight:100;"><font size="2" color="#C9D5F8">ログイン</font></a></td><td bgcolor="#5279E7" nowrap="" align="center"><a href="https://www.hatena.ne.jp/register?location=http%3A%2F%2Fd.hatena.ne.jp%3Fvia%3D200186&amp;via=200186" style="text-decoration:none; font-weight:100;"><font size="2" color="#C9D5F8">無料ブログ開設</font></a></td>
+
+
+</tr>
+</tbody>
+</table>
+</center>
+</div>
+</td>
+</tr>
+<tr>
+<td width="100%" bgcolor="#06289B" colspan="3"><img border="0" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/dot.gif" width="1" height="1" alt=""></td>
+</tr>
+</tbody></table>
+
+
+
+<h1><a href="http://d.hatena.ne.jp/n314/">より良い環境を求めて</a> <a href="http://a.hatena.ne.jp/append?http://d.hatena.ne.jp/n314/"><img src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/a_append_de.gif" title="このページをアンテナに追加" alt="このページをアンテナに追加" border="0" width="16" height="12" class="icon"></a> <a href="http://d.hatena.ne.jp/n314/rss"><img src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/rss_de.gif" alt="RSSフィード" title="RSSフィード" border="0" width="24" height="12" class="icon"></a></h1>
+<div class="hatena-body">
+<div class="main">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="calendar" id="pager-top">
+  <a rel="prev" href="http://d.hatena.ne.jp/n314/20140109/1389236577" class="prev">&lt;Docker周辺のような最近の仮想化...</a>&nbsp;<span class="delimiter">|</span>&nbsp;<a rel="next" href="http://d.hatena.ne.jp/n314/20140305/1394035048" class="next">Bitcoinについて&gt;</a><span id="edit-in-place-add"></span>
+</div>
+<div id="days">
+
+<div class="day">
+<h2><a href="http://d.hatena.ne.jp/n314/20140225" rel="nofollow"><span class="date">2014-02-25</span></a></h2>
+
+<div class="body">
+
+<!-- rakuten_ad_target_begin -->
+<!-- google_ad_section_start -->
+
+		<div class="section">
+			<h3><a href="http://d.hatena.ne.jp/n314/20140225/1393316807" name="1393316807"><span class="sanchor">■</span></a>[<a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5BSQL%5D" class="sectioncategory">SQL</a>] <a class="keyword" href="http://d.hatena.ne.jp/keyword/SQL">SQL</a>テーブル名の別名、命名規則、T1とか<span class="hatena-star-comment-container"><img src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/comment.gif" tabindex="0" alt="Comments" title="Comments" class="hatena-star-comment-button" style="cursor: pointer; margin: 0px; padding: 0px; border: none; vertical-align: middle; display: none;"></span><span class="hatena-star-star-container"><img src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/add.gif" tabindex="0" alt="Add Star" title="Add Star" class="hatena-star-add-button" style="cursor: pointer; margin: 0px 3px; padding: 0px; border: none; vertical-align: middle;"><a href="http://d.hatena.ne.jp/shimooka/"><img src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/star.gif" tabindex="0" class="hatena-star-star" style="padding: 0px; border: none;" alt="shimooka" title=""></a><a href="http://d.hatena.ne.jp/trshugu/"><img src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/star.gif" tabindex="0" class="hatena-star-star" style="padding: 0px; border: none;" alt="trshugu" title=""></a><a href="http://d.hatena.ne.jp/tsucchi1022/"><img src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/star.gif" tabindex="0" class="hatena-star-star" style="padding: 0px; border: none;" alt="tsucchi1022" title=""></a></span></h3>
+			<p>ときどき</p>
+<pre>SELECt * FROM item as T1
+</pre>
+
+			<p>みたいな連番別名テーブルを見るんだが。</p>
+			<p>どこかで推奨でもされているんだろうか。</p>
+			<br>
+
+			<p><a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%D7%A5%ED%A5%B0%A5%E9%A5%E0">プログラム</a>の変数名に無意味な連番は有り得ないっていうのは<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B6%A6%C4%CC%C7%A7%BC%B1">共通認識</a>としてあると思うけど、<a class="keyword" href="http://d.hatena.ne.jp/keyword/SQL">SQL</a>はそうじゃないんだろうか。</p>
+			<br>
+
+			<p>検索して上から順に見ていった。</p>
+			<blockquote title="http://d.zeromemory.info/2007/01/19/coding-rule-sql.html" cite="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/coding-rule-sql.html">
+			<p><a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%AA%A5%D6%A5%B8%A5%A7%A5%AF%A5%C8">オブジェクト</a>(主にテーブル)の<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%A8%A5%A4%A5%EA%A5%A2%A5%B9">エイリアス</a>は大抵つける、その際、テーブル名を略した<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%A8%A5%A4%A5%EA%A5%A2%A5%B9">エイリアス</a>をつけない(TOKUISAKI_MST TOK, USER_MST USR みたいな)。理由は、略文字はテーブル名が増えたり、似たような名前のテーブルが並ぶと、ぱっと見で判断しにくいから。その点数字だとすぐ見分けが付く。(from 句を参照しないとだめだが) 頭文字の f というのは特に意味なし。</p>
+			<cite><a href="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/coding-rule-sql.html">http://d.zeromemory.info/2007/01/19/coding-rule-sql.html</a></cite></blockquote>
+			<blockquote title="http://d.hatena.ne.jp/shimooka/20100426/1272291486" cite="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/1272291486">
+			<p>あと、テーブルには必ず別名を付けてて(参照するテーブルが1つの場合でも)、別名は小文字で付けてます。昔は、アルファベット1〜2文字で付けてました。</p>
+			<cite><a href="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/1272291486">http://d.hatena.ne.jp/shimooka/20100426/1272291486</a></cite></blockquote>
+			<blockquote title="http://bleis-tift.hatenablog.com/entry/20090413/1239604802" cite="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/1239604802">
+			<p>テーブルに別名を付ける場合、テーブル名の単数形を使用する</p>
+			<cite><a href="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/1239604802">http://bleis-tift.hatenablog.com/entry/20090413/1239604802</a></cite></blockquote>
+			<blockquote title="http://d.hatena.ne.jp/uesama99/20070120/1169261175" cite="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/1169261175">
+
+			<ul>
+				<li> テーブルの別名はわかりやすく
+
+				<ul>
+					<li> 理由：テーブルがUSER_MSTならumsとか、3文字の略字で表します。他の人から見ても可読性が工場します。3文字と決めているのは、項目を並べたときにツラをあわせるためです。</li>
+				</ul>
+				</li>
+			</ul>
+			<cite><a href="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/1169261175">http://d.hatena.ne.jp/uesama99/20070120/1169261175</a></cite></blockquote>
+			<p>ちょっと信じられない。別の世界に紛れ込んだようだ。</p>
+			<br>
+
+			<br>
+
+			<p>手元にある<a class="keyword" href="http://d.hatena.ne.jp/keyword/SQL">SQL</a>が書いている本はアート・オブ・<a class="keyword" href="http://d.hatena.ne.jp/keyword/SQL">SQL</a>しか無かったので読んでみた。</p>
+			<p>自己参照以外はだいたいテーブル名をそのまま使っている。</p>
+			<br>
+
+			<p>だいたいどの言語でも意味が伴わない型の再定義はよくないし、<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%AB%A1%BC%A5%CD%A5%EB">カーネル</a><a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%B3%A1%BC%A5%C7%A5%A3%A5%F3%A5%B0">コーディング</a>規約では typedef struct は禁止だ。</p>
+			<p>テーブル名にT1とか書かれても難読化しているようにしか思えない。</p>
+			<br>
+
+			<br>
+
+			<p>もうちょっと検索したら真面目に調べてる人が居た。</p>
+			<p><a href="http://d.hatena.ne.jp/trshugu/20121219/1355883637">http://d.hatena.ne.jp/trshugu/20121219/1355883637</a></p>
+			<p>なるほど。速くなると思ってる人が居て、それが広まってしまって、さらに理由も忘れられて習慣化したのかな。</p>
+			<p class="sectionfooter"><a href="http://d.hatena.ne.jp/n314/20140225/1393316807">Permalink</a> | <a href="http://d.hatena.ne.jp/n314/20140225/1393316807#c">コメント(2)</a> | <a href="http://d.hatena.ne.jp/n314/20140225/1393316807#tb">トラックバック(0)</a> | 17:26 <a href="http://b.hatena.ne.jp/entry/http://d.hatena.ne.jp/n314/20140225/1393316807" class="bookmark-icon"><img src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/b_entry_de.gif" border="0" title=" SQLテーブル名の別名、命名規則、T1とかを含むブックマーク" alt=" SQLテーブル名の別名、命名規則、T1とかを含むブックマーク" width="16" height="12" class="icon"></a> <a href="http://b.hatena.ne.jp/entry/http://d.hatena.ne.jp/n314/20140225/1393316807" class="bookmark-count"><img src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/1393316807" title="はてなブックマーク -  SQLテーブル名の別名、命名規則、T1とか" alt=""></a></p>
+
+		</div>
+
+<div id="google_afc_user_1" class="section google_afc_user" data-google-query-id="CPCG6J_kk90CFUESvQodjzMOvA"><div id="google_ads_iframe_/4374287/diary_user_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/4374287/diary_user_0" title="3rd party ad content" name="google_ads_iframe_/4374287/diary_user_0" width="336" height="280" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; vertical-align: bottom;" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/saved_resource.html"></iframe></div></div>
+
+<script src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/valve.js.ダウンロード" async=""></script>
+<script>
+  valve = window.valve || [];
+  valve.push(function(v) {
+    v.config({
+      service: 'diary',
+      textSelector: 'div.body',
+    });
+  });
+</script>
+
+<script>
+  valve = window.valve || [];
+  valve.push(function(v) {
+    var parentRect = document.getElementById('google_afc_user_1').parentNode.getBoundingClientRect();
+    v.defineDFPSlot({
+        unit  :'/4374287/diary_user',
+        sizes : { max: [parentRect.width, 280] },
+        slotId: 'google_afc_user_1',
+    });
+  });
+</script>
+
+<!-- google_ad_section_end -->
+<!-- rakuten_ad_target_end -->
+
+
+</div>
+
+<form id="comment-form" method="post" action="http://d.hatena.ne.jp/n314/comment#c" class="comment">
+<input type="hidden" name="mode" value="enter">
+<input type="hidden" name="rkm" value="">
+<input type="hidden" name="date" value="2014-02-25">
+<div class="comment">
+  <div class="caption"><a name="c">コメント一覧</a></div>
+  <div class="commentshort">
+    
+    
+      <p>
+        
+                <a name="c119915934"></a><span class="commentator">
+          <a href="http://d.hatena.ne.jp/trshugu/" class="hatena-id-icon"><img src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/profile_s.gif" class="hatena-id-icon" alt="trshugu" title="trshugu" height="16" width="16">trshugu</a>
+          
+        </span>
+        <span class="timestamp"><a name="c1393340043" href="http://d.hatena.ne.jp/n314/20140225/1393316807#c1393340043">2014/02/25 23:54</a></span>
+        <span class="commentbody">トラックバックからきました。<br>最後の例はなかなかキてますね・・・<br><br>とはいえ「こっちのほうが読みやすい」って言われると速度とか効率とか関係なくなっちゃうから厄介ですね。<br>連番からテーブル名を類推したり、umsをUSER_MST(USER_MASTER?)と頭の中で変換するのは私は苦手なんですが、それは私が劣った旧人類だからかもしれません。</span>
+
+      </p>
+    
+      <p>
+        
+                <a name="c119916154"></a><span class="commentator">
+          <a href="http://d.hatena.ne.jp/n314/" class="hatena-id-icon"><img src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/profile_s(1).gif" class="hatena-id-icon" alt="n314" title="n314" height="16" width="16">n314</a>
+          
+        </span>
+        <span class="timestamp"><a name="c1393345840" href="http://d.hatena.ne.jp/n314/20140225/1393316807#c1393345840">2014/02/26 01:30</a></span>
+        <span class="commentbody">解説記事を読んですっきりして助かりました。<br>広まった理由は一応はあったんですね。<br>プログラムでは変数名を省略しないというのが（少なくともWeb上では）浸透してきているのに、SQLでは全然違った世界になっていたんですねぇ。<br>まぁ自分の見た上記のようなSQLを書いているソースはプログラムの変数もアレでしたが…。</span>
+
+      </p>
+    
+
+    <a name="error-message"></a>
+    <p class="message" style="display: none; padding: 3px;"></p>
+
+    
+
+    
+            
+    <p class="commentform">
+      <span class="commentator">
+        <span class="usermailconfirm"><input name="usermail" size="1" value=""><input name="userurl" size="1" value="">スパム対策のためのダミーです。もし見えても何も入力しないでください<br></span>
+        <span class="username">
+        <img src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/guest_icon.gif" class="hatena-id-icon" alt="ゲスト" title="ゲスト" height="16" width="16">
+        <input type="hidden" name="section" value="1393316807">
+        
+          <input id="comment-username" name="username" size="15" disabled="" style="color: rgb(170, 170, 170);">
+        
+        </span>
+        
+          <span class="usermail"><img src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/icon-usermail.gif" style="vertical-align:middle;margin-right:3px;"><input id="comment-usermail" name="useremail" size="15" value="" disabled="" style="color: rgb(170, 170, 170);"></span>
+          <span class="userurl"><img src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/icon-userurl.gif" style="vertical-align:middle;margin-right:3px;"><input id="comment-userurl" name="useruri" size="15" value="" disabled="" style="color: rgb(170, 170, 170);"></span>
+        
+      </span>
+<br>
+      
+        <span class="commentmessage">コメントを書くには、<a href="http://www.hatena.ne.jp/accept?config_key=qsFgzKND1gHqaFe072QqqJWSozflQJdsY2QTSeYe&amp;location=http%3A%2F%2Fd.hatena.ne.jp%2Fn314%2F20140225%2F1393316807%3Ftimestamp%3D1535597976">なぞなぞ認証に回答</a>する必要があります。</span>
+      <!-- NOT_VERIFIED_COMMENT_AUTH -->
+      <textarea id="comment-textarea" name="body" value="" cols="60" rows="3" disabled="" style="color: rgb(170, 170, 170);"></textarea><br>
+      
+      <span class="comment-submit"><input type="submit" id="comment-form-button" value="投稿" disabled=""></span>
+    </p>
+
+      <script type="text/javascript" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/diary_comment_edit_form.js.ダウンロード"></script>
+    
+
+  </div>
+</div>
+
+</form>
+
+
+
+
+
+  
+  <div class="refererlist">
+    <div class="caption">
+      <a name="tb">トラックバック</a> - http://d.hatena.ne.jp/n314/20140225/1393316807
+    </div>
+    
+  </div>
+  
+  
+  
+  <div id="diary-pc-trackback-rectangle" style="margin-bottom: 15px;" data-google-query-id="CPGG6J_kk90CFUESvQodjzMOvA"><div id="google_ads_iframe_/4374287/diary_user_track_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/4374287/diary_user_track_0" title="3rd party ad content" name="google_ads_iframe_/4374287/diary_user_track_0" width="336" height="280" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; vertical-align: bottom;" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/saved_resource(1).html"></iframe></div></div>
+  <script src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/valve.js.ダウンロード" async=""></script>
+  <script>
+    valve = window.valve || [];
+    valve.push(function(v) {
+      v.config({
+        service: 'diary',
+        textSelector: 'div.body',
+        
+      });
+      var parentRect = document.getElementById('diary-pc-trackback-rectangle').parentNode.getBoundingClientRect();
+      v.defineDFPSlot({
+          unit  :'/4374287/diary_user_track',
+          sizes : { max: [ parentRect.width, 280 ] },
+          slotId: 'diary-pc-trackback-rectangle',
+      });
+      v.sealDFPSlots();
+    });
+  </script>
+  <script id="valve-dmp" data-service="diary" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/dmp.js.ダウンロード" async=""></script>
+  
+
+
+
+
+
+    <div class="refererlist">
+      <div class="caption">リンク元</div>
+      <ul>
+          <li>5188 <a href="https://www.google.co.jp/" rel="nofollow">https://www.google.co.jp/</a></li>
+          <li>768 <a href="http://www.google.co.jp/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;ved=0CCcQFjAA&amp;url=http%3A%2F%2Fd.hatena.ne.jp%2Fn314%2F20110815%2F1313384712&amp;ei=KV8MU9zSKMmmkgWukIDoBA&amp;usg=AFQjCNHsGxF0z17DYIlPtr_h-3mi3OJeRA&amp;sig2=GZKaX6bNOv-oP6cxbWyHuQ&amp;bvm=bv.61725948,d.dG" rel="nofollow">http://www.google.co.jp/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;ved=0CCcQFjAA&amp;url=http://d.hatena.ne.jp/n314/20110815/1313384712&amp;ei=KV8MU9zSKMmmkgWukIDoBA&amp;usg=AFQjCNHsGxF0z17DYIlPtr_h-3mi3OJeRA&amp;sig2=GZKaX6bNOv-oP6cxbWyHuQ&amp;bvm=bv.61725948,d.dG</a></li>
+          <li>330 <a href="http://www.google.co.jp/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=2&amp;ved=0CCwQFjAB&amp;url=http%3A%2F%2Fd.hatena.ne.jp%2Fn314%2F20101015%2F1287126717&amp;ei=HmEMU7mLNYPGkAWOtYHIAQ&amp;usg=AFQjCNGnfWWKtNg3yYnu3Shdl2LLqXSVOw&amp;bvm=bv.61725948,d.dGI" rel="nofollow">http://www.google.co.jp/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=2&amp;ved=0CCwQFjAB&amp;url=http://d.hatena.ne.jp/n314/20101015/1287126717&amp;ei=HmEMU7mLNYPGkAWOtYHIAQ&amp;usg=AFQjCNGnfWWKtNg3yYnu3Shdl2LLqXSVOw&amp;bvm=bv.61725948,d.dGI</a></li>
+          <li>285 <a href="http://www.google.co.jp/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;frm=1&amp;source=web&amp;cd=1&amp;ved=0CCcQFjAA&amp;url=http%3A%2F%2Fd.hatena.ne.jp%2Fn314%2F20070413%2F1176463422&amp;ei=CFYMU9uHIYTlkgWWk4HgDQ&amp;usg=AFQjCNEC_NxNLldRkJQOEkPYyt8Vbzt13g&amp;bvm=bv.61725948,d.dGI" rel="nofollow">http://www.google.co.jp/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;frm=1&amp;source=web&amp;cd=1&amp;ved=0CCcQFjAA&amp;url=http://d.hatena.ne.jp/n314/20070413/1176463422&amp;ei=CFYMU9uHIYTlkgWWk4HgDQ&amp;usg=AFQjCNEC_NxNLldRkJQOEkPYyt8Vbzt13g&amp;bvm=bv.61725948,d.dGI</a></li>
+          <li>269 <a href="http://www.google.co.jp/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=3&amp;ved=0CDUQFjAC&amp;url=http%3A%2F%2Fd.hatena.ne.jp%2Fn314%2F20100624%2F1277366395&amp;ei=L2AMU92aFsuOkgW1jIDoCQ&amp;usg=AFQjCNGXaQkujtM9osd4Bnb-ceYYc9asig&amp;bvm=bv.61725948,d.dGI" rel="nofollow">http://www.google.co.jp/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=3&amp;ved=0CDUQFjAC&amp;url=http://d.hatena.ne.jp/n314/20100624/1277366395&amp;ei=L2AMU92aFsuOkgW1jIDoCQ&amp;usg=AFQjCNGXaQkujtM9osd4Bnb-ceYYc9asig&amp;bvm=bv.61725948,d.dGI</a></li>
+          <li>244 <a href="https://www.google.co.jp/" rel="nofollow">https://www.google.co.jp</a></li>
+          <li>229 <a href="http://www.google.co.jp/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=4&amp;ved=0CDoQFjAD&amp;url=http%3A%2F%2Fd.hatena.ne.jp%2Fn314%2F%3Fof%3D147&amp;ei=GVoMU9H9BcOhlQXmy4CwCA&amp;usg=AFQjCNGg5sOvopJk-wRSb2z--5JZbpk5YQ&amp;bvm=bv.61725948,d.dGI" rel="nofollow">http://www.google.co.jp/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=4&amp;ved=0CDoQFjAD&amp;url=http://d.hatena.ne.jp/n314/?of=147&amp;ei=GVoMU9H9BcOhlQXmy4CwCA&amp;usg=AFQjCNGg5sOvopJk-wRSb2z--5JZbpk5YQ&amp;bvm=bv.61725948,d.dGI</a></li>
+          <li>199 <a href="http://www.google.co.jp/url?url=http://d.hatena.ne.jp/n314/20140225/1393316807&amp;rct=j&amp;frm=1&amp;q=&amp;esrc=s&amp;sa=U&amp;ei=WV5LU_edD8L88QXDn4CQCA&amp;ved=0CCEQFjAA&amp;usg=AFQjCNEUwof2tCdwnxnDwnmMJkhjSwOW0Q" rel="nofollow">http://www.google.co.jp/url?url=http://d.hatena.ne.jp/n314/20140225/1393316807&amp;rct=j&amp;frm=1&amp;q=&amp;esrc=s&amp;sa=U&amp;ei=WV5LU_edD8L88QXDn4CQCA&amp;ved=0CCEQFjAA&amp;usg=AFQjCNEUwof2tCdwnxnDwnmMJkhjSwOW0Q</a></li>
+          <li>168 <a href="https://www.google.com/" rel="nofollow">https://www.google.com/</a></li>
+          <li>135 <a href="http://www.google.co.jp/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=5&amp;ved=0CEcQFjAE&amp;url=http%3A%2F%2Fd.hatena.ne.jp%2Fn314%2F20101102%2F1288691714&amp;ei=eWsMU-CoE8iekwXg44CwBw&amp;usg=AFQjCNEI6GFQTsi_kY2w_wRlqtqCluEugw&amp;sig2=tDIJX_8RENU7DQ-x1M_YaA&amp;bvm=bv.61725948,d.dG" rel="nofollow">http://www.google.co.jp/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=5&amp;ved=0CEcQFjAE&amp;url=http://d.hatena.ne.jp/n314/20101102/1288691714&amp;ei=eWsMU-CoE8iekwXg44CwBw&amp;usg=AFQjCNEI6GFQTsi_kY2w_wRlqtqCluEugw&amp;sig2=tDIJX_8RENU7DQ-x1M_YaA&amp;bvm=bv.61725948,d.dG</a></li>
+      </ul>
+      
+    </div>
+
+
+
+
+</div>
+
+
+
+</div>
+<div class="calendar" id="pager-bottom">
+  <a rel="prev" href="http://d.hatena.ne.jp/n314/20140109/1389236577" class="prev">&lt;Docker周辺のような最近の仮想化...</a><img src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/icon-quickpager.gif" style="vertical-align: middle; margin-left: 3px; cursor: pointer;">&nbsp;<span class="delimiter">|</span>&nbsp;<a rel="next" href="http://d.hatena.ne.jp/n314/20140305/1394035048" class="next">Bitcoinについて&gt;</a>
+</div>
+</div>
+<div class="sidebar">
+
+	<div class="hatena-module hatena-module-profile">
+  <div class="hatena-moduletitle">プロフィール</div>
+  <div class="hatena-modulebody">
+    <div class="hatena-profile">
+      <p class="hatena-profile-image"><a href="http://d.hatena.ne.jp/n314/about"><img src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/user_p.gif" alt="n314"></a></p>
+      <p class="hatena-profile-id"><a href="http://d.hatena.ne.jp/n314/about">n314</a></p>
+      <p class="hatena-profile-body">やったことのメモ書きなど</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- -->
+
+	<div class="hatena-module">
+<div class="hatena-moduletitle">リンク</div>
+<div class="hatena-modulebody">
+  <ul>
+    <li>
+<a rel="author" href="https://profiles.google.com/100066112940112357577">
+  <img width="16" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/gplus-16.png" height="16">
+</a>
+    </li>
+<!-- -->
+  </ul>
+
+<!-- -->
+
+  <br>
+  <ul>
+    <li><a href="http://d.hatena.ne.jp/n314/19700101/1181892374">EmacsのPHP5用アウトラインモード</a></li>
+  </ul>
+
+<!-- -->
+</div>
+</div>
+
+<!-- -->
+
+	<div class="hatena-module hatena-module-searchform">
+<div class="hatena-moduletitle">日記の検索</div>
+<div class="hatena-modulebody">
+<form method="GET" action="http://d.hatena.ne.jp/n314/searchdiary" class="hatena-searchform"><input type="text" name="word" class="hatena-searchform searchform-word" value=""><input type="submit" name=".submit" value="検索" class="hatena-searchform searchform-button"><br><label class="searchform-label-detail"><input type="radio" name="type" value="detail" checked="checked" class="searchform-radio">詳細</label> <label class="searchform-label-list"><input type="radio" name="type" value="list" class="searchform-radio">一覧</label></form>
+
+</div>
+</div>
+
+	<div class="hatena-module hatena-module-calendar2">
+<div class="hatena-moduletitle">カレンダー</div>
+<div class="hatena-modulebody">
+<table class="calendar" summary="calendar">
+<tbody><tr>
+<td class="calendar-prev-month" colspan="2"><a href="http://d.hatena.ne.jp/n314/201401" title="201401" rel="nofollow">&lt;&lt;</a></td>
+<td class="calendar-current-month" colspan="3"><a href="http://d.hatena.ne.jp/n314/archive/201402" rel="nofollow">2014/02</a></td>
+<td class="calendar-next-month" colspan="2"><a href="http://d.hatena.ne.jp/n314/201403" title="201403" rel="nofollow">&gt;&gt;</a></td>
+</tr>
+<tr>
+<td class="calendar-sunday">日</td>
+<td class="calendar-weekday">月</td>
+<td class="calendar-weekday">火</td>
+<td class="calendar-weekday">水</td>
+<td class="calendar-weekday">木</td>
+<td class="calendar-weekday">金</td>
+<td class="calendar-saturday">土</td>
+</tr>
+	<tr>
+		<td class="calendar-day"></td>
+		<td class="calendar-day"></td>
+		<td class="calendar-day"></td>
+		<td class="calendar-day"></td>
+		<td class="calendar-day"></td>
+		<td class="calendar-day"></td>
+		<td class="calendar-day">1</td>
+	</tr>
+	<tr>
+		<td class="calendar-day">2</td>
+		<td class="calendar-day">3</td>
+		<td class="calendar-day">4</td>
+		<td class="calendar-day">5</td>
+		<td class="calendar-day">6</td>
+		<td class="calendar-day">7</td>
+		<td class="calendar-day">8</td>
+	</tr>
+	<tr>
+		<td class="calendar-day">9</td>
+		<td class="calendar-day">10</td>
+		<td class="calendar-day">11</td>
+		<td class="calendar-day">12</td>
+		<td class="calendar-day">13</td>
+		<td class="calendar-day">14</td>
+		<td class="calendar-day">15</td>
+	</tr>
+	<tr>
+		<td class="calendar-day">16</td>
+		<td class="calendar-day">17</td>
+		<td class="calendar-day">18</td>
+		<td class="calendar-day">19</td>
+		<td class="calendar-day">20</td>
+		<td class="calendar-day">21</td>
+		<td class="calendar-day">22</td>
+	</tr>
+	<tr>
+		<td class="calendar-day">23</td>
+		<td class="calendar-day">24</td>
+		<td class="calendar-day day-selected"><a href="http://d.hatena.ne.jp/n314/20140225" title="25">25</a></td>
+		<td class="calendar-day">26</td>
+		<td class="calendar-day">27</td>
+		<td class="calendar-day">28</td>
+		<td class="calendar-day"></td>
+	</tr>
+</tbody></table>
+	</div>
+</div>
+
+
+
+	<div class="hatena-module hatena-module-section">
+<div class="hatena-moduletitle"><a href="http://d.hatena.ne.jp/n314/archive">最新タイトル</a></div>
+<div class="hatena-modulebody">
+<ul class="hatena-section">
+<li><a href="http://d.hatena.ne.jp/n314/20180828/1535449506">CSRFのトークンはワンタイム？</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/20180825/1535191585">[Docker] Debian stretch に Kubernetes をインストール</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/20180820/1534731160">[Docker] Debian stretch で docker-machine</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/20180814/1534227121">Debian stretch で tsung</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/20180629/1530244277">[Chrome] Chrome拡張のトップレベルでawaitしたいけど出来ないっぽい</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/20180628/1530184156">[Redmine][Chrome] 現在見ているページに関連するRedmineのチケット一覧を表示するChrome拡張機能「Related Redmine」</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/20180627/1530064580">[Chrome] extension の Event Page を手動で無効にする</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/20180626/1529978906">[Redmine] Debian9にRedmineを入れるメモ</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/20180515/1526368954">[Git] git-flowって結構使われてるんだなとブコメ見て思った</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/20180407/1523086348">[Mac] MacBook Pro 2017 15inch の Touch Bar が壊れた</a></li>
+</ul>
+</div>
+</div>
+
+
+<!-- -->
+
+	<div class="hatena-module hatena-module-urllog">
+<div class="hatena-moduletitle">最近のURL</div>
+<div class="hatena-modulebody">
+<ul class="hatena-urllog">
+<li><a href="http://d.hatena.ne.jp/n314/20180828" title="高木浩光＠自宅の日記 - CSRF対策に「ワンタイムトークン」方式を推奨しない理由, hiddenパラメタは漏れやすいのか？">高木浩光＠自宅の日記 - CSRF対策に「ワンタイムトークン」方式を推奨しない理由, hiddenパラメタは漏れやすいのか？</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/20180825" title="302 Found">302 Found</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/20180825" title=" Debian stretch で docker-machine - より良い環境を求めて"> Debian stretch で docker-machine - より良い環境を求めて</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/20180628" title="Redmineにも「いいね」機能が欲しい: プログラマの思索">Redmineにも「いいね」機能が欲しい: プログラマの思索</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/20180626" title=" Redmineの少機能設定 - より良い環境を求めて"> Redmineの少機能設定 - より良い環境を求めて</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/20180515" title=" Web開発時のGitでのゆるいワークフロー - より良い環境を求めて"> Web開発時のGitでのゆるいワークフロー - より良い環境を求めて</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/20180515" title="no title">no title</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/20180515" title="no title">no title</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/20180515" title="no title">no title</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/20170907" title=" 毎日差分バックアップ - より良い環境を求めて"> 毎日差分バックアップ - より良い環境を求めて</a></li>
+</ul>
+</div>
+</div>
+
+
+	<div class="hatena-module">
+<div class="hatena-moduletitle">PV</div>
+<div class="hatena-modulebody">
+  <span class="hatena-counter">1696724</span>
+</div>
+</div>
+
+	<div class="hatena-module hatena-module-sectioncategory">
+<div class="hatena-moduletitle">カテゴリー</div>
+<div class="hatena-modulebody">
+<ul class="hatena-sectioncategory">
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5B%BB%A8%B5%AD%5D">雑記</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5B____________________%5D">____________________</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5BPHP%5D">PHP</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5BLaiz%5D">Laiz</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5B%A5%D5%A5%EC%A1%BC%A5%E0%A5%EF%A1%BC%A5%AF%5D">フレームワーク</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5B____________________%5D">____________________</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5BDebian%5D">Debian</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5BHTML_Template_Flexy%5D">HTML_Template_Flexy</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5BApache%5D">Apache</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5BHaskell%5D">Haskell</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5Btrac%5D">trac</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5B%A5%B5%A1%BC%A5%D0%5D">サーバ</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5Bkernel%5D">kernel</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5B%A5%C7%A5%B6%A5%A4%A5%F3%A5%D1%A5%BF%A1%BC%A5%F3%5D">デザインパターン</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5Bcygwin%5D">cygwin</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5Btex%5D">tex</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5Bajax%5D">ajax</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5BJavaScript%5D">JavaScript</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5Bprototype%2Ejs%5D">prototype.js</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5Bxen%5D">xen</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5BCSS%5D">CSS</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5BSQL%5D">SQL</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5Bpostgresql%5D">postgresql</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5Bpgpool%5D">pgpool</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5Bfilesystem%5D">filesystem</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5BLVM%5D">LVM</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5Bdbmail%5D">dbmail</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5B%A5%BF%A5%B9%A5%AF%5D">タスク</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5B%B8%A6%B5%E6%5D">研究</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5BFiST%5D">FiST</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5Bsubversion%5D">subversion</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5B%A4%A2%A4%C8%A4%C7%A4%E4%A4%EB%5D">あとでやる</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5Bruby%5D">ruby</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5BObjective%2DC%5D">Objective-C</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5BBazaar%5D">Bazaar</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5Bemacs%5D">emacs</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5BGnuCash%5D">GnuCash</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5BGit%5D">Git</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5BRedmine%5D">Redmine</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5B%A4%A2%A4%C8%A4%C7%C0%E4%C2%D0%A4%CB%A4%E4%A4%EB%5D">あとで絶対にやる</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5BJava%5D">Java</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5BGWT%5D">GWT</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5BAndroid%5D">Android</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5BWicket%5D">Wicket</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5BSlim3%5D">Slim3</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5BScala%5D">Scala</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5BLift%5D">Lift</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5B%A5%B5%A1%BC%A5%D0%A1%BC%5D">サーバー</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5BGCL%5D">GCL</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5BAgile%5D">Agile</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5BLinux%5D">Linux</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5BZF2%5D">ZF2</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5BAWS%5D">AWS</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5BC%5D">C</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5BDebina%5D">Debina</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5BMac%5D">Mac</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5BChrome%5D">Chrome</a></li>
+<li><a href="http://d.hatena.ne.jp/n314/searchdiary?word=%2A%5BDocker%5D">Docker</a></li>
+</ul>
+</div>
+</div>
+
+
+<!-- -->
+
+
+<div class="hatena-moduletitle">あわせて</div>
+<div class="hatena-modulebody">
+<a href="http://awasete.com/show.phtml?u=http%3A%2F%2Fd.hatena.ne.jp%2Fn314%2F"><img width="125" alt="あわせて読みたいブログパーツ" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/image.phtml" height="125" border="0"></a>
+</div>
+</div>
+
+</div>
+
+
+
+
+
+  <script>
+    valve = window.valve || [];
+    valve.push(function(v) {
+        v.sealDFPSlots();
+    });
+  </script>
+  <script id="valve-dmp" data-service="diary" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/dmp.js.ダウンロード" async=""></script>
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  var days = document.getElementById('days');
+  if (days && days.innerHTML.indexOf("今週のお題") != -1) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'odai', 3]);
+  }
+
+  if (days && /\u4eca\u9031\u306e\u304a\u984c/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'odai', 3]);
+  }
+
+  if (days && /ScanSnap\u7279\u5225\u30e2\u30c7\u30eb\u30fb\u30d6\u30ed\u30b0\u3067\u5ba3\u4f1d\u30b3\u30f3\u30c6\u30b9\u30c8/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'scansnap1401bcn4ssacro', 3]);
+  }
+
+  if (days && /\u7279\u5225\u304a\u984c\u300c\u9752\u6625\u306e\u4e00\u518a\u300d/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'pdmagazine', 3]);
+  }
+
+  if (days && /\u7279\u5225\u304a\u984c\u300c\u5fc3\u6e29\u307e\u308b\u30de\u30ca\u30fc\u306e\u8a71\u300d/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'jrwest', 3]);
+  }
+
+  if (days && /Presso\u4f7f\u3063\u3066\u307f\u305f/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'presso1404', 3]);
+  }
+
+  if (days && /CodeIQ\u306e\u554f\u984c\u30fb\u30d1\u30ba\u30eb\u3092\u8003\u3048\u3088\u3046\uff01/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'codeiq_matsuri2013_2_2', 3]);
+  }
+
+  if (days && /2013\u5e74\u306b\u3084\u308a\u305f\u3044\u3053\u3068/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'newyear2013', 3]);
+  }
+
+  if (days && /2012\u5e74\u30dc\u30c4\u738b\u6c7a\u5b9a\u6226\uff01\u30d5\u30eb\u30bf\u88fd\u83d3\ud7\u306f\u3066\u306a\u30d6\u30ed\u30b0\u304a\u984c\u30ad\u30e3\u30f3\u30da\u30fc\u30f3/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'furuta', 3]);
+  }
+
+  if (days && /\u300c\u884c\u3063\u3066\u307f\u305f\u3044\u304a\u5e97\u30fb\u30ec\u30b9\u30c8\u30e9\u30f3\u300d/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'gnavi201512', 3]);
+  }
+
+  if (days && /\u6d77\u5916\u30c9\u30e9\u30de\u300e\u30e9\u30a4\u30fb\u30c8\u30a5\u30fb\u30df\u30fc \u5618\u306e\u77ac\u9593\u300f\u89b3\u305f\u3044\uff01|\u300e\u30e9\u30a4\u30fb\u30c8\u30a5\u30fb\u30df\u30fc \u5618\u306e\u77ac\u9593\u300f\u7b2c1\u8a71\u306e\u611f\u60f3\u3092\u6559\u3048\u3066\u304f\u3060\u3055\u3044|\u4eca\u3060\u304b\u3089\u8a00\u3048\u308b\u300c\u5618\u3092\u3064\u3044\u3066\u3057\u307e\u3063\u305f\u30a8\u30d4\u30bd\u30fc\u30c9\u300d\u3092\u6559\u3048\u3066\u304f\u3060\u3055\u3044|\u3060\u307e\u3055\u308c\u305f\u3051\u3069\u3001\u8a31\u305b\u3066\u3057\u307e\u3063\u305f\u5618\u3092\u6559\u3048\u3066\u304f\u3060\u3055\u3044/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'lietome', 3]);
+  }
+
+  if (days && /\u30de\u30a4\u30d9\u30b9\u30c8\u30bd\u30f3\u30b02013/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'mybestsong2013', 3]);
+  }
+
+  if (days && /\u7d0d\u6dbc\uff01\u307b\u3093\u3068\u306b\u3042\u3063\u305f\u6016\u3044\u30b3\u30fc\u30c9/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'codeiq_matsuri2013_2_1', 3]);
+  }
+
+  if (days && /\u590f\u306e\u5199\u771f2013/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'photocon2013summer', 3]);
+  }
+
+  if (days && /Windows\/Office\u6b66\u52c7\u4f1d/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'WindowsDevOpen', 3]);
+  }
+
+  if (days && /\u300c\u79c1\u306f\u3007\u3007\u738b\uff01\u300d\u30d0\u30a4\u30af\u738b\ud7\u306f\u3066\u306a\u30d6\u30ed\u30b0\u304a\u984c\u30ad\u30e3\u30f3\u30da\u30fc\u30f3/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'bike-o', 3]);
+  }
+
+  if (days && /Visa\u30d7\u30ea\u30da\u30a4\u30c9\u300cV\u30d7\u30ea\u30ab\u300d\u8a66\u3057\u305f\u3044\uff01|Visa\u30d7\u30ea\u30da\u30a4\u30c9\u300cV\u30d7\u30ea\u30ab\u300d\u3001\u81ea\u5206\u306a\u3089\u3053\u3046\u4f7f\u3046\uff01|V\u30d7\u30ea\u30ab\u304c1\u4e07\u5186\u5206\u3042\u3063\u305f\u3089\u3001\u30cd\u30c3\u30c8\u3067\u4f55\u3092\u8cb7\u3044\u307e\u3059\u304b\uff1f/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'vpreca', 3]);
+  }
+
+  if (days && /\u30a2\u30a4\u30c7\u30e0 \u30a8\u30f3\u30b8\u30cb\u30a2\u30ad\u30e3\u30ea\u30a2Hacks\u5171\u6709\u30d7\u30ed\u30b8\u30a7\u30af\u30c8|\u30a8\u30f3\u30b8\u30cb\u30a2\u3068\u3057\u3066\u306e\u3001\u3068\u3063\u3066\u304a\u304d\u306e\u30ad\u30e3\u30ea\u30a2Hacks\u3092\u6559\u3048\u3066\u304f\u3060\u3055\u3044|\u3042\u306a\u305f\u304c\u30a8\u30f3\u30b8\u30cb\u30a2\u8ee2\u8077\u30b5\u30a4\u30c8\u3092\u4f5c\u308b\u306a\u3089\u3001\u3069\u3093\u306a\u30b5\u30a4\u30c8\u306b\u3057\u307e\u3059\u304b\uff1f|5\u5e74\u5f8c\u306e\u300c\u30a8\u30f3\u30b8\u30cb\u30a2\u306e\u50cd\u304d\u65b9\u300d\u306f\u3001\u3069\u3046\u5909\u308f\u3063\u3066\u3044\u3066\u307b\u3057\u3044\u3067\u3059\u304b\uff1f/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'aidemcareer', 3]);
+  }
+
+  if (days && /\u306f\u3066\u306a\u30c0\u30a4\u30a2\u30ea\u30fc10\u5468\u5e74\u304a\u3081\u3067\u3068\u3046\uff01/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'hatenadiary10th', 3]);
+  }
+
+  if (days && /\u3086\u304f\u5e74\u304f\u308b\u5e742015/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', '2014-2015campaign', 3]);
+  }
+
+  if (days && /\u8aad\u307f\u653e\u984c\u3067\u30b3\u30b9\u30d1\u3088\u3057\uff01\u96fb\u5b50\u66f8\u7c4d\u30a2\u30d7\u30eayomel.jp\u30ad\u30e3\u30f3\u30da\u30fc\u30f3/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'yomel', 3]);
+  }
+
+  if (days && /\u30bb\u30c4\u30e4\u30af\u30a8\u30b9\u30c8/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'setsuyaquest', 3]);
+  }
+
+  if (days && /\u79cb\u306e\u591c\u9577\u306f\u8aad\u66f8\u3068\u30d6\u30ed\u30b0/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'bookreview2013fall', 3]);
+  }
+
+  if (days && /\u7279\u5225\u304a\u984c\u300c\u82b8\u8853\u306e\u79cb\u300d/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'caillebotte', 3]);
+  }
+
+  if (days && /\u30a8\u30a4\u30d7\u30ea\u30eb\u30d5\u30fc\u30eb2014/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'aprilfool2014', 3]);
+  }
+
+
+  _gaq.push(['c._setAccount', 'UA-2193514-1'], ['c._trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<!-- CG:1,CH:1,ICG:4,ICH:2,T:b -->
+
+
+<script type="text/javascript" id="">(function(a){var b=a.createElement("iframe"),c="https:"==a.location.protocol?"https://":"http://";b.src=c+"cf.im-apps.net/imid/beacon.html?sl\x3d3";b.style.display="none";a.body.appendChild(b)})(document);</script><iframe src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/beacon.html" style="display: none;"></iframe><script type="text/javascript" id="" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/pageview.js.ダウンロード"></script><script type="text/javascript" id="">!function(c,d,b,f){if(!d[c]){d[c]=function(){d[c].instances.push(this);this.init&&this.init()};d[c].instances=[];for(var a=0,e=["td_send","td_send_imid"];a<e.length;a++)d[c].prototype[e[a]]=function(a){return function(){this["tmp_"+a]=this["tmp_"+a]||[];this["tmp_"+a].push(Array.prototype.slice.call(arguments))}}(e[a]);a=b.getElementsByTagName(f)[0];b=b.createElement(f);b.async=!0;b.src="//cf.im-apps.net/sdk/tdim-1.1.0.min.js";a.parentNode.insertBefore(b,a)}}("TDIM",window,document,"script");
+var tdimjs=new TDIM;tdimjs.debug=!1;tdimjs.td_host="in.ybi.idcfcloud.net";tdimjs.td_api_key="312/b4f0042d7c26b4f44d2561bbb5c396349b54b10e";tdimjs.td_db="cosmi_6604";tdimjs.im_api_token="TlOjMPj_m54xiIkb8Mzm7Q";tdimjs.td_send_imid("pageviews",{custom_data:"HTML"});</script><script type="text/javascript" charset="UTF-8">!function(t,e){if(void 0===e[t]){e[t]=function(){e[t].clients.push(this),this._init=[Array.prototype.slice.call(arguments)]},e[t].clients=[];for(var r=function(t){return function(){return this["_"+t]=this["_"+t]||[],this["_"+t].push(Array.prototype.slice.call(arguments)),this}},s=["addRecord","set","trackEvent","trackPageview","trackClicks","ready"],a=0;a<s.length;a++){var c=s[a];e[t].prototype[c]=r(c)}var n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=("https:"===document.location.protocol?"https:":"http:")+"//cdn.treasuredata.com/sdk/1.7.2/td.min.js";var i=document.getElementsByTagName("script")[0];i.parentNode.insertBefore(n,i)}}("Treasure",this);</script><script type="text/javascript" charset="UTF-8" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/aid"></script><script type="text/javascript" charset="UTF-8">!function(t,e){if(void 0===e[t]){e[t]=function(){e[t].clients.push(this),this._init=[Array.prototype.slice.call(arguments)]},e[t].clients=[];for(var r=function(t){return function(){return this["_"+t]=this["_"+t]||[],this["_"+t].push(Array.prototype.slice.call(arguments)),this}},s=["addRecord","set","trackEvent","trackPageview","trackClicks","ready"],a=0;a<s.length;a++){var c=s[a];e[t].prototype[c]=r(c)}var n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=("https:"===document.location.protocol?"https:":"http:")+"//cdn.treasuredata.com/sdk/1.7.2/td.min.js";var i=document.getElementsByTagName("script")[0];i.parentNode.insertBefore(n,i)}}("Treasure",this);</script><script type="text/javascript" charset="UTF-8" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/aid"></script><iframe id="google_osd_static_frame_2616465062472" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;" src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/saved_resource(2).html"></iframe><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg==" width="1" height="1" border="0" class="bigmining_dmp_beacon" style="display: none;"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg==" width="1" height="1" border="0" class="bigmining_dmp_beacon" style="display: none;"><img src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/adsct" width="1" height="1" border="0" class="bigmining_dmp_beacon" style="display: none;"><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P5GX4M');</script><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg==" width="1" height="1" border="0" class="bigmining_dmp_beacon" style="display: none;"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg==" width="1" height="1" border="0" class="bigmining_dmp_beacon" style="display: none;"><img src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/adsct" width="1" height="1" border="0" class="bigmining_dmp_beacon" style="display: none;"><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P5GX4M');</script><div style="display: none; visibility: hidden;"><script type="text/javascript">!function(c,d,b,f){if(!d[c]){d[c]=function(){d[c].instances.push(this);this.init&&this.init()};d[c].instances=[];for(var a=0,e=["td_send","td_send_imid"];a<e.length;a++)d[c].prototype[e[a]]=function(a){return function(){this["tmp_"+a]=this["tmp_"+a]||[];this["tmp_"+a].push(Array.prototype.slice.call(arguments))}}(e[a]);a=b.getElementsByTagName(f)[0];b=b.createElement(f);b.async=!0;b.src="//cf.im-apps.net/sdk/tdim-0.11.2.js";a.parentNode.insertBefore(b,a)}}("TDIM",window,document,"script");var t=new TDIM;
+t.td_api_key="312/b4f0042d7c26b4f44d2561bbb5c396349b54b10e";t.td_db="cosmi_8045";t.im_api_token="omO0CDJd98sxiIkb8Mzm7Q";t.gtm_dl="dataLayer";t.td_send_imid("pageviews");</script></div><div style="display: none; visibility: hidden;">
+<script src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/oct.js.ダウンロード" type="text/javascript"></script>
+<script type="text/javascript">twttr.conversion.trackPid("nudt9",{tw_sale_amount:0,tw_order_quantity:0});</script>
+<noscript></noscript>
+</div><div style="display: none; visibility: hidden;">
+<script>!function(d,e,f,a,b,c){d.twq||(a=d.twq=function(){a.exe?a.exe.apply(a,arguments):a.queue.push(arguments)},a.version="1.1",a.queue=[],b=e.createElement(f),b.async=!0,b.src="//static.ads-twitter.com/uwt.js",c=e.getElementsByTagName(f)[0],c.parentNode.insertBefore(b,c))}(window,document,"script");twq("init","ny5vy");twq("track","PageView");</script>
+</div><div style="display: none; visibility: hidden;">
+<script>!function(b,e,f,g,a,c,d){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[],c=e.createElement(f),c.async=!0,c.src=g,d=e.getElementsByTagName(f)[0],d.parentNode.insertBefore(c,d))}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","1733466696949178");fbq("track","PageView");</script>
+<noscript></noscript>
+
+
+</div><script src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/adsct(1)" type="text/javascript"></script><script src="./SQLテーブル名の別名、命名規則、T1とか - より良い環境を求めて_files/adsct(2)" type="text/javascript"></script><div style="color: rgb(0, 0, 0); position: absolute; display: none; z-index: 10002; left: 0px; top: 0px; background-color: rgb(255, 255, 255); border: 0px; padding: 0px; text-align: center;"><div style="text-align: left; margin: 0px; padding: 0px;"></div></div></body></html>

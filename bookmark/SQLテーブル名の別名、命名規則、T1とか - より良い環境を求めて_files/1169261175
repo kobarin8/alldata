@@ -1,0 +1,878 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:og="http://ogp.me/ns#">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-jp">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<title>『俺的コーディングルールSQL編』によせて - DENKEN</title>
+<link rel="start" href="/" title="DENKEN">
+<link rel="help" href="/help" title="ヘルプ">
+<link rel="prev" href="/uesama99/20070119/1169201228" title="[本][目次]プログラミングMicros...">
+<link rel="next" href="/uesama99/20070203/1170502163" title="[社会]平均年齢40歳の会社で思う...">
+
+<link rel="stylesheet" href="http://d.st-hatena.com/statics/css/base.css?07618f388c0425a42ed1b087de443bcfa0a98a9d" type="text/css" media="all">
+
+<link rel="stylesheet" href="http://d.st-hatena.com/statics/theme/hatena-brown/hatena-brown.css?7d508c1badce2cbd3cd47b372a7bdc3e8f794141" type="text/css" media="all">
+
+
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://d.hatena.ne.jp/uesama99/rss">
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://d.hatena.ne.jp/uesama99/rss2">
+
+<link rel="meta" type="application/rdf+xml" title="FOAF" href="http://d.hatena.ne.jp/uesama99/foaf" />
+<link rel="search" type="application/opensearchdescription+xml" href="http://d.hatena.ne.jp/uesama99/opensearch/diary.xml" title="DENKEN内日記検索" />
+<link rel="search" type="application/opensearchdescription+xml" href="http://d.hatena.ne.jp/uesama99/opensearch/archive.xml" title="DENKEN内一覧検索" />
+
+
+
+<link rel="shortcut icon" href="http://d.hatena.ne.jp/images/br_favicon.ico">
+
+
+
+<link rel="canonical" href="http://d.hatena.ne.jp/uesama99/20070120/1169261175">
+
+
+<style type="text/css">
+<!-- 
+
+-->
+</style>
+
+
+<script type="text/javascript">if(/[\x3c\x3e\x22]/.test(location.hash))location.hash=location.hash.replace(/[\x3c\x3e\x22]/g,'');if(/[\x3c\x3e]/.test(document.referrer))location.href=location.href;</script>
+
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="『俺的コーディングルールSQL編』によせて - DENKEN">
+<meta property="og:url" content="http://d.hatena.ne.jp/uesama99/20070120/1169261175">
+<meta property="og:description" content="『俺的コーディングルール SQL編』に刺激を受けて 私のSQLの書き方を紹介します。 紹介されている書き方と..">
+<meta property="og:site_name" content="はてなダイアリー">
+
+
+<!--
+<rdf:RDF
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:foaf="http://xmlns.com/foaf/0.1/">
+<rdf:Description rdf:about="http://d.hatena.ne.jp/uesama99/20070120/1169261175">
+   <foaf:maker rdf:parseType="Resource">
+     <foaf:holdsAccount>
+       <foaf:OnlineAccount foaf:accountName="uesama99">
+         <foaf:accountServiceHomepage rdf:resource="http://www.hatena.ne.jp/" />
+       </foaf:OnlineAccount>
+     </foaf:holdsAccount>
+   </foaf:maker>
+</rdf:Description>
+</rdf:RDF>
+-->
+
+<link rel="alternate" media="handheld" type="text/html" href="http://d.hatena.ne.jp/uesama99/mobile?date=20070120&section=1169261175" />
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+<rdf:Description
+  rdf:about="http://d.hatena.ne.jp/uesama99/20070120/1169261175"
+  trackback:ping="http://d.hatena.ne.jp/uesama99/20070120/1169261175"
+  dc:title="[SQL][コーディング]『俺的コーディングルールSQL編』によせて"
+  dc:identifier="http://d.hatena.ne.jp/uesama99/20070120/1169261175" />
+</rdf:RDF>
+-->
+
+<script type="text/javascript" src="http://d.st-hatena.com/statics/js/MochiKit/1125/Base.js?2c8d7e8f6bc98e7d0cd1df6f57bf0eea2d59a909"></script>
+<script type="text/javascript" src="http://d.st-hatena.com/statics/js/MochiKit/1125/Iter.js?2c8d7e8f6bc98e7d0cd1df6f57bf0eea2d59a909"></script>
+<script type="text/javascript" src="http://d.st-hatena.com/statics/js/MochiKit/1125/DOM.js?2c8d7e8f6bc98e7d0cd1df6f57bf0eea2d59a909"></script>
+<script type="text/javascript" src="http://d.st-hatena.com/statics/js/MochiKit/1125/Style.js?2c8d7e8f6bc98e7d0cd1df6f57bf0eea2d59a909"></script>
+<script type="text/javascript" src="http://d.st-hatena.com/statics/js/MochiKit/1125/Signal.js?2c8d7e8f6bc98e7d0cd1df6f57bf0eea2d59a909"></script>
+<script type="text/javascript" src="http://d.st-hatena.com/statics/js/MochiKit/1125/Async.js?2c8d7e8f6bc98e7d0cd1df6f57bf0eea2d59a909"></script>
+<script type="text/javascript" src="http://d.st-hatena.com/statics/js/MochiKit/1125/Logging.js?2c8d7e8f6bc98e7d0cd1df6f57bf0eea2d59a909"></script>
+<script type="text/javascript" src="http://d.st-hatena.com/statics/js/BookmarkCommentViewer.js?2c8d7e8f6bc98e7d0cd1df6f57bf0eea2d59a909" charset="utf-8"></script>
+
+
+
+<meta name="twitter:card" content="summary">
+
+<meta name="twitter:site" content="@hatenadiary">
+
+
+
+<script type="text/javascript" src="http://s.hatena.ne.jp/js/HatenaStar.js"></script>
+<script type="text/javascript">
+Hatena.Star.SiteConfig = {
+  entryNodes: {
+    'div.section': {
+      uri: 'h3 a',
+      title: 'h3',
+      container: 'h3'
+    }
+  }
+};
+Hatena.Author  = new Hatena.User('uesama99');
+Hatena.DiaryName  = new Hatena.User('uesama99');
+
+</script>
+
+
+
+
+
+
+<script type="text/javascript" src="http://d.st-hatena.com/statics/js/quick_pager.js?2c8d7e8f6bc98e7d0cd1df6f57bf0eea2d59a909"></script>
+<script type="text/javascript" src="http://d.st-hatena.com/statics/js/diary_utils.js?2c8d7e8f6bc98e7d0cd1df6f57bf0eea2d59a909"></script>
+<script type="text/javascript" src="http://d.st-hatena.com/statics/js/max_width_fotolife.js?2d5c0a4915fdb8930122a506dbf154b9db674a3b"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="http://d.st-hatena.com/statics/js/jquery-1.4.2.min.js?2c8d7e8f6bc98e7d0cd1df6f57bf0eea2d59a909"></script>
+<script type="text/javascript">
+  jQuery.noConflict()(function($){
+    var j$ = jQuery;
+  });
+</script>
+
+
+
+
+</head>
+<body>
+
+  <script>Hatena.Diary.UaTrakingID = 'UA-46127385-6';</script>
+ 
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-58NPH6"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-58NPH6');</script>
+<!-- End Google Tag Manager -->
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.6&appId=189164841141201";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0" id="banner">
+<tr>
+<td bgcolor="#9E5C33" nowrap>
+<a href="http://www.hatena.ne.jp/"><img border="0" src="http://d.hatena.ne.jp/images/hatena_br.gif" width="104" height="40" alt="Hatena::"></a><a href="http://d.hatena.ne.jp/"><img border="0" src="http://d.hatena.ne.jp/images/diarybr.gif" width="60" height="40" alt="ブログ(Diary)"></a></td>
+<td valign="bottom" align="left" bgcolor="#9E5C33" width="60%" nowrap><form method="GET" action="/search" style="margin: 0;"><font color="#BA8163" size="2">&nbsp;&nbsp;<input type="text" name="word" value="" size="18" style="font-size: 8pt">&nbsp;<input type="hidden" name="name" value="uesama99"><input type="image" name="diary" alt="日記" src="http://d.hatena.ne.jp/images/search_diarybr.gif" align="top" style="width:34px;height:20px;border:0px">&nbsp;<input type="image" name="submit" alt="検索" src="http://d.hatena.ne.jp/images/searchbr.gif" align="top" style="width:34px;height:20px;border:0px"><br><img border="0" src="http://d.hatena.ne.jp/images/dot.gif" width="1" height="3" alt=""></font></form></td>
+<td align="right" bgcolor="#9E5C33"><a href="http://www.hatena.ne.jp/"><img border="0" src="http://d.hatena.ne.jp/images/hatenabr.gif" width="82" height="40" alt="はてな"></a></td>
+</tr>
+<tr>
+<td width="100%" bgcolor="#753919" colspan="3"><img border="0" src="http://d.hatena.ne.jp/images/dot.gif" width="1" height="1" alt=""></td>
+</tr>
+<tr>
+<td width="100%" bgColor="#ffffff" colspan="3">
+<div align="center">
+<center>
+<table cellSpacing="0" cellPadding="2" width="100%" border="0">
+<tbody>
+<tr>
+<td bgcolor="#BA8163" width="50%" nowrap><font color="#E0D0C4" size="2">&nbsp;ようこそゲストさん&nbsp;</font></td>
+<td bgcolor="#BA8163" nowrap align="center"><a href="http://d.hatena.ne.jp/uesama99/" style="text-decoration:none; font-weight:100;"><font size="2" color="#E0D0C4">ブログトップ</font></a></td>
+<td bgcolor="#BA8163" nowrap align="center"><a href="http://d.hatena.ne.jp/uesama99/archive" style="text-decoration:none; font-weight:100;"><font size="2" color="#E0D0C4">記事一覧</font></a></td>
+<td bgcolor="#BA8163" nowrap align="center"><a href="https://www.hatena.ne.jp/login?backurl=http%3A%2F%2Fd.hatena.ne.jp%2Fuesama99%2F20070120%2F1169261175&add_timestamp=1" style="text-decoration:none; font-weight:100;"><font size="2" color="#E0D0C4">ログイン</font></a></td><td bgcolor="#BA8163" nowrap align="center"><a href="https://www.hatena.ne.jp/register?location=http%3A%2F%2Fd.hatena.ne.jp%3Fvia%3D200186&amp;via=200186" style="text-decoration:none; font-weight:100;"><font size="2" color="#E0D0C4">無料ブログ開設</font></a></td>
+
+
+</tr>
+</tbody>
+</table>
+</center>
+</div>
+</td>
+</tr>
+<tr>
+<td width="100%" bgcolor="#753919" colspan="3"><img border="0" src="http://d.hatena.ne.jp/images/dot.gif" width="1" height="1" alt=""></td>
+</tr>
+</table>
+
+
+
+<h1><a href="http://d.hatena.ne.jp/uesama99/"><img src="http://cdn-ak.d.st-hatena.com/diary/uesama99/titleimg.gif" alt="DENKEN"></a> <a href="http://a.hatena.ne.jp/append?http://d.hatena.ne.jp/uesama99/"><img src="http://d.hatena.ne.jp/images/a_append_br.gif" title="このページをアンテナに追加" alt="このページをアンテナに追加" border="0" width="16" height="12" class="icon"></a> <a href="http://d.hatena.ne.jp/uesama99/rss"><img src="http://d.hatena.ne.jp/images/rss_br.gif" alt="RSSフィード" title="RSSフィード" border="0" width="24" height="12" class="icon"></a></h1>
+<div class="hatena-body">
+<div class="main">
+<div class="ad">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4438296558807254";
+google_alternate_ad_url = "http://d.hatena.ne.jp/altad?mode=468x60&color_border=ffffff&color_ads=ffffff";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="5901068518";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_border = "5279E7";
+google_color_bg = "FFFFFF";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"><!--
+(function(){
+  if( !Ten ) return;
+  var sel = ['google_color_border','google_color_bg','google_color_link','google_color_url','google_color_text'];
+  var l = sel.length;
+  for( var i=0; i<l; i++ ){
+    var prop = Ten.Style.getGlobalStyle('.'+sel[i],'color');
+    if( prop ){
+      var color = Ten.Color.parseFromString(prop);
+      if( color )
+         window[sel[i]] = color.asHexString().slice(1);
+    }
+  }
+}
+)();
+//--></script>
+
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<!-- -->
+<center>
+<form target="_top" action="http://www.google.co.jp/custom" method="get">
+<table bgcolor="#ffffff">
+<tr><td align="left" valign="top" nowrap="nowrap" height="32">
+<a href="http://www.google.com/">
+<img align="middle" alt="Google" src="http://www.google.com/logos/Logo_25wht.gif" border="0"></img></a>
+<label for="sbi" style="display: none">検索用語を入力</label>
+<input value="" name="q" id="sbi" type="text" size="31"></input>
+<label for="sbb" style="display: none">検索フォームを送信</label>
+<input value="検索" name="sa" id="sbb" type="submit"></input>
+<input value="pub-9293871138052608" name="client" type="hidden"></input>
+<input value="1" name="forid" type="hidden"></input>
+<input value="Shift_JIS" name="ie" type="hidden"></input>
+<input value="Shift_JIS" name="oe" type="hidden"></input>
+<input value="GALT:#008000;GL:1;DIV:#336699;VLC:663399;AH:center;BGC:FFFFFF;LBGC:336699;ALC:0000FF;LC:0000FF;T:000000;GFNT:0000FF;GIMP:0000FF;FORID:1" name="cof" type="hidden"></input>
+<input value="ja" name="hl" type="hidden"></input>
+</td></tr></table>
+</form>
+</center>
+<!-- -->
+
+
+
+
+
+
+
+
+
+<div class="calendar" id="pager-top">
+  <a rel="prev" href="/uesama99/20070119/1169201228" class="prev">&lt;[本][目次]プログラミングMicros...</a>&nbsp;<span class="delimiter">|</span>&nbsp;<a rel="next" href="/uesama99/20070203/1170502163" class="next">[社会]平均年齢40歳の会社で思う...&gt;</a><span id="edit-in-place-add"></span>
+</div>
+<div id="days">
+
+<div class="day">
+<h2><a href="http://d.hatena.ne.jp/uesama99/20070120" rel="nofollow"><span class="date">2007-01-20</span></a> <span class="title">『俺的コーディングルールSQL編』によせて</span></h2>
+
+<div class="body">
+
+<!-- rakuten_ad_target_begin -->
+<!-- google_ad_section_start -->
+
+		<div class="section">
+			<h3><a href="/uesama99/20070120/1169261175" name="1169261175"><span class="sanchor">■</span></a>[<a href="/uesama99/searchdiary?word=%2A%5BSQL%5D" class="sectioncategory">SQL</a>][<a href="/uesama99/searchdiary?word=%2A%5B%A5%B3%A1%BC%A5%C7%A5%A3%A5%F3%A5%B0%5D" class="sectioncategory">コーディング</a>]『俺的<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%B3%A1%BC%A5%C7%A5%A3%A5%F3%A5%B0">コーディング</a>ルール<a class="keyword" href="http://d.hatena.ne.jp/keyword/SQL">SQL</a>編』によせて</h3>
+			<p><a href="http://zeromemory.sblo.jp/article/3130837.html" target="_blank">『俺的コーディングルール SQL編』</a>に刺激を受けて</p>
+			<p>私の<a class="keyword" href="http://d.hatena.ne.jp/keyword/SQL">SQL</a>の書き方を紹介します。</p>
+			<p>紹介されている書き方と比較したらわかりやすいと思うので、</p>
+			<p>まずは上記のサイトで紹介されている書き方を以下に。</p>
+<pre class="syntax-highlight">
+<span class="synStatement">select</span>
+  f1.ID,
+  f1.ITEM1,
+  f1.ITEM2,
+  f2.ITEM3,
+  m1.USER_ID,
+  m1.USER_NAME
+<span class="synSpecial">from</span>
+  table_head f1,
+  table_detail f2,
+  user_master m1
+<span class="synSpecial">where</span> <span class="synStatement">not</span> <span class="synStatement">exists</span> (
+  <span class="synStatement">select</span> <span class="synConstant">1</span> <span class="synSpecial">from</span> tableXXX s1
+  <span class="synSpecial">where</span> s1.ID = f1.ID
+)
+  <span class="synStatement">and</span> f1.ID = f2.ID
+  <span class="synStatement">and</span> f2.USER_ID = m1.USER_ID
+  <span class="synStatement">and</span> f2.ITEM3 = <span class="synConstant">'xxx'</span>
+<span class="synSpecial">order</span> <span class="synSpecial">by</span> m1.user_id, f1.id, f1.item, f2.item
+</pre>
+
+			<p>同じ<a class="keyword" href="http://d.hatena.ne.jp/keyword/SQL">SQL</a>なら、私は以下のように書いています。</p>
+<pre class="syntax-highlight">
+<span class="synStatement">select</span>
+	thd.ID,
+	thd.ITEM1,
+	thd.ITEM2,
+	tdl.ITEM3,
+	ums.USER_ID,
+	ums.USER_NAME
+<span class="synSpecial">from</span>
+	TABLE_HEAD	thd
+inner join	TABLE_DETAIL	tdl
+	<span class="synSpecial">on</span>	thd.ID		=	tdl.ID
+inner join	USER_MASTER	ums
+	<span class="synSpecial">on</span>	tdl.USER_ID	=	ums.USER_ID
+<span class="synSpecial">where</span>
+	<span class="synStatement">not</span> <span class="synStatement">exists</span>(
+	<span class="synStatement">select</span>
+		*
+	<span class="synSpecial">from</span>
+		TABLEXXX	txx
+	<span class="synSpecial">where</span>
+		txx.ID	=	thd.ID
+	)
+<span class="synStatement">and</span>	tdl.ITEM3	=	<span class="synConstant">'xxx'</span>
+<span class="synSpecial">order</span> <span class="synSpecial">by</span>
+	ums.USER_ID,
+	thd.ID,
+	thd.ITEM,
+	tdl.ITEM
+</pre>
+
+			<p>ポイントは以下のとおり。</p>
+
+			<ul>
+				<li>タブインデント
+
+				<ul>
+					<li>理由：慣れの問題ですが、私はこちらの方がインデント操作が早くできます。ユーザからの急な要望を受けてやっつけで<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%AF%A5%A8%A5%EA">クエリ</a>発行するときでも、それなりの体裁が整えやすいので後から見てわかりやすいです。（でも<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%A8%A5%C7%A5%A3%A5%BF">エディタ</a>によってはタブをスペースに変換できたりするので、ここにこだわる必要はないかもしれません。）</li>
+				</ul>
+				</li>
+				<li>結合はJOIN
+
+				<ul>
+					<li>理由：ANSI準拠の書き方ということもありますが、結合条件と抽出条件をはっきりわけることができる上、<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%D7%A5%ED%A5%B0%A5%E9%A5%E0">プログラム</a>から<a class="keyword" href="http://d.hatena.ne.jp/keyword/SQL">SQL</a>を生成する場合など、結合単位をブロック化することができて<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%B3%A1%BC%A5%C7%A5%A3%A5%F3%A5%B0">コーディング</a>がスッキリするというメリットがあります。<a class="keyword" href="http://d.hatena.ne.jp/keyword/Oracle">Oracle</a>も9iからJOINに対応していますが、<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%DE%A5%CB%A5%E5%A5%A2%A5%EB">マニュアル</a>でもJOIN句による結合を推奨しています。</li>
+				</ul>
+				</li>
+				<li>後ろカンマ
+
+				<ul>
+					<li>理由：これも慣れでしょうか。私にとっては前カンマよりも後ろのほうが見やすく感じます。確かに後で項目を追加する場合にカンマを忘れたりすることはありますが(^_^;)、やっぱり前カンマはちょっと気持ち悪い。</li>
+				</ul>
+				</li>
+				<li>テーブルの別名はわかりやすく
+
+				<ul>
+					<li>理由：テーブルがUSER_MSTならumsとか、3文字の略字で表します。他の人から見ても可読性が工場します。3文字と決めているのは、項目を並べたときにツラをあわせるためです。</li>
+				</ul>
+				</li>
+			</ul>
+			<p class="sectionfooter"><a href="/uesama99/20070120/1169261175">Permalink</a> | <a href="/uesama99/20070120/1169261175#c">コメント(0)</a> | <a href="/uesama99/20070120/1169261175#tb">トラックバック(1)</a> | 11:46 <a href="http://b.hatena.ne.jp/entry/http://d.hatena.ne.jp/uesama99/20070120/1169261175" class="bookmark-icon"><img src="http://d.hatena.ne.jp/images/b_entry_br.gif" border="0" title="『俺的コーディングルールSQL編』によせてを含むブックマーク" alt="『俺的コーディングルールSQL編』によせてを含むブックマーク" width="16" height="12" class="icon"></a> <a href="http://b.hatena.ne.jp/entry/http://d.hatena.ne.jp/uesama99/20070120/1169261175" class="bookmark-count"><img src="http://b.hatena.ne.jp/entry/image/http://d.hatena.ne.jp/uesama99/20070120/1169261175" title="はてなブックマーク - 『俺的コーディングルールSQL編』によせて" alt=""></a> <img class="hatena-bcomment-view-icon" src="http://r.hatena.ne.jp/images/popup.gif" onclick="javascript:BookmarkCommentViewer.iconImageClickHandler(this, 'http://d.hatena.ne.jp/uesama99/20070120/1169261175', event);" title="『俺的コーディングルールSQL編』によせてのブックマークコメント" alt="『俺的コーディングルールSQL編』によせてのブックマークコメント" width="13" height="13"></p>
+
+		</div>
+
+<div id="google_afc_user_1" class="section google_afc_user">
+</div>
+
+<script src="https://cdn.pool.st-hatena.com/valve/valve.js" async></script>
+<script>
+  valve = window.valve || [];
+  valve.push(function(v) {
+    v.config({
+      service: 'diary',
+      textSelector: 'div.body',
+    });
+  });
+</script>
+
+<script>
+  valve = window.valve || [];
+  valve.push(function(v) {
+    var parentRect = document.getElementById('google_afc_user_1').parentNode.getBoundingClientRect();
+    v.defineDFPSlot({
+        unit  :'/4374287/diary_user',
+        sizes : { max: [parentRect.width, 280] },
+        slotId: 'google_afc_user_1',
+    });
+  });
+</script>
+
+<!-- google_ad_section_end -->
+<!-- rakuten_ad_target_end -->
+
+<div class="ad">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4438296558807254";
+google_ad_channel ="5901068518";
+google_ad_height = '250';
+google_ad_width = '300';
+google_ad_format = '300x250_as';
+google_cpa_choice = 'CAEaCHEIkh0vJfF2UAhQBVASUARQnQJQLVAHULcDUEdQNA';
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+</div>
+
+<div class="ad">
+<div class="hatena-asin-recommend">
+<div class="hatena-asin-recommend-item-1">
+<div class="hatena-asin-recommend-image"><a href="http://d.hatena.ne.jp/asin/433152096X"><img src="https://images-fe.ssl-images-amazon.com/images/I/61O-V14ZQEL._SL60_.jpg" ALT="433152096X"></a></div>
+<div class="hatena-asin-recommend-info">
+<div class="hatena-asin-recommend-title"><a href="http://d.hatena.ne.jp/asin/433152096X"><img src="/images/hamazou_icons/icon-book.gif" border="0" align="left" alt="Book"> ポケット版 東京ディズニーランド&シー裏技ガイ...</a></div>
+<div class="hatena-asin-recommend-description">
+  <a href="http://d.hatena.ne.jp/keyword/%D7%A2%BA%D1%C6%B2%BD%D0%C8%C7">廣済堂出版</a> <a href="http://d.hatena.ne.jp/keyword/%A5%AF%A5%ED%A5%ED">クロロ</a> <a href="http://d.hatena.ne.jp/keyword/TDL%20%26%20TDS%20%CE%A2%B5%BB%C4%B4%BA%BA%C2%E2">TDL & TDS 裏技調査隊</a> <br />
+  
+</div>
+</div></div>
+<div class="hatena-asin-recommend-item-2">
+<div class="hatena-asin-recommend-image"><a href="http://d.hatena.ne.jp/asin/4331521303"><img src="https://images-fe.ssl-images-amazon.com/images/I/61f6qVYzM2L._SL60_.jpg" ALT="4331521303"></a></div>
+<div class="hatena-asin-recommend-info">
+<div class="hatena-asin-recommend-title"><a href="http://d.hatena.ne.jp/asin/4331521303"><img src="/images/hamazou_icons/icon-book.gif" border="0" align="left" alt="Book"> 東京ディズニーランド&シー裏技ガイド 2018</a></div>
+<div class="hatena-asin-recommend-description">
+  <a href="http://d.hatena.ne.jp/keyword/%D7%A2%BA%D1%C6%B2%BD%D0%C8%C7">廣済堂出版</a> <a href="http://d.hatena.ne.jp/keyword/%A5%AF%A5%ED%A5%ED">クロロ</a> <a href="http://d.hatena.ne.jp/keyword/TDL%20%26%20TDS%20%CE%A2%B5%BB%C4%B4%BA%BA%C2%E2">TDL & TDS 裏技調査隊</a> <br />
+  
+</div>
+</div></div>
+<div class="hatena-asin-recommend-foot"></div></div></div>
+
+
+</div>
+
+<form id="comment-form" method="post" action="/uesama99/comment#c" class="comment">
+<input type="hidden" name="mode" value="enter">
+<input type="hidden" name="rkm" value="">
+<input type="hidden" name="date" value="2007-01-20">
+<div class="comment">
+  <div class="caption"><a name="c">コメントを書く</a></div>
+  <div class="commentshort">
+    
+    
+
+    <a name="error-message"></a>
+    <p class="message" style="display:none"></p>
+
+    
+
+    
+            
+    <p class="commentform">
+      <span class="commentator">
+        <span class="usermailconfirm"><input name="usermail" size="1" value=""><input name="userurl" size="1" value="">スパム対策のためのダミーです。もし見えても何も入力しないでください<br></span>
+        <span class="username">
+        <img src="http://www.hatena.ne.jp/images/guest_icon.gif" class="hatena-id-icon" alt="ゲスト" title="ゲスト" height="16" width="16">
+        <input type="hidden" name="section" value="1169261175">
+        
+          <input id="comment-username" name="username" size="15">
+        
+        </span>
+        
+          <span class="usermail"><img src="/images/icon-usermail.gif" style="vertical-align:middle;margin-right:3px;"><input id="comment-usermail" name="useremail" size="15" value=""></span>
+          <span class="userurl"><img src="/images/icon-userurl.gif" style="vertical-align:middle;margin-right:3px;"><input id="comment-userurl" name="useruri" size="15" value=""></span>
+        
+      </span>
+<br>
+      <!-- NOT_VERIFIED_COMMENT_AUTH -->
+      <textarea id="comment-textarea" name="body" value="" cols="60" rows="3"></textarea><br>
+      
+          <div class="captcha">
+            <img src="/uesama99/captcha?1535610751" class="captcha-image">
+            <span class="captcha-message">画像認証</span><br />
+            <input type="text" name="captcha_code" size="10" class="captcha-string" id="comment-captcha">
+          </div>
+      
+      <span class="comment-submit"><input type="submit" id="comment-form-button" value="投稿"></span>
+    </p>
+
+      <script type="text/javascript" src="/js/diary_comment_edit_form.js"></script>
+    
+
+  </div>
+</div>
+
+</form>
+
+
+
+
+
+  
+  <div class="refererlist">
+    <div class="caption">
+      <a name="tb">トラックバック</a> - http://d.hatena.ne.jp/uesama99/20070120/1169261175
+    </div>
+    
+      
+      <ul>
+        
+          <li>
+            <a href="http://d.hatena.ne.jp/n314/20140225/1393316807" title=" SQLテーブル名の別名、命名規則、T1とか ときどき SELECt * FROM item as T1 みたいな連番別名テーブルを見るんだが。 どこかで推奨でもされているんだろうか。 プログラムの変数名に無意味な連番は有り得ないっていうのは共通認識としてあると思うけど、SQLはそうじゃない" rel="nofollow">より良い環境を求めて -  SQLテーブル名の別名、命名規則、T1とか</a></li>
+        
+      </ul>
+    
+  </div>
+  
+  
+  
+  <div id="diary-pc-trackback-rectangle" style="margin-bottom: 15px;"></div>
+  <script src="https://cdn.pool.st-hatena.com/valve/valve.js" async></script>
+  <script>
+    valve = window.valve || [];
+    valve.push(function(v) {
+      v.config({
+        service: 'diary',
+        textSelector: 'div.body',
+        
+      });
+      var parentRect = document.getElementById('diary-pc-trackback-rectangle').parentNode.getBoundingClientRect();
+      v.defineDFPSlot({
+          unit  :'/4374287/diary_user_track',
+          sizes : { max: [ parentRect.width, 280 ] },
+          slotId: 'diary-pc-trackback-rectangle',
+      });
+      v.sealDFPSlots();
+    });
+  </script>
+  <script id="valve-dmp" data-service="diary" src="https://cdn.pool.st-hatena.com/valve/dmp.js" async></script>
+  
+
+
+
+
+
+    <div class="refererlist">
+      <div class="caption">リンク元</div>
+      <ul>
+          <li>29 <a href="http://zeromemory.sblo.jp/article/3130837.html" rel="nofollow">http://zeromemory.sblo.jp/article/3130837.html</a></li>
+          <li>16 <a href="http://b.hatena.ne.jp/entry/http://zeromemory.sblo.jp/article/3130837.html" rel="nofollow">http://b.hatena.ne.jp/entry/http://zeromemory.sblo.jp/article/3130837.html</a></li>
+          <li>13 <a href="http://www.google.co.jp/search?sourceid=navclient&amp;hl=ja&amp;ie=UTF-8&amp;rls=GGIC,GGIC:2006-50,GGIC:ja&amp;q=%e3%82%a2%e3%82%bb%e3%83%b3%e3%83%96%e3%83%aa%e3%80%80%e3%83%ad%e3%83%bc%e3%83%89%e3%80%80%e5%8b%95%e7%9a%84" rel="nofollow">http://www.google.co.jp/search?sourceid=navclient&amp;hl=ja&amp;ie=UTF-8&amp;rls=GGIC,GGIC:2006-50,GGIC:ja&amp;q=アセンブリ　ロード　動的</a></li>
+          <li>5 <a href="http://www.google.co.jp/search?q=%E4%B8%87%E5%B9%B4%E7%AD%86%E3%80%80%E5%88%9D%E5%BF%83%E8%80%85&amp;hl=ja&amp;lr=&amp;start=40&amp;sa=N" rel="nofollow">http://www.google.co.jp/search?q=万年筆　初心者&amp;hl=ja&amp;lr=&amp;start=40&amp;sa=N</a></li>
+          <li>4 <a href="http://www.google.co.jp/search?hl=ja&amp;q=%E3%83%A2%E3%83%BC%E3%83%AB%E3%82%B9%E3%82%AD%E3%83%B3%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9&amp;lr=" rel="nofollow">http://www.google.co.jp/search?hl=ja&amp;q=モールスキンの使い方&amp;lr=</a></li>
+          <li>4 <a href="http://www.google.co.jp/search?sourceid=navclient&amp;aq=t&amp;hl=ja&amp;ie=UTF-8&amp;rls=GGLG,GGLG:2006-15,GGLG:ja&amp;q=%e3%83%87%e3%82%b6%e3%82%a4%e3%83%8a%e3%81%ae%e8%aa%ad%e3%81%bf%e8%be%bc%e3%81%bf%e6%99%82%e3%81%ab+1+%e3%81%a4%e4%bb%a5%e4%b8%8a%e3%81%ae%e3%82%a8%e3%83" rel="nofollow">http://www.google.co.jp/search?sourceid=navclient&amp;aq=t&amp;hl=ja&amp;ie=UTF-8&amp;rls=GGLG,GGLG:2006-15,GGLG:ja&amp;q=デザイナの読み込み時に+1+つ以上のエ??</a></li>
+          <li>4 <a href="http://www.google.com/search?q=%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E6%89%8B%E5%B8%B3+%E4%BD%BF%E3%81%84%E6%96%B9&amp;hl=ja&amp;lr=&amp;client=safari&amp;rls=ja-jp&amp;start=20&amp;sa=N" rel="nofollow">http://www.google.com/search?q=システム手帳+使い方&amp;hl=ja&amp;lr=&amp;client=safari&amp;rls=ja-jp&amp;start=20&amp;sa=N</a></li>
+          <li>4 <a href="http://www.nw9.info/asin/Books/4891005238/" rel="nofollow">http://www.nw9.info/asin/Books/4891005238/</a></li>
+          <li>3 <a href="http://61.196.246.67/uesama99/20051218" rel="nofollow">http://61.196.246.67/uesama99/20051218</a></li>
+          <li>3 <a href="http://b.hatena.ne.jp/kanose/20070123" rel="nofollow">http://b.hatena.ne.jp/kanose/20070123</a></li>
+      </ul>
+      
+    </div>
+
+
+
+
+</div>
+
+
+
+</div>
+<div class="calendar" id="pager-bottom">
+  <a rel="prev" href="/uesama99/20070119/1169201228" class="prev">&lt;[本][目次]プログラミングMicros...</a>&nbsp;<span class="delimiter">|</span>&nbsp;<a rel="next" href="/uesama99/20070203/1170502163" class="next">[社会]平均年齢40歳の会社で思う...&gt;</a>
+</div>
+</div>
+<div class="sidebar">
+	<div class="hatena-clock">
+<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,0,0" width="120" height="25" id="clock" align="center">
+<param name="allowScriptAccess" value="sameDomain" />
+<param name="movie" value="http://d.hatena.ne.jp/tools/clock-morphing.swf" />
+<param name="quality" value="high" />
+<param name="bgcolor" value="#ffffff" />
+<param name="wmode" value="transparent">
+<param name="FlashVars" value="color=0x8CB6FF">
+<embed src="http://d.hatena.ne.jp/tools/clock-morphing.swf" FlashVars="color=0x8CB6FF" wmode="transparent" quality="high" bgcolor="#ffffff" width="120" height="25" name="clock" align="center" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+</object>
+</div>
+
+	<div class="hatena-module hatena-module-searchform">
+<div class="hatena-moduletitle">日記の検索</div>
+<div class="hatena-modulebody">
+<form method="GET" action="/uesama99/searchdiary" class="hatena-searchform"><input type="text" name="word" class="hatena-searchform searchform-word" value=""><input type="submit" name=".submit" value="検索" class="hatena-searchform searchform-button"><br><label class="searchform-label-detail"><input type="radio" name="type" value="detail" checked="checked" class="searchform-radio">詳細</label> <label class="searchform-label-list"><input type="radio" name="type" value="list" class="searchform-radio">一覧</label></form>
+
+</div>
+</div>
+
+	<div class="hatena-module hatena-module-calendar2">
+<div class="hatena-moduletitle">カレンダー</div>
+<div class="hatena-modulebody">
+<table class="calendar" summary="calendar">
+<tr>
+<td class="calendar-prev-month" colspan="2"><a href="/uesama99/200612" title="200612" rel="nofollow">&lt;&lt;</a></td>
+<td class="calendar-current-month" colspan="3"><a href="/uesama99/archive/200701" rel="nofollow">2007/01</a></td>
+<td class="calendar-next-month" colspan="2"><a href="/uesama99/200702" title="200702" rel="nofollow">&gt;&gt;</a></td>
+</tr>
+<tr>
+<td class="calendar-sunday">日</td>
+<td class="calendar-weekday">月</td>
+<td class="calendar-weekday">火</td>
+<td class="calendar-weekday">水</td>
+<td class="calendar-weekday">木</td>
+<td class="calendar-weekday">金</td>
+<td class="calendar-saturday">土</td>
+</tr>
+	<tr>
+		<td class="calendar-day"></td>
+		<td class="calendar-day"><a href="/uesama99/20070101" title="1">1</a></td>
+		<td class="calendar-day"><a href="/uesama99/20070102" title="2">2</a></td>
+		<td class="calendar-day"><a href="/uesama99/20070103" title="3">3</a></td>
+		<td class="calendar-day"><a href="/uesama99/20070104" title="4">4</a></td>
+		<td class="calendar-day">5</td>
+		<td class="calendar-day"><a href="/uesama99/20070106" title="6">6</a></td>
+	</tr>
+	<tr>
+		<td class="calendar-day"><a href="/uesama99/20070107" title="7">7</a></td>
+		<td class="calendar-day">8</td>
+		<td class="calendar-day">9</td>
+		<td class="calendar-day">10</td>
+		<td class="calendar-day"><a href="/uesama99/20070111" title="11">11</a></td>
+		<td class="calendar-day">12</td>
+		<td class="calendar-day">13</td>
+	</tr>
+	<tr>
+		<td class="calendar-day">14</td>
+		<td class="calendar-day">15</td>
+		<td class="calendar-day">16</td>
+		<td class="calendar-day">17</td>
+		<td class="calendar-day">18</td>
+		<td class="calendar-day"><a href="/uesama99/20070119" title="19">19</a></td>
+		<td class="calendar-day day-selected"><a href="/uesama99/20070120" title="20">20</a></td>
+	</tr>
+	<tr>
+		<td class="calendar-day">21</td>
+		<td class="calendar-day">22</td>
+		<td class="calendar-day">23</td>
+		<td class="calendar-day">24</td>
+		<td class="calendar-day">25</td>
+		<td class="calendar-day">26</td>
+		<td class="calendar-day">27</td>
+	</tr>
+	<tr>
+		<td class="calendar-day">28</td>
+		<td class="calendar-day">29</td>
+		<td class="calendar-day">30</td>
+		<td class="calendar-day">31</td>
+		<td class="calendar-day"></td>
+		<td class="calendar-day"></td>
+		<td class="calendar-day"></td>
+	</tr>
+</table>
+	</div>
+</div>
+
+	<div class="hatena-module hatena-module-photo">
+<div class="hatena-moduletitle">最新の画像</div>
+<div class="hatena-modulebody">
+<ul class="hatena-photo">
+</ul>
+</div>
+</div>
+
+	<div class="hatena-module hatena-module-section">
+<div class="hatena-moduletitle"><a href="/uesama99/archive">最新タイトル</a></div>
+<div class="hatena-modulebody">
+<ul class="hatena-section">
+<li><a href="http://d.hatena.ne.jp/uesama99/20080219/1203394007">[C#][LINQ]C#でスクレイピング</a></li>
+<li><a href="http://d.hatena.ne.jp/uesama99/20080206/1202306423">[C#]GoogleCalendarAPI + LinqToXMLで休日を取得する方法</a></li>
+<li><a href="http://d.hatena.ne.jp/uesama99/20080204">「メソッド」の語源</a></li>
+<li><a href="http://d.hatena.ne.jp/uesama99/20080126/1201307235">[株]日経平均13629円に回復</a></li>
+<li><a href="http://d.hatena.ne.jp/uesama99/20080125">LINQいい感じです。</a></li>
+<li><a href="http://d.hatena.ne.jp/uesama99/20071214/1197583389">Application Architecture for .NETの概要</a></li>
+<li><a href="http://d.hatena.ne.jp/uesama99/20071212">読みかけ</a></li>
+<li><a href="http://d.hatena.ne.jp/uesama99/20071129/1196341956">[日記]</a></li>
+<li><a href="http://d.hatena.ne.jp/uesama99/20071127/1196169356">[日記]</a></li>
+<li><a href="http://d.hatena.ne.jp/uesama99/20071125/1195994015">[日記]</a></li>
+</ul>
+</div>
+</div>
+
+	<div class="hatena-module hatena-module-sectioncategory">
+<div class="hatena-moduletitle">カテゴリー</div>
+<div class="hatena-modulebody">
+<ul class="hatena-sectioncategory">
+<li><a href="/uesama99/searchdiary?word=%2A%5B%C6%FC%B5%AD%5D">日記</a></li>
+<li><a href="/uesama99/searchdiary?word=%2A%5B%A5%B3%A5%F3%A5%D4%A5%E5%A1%BC%A5%BF%5D">コンピュータ</a></li>
+<li><a href="/uesama99/searchdiary?word=%2A%5BVisualStudio%5D">VisualStudio</a></li>
+<li><a href="/uesama99/searchdiary?word=%2A%5B%2ENETFramework%5D">.NETFramework</a></li>
+<li><a href="/uesama99/searchdiary?word=%2A%5BASP%2ENET%5D">ASP.NET</a></li>
+<li><a href="/uesama99/searchdiary?word=%2A%5BC%23%5D">C#</a></li>
+<li><a href="/uesama99/searchdiary?word=%2A%5B%BE%AE%C0%E2%5D">小説</a></li>
+<li><a href="/uesama99/searchdiary?word=%2A%5B%C0%EC%CC%E7%BD%F1%5D">専門書</a></li>
+<li><a href="/uesama99/searchdiary?word=%2A%5B%CC%A1%B2%E8%5D">漫画</a></li>
+<li><a href="/uesama99/searchdiary?word=%2A%5B%A5%B2%A1%BC%A5%E0%5D">ゲーム</a></li>
+<li><a href="/uesama99/searchdiary?word=%2A%5B%BB%FE%B7%D7%5D">時計</a></li>
+<li><a href="/uesama99/searchdiary?word=%2A%5B%BB%D7%A4%A4%A4%C4%A4%AD%5D">思いつき</a></li>
+<li><a href="/uesama99/searchdiary?word=%2A%5B%CB%DC%5D">本</a></li>
+<li><a href="/uesama99/searchdiary?word=%2A%5B%BC%D2%B2%F1%5D">社会</a></li>
+<li><a href="/uesama99/searchdiary?word=%2A%5B%BB%C5%BB%F6%5D">仕事</a></li>
+<li><a href="/uesama99/searchdiary?word=%2A%5B%CB%FC%C7%AF%C9%AE%5D">万年筆</a></li>
+<li><a href="/uesama99/searchdiary?word=%2A%5B%BC%F1%CC%A3%5D">趣味</a></li>
+<li><a href="/uesama99/searchdiary?word=%2A%5B%C0%B8%B3%E8%5D">生活</a></li>
+<li><a href="/uesama99/searchdiary?word=%2A%5B%BC%EA%C4%A2%5D">手帳</a></li>
+<li><a href="/uesama99/searchdiary?word=%2A%5B%CC%DC%BC%A1%5D">目次</a></li>
+<li><a href="/uesama99/searchdiary?word=%2A%5BSQL%5D">SQL</a></li>
+<li><a href="/uesama99/searchdiary?word=%2A%5B%A5%B3%A1%BC%A5%C7%A5%A3%A5%F3%A5%B0%5D">コーディング</a></li>
+<li><a href="/uesama99/searchdiary?word=%2A%5BVirtualPC%5D">VirtualPC</a></li>
+<li><a href="/uesama99/searchdiary?word=%2A%5B%A5%CD%A5%C3%A5%C8%A5%EF%A1%BC%A5%AF%5D">ネットワーク</a></li>
+<li><a href="/uesama99/searchdiary?word=%2A%5B%A5%D7%A5%ED%A5%B0%A5%E9%A5%E0%5D">プログラム</a></li>
+<li><a href="/uesama99/searchdiary?word=%2A%5B%2ENET%5D">.NET</a></li>
+<li><a href="/uesama99/searchdiary?word=%2A%5B%A5%E1%A5%E2%5D">メモ</a></li>
+<li><a href="/uesama99/searchdiary?word=%2A%5B%B3%F4%5D">株</a></li>
+<li><a href="/uesama99/searchdiary?word=%2A%5BJava%5D">Java</a></li>
+<li><a href="/uesama99/searchdiary?word=%2A%5B%C8%FE%BD%D1%5D">美術</a></li>
+<li><a href="/uesama99/searchdiary?word=%2A%5B%B0%DF%C4%CB%5D">胃痛</a></li>
+<li><a href="/uesama99/searchdiary?word=%2A%5BLINQ%5D">LINQ</a></li>
+</ul>
+</div>
+</div>
+
+	<div class="hatena-module hatena-module-counter">
+<div class="hatena-moduletitle">カウンター</div>
+<div class="hatena-modulebody">
+<span class="hatena-counter"><script type="text/javascript"><!--
+    hatena_counter_name = "uesama99";
+    hatena_counter_id = "type";
+    hatena_counter_ref = document.referrer+"";
+    hatena_counter_screen = screen.width + "x" + screen.height+","+screen.colorDepth;
+//--></script>
+<script type="text/javascript" src="http://counter.hatena.ne.jp//js/counter.js"></script>
+<noscript><img src="http://counter.hatena.ne.jp/uesama99/type" border="0" alt="counter"></noscript>
+</span>
+</div>
+</div>
+
+</div>
+</div>
+
+
+
+
+  <script>
+    valve = window.valve || [];
+    valve.push(function(v) {
+        v.sealDFPSlots();
+    });
+  </script>
+  <script id="valve-dmp" data-service="diary" src="https://cdn.pool.st-hatena.com/valve/dmp.js" async></script>
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  var days = document.getElementById('days');
+  if (days && days.innerHTML.indexOf("今週のお題") != -1) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'odai', 3]);
+  }
+
+  if (days && /\u4eca\u9031\u306e\u304a\u984c/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'odai', 3]);
+  }
+
+  if (days && /ScanSnap\u7279\u5225\u30e2\u30c7\u30eb\u30fb\u30d6\u30ed\u30b0\u3067\u5ba3\u4f1d\u30b3\u30f3\u30c6\u30b9\u30c8/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'scansnap1401bcn4ssacro', 3]);
+  }
+
+  if (days && /\u7279\u5225\u304a\u984c\u300c\u9752\u6625\u306e\u4e00\u518a\u300d/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'pdmagazine', 3]);
+  }
+
+  if (days && /\u7279\u5225\u304a\u984c\u300c\u5fc3\u6e29\u307e\u308b\u30de\u30ca\u30fc\u306e\u8a71\u300d/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'jrwest', 3]);
+  }
+
+  if (days && /Presso\u4f7f\u3063\u3066\u307f\u305f/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'presso1404', 3]);
+  }
+
+  if (days && /CodeIQ\u306e\u554f\u984c\u30fb\u30d1\u30ba\u30eb\u3092\u8003\u3048\u3088\u3046\uff01/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'codeiq_matsuri2013_2_2', 3]);
+  }
+
+  if (days && /2013\u5e74\u306b\u3084\u308a\u305f\u3044\u3053\u3068/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'newyear2013', 3]);
+  }
+
+  if (days && /2012\u5e74\u30dc\u30c4\u738b\u6c7a\u5b9a\u6226\uff01\u30d5\u30eb\u30bf\u88fd\u83d3\ud7\u306f\u3066\u306a\u30d6\u30ed\u30b0\u304a\u984c\u30ad\u30e3\u30f3\u30da\u30fc\u30f3/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'furuta', 3]);
+  }
+
+  if (days && /\u300c\u884c\u3063\u3066\u307f\u305f\u3044\u304a\u5e97\u30fb\u30ec\u30b9\u30c8\u30e9\u30f3\u300d/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'gnavi201512', 3]);
+  }
+
+  if (days && /\u6d77\u5916\u30c9\u30e9\u30de\u300e\u30e9\u30a4\u30fb\u30c8\u30a5\u30fb\u30df\u30fc \u5618\u306e\u77ac\u9593\u300f\u89b3\u305f\u3044\uff01|\u300e\u30e9\u30a4\u30fb\u30c8\u30a5\u30fb\u30df\u30fc \u5618\u306e\u77ac\u9593\u300f\u7b2c1\u8a71\u306e\u611f\u60f3\u3092\u6559\u3048\u3066\u304f\u3060\u3055\u3044|\u4eca\u3060\u304b\u3089\u8a00\u3048\u308b\u300c\u5618\u3092\u3064\u3044\u3066\u3057\u307e\u3063\u305f\u30a8\u30d4\u30bd\u30fc\u30c9\u300d\u3092\u6559\u3048\u3066\u304f\u3060\u3055\u3044|\u3060\u307e\u3055\u308c\u305f\u3051\u3069\u3001\u8a31\u305b\u3066\u3057\u307e\u3063\u305f\u5618\u3092\u6559\u3048\u3066\u304f\u3060\u3055\u3044/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'lietome', 3]);
+  }
+
+  if (days && /\u30de\u30a4\u30d9\u30b9\u30c8\u30bd\u30f3\u30b02013/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'mybestsong2013', 3]);
+  }
+
+  if (days && /\u7d0d\u6dbc\uff01\u307b\u3093\u3068\u306b\u3042\u3063\u305f\u6016\u3044\u30b3\u30fc\u30c9/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'codeiq_matsuri2013_2_1', 3]);
+  }
+
+  if (days && /\u590f\u306e\u5199\u771f2013/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'photocon2013summer', 3]);
+  }
+
+  if (days && /Windows\/Office\u6b66\u52c7\u4f1d/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'WindowsDevOpen', 3]);
+  }
+
+  if (days && /\u300c\u79c1\u306f\u3007\u3007\u738b\uff01\u300d\u30d0\u30a4\u30af\u738b\ud7\u306f\u3066\u306a\u30d6\u30ed\u30b0\u304a\u984c\u30ad\u30e3\u30f3\u30da\u30fc\u30f3/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'bike-o', 3]);
+  }
+
+  if (days && /Visa\u30d7\u30ea\u30da\u30a4\u30c9\u300cV\u30d7\u30ea\u30ab\u300d\u8a66\u3057\u305f\u3044\uff01|Visa\u30d7\u30ea\u30da\u30a4\u30c9\u300cV\u30d7\u30ea\u30ab\u300d\u3001\u81ea\u5206\u306a\u3089\u3053\u3046\u4f7f\u3046\uff01|V\u30d7\u30ea\u30ab\u304c1\u4e07\u5186\u5206\u3042\u3063\u305f\u3089\u3001\u30cd\u30c3\u30c8\u3067\u4f55\u3092\u8cb7\u3044\u307e\u3059\u304b\uff1f/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'vpreca', 3]);
+  }
+
+  if (days && /\u30a2\u30a4\u30c7\u30e0 \u30a8\u30f3\u30b8\u30cb\u30a2\u30ad\u30e3\u30ea\u30a2Hacks\u5171\u6709\u30d7\u30ed\u30b8\u30a7\u30af\u30c8|\u30a8\u30f3\u30b8\u30cb\u30a2\u3068\u3057\u3066\u306e\u3001\u3068\u3063\u3066\u304a\u304d\u306e\u30ad\u30e3\u30ea\u30a2Hacks\u3092\u6559\u3048\u3066\u304f\u3060\u3055\u3044|\u3042\u306a\u305f\u304c\u30a8\u30f3\u30b8\u30cb\u30a2\u8ee2\u8077\u30b5\u30a4\u30c8\u3092\u4f5c\u308b\u306a\u3089\u3001\u3069\u3093\u306a\u30b5\u30a4\u30c8\u306b\u3057\u307e\u3059\u304b\uff1f|5\u5e74\u5f8c\u306e\u300c\u30a8\u30f3\u30b8\u30cb\u30a2\u306e\u50cd\u304d\u65b9\u300d\u306f\u3001\u3069\u3046\u5909\u308f\u3063\u3066\u3044\u3066\u307b\u3057\u3044\u3067\u3059\u304b\uff1f/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'aidemcareer', 3]);
+  }
+
+  if (days && /\u306f\u3066\u306a\u30c0\u30a4\u30a2\u30ea\u30fc10\u5468\u5e74\u304a\u3081\u3067\u3068\u3046\uff01/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'hatenadiary10th', 3]);
+  }
+
+  if (days && /\u3086\u304f\u5e74\u304f\u308b\u5e742015/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', '2014-2015campaign', 3]);
+  }
+
+  if (days && /\u8aad\u307f\u653e\u984c\u3067\u30b3\u30b9\u30d1\u3088\u3057\uff01\u96fb\u5b50\u66f8\u7c4d\u30a2\u30d7\u30eayomel.jp\u30ad\u30e3\u30f3\u30da\u30fc\u30f3/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'yomel', 3]);
+  }
+
+  if (days && /\u30bb\u30c4\u30e4\u30af\u30a8\u30b9\u30c8/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'setsuyaquest', 3]);
+  }
+
+  if (days && /\u79cb\u306e\u591c\u9577\u306f\u8aad\u66f8\u3068\u30d6\u30ed\u30b0/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'bookreview2013fall', 3]);
+  }
+
+  if (days && /\u7279\u5225\u304a\u984c\u300c\u82b8\u8853\u306e\u79cb\u300d/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'caillebotte', 3]);
+  }
+
+  if (days && /\u30a8\u30a4\u30d7\u30ea\u30eb\u30d5\u30fc\u30eb2014/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'aprilfool2014', 3]);
+  }
+
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<!-- CG:1,CH:1,ICG:36,ICH:17,T:b -->
+</body>
+</html>

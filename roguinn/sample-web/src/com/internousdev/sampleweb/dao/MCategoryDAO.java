@@ -39,12 +39,21 @@ public class MCategoryDAO {
 
 				mCategoryDtoList.add(mCategoryDTO);
 
+				System.out.println(resultSet.getInt("id"));
+				System.out.println(resultSet.getInt("category_id"));
+				System.out.println(resultSet.getString("category_name"));
+				System.out.println(resultSet.getString("category_description"));
+				System.out.println(resultSet.getDate("insert_date"));
+				System.out.println("--------------------------------------------------------------------------------");
+
 			}
 
-			Iterator<MCategoryDTO> iterator = mCategoryDtoList.iterator();
 
-			if(!(iterator.hasNext())) {
-				mCategoryDtoList = null;
+
+			Iterator<MCategoryDTO> iterator = mCategoryDtoList.iterator();		//
+
+			if(!(iterator.hasNext())) {																		//
+				mCategoryDtoList = null;																	//
 			}
 
 		}

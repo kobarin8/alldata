@@ -173,8 +173,8 @@ public class ProductInfoDAO {
 
 		boolean initializeFlag = true;
 
-		for
-		(String keyword : keywordsList)
+		for															//拡張for文
+		(String keyword : keywordsList)//keywordの配列ごとに実行を繰り返す
 		{
 			if
 			(initializeFlag)

@@ -34,8 +34,9 @@ public class LoginAction extends ActionSupport implements SessionAware{
 	public String execute() {
 
 		String result = ERROR;
-////////////////////////////////////////////
-		if(savedLoginId==true)
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+		if
+		(savedLoginId==true)
 		{
 			session.put("savedLoginId", true);
 			session.put("loginId", loginId);
@@ -46,7 +47,7 @@ public class LoginAction extends ActionSupport implements SessionAware{
 			session.put("savedLoginId", false);
 			session.remove("loginId", loginId);
 		}
-////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //===================================================================================
 		InputChecker inputChecker = new InputChecker();
@@ -55,68 +56,33 @@ public class LoginAction extends ActionSupport implements SessionAware{
 //===================================================================================
 
 /////////////////////////////////////////////////////////////////////////////////
-		if(loginIdErrorMessageList.size()!=0&& passwordErrorMessageList.size()!=0)
+
+		if
+		(loginIdErrorMessageList.size()!=0&& passwordErrorMessageList.size()!=0)
 		{
 			session.put("loginIdErrorMessageList", loginIdErrorMessageList);
 			session.put("passwordErrorMessageList", passwordErrorMessageList);
 			session.put("logined", 0);
 		}
 
-		if(!session.containsKey("mCategoryList"))
+		if
+		(!session.containsKey("mCategoryList"))
 		{
 			MCategoryDAO mCategoryDao = new MCategoryDAO();
 			mCategoryDtoList = mCategoryDao.getMCategoryList();
 			session.put("mCategoryDtoList", mCategoryDtoList);
 		}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 		UserInfoDAO userInfoDao = new UserInfoDAO();
 
-		if(userInfoDao.isExistsUserInfo(loginId, password))
+		if
+		(userInfoDao.isExistsUserInfo(loginId, password))
 		{
 
 			if(userInfoDao.login(loginId, password) > 0)
 			{
-
 				UserInfoDTO userInfoDTO = userInfoDao.getUserInfo(loginId, password);
 
 				session.put("loginId", userInfoDTO.getUserId());

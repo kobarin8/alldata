@@ -16,8 +16,8 @@ public class UserInfoDAO {
 // getUserInfo(String loginId, String password)			で使用
 // getUserInfo(String loginId)										で使用
 // resetPassword(String loginId, String password)		で使用
-// login(String loginId, String password)						で使用
-// logout(String loginId)												で使用
+// login(String loginId, String password)						ログイン認証で使用
+// logout(String loginId)												ログアウトで使用
 // concealPassword(String password)							で使用
 
 //-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------

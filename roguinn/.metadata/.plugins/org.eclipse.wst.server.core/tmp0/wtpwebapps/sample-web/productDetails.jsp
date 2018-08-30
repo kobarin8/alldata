@@ -23,44 +23,44 @@
 	<table class="vertical-list-table-mini">
 		<tr>
 		<th scope="row"><s:label value="商品名"/></th>
-		<td><s:property value="%{#session.productName}"/></td>
+		<td><s:property value="%{#session.productName}"/></td>										<!-- １ -->
 		</tr>
 		<tr>
 		<th scope="row"><s:label value="商品名かな"/></th>
-		<td><s:property value="%{#session.productNameKana}"/></td>
+		<td><s:property value="%{#session.productNameKana}"/></td>								<!-- １ -->
 		</tr>
 		<tr>
 		<th scope="row"><s:label value="値段"/></th>
-		<td><s:property value="%{#session.price}"/>円</td>
+		<td><s:property value="%{#session.price}"/>円</td>													<!-- １ -->
 		</tr>
 		<tr>
 		<th scope="row"><s:label value="購入個数"/></th>
-		<td><s:select name="productCount" list="%{#session.productCountList}"/>個</td>
+		<td><s:select name="productCount" list="%{#session.productCountList}"/>個</td>		<!-- ２ -->
 		</tr>
 		<tr>
 		<th scope="row"><s:label value="発売会社名"/></th>
-		<td><s:property value="%{#session.releaseCompany}"/></td>
+		<td><s:property value="%{#session.releaseCompany}"/></td>									<!-- １ -->
 		</tr>
 		<tr>
 		<th scope="row"><s:label value="発売年月日"/></th>
-		<td><s:property value="%{#session.releaseDate}"/></td>
+		<td><s:property value="%{#session.releaseDate}"/></td>											<!-- １ -->
 		</tr>
 		<tr>
 		<th scope="row"><s:label value="商品詳細情報"/></th>
-		<td><s:property value="%{#session.productDescription}"/></td>
+		<td><s:property value="%{#session.productDescription}"/></td>								<!-- １ -->
 		</tr>
 		</table>
 	</div>
 	</div>
-	<s:hidden name="productId" value="%{#session.productId}"/>
-	<s:hidden name="productName" value="%{#session.productName}"/>
-	<s:hidden name="productNameKana" value="%{#session.productNameKana}"/>
-	<s:hidden name="imageFilePath" value="%{#session.imageFilePath}"/>
-	<s:hidden name="imageFileName" value="%{#session.imageFileName}"/>
-	<s:hidden name="price" value="%{#session.price}"/>
-	<s:hidden name="releaseCompany" value="%{#session.releaseCompany}"/>
-	<s:hidden name="releaseDate" value="%{#session.releaseDate}"/>
-	<s:hidden name="productDescription" value="%{#session.productDescription}"/>
+	<s:hidden name="productId" value="%{#session.productId}"/>											<!-- １ -->
+	<s:hidden name="productName" value="%{#session.productName}"/>								<!-- １ -->
+	<s:hidden name="productNameKana" value="%{#session.productNameKana}"/>				<!-- １ -->
+	<s:hidden name="imageFilePath" value="%{#session.imageFilePath}"/>							<!-- １ -->
+	<s:hidden name="imageFileName" value="%{#session.imageFileName}"/>						<!-- １ -->
+	<s:hidden name="price" value="%{#session.price}"/>														<!-- １ -->
+	<s:hidden name="releaseCompany" value="%{#session.releaseCompany}"/>						<!-- １ -->
+	<s:hidden name="releaseDate" value="%{#session.releaseDate}"/>									<!-- １ -->
+	<s:hidden name="productDescription" value="%{#session.productDescription}"/>				<!-- １ -->
 	</div>
 	<div class="submit_btn_box">
 	<s:submit value="カートに追加" class="submit_btn" />
@@ -69,7 +69,7 @@
 	<div class="box">
 
 <div class="product-details-recomｍend-box">
-<s:iterator value="#session.productInfoDtoList">
+<s:iterator value="#session.productInfoDtoList">																	<!-- ３ -->
 <!-- 	<div class="product-list">
 		<div class="product-list-box"> -->
 		<div class="recommend-box">

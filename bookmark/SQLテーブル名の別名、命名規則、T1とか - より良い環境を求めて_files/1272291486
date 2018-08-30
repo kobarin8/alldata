@@ -1,0 +1,901 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:og="http://ogp.me/ns#">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-jp">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<title>SQLのオレオレコーディング規約 - Do You PHP はてな</title>
+<link rel="start" href="/" title="Do You PHP はてな">
+<link rel="help" href="/help" title="ヘルプ">
+<link rel="prev" href="/shimooka/20100422/1271905286" title="[PHP][その他]どれぐらいテスト...">
+<link rel="next" href="/shimooka/20100428/1272434402" title="[雑記][Desire]HTC Desire">
+
+<link rel="stylesheet" href="http://d.st-hatena.com/statics/css/base.css?07618f388c0425a42ed1b087de443bcfa0a98a9d" type="text/css" media="all">
+
+<link rel="stylesheet" href="http://d.st-hatena.com/statics/theme/city/city.css?e63da0d34d8f964cab4dfee7b9fc152c5d3a1e6f" type="text/css" media="all">
+
+
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://d.hatena.ne.jp/shimooka/rss">
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://d.hatena.ne.jp/shimooka/rss2">
+
+<link rel="meta" type="application/rdf+xml" title="FOAF" href="http://d.hatena.ne.jp/shimooka/foaf" />
+<link rel="search" type="application/opensearchdescription+xml" href="http://d.hatena.ne.jp/shimooka/opensearch/diary.xml" title="Do You PHP はてな内日記検索" />
+<link rel="search" type="application/opensearchdescription+xml" href="http://d.hatena.ne.jp/shimooka/opensearch/archive.xml" title="Do You PHP はてな内一覧検索" />
+
+
+
+<link rel="shortcut icon" href="http://d.hatena.ne.jp/images/wh_favicon.ico">
+
+
+
+<link rel="canonical" href="http://d.hatena.ne.jp/shimooka/20100426/1272291486">
+
+
+<style type="text/css">
+<!-- 
+@charset "UTF-8";
+
+span.highlight {
+	color: black;
+	background-color: yellow;
+}
+img.photo {
+	float: right;
+	margin: 10px;
+	border: 0;
+}
+a.keyword {
+        text-decoration: none;
+        border-bottom: 1px dotted gray;
+}
+a {
+        text-decoration: none;
+        border-bottom: 1px solid gray;
+}
+cite { font-style: italic; }
+.overflow { overflow: auto; white-space: pre; }
+pre { overflow: auto; white-space: pre; }
+/*
+.hatena-star-star-image {
+  background-image: url('http://f.hatena.ne.jp/images/fotolife/s/shimooka/20071003/20071003130531.gif');
+}
+.red {
+        font-weight: bold;
+        color: #ff0000;
+} */  
+div.section h4 {
+/*	margin: 2em 0 1em 0;*/  
+	font-size: 100%;
+	color: #888;
+	border-left: 8px solid #888;
+	padding: .3em 0 .3em 5px;
+}
+
+div.section h5 {
+	font-size: 100%;
+	border-left:1em solid #ccc;
+	color:#888888;
+/*	margin:2em 0pt 0pt;*/  
+	padding-left:0.5em;
+}
+div.section strong {
+	background: yellow;
+	font-weight: normal;
+}
+div.sidebar {
+	width: 250px;
+}
+div.main {
+	margin: 0 0 0 270px;
+}
+
+-->
+</style>
+
+
+<script type="text/javascript">if(/[\x3c\x3e\x22]/.test(location.hash))location.hash=location.hash.replace(/[\x3c\x3e\x22]/g,'');if(/[\x3c\x3e]/.test(document.referrer))location.href=location.href;</script>
+
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQLのオレオレコーディング規約 - Do You PHP はてな">
+<meta property="og:url" content="http://d.hatena.ne.jp/shimooka/20100426/1272291486">
+<meta property="og:description" content="via. http://www.geocities.jp/mickindex/database/db_manner.html 読んでて懐かしかった(?)ので、なんとな..">
+<meta property="og:site_name" content="はてなダイアリー">
+
+
+<!--
+<rdf:RDF
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:foaf="http://xmlns.com/foaf/0.1/">
+<rdf:Description rdf:about="http://d.hatena.ne.jp/shimooka/20100426/1272291486">
+   <foaf:maker rdf:parseType="Resource">
+     <foaf:holdsAccount>
+       <foaf:OnlineAccount foaf:accountName="shimooka">
+         <foaf:accountServiceHomepage rdf:resource="http://www.hatena.ne.jp/" />
+       </foaf:OnlineAccount>
+     </foaf:holdsAccount>
+   </foaf:maker>
+</rdf:Description>
+</rdf:RDF>
+-->
+
+<link rel="alternate" media="handheld" type="text/html" href="http://d.hatena.ne.jp/shimooka/mobile?date=20100426&section=1272291486" />
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+<rdf:Description
+  rdf:about="http://d.hatena.ne.jp/shimooka/20100426/1272291486"
+  trackback:ping="http://d.hatena.ne.jp/shimooka/20100426/1272291486"
+  dc:title="[雑記]SQLのオレオレコーディング規約"
+  dc:identifier="http://d.hatena.ne.jp/shimooka/20100426/1272291486" />
+</rdf:RDF>
+-->
+
+<script type="text/javascript" src="http://d.st-hatena.com/statics/js/MochiKit/1125/Base.js?af12586c7bd8ed91af534bbc74eaae3171ae86fc"></script>
+<script type="text/javascript" src="http://d.st-hatena.com/statics/js/MochiKit/1125/Iter.js?af12586c7bd8ed91af534bbc74eaae3171ae86fc"></script>
+<script type="text/javascript" src="http://d.st-hatena.com/statics/js/MochiKit/1125/DOM.js?af12586c7bd8ed91af534bbc74eaae3171ae86fc"></script>
+<script type="text/javascript" src="http://d.st-hatena.com/statics/js/MochiKit/1125/Style.js?af12586c7bd8ed91af534bbc74eaae3171ae86fc"></script>
+<script type="text/javascript" src="http://d.st-hatena.com/statics/js/MochiKit/1125/Signal.js?af12586c7bd8ed91af534bbc74eaae3171ae86fc"></script>
+<script type="text/javascript" src="http://d.st-hatena.com/statics/js/MochiKit/1125/Async.js?af12586c7bd8ed91af534bbc74eaae3171ae86fc"></script>
+<script type="text/javascript" src="http://d.st-hatena.com/statics/js/MochiKit/1125/Logging.js?af12586c7bd8ed91af534bbc74eaae3171ae86fc"></script>
+<script type="text/javascript" src="http://d.st-hatena.com/statics/js/BookmarkCommentViewer.js?af12586c7bd8ed91af534bbc74eaae3171ae86fc" charset="utf-8"></script>
+
+
+
+<meta name="twitter:card" content="summary">
+
+<meta name="twitter:site:id" content="4279971">
+
+
+
+<script type="text/javascript" src="http://s.hatena.ne.jp/js/HatenaStar.js"></script>
+<script type="text/javascript">
+Hatena.Star.SiteConfig = {
+  entryNodes: {
+    'div.section': {
+      uri: 'h3 a',
+      title: 'h3',
+      container: 'h3'
+    }
+  }
+};
+Hatena.Author  = new Hatena.User('shimooka');
+Hatena.DiaryName  = new Hatena.User('shimooka');
+
+</script>
+
+
+
+<script type="text/javascript" src="http://d.st-hatena.com/statics/js/twitter_entry_icon.js?af12586c7bd8ed91af534bbc74eaae3171ae86fc"></script>
+
+
+
+<script type="text/javascript" src="http://d.st-hatena.com/statics/js/adcolor.js?af12586c7bd8ed91af534bbc74eaae3171ae86fc"></script>
+
+
+<script type="text/javascript" src="http://d.st-hatena.com/statics/js/quick_pager.js?73e8efd3adc8709460b4c8ff9af5a3d4c97eba4e"></script>
+<script type="text/javascript" src="http://d.st-hatena.com/statics/js/diary_utils.js?af12586c7bd8ed91af534bbc74eaae3171ae86fc"></script>
+<script type="text/javascript" src="http://d.st-hatena.com/statics/js/max_width_fotolife.js?2d5c0a4915fdb8930122a506dbf154b9db674a3b"></script>
+
+
+
+
+
+
+
+<meta name="keywords" content="PHP, PEAR, PECL, HTC Desire" />
+<meta name="description" content="スクリプト言語のPHP(PHP Hypertext Preprocessor)ネタ中心ですが、それ以外の気になったこと・モノのメモ代わりとして書いています。" />
+
+
+
+
+
+
+
+<script type="text/javascript" src="http://d.st-hatena.com/statics/js/jquery-1.4.2.min.js?af12586c7bd8ed91af534bbc74eaae3171ae86fc"></script>
+<script type="text/javascript">
+  jQuery.noConflict()(function($){
+    var j$ = jQuery;
+  });
+</script>
+
+
+
+
+</head>
+<body>
+
+  <script>Hatena.Diary.UaTrakingID = 'UA-46127385-5';</script>
+ 
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-58NPH6"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-58NPH6');</script>
+<!-- End Google Tag Manager -->
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.6&appId=189164841141201";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0" id="banner">
+<tr>
+<td bgcolor="#FFFFFF" nowrap>
+<a href="http://www.hatena.ne.jp/"><img border="0" src="http://d.hatena.ne.jp/images/hatena_wh.gif" width="104" height="40" alt="Hatena::"></a><a href="http://d.hatena.ne.jp/"><img border="0" src="http://d.hatena.ne.jp/images/diarywh.gif" width="60" height="40" alt="ブログ(Diary)"></a></td>
+<td valign="bottom" align="left" bgcolor="#FFFFFF" width="60%" nowrap><form method="GET" action="/search" style="margin: 0;"><font color="#FFFFFF" size="2">&nbsp;&nbsp;<input type="text" name="word" value="" size="18" style="font-size: 8pt">&nbsp;<input type="hidden" name="name" value="shimooka"><input type="image" name="diary" alt="日記" src="http://d.hatena.ne.jp/images/search_diarywh.gif" align="top" style="width:34px;height:20px;border:0px">&nbsp;<input type="image" name="submit" alt="検索" src="http://d.hatena.ne.jp/images/searchwh.gif" align="top" style="width:34px;height:20px;border:0px"><br><img border="0" src="http://d.hatena.ne.jp/images/dot.gif" width="1" height="3" alt=""></font></form></td>
+<td align="right" bgcolor="#FFFFFF"><a href="http://www.hatena.ne.jp/"><img border="0" src="http://d.hatena.ne.jp/images/hatenawh.gif" width="82" height="40" alt="はてな"></a></td>
+</tr>
+<tr>
+<td width="100%" bgcolor="#999999" colspan="3"><img border="0" src="http://d.hatena.ne.jp/images/dot.gif" width="1" height="1" alt=""></td>
+</tr>
+<tr>
+<td width="100%" bgColor="#ffffff" colspan="3">
+<div align="center">
+<center>
+<table cellSpacing="0" cellPadding="2" width="100%" border="0">
+<tbody>
+<tr>
+<td bgcolor="#FFFFFF" width="50%" nowrap><font color="#999999" size="2">&nbsp;ようこそゲストさん&nbsp;</font></td>
+<td bgcolor="#FFFFFF" nowrap align="center"><a href="http://d.hatena.ne.jp/shimooka/" style="text-decoration:none; font-weight:100;"><font size="2" color="#999999">ブログトップ</font></a></td>
+<td bgcolor="#FFFFFF" nowrap align="center"><a href="http://d.hatena.ne.jp/shimooka/archive" style="text-decoration:none; font-weight:100;"><font size="2" color="#999999">記事一覧</font></a></td>
+<td bgcolor="#FFFFFF" nowrap align="center"><a href="https://www.hatena.ne.jp/login?backurl=http%3A%2F%2Fd.hatena.ne.jp%2Fshimooka%2F20100426%2F1272291486&add_timestamp=1" style="text-decoration:none; font-weight:100;"><font size="2" color="#999999">ログイン</font></a></td><td bgcolor="#FFFFFF" nowrap align="center"><a href="https://www.hatena.ne.jp/register?location=http%3A%2F%2Fd.hatena.ne.jp%3Fvia%3D200186&amp;via=200186" style="text-decoration:none; font-weight:100;"><font size="2" color="#999999">無料ブログ開設</font></a></td>
+
+
+</tr>
+</tbody>
+</table>
+</center>
+</div>
+</td>
+</tr>
+<tr>
+<td width="100%" bgcolor="#999999" colspan="3"><img border="0" src="http://d.hatena.ne.jp/images/dot.gif" width="1" height="1" alt=""></td>
+</tr>
+</table>
+
+
+
+<h1>Do You PHP はてな <a href="http://a.hatena.ne.jp/append?http://d.hatena.ne.jp/shimooka/"><img src="http://d.hatena.ne.jp/images/a_append_wh.gif" title="このページをアンテナに追加" alt="このページをアンテナに追加" border="0" width="16" height="12" class="icon"></a> <a href="http://d.hatena.ne.jp/shimooka/rss"><img src="http://d.hatena.ne.jp/images/rss_wh.gif" alt="RSSフィード" title="RSSフィード" border="0" width="24" height="12" class="icon"></a> <a id="twitter-header-icon" href="http://twitter.com/shimooka"><img src="/images/icon-twitter.png" alt="Twitter" title="このページ作者のTwitterへ" border="0" width="16" height="16" class="icon"></a></h1>
+<div class="hatena-body">
+<div class="main">
+
+
+
+
+
+
+
+
+
+<div class="calendar" id="pager-top">
+  <a rel="prev" href="/shimooka/20100422/1271905286" class="prev">&lt;[PHP][その他]どれぐらいテスト...</a>&nbsp;<span class="delimiter">|</span>&nbsp;<a rel="next" href="/shimooka/20100428/1272434402" class="next">[雑記][Desire]HTC Desire&gt;</a><span id="edit-in-place-add"></span>
+</div>
+<div id="days">
+
+<div class="day">
+<h2><a href="http://d.hatena.ne.jp/shimooka/20100426" rel="nofollow"><span class="date">2010-04-26</span></a></h2>
+
+<div class="body">
+
+<!-- rakuten_ad_target_begin -->
+<!-- google_ad_section_start -->
+
+		<div class="section">
+			<h3><a href="/shimooka/20100426/1272291486" name="1272291486"><span class="sanchor">■</span></a>[<a href="/shimooka/searchdiary?word=%2A%5B%BB%A8%B5%AD%5D" class="sectioncategory">雑記</a>]<a class="keyword" href="http://d.hatena.ne.jp/keyword/SQL">SQL</a>のオレオレ<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%B3%A1%BC%A5%C7%A5%A3%A5%F3%A5%B0">コーディング</a>規約</h3>
+			<p><a class="keyword" href="http://d.hatena.ne.jp/keyword/via">via</a>. <a href="http://www.geocities.jp/mickindex/database/db_manner.html" target="_blank">SQLプログラミング作法</a></p>
+			<p>読んでて懐かしかった(?)ので、なんとなくエントリ。。。</p>
+			<p>下手すると宗教戦争になりかねない<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%B3%A1%BC%A5%C7%A5%A3%A5%F3%A5%B0">コーディング</a>規約ですが、複数人で開発する場合、<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%D7%A5%ED%A5%B0%A5%E9%A5%DF%A5%F3%A5%B0%B8%C0%B8%EC">プログラミング言語</a>だけではなく、<a class="keyword" href="http://d.hatena.ne.jp/keyword/SQL">SQL</a>にもあった方が良いのは言うまでもありません。</p>
+			<p>今のところ、オレオレ規約で書いてるわけですが、ベースとなってるのは最初に入社した会社の先輩の書き方です。で、<a href="http://www.geocities.jp/mickindex/database/db_manner.html" target="_blank">SQLプログラミング作法</a>の"<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%B3%A1%BC%A5%C7%A5%A3%A5%F3%A5%B0">コーディング</a>・ルール"にある項目に沿って、それぞれどんな感じで書いてるのか晒してみます。</p>
+			<h4>コメント</h4>
+			<p>ハイフン2つ(--)も複数行コメント(/* 〜 */)も両方使ってます。後者は<a class="keyword" href="http://d.hatena.ne.jp/keyword/javadoc">javadoc</a>っぽく書いてます。</p>
+<pre class="syntax-highlight">
+<span class="synComment">/**</span>
+<span class="synComment"> * ○○○○を日毎に集約</span>
+<span class="synComment"> *</span>
+<span class="synComment"> * @</span><span class="synTodo">todo</span><span class="synComment"> チューニング</span>
+<span class="synComment"> */</span>
+</pre>
+
+			<h4>インデント</h4>
+			<p>スペース4つ。基本的に、"意味が切れる"<a class="keyword" href="http://d.hatena.ne.jp/keyword/%CD%BD%CC%F3%B8%EC">予約語</a>(FROM、WHERE、ANDなど)で改行を入れてます。ただし、<a href="http://www.geocities.jp/mickindex/database/db_manner.html" target="_blank">SQLプログラミング作法</a>にあるような、<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%AB%A5%E9%A5%E0%CC%BE">カラム名</a>の開始位置を揃えたりしません。前述の先輩はこういうふうに揃えてましたが、実際これって面倒じゃないですか？</p>
+<pre class="syntax-highlight">
+<span class="synStatement">SELECT</span>
+       col_1,
+       col_2,
+       col_3,
+       COUNT(*)
+  <span class="synSpecial">FROM</span> tbl_A
+ <span class="synSpecial">WHERE</span> col_1 = <span class="synConstant">'a'</span>
+   <span class="synStatement">AND</span> col_2 = ( <span class="synStatement">SELECT</span> MAX(col_2)
+                   <span class="synSpecial">FROM</span> tbl_B
+                  <span class="synSpecial">WHERE</span> col_3 = <span class="synConstant">100</span>
+            )
+ <span class="synSpecial">GROUP</span> <span class="synSpecial">BY</span>
+       col_1,
+       col_2,
+       col_3
+</pre>
+
+			<p>上と同じ<a class="keyword" href="http://d.hatena.ne.jp/keyword/SQL">SQL</a>なら、こんな感じで書くと思います。</p>
+<pre class="syntax-highlight">
+<span class="synStatement">SELECT</span>
+    col_1,
+    col_2,
+    col_3,
+    COUNT(*)
+<span class="synSpecial">FROM</span> tbl_A
+<span class="synSpecial">WHERE</span> col_1 = <span class="synConstant">'a'</span>
+<span class="synStatement">AND</span> col_2 = (<span class="synStatement">SELECT</span> MAX(col_2)
+             <span class="synSpecial">FROM</span> tbl_B
+             <span class="synSpecial">WHERE</span> col_3 = <span class="synConstant">100</span>)
+<span class="synSpecial">GROUP</span> <span class="synSpecial">BY</span>
+    col_1,
+    col_2,
+    col_3
+</pre>
+
+			<p>極端な話、<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%C7%A5%D0%A5%C3%A5%B0">デバッグ</a>ログから拾った<a class="keyword" href="http://d.hatena.ne.jp/keyword/SQL">SQL</a>をざっと整形するときはこんな感じ。まあ、<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%DE%A5%AF%A5%ED">マクロ</a>使って機械的に整形させてるので。。。</p>
+<pre class="syntax-highlight">
+<span class="synStatement">SELECT</span>
+    col_1,
+    col_2,
+    col_3,
+    COUNT(*)
+<span class="synSpecial">FROM</span>
+    tbl_A
+<span class="synSpecial">WHERE</span> col_1 = <span class="synConstant">'a'</span>
+<span class="synStatement">AND</span> col_2 = (
+    <span class="synStatement">SELECT</span>
+        MAX(col_2)
+    <span class="synSpecial">FROM</span>
+        tbl_B
+    <span class="synSpecial">WHERE</span> col_3 = <span class="synConstant">100</span>)
+<span class="synSpecial">GROUP</span> <span class="synSpecial">BY</span>
+    col_1,
+    col_2,
+    col_3
+</pre>
+
+			<h4>カンマ（,）</h4>
+<pre>
+ところで、このカンマというやつ、要素の後ろに置く、と思っていないでしょうか？
+</pre>
+
+			<p>はい、そのとおりです:-)　必ず、後ろに置いてます。</p>
+			<h4>スペース</h4>
+			<p>これは、ほぼ同じです。等号・不等号の前後、カンマの後ろには必ず入れてます。ただし、カッコの内側に入れてません。</p>
+<pre class="syntax-highlight">
+<span class="synStatement">SELECT</span> *
+  <span class="synSpecial">FROM</span>   tbl_A A, tbl_B B
+ <span class="synSpecial">WHERE</span>  ( A.col_1 &gt;= <span class="synConstant">100</span> <span class="synStatement">OR</span> A.col_2 <span class="synStatement">IN</span> ( <span class="synConstant">'a'</span>, <span class="synConstant">'b'</span> ) )
+   <span class="synStatement">AND</span>  A.col_3 = B.col_3;
+</pre>
+
+			<p>ならば、</p>
+<pre class="syntax-highlight">
+<span class="synStatement">SELECT</span> *
+<span class="synSpecial">FROM</span> tbl_A A, tbl_B B
+<span class="synSpecial">WHERE</span> (A.col_1 &gt;= <span class="synConstant">100</span> <span class="synStatement">OR</span> A.col_2 <span class="synStatement">IN</span> (<span class="synConstant">'a'</span>, <span class="synConstant">'b'</span>))
+<span class="synStatement">AND</span> A.col_3 = B.col_3;
+</pre>
+
+			<p>になります。<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%A8%A5%C7%A5%A3%A5%BF">エディタ</a>にも依りますが、対応するカッコを強調表示できたりしますから、そんなにスペースを空けなくてもいいかな、と。</p>
+			<h4>大文字と小文字</h4>
+			<p>これはそのまま</p>
+<pre>
+予約語は大文字、列名やテーブル名は小文字
+</pre>
+
+			<p>にしてます。なので、Propelが作る<a class="keyword" href="http://d.hatena.ne.jp/keyword/SQL">SQL</a>は好きじゃないです。あと、テーブルには必ず別名を付けてて(参照するテーブルが1つの場合でも)、別名は小文字で付けてます。昔は、アルファベット1〜2文字で付けてました。</p>
+			<h4>標準語を話そう</h4>
+			<p>あー、確かに<a class="keyword" href="http://d.hatena.ne.jp/keyword/Oracle">Oracle</a>の"DECODE"や"NVL"、"(+)"は使ってたなぁ。現在は、<a class="keyword" href="http://d.hatena.ne.jp/keyword/PostgreSQL">PostgreSQL</a>なので、"CASE"、"COALESCE"、"LEFT OUTER JOIN"使ってます。また、"INNER JOIN"は『必ず書く派』です。</p>
+			<h4>相関サブ<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%AF%A5%A8%A5%EA">クエリ</a>は避ける</h4>
+			<p>まあ、ケースバイケースですが、</p>
+<pre>
+EXISTS で書いた方が速く動作する可能性が高くなります
+</pre>
+
+			<p>のはありますね。昔の<a class="keyword" href="http://d.hatena.ne.jp/keyword/Oracle">Oracle</a>ではそうでした。<a class="keyword" href="http://d.hatena.ne.jp/keyword/PostgreSQL">PostgreSQL</a>の場合、EXISTSよりもLIMIT 1の方が早い場合もあるようです。</p>
+			<h4>番外：<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%D7%A5%ED%A5%B0%A5%E9%A5%DF%A5%F3%A5%B0%B8%C0%B8%EC">プログラミング言語</a>で<a class="keyword" href="http://d.hatena.ne.jp/keyword/SQL">SQL</a>を埋める場合</h4>
+			<p>文字列として<a class="keyword" href="http://d.hatena.ne.jp/keyword/SQL">SQL</a>を組み立てる場合、最後に必ずスペースを入れてます。</p>
+<pre class="syntax-highlight">
+/**
+ * 文字列の最後にスペースをかならず入れる
+ */
+$query = &quot;SELECT e.empno, e.ename &quot;
+       . &quot;FROM emp e &quot;
+       . &quot;WHERE e.name LIKE 'S%' &quot;;
+</pre>
+
+			<p class="share-button sectionfooter"><a href="http://twitter.com/share" class="twitter-share-button" data-lang="ja" data-count="vertical" data-url="http://d.hatena.ne.jp/shimooka/20100426/1272291486" data-text="SQLのオレオレコーディング規約 - Do You PHP はてな (id:shimooka / @shimooka)">ツイートする</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js" charset="utf-8"></script><span class="fb-share-button" data-href="http://d.hatena.ne.jp/shimooka/20100426/1272291486" data-layout="box_count"></span></p>
+
+			<p class="sectionfooter"><a href="/shimooka/20100426/1272291486">Permalink</a> | <a href="/shimooka/20100426/1272291486#c">コメント(4)</a> | <a href="/shimooka/20100426/1272291486#tb">トラックバック(1)</a> | 23:18 <a href="http://b.hatena.ne.jp/entry/http://d.hatena.ne.jp/shimooka/20100426/1272291486" class="bookmark-icon"><img src="http://d.hatena.ne.jp/images/b_entry_wh.gif" border="0" title="SQLのオレオレコーディング規約を含むブックマーク" alt="SQLのオレオレコーディング規約を含むブックマーク" width="16" height="12" class="icon"></a> <a href="http://b.hatena.ne.jp/entry/http://d.hatena.ne.jp/shimooka/20100426/1272291486" class="bookmark-count"><img src="http://b.hatena.ne.jp/entry/image/http://d.hatena.ne.jp/shimooka/20100426/1272291486" title="はてなブックマーク - SQLのオレオレコーディング規約" alt=""></a> <img class="hatena-bcomment-view-icon" src="http://r.hatena.ne.jp/images/popup.gif" onclick="javascript:BookmarkCommentViewer.iconImageClickHandler(this, 'http://d.hatena.ne.jp/shimooka/20100426/1272291486', event);" title="SQLのオレオレコーディング規約のブックマークコメント" alt="SQLのオレオレコーディング規約のブックマークコメント" width="13" height="13"></p>
+
+		</div>
+
+<!-- google_ad_section_end -->
+<!-- rakuten_ad_target_end -->
+
+
+<div class="ad">
+<div class="hatena-asin-recommend">
+<div class="hatena-asin-recommend-item-1">
+<div class="hatena-asin-recommend-image"><a href="http://d.hatena.ne.jp/asin/4822292274/doyouphp-22"><img src="https://images-fe.ssl-images-amazon.com/images/I/51%2BScGc8DAL._SL60_.jpg" ALT="4822292274"></a></div>
+<div class="hatena-asin-recommend-info">
+<div class="hatena-asin-recommend-title"><a href="http://d.hatena.ne.jp/asin/4822292274/doyouphp-22"><img src="/images/hamazou_icons/icon-book.gif" border="0" align="left" alt="Book"> 独学プログラマー Python言語の基本から仕事のや...</a></div>
+<div class="hatena-asin-recommend-description">
+  <a href="http://d.hatena.ne.jp/keyword/%C6%FC%B7%D0BP%BC%D2">日経BP社</a> <a href="http://d.hatena.ne.jp/keyword/%A5%B3%A1%BC%A5%EA%A1%BC%A1%A6%A5%A2%A5%EB%A5%BD%A5%D5">コーリー・アルソフ</a> <a href="http://d.hatena.ne.jp/keyword/%C0%B6%BF%E5%C0%EE%B5%AE%C7%B7%B4%C6%CC%F5">清水川貴之監訳</a> <a href="http://d.hatena.ne.jp/keyword/%C0%B6%BF%E5%C0%EE%B5%AE%C7%B7">清水川貴之</a> <a href="http://d.hatena.ne.jp/keyword/%BF%B7%CC%DA%B2%ED%CC%E9">新木雅也</a> <br />
+  
+</div>
+</div></div>
+<div class="hatena-asin-recommend-item-2">
+<div class="hatena-asin-recommend-image"><a href="http://d.hatena.ne.jp/asin/4774192589/doyouphp-22"><img src="https://images-fe.ssl-images-amazon.com/images/I/51-A4kx8NBL._SL60_.jpg" ALT="4774192589"></a></div>
+<div class="hatena-asin-recommend-info">
+<div class="hatena-asin-recommend-title"><a href="http://d.hatena.ne.jp/asin/4774192589/doyouphp-22"><img src="/images/hamazou_icons/icon-book.gif" border="0" align="left" alt="Book"> ゼロからわかる SQL超入門 (かんたんIT基礎講座)</a></div>
+<div class="hatena-asin-recommend-description">
+  <a href="http://d.hatena.ne.jp/keyword/%B5%BB%BD%D1%C9%BE%CF%C0%BC%D2">技術評論社</a> <a href="http://d.hatena.ne.jp/keyword/%BB%B0%C2%BC%A4%AB%A4%E8%A4%B3">三村かよこ</a> <br />
+  
+</div>
+</div></div>
+<div class="hatena-asin-recommend-foot"></div></div></div>
+
+
+</div>
+
+<form id="comment-form" method="post" action="/shimooka/comment#c" class="comment">
+<input type="hidden" name="mode" value="enter">
+<input type="hidden" name="rkm" value="">
+<input type="hidden" name="date" value="2010-04-26">
+<div class="comment">
+  <div class="caption"><a name="c">コメントを書く</a></div>
+  <div class="commentshort">
+    
+    
+      <p>
+        
+                <a name="c111558738"></a><span class="commentator">
+          <a href="/MugeSo/" class="hatena-id-icon"><img src="http://www.hatena.ne.jp/users/Mu/MugeSo/profile_s.gif" class="hatena-id-icon" alt="MugeSo" title="MugeSo" height="16" width="16">MugeSo</a>
+          
+        </span>
+        <span class="timestamp"><a name="c1272293683" href="/shimooka/20100426/1272291486#c1272293683">2010/04/26 23:54</a></span>
+        <span class="commentbody">要素のあと(の,のあと)には改行入れないことあります。番外編で書いているみたいに少ないときには。</span>
+
+      </p>
+    
+      <p>
+        
+                <a name="c111561168"></a><span class="commentator">
+          <a href="/shimooka/" class="hatena-id-icon"><img src="http://www.hatena.ne.jp/users/sh/shimooka/profile_s.gif" class="hatena-id-icon" alt="shimooka" title="shimooka" height="16" width="16">shimooka</a>
+          
+        </span>
+        <span class="timestamp"><a name="c1272335827" href="/shimooka/20100426/1272291486#c1272335827">2010/04/27 11:37</a></span>
+        <span class="commentbody">MugeSoさん&gt;<br>ですね。数個ならつなげて書いちゃいますが、SUMとかCOALESCE使ってるときは改行入れます。</span>
+
+      </p>
+    
+      <p>
+        
+                <a name="c111561987"></a><span class="commentator">
+          <a href="/akiraneko/" class="hatena-id-icon"><img src="http://www.hatena.ne.jp/users/ak/akiraneko/profile_s.gif" class="hatena-id-icon" alt="akiraneko" title="akiraneko" height="16" width="16">akiraneko</a>
+          
+        </span>
+        <span class="timestamp"><a name="c1272346811" href="/shimooka/20100426/1272291486#c1272346811">2010/04/27 14:40</a></span>
+        <span class="commentbody">cseとかA5M2とかのソフトに任せます（笑）</span>
+
+      </p>
+    
+      <p>
+        
+                <a name="c111562311"></a><span class="commentator">
+          <a href="/shimooka/" class="hatena-id-icon"><img src="http://www.hatena.ne.jp/users/sh/shimooka/profile_s.gif" class="hatena-id-icon" alt="shimooka" title="shimooka" height="16" width="16">shimooka</a>
+          
+        </span>
+        <span class="timestamp"><a name="c1272350614" href="/shimooka/20100426/1272291486#c1272350614">2010/04/27 15:43</a></span>
+        <span class="commentbody">akiranekoさん&gt;<br>なるほど、そういうのもありますね;-)</span>
+
+      </p>
+    
+
+    <a name="error-message"></a>
+    <p class="message" style="display:none"></p>
+
+    
+
+    
+            
+    <p class="commentform">
+      <span class="commentator">
+        <span class="usermailconfirm"><input name="usermail" size="1" value=""><input name="userurl" size="1" value="">スパム対策のためのダミーです。もし見えても何も入力しないでください<br></span>
+        <span class="username">
+        <img src="http://www.hatena.ne.jp/images/guest_icon.gif" class="hatena-id-icon" alt="ゲスト" title="ゲスト" height="16" width="16">
+        <input type="hidden" name="section" value="1272291486">
+        
+          <input id="comment-username" name="username" size="15">
+        
+        </span>
+        
+          <span class="usermail"><img src="/images/icon-usermail.gif" style="vertical-align:middle;margin-right:3px;"><input id="comment-usermail" name="useremail" size="15" value=""></span>
+          <span class="userurl"><img src="/images/icon-userurl.gif" style="vertical-align:middle;margin-right:3px;"><input id="comment-userurl" name="useruri" size="15" value=""></span>
+        
+      </span>
+<br>
+      <!-- NOT_VERIFIED_COMMENT_AUTH -->
+      <textarea id="comment-textarea" name="body" value="" cols="60" rows="3"></textarea><br>
+      
+          <div class="captcha">
+            <img src="/shimooka/captcha?1535610749" class="captcha-image">
+            <span class="captcha-message">画像認証</span><br />
+            <input type="text" name="captcha_code" size="10" class="captcha-string" id="comment-captcha">
+          </div>
+      
+      <span class="comment-submit"><input type="submit" id="comment-form-button" value="投稿"></span>
+    </p>
+
+      <script type="text/javascript" src="/js/diary_comment_edit_form.js"></script>
+    
+
+  </div>
+</div>
+
+</form>
+
+
+
+
+
+  
+  <div class="refererlist">
+    <div class="caption">
+      <a name="tb">トラックバック</a> - http://d.hatena.ne.jp/shimooka/20100426/1272291486
+    </div>
+    
+      
+      <ul>
+        
+          <li>
+            <a href="http://d.hatena.ne.jp/n314/20140225/1393316807" title=" SQLテーブル名の別名、命名規則、T1とか ときどき SELECt * FROM item as T1 みたいな連番別名テーブルを見るんだが。 どこかで推奨でもされているんだろうか。 プログラムの変数名に無意味な連番は有り得ないっていうのは共通認識としてあると思うけど、SQLはそうじゃない" rel="nofollow">より良い環境を求めて -  SQLテーブル名の別名、命名規則、T1とか</a></li>
+        
+      </ul>
+    
+  </div>
+  
+  
+  
+
+
+
+
+
+    <div class="refererlist">
+      <div class="caption">リンク元</div>
+      <ul>
+          <li>778 <a href="https://www.google.co.jp/" rel="nofollow">https://www.google.co.jp/</a></li>
+          <li>284 <a href="http://pipes.yahoo.com/pipes/pipe.info?_id=0236b89df1225fc3865be3fdc7183ab0" rel="nofollow">http://pipes.yahoo.com/pipes/pipe.info?_id=0236b89df1225fc3865be3fdc7183ab0</a></li>
+          <li>257 <a href="http://d.hatena.ne.jp/n314/20140225/1393316807" rel="nofollow">http://d.hatena.ne.jp/n314/20140225/1393316807</a></li>
+          <li>118 <a href="http://www.google.co.jp/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;frm=1&amp;source=web&amp;cd=2&amp;sqi=2&amp;ved=0CD4QFjAB&amp;url=http%3A%2F%2Fd.hatena.ne.jp%2Fshimooka%2F20100426%2F1272291486&amp;ei=CFCMT9COIM6HmQX0jfHvCQ&amp;usg=AFQjCNFHIesVUhXbdHaLgVlpQ2Chqv-oEQ&amp;sig2=cgt41wpECdyF152_WqxcvA" rel="nofollow">http://www.google.co.jp/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;frm=1&amp;source=web&amp;cd=2&amp;sqi=2&amp;ved=0CD4QFjAB&amp;url=http://d.hatena.ne.jp/shimooka/20100426/1272291486&amp;ei=CFCMT9COIM6HmQX0jfHvCQ&amp;usg=AFQjCNFHIesVUhXbdHaLgVlpQ2Chqv-oEQ&amp;sig2=cgt41wpECdyF152_WqxcvA</a></li>
+          <li>99 <a href="http://www.google.co.jp/url?sa=t&amp;rct=j&amp;q=sql+%E3%82%B3%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E8%A6%8F%E7%B4%84&amp;source=web&amp;cd=3&amp;ved=0CD8QFjAC&amp;url=http%3A%2F%2Fd.hatena.ne.jp%2Fshimooka%2F20100426%2F1272291486&amp;ei=RO7KTtG4D4qbmQWRvpWjDQ&amp;usg=AFQjCNFHIe" rel="nofollow">http://www.google.co.jp/url?sa=t&amp;rct=j&amp;q=sql+コーディング規約&amp;source=web&amp;cd=3&amp;ved=0CD8QFjAC&amp;url=http://d.hatena.ne.jp/shimooka/20100426/1272291486&amp;ei=RO7KTtG4D4qbmQWRvpWjDQ&amp;usg=AFQjCNFHIe</a></li>
+          <li>97 <a href="http://www.google.co.jp/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cts=1331294626716&amp;sqi=2&amp;ved=0CDIQFjAA&amp;url=http%3A%2F%2Fd.hatena.ne.jp%2Fshimooka%2F20100426%2F1272291486&amp;ei=oPFZT9DSDYGdiAetzeipDQ&amp;usg=AFQjCNFHIesVUhXbdHaLgVlpQ2Chqv-oEQ&amp;sig2=ArbKD3HtuLcx_lU" rel="nofollow">http://www.google.co.jp/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cts=1331294626716&amp;sqi=2&amp;ved=0CDIQFjAA&amp;url=http://d.hatena.ne.jp/shimooka/20100426/1272291486&amp;ei=oPFZT9DSDYGdiAetzeipDQ&amp;usg=AFQjCNFHIesVUhXbdHaLgVlpQ2Chqv-oEQ&amp;sig2=ArbKD3HtuLcx_lU</a></li>
+          <li>86 <a href="http://www.google.co.jp/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=2&amp;ved=0CD0QFjAB&amp;url=http%3A%2F%2Fd.hatena.ne.jp%2Fshimooka%2F20100426%2F1272291486&amp;ei=8rU9T_b1Do-aiAfqlenyBA&amp;usg=AFQjCNFHIesVUhXbdHaLgVlpQ2Chqv-oEQ&amp;sig2=HvAQRQUQSAZpkvY0XXtGeQ" rel="nofollow">http://www.google.co.jp/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=2&amp;ved=0CD0QFjAB&amp;url=http://d.hatena.ne.jp/shimooka/20100426/1272291486&amp;ei=8rU9T_b1Do-aiAfqlenyBA&amp;usg=AFQjCNFHIesVUhXbdHaLgVlpQ2Chqv-oEQ&amp;sig2=HvAQRQUQSAZpkvY0XXtGeQ</a></li>
+          <li>85 <a href="http://www.google.co.jp/url?sa=t&amp;rct=j&amp;q=sql%20%E3%82%B3%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E8%A6%8F%E7%B4%84&amp;source=web&amp;cd=3&amp;ved=0CDwQFjAC&amp;url=http%3A%2F%2Fd.hatena.ne.jp%2Fshimooka%2F20100426%2F1272291486&amp;ei=sJeiTueHB-OKmQXfgd2gCQ&amp;usg=AFQjCNFH" rel="nofollow">http://www.google.co.jp/url?sa=t&amp;rct=j&amp;q=sql コーディング規約&amp;source=web&amp;cd=3&amp;ved=0CDwQFjAC&amp;url=http://d.hatena.ne.jp/shimooka/20100426/1272291486&amp;ei=sJeiTueHB-OKmQXfgd2gCQ&amp;usg=AFQjCNFH</a></li>
+          <li>75 <a href="http://www.google.co.jp/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=3&amp;cts=1331529125713&amp;sqi=2&amp;ved=0CD8QFjAC&amp;url=http%3A%2F%2Fd.hatena.ne.jp%2Fshimooka%2F20100426%2F1272291486&amp;ei=MoRdT-ylCYnLmAWn-eiiCw&amp;usg=AFQjCNFHIesVUhXbdHaLgVlpQ2Chqv-oEQ&amp;sig2=zgJvpFaluKkPKmg" rel="nofollow">http://www.google.co.jp/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=3&amp;cts=1331529125713&amp;sqi=2&amp;ved=0CD8QFjAC&amp;url=http://d.hatena.ne.jp/shimooka/20100426/1272291486&amp;ei=MoRdT-ylCYnLmAWn-eiiCw&amp;usg=AFQjCNFHIesVUhXbdHaLgVlpQ2Chqv-oEQ&amp;sig2=zgJvpFaluKkPKmg</a></li>
+          <li>74 <a href="https://www.google.co.jp" rel="nofollow">https://www.google.co.jp</a></li>
+      </ul>
+      
+    </div>
+
+
+
+
+</div>
+
+
+
+</div>
+<div class="calendar" id="pager-bottom">
+  <a rel="prev" href="/shimooka/20100422/1271905286" class="prev">&lt;[PHP][その他]どれぐらいテスト...</a>&nbsp;<span class="delimiter">|</span>&nbsp;<a rel="next" href="/shimooka/20100428/1272434402" class="next">[雑記][Desire]HTC Desire&gt;</a>
+</div>
+<div class="sidebar">
+          <div class="hatena-module hatena-module-pv">
+                <div class="hatena-moduletitle">ページビュー</div>
+                <div class="hatena-modulebody">
+                        <span class="hatena-counter">4559358</span>
+                </div>
+        </div>
+
+  <div class="hatena-module hatena-module-bcounter">
+<div class="hatena-moduletitle">はてブカウンター</div>
+<div class="hatena-modulebody">
+<span class="hatena-counter"><a href="http://b.hatena.ne.jp/entrylist?url=http://d.hatena.ne.jp/shimooka/"><img src="http://b.hatena.ne.jp/bc/pr/http://d.hatena.ne.jp/shimooka/" class="bcounter" alt="この日記のはてなブックマーク数" title="この日記のはてなブックマーク数"></a>
+</span>
+</div>
+</div>
+
+  <div class="hatena-module hatena-module-profile">
+  <div class="hatena-moduletitle">プロフィール</div>
+  <div class="hatena-modulebody">
+    <div class="hatena-profile">
+      <p class="hatena-profile-image"><a href="/shimooka/about"><img src="http://www.st-hatena.com/users/sh/shimooka/user_p.gif" alt="shimooka" /></a></p>
+      <p class="hatena-profile-id"><a href="/shimooka/about">shimooka</a> <a href="/shimooka/about"><img src="/images/icon-plus.gif" alt="はてなダイアリープラス利用中" class="icon-plus" /></a></p>
+      <p class="hatena-profile-body">Do You PHPはてなの中の人。PHPのほかJavaやPerlもたまに。HTC製Android使い。餃子には黒胡椒と酢。ブルボンと言えばバームロール。JFA公認サッカーC級コーチ/S3＆F4審判員</p>
+    </div>
+  </div>
+</div>
+
+  <div class="hatena-module hatena-module-calendar2">
+<div class="hatena-moduletitle">カレンダー</div>
+<div class="hatena-modulebody">
+<table class="calendar" summary="calendar">
+<tr>
+<td class="calendar-prev-month" colspan="2"><a href="/shimooka/201003" title="201003" rel="nofollow">&lt;&lt;</a></td>
+<td class="calendar-current-month" colspan="3"><a href="/shimooka/archive/201004" rel="nofollow">2010/04</a></td>
+<td class="calendar-next-month" colspan="2"><a href="/shimooka/201005" title="201005" rel="nofollow">&gt;&gt;</a></td>
+</tr>
+<tr>
+<td class="calendar-sunday">日</td>
+<td class="calendar-weekday">月</td>
+<td class="calendar-weekday">火</td>
+<td class="calendar-weekday">水</td>
+<td class="calendar-weekday">木</td>
+<td class="calendar-weekday">金</td>
+<td class="calendar-saturday">土</td>
+</tr>
+	<tr>
+		<td class="calendar-day"></td>
+		<td class="calendar-day"></td>
+		<td class="calendar-day"></td>
+		<td class="calendar-day"></td>
+		<td class="calendar-day">1</td>
+		<td class="calendar-day">2</td>
+		<td class="calendar-day">3</td>
+	</tr>
+	<tr>
+		<td class="calendar-day">4</td>
+		<td class="calendar-day">5</td>
+		<td class="calendar-day">6</td>
+		<td class="calendar-day">7</td>
+		<td class="calendar-day">8</td>
+		<td class="calendar-day">9</td>
+		<td class="calendar-day">10</td>
+	</tr>
+	<tr>
+		<td class="calendar-day">11</td>
+		<td class="calendar-day">12</td>
+		<td class="calendar-day">13</td>
+		<td class="calendar-day">14</td>
+		<td class="calendar-day">15</td>
+		<td class="calendar-day">16</td>
+		<td class="calendar-day">17</td>
+	</tr>
+	<tr>
+		<td class="calendar-day">18</td>
+		<td class="calendar-day"><a href="/shimooka/20100419" title="19">19</a></td>
+		<td class="calendar-day"><a href="/shimooka/20100420" title="20">20</a></td>
+		<td class="calendar-day">21</td>
+		<td class="calendar-day"><a href="/shimooka/20100422" title="22">22</a></td>
+		<td class="calendar-day">23</td>
+		<td class="calendar-day">24</td>
+	</tr>
+	<tr>
+		<td class="calendar-day">25</td>
+		<td class="calendar-day day-selected"><a href="/shimooka/20100426" title="26">26</a></td>
+		<td class="calendar-day">27</td>
+		<td class="calendar-day"><a href="/shimooka/20100428" title="28">28</a></td>
+		<td class="calendar-day">29</td>
+		<td class="calendar-day">30</td>
+		<td class="calendar-day"></td>
+	</tr>
+</table>
+	</div>
+</div>
+
+
+  <script language="javascript" type="text/javascript" src="http://b.hatena.ne.jp/js/widget.js" charset="utf-8"></script>
+  <script language="javascript" type="text/javascript">
+  Hatena.BookmarkWidget.url   = "http://d.hatena.ne.jp/shimooka/";
+  Hatena.BookmarkWidget.title = "注目エントリー";
+  Hatena.BookmarkWidget.sort  = "";
+  Hatena.BookmarkWidget.width = 0;
+  Hatena.BookmarkWidget.num   = 10;
+  Hatena.BookmarkWidget.theme = "hatenadiary";
+  Hatena.BookmarkWidget.load();
+  </script>
+
+  <div class="hatena-module hatena-module-section">
+<div class="hatena-moduletitle"><a href="/shimooka/archive">最新タイトル</a></div>
+<div class="hatena-modulebody">
+<ul class="hatena-section">
+<li><a href="http://d.hatena.ne.jp/shimooka/20180131/1517376343">[firefox]Firefox58.0.1でFaviconize Tabのようにタブを表示する</a></li>
+<li><a href="http://d.hatena.ne.jp/shimooka/20171121/1511241319">[firefox]Firefox57でFaviconize Tabのようにタブを表示する</a></li>
+<li><a href="http://d.hatena.ne.jp/shimooka/20160701/1467368303">[jsviews]JsViewsチュートリアル - テンプレートのリンクを解除する</a></li>
+<li><a href="http://d.hatena.ne.jp/shimooka/20160701/1467366017">[jsviews]JsViewsチュートリアル - リンクしたテンプレートをまるごと差し替える</a></li>
+<li><a href="http://d.hatena.ne.jp/shimooka/20160425/1461572487">[その他]Bluetooth版HHKB Professionalが到着！</a></li>
+<li><a href="http://d.hatena.ne.jp/shimooka/20160412/1460451392">[その他]ついにHHKBのBluetooth版が発売！</a></li>
+<li><a href="http://d.hatena.ne.jp/shimooka/20160303/1456978670">[Android]Motorola Moto 360(1st Gen)にAndroid 6.0.1が降ってきた</a></li>
+<li><a href="http://d.hatena.ne.jp/shimooka/20151110/1447131463">[その他]USB接続＆フルHDなモバイルディスプレイASUS MB169B+を買った</a></li>
+<li><a href="http://d.hatena.ne.jp/shimooka/20150729/1438141721">[PHP]PHP 7 Compatibility Checker(php7cc)を触ってみた</a></li>
+<li><a href="http://d.hatena.ne.jp/shimooka/20150724/1437711481">[PHP]GoPHP7とGoPHP7-ext</a></li>
+</ul>
+</div>
+</div>
+
+  <div class="hatena-module hatena-module-comment">
+<div class="hatena-moduletitle">最近のコメント</div>
+<div class="hatena-modulebody">
+<ul class="hatena-recentcomment">
+<li><a href="/shimooka/20180131/1517376343#c">2018-01-31</a>&nbsp;M4t1ss</li>
+<li><a href="/shimooka/20140725/1406286064#c">2014-07-25</a>&nbsp;arata</li>
+<li><a href="/shimooka/20150521/1432188513#c">2015-05-21</a>&nbsp;hiro</li>
+<li><a href="/shimooka/20150521/1432188513#c">2015-05-21</a>&nbsp;shimooka</li>
+<li><a href="/shimooka/20150521/1432188513#c">2015-05-21</a>&nbsp;hiro</li>
+</ul>
+</div>
+</div>
+
+  <div class="hatena-module hatena-module-trackback">
+<div class="hatena-moduletitle">最近のトラックバック</div>
+<div class="hatena-modulebody">
+<ul class="hatena-recentcomment">
+<li><a href="/shimooka/20180131#tb">2018-01-31</a>&nbsp;<a href="http://twitter.com/northpg24/status/1004919961142247424">Twitter / @northpg24</a></li>
+<li><a href="/shimooka/20160701#tb">2016-07-01</a>&nbsp;<a href="http://twitter.com/mogira_jubeat/status/861616620094889984">Twitter / @mogira_jubeat</a></li>
+<li><a href="/shimooka/20160701#tb">2016-07-01</a>&nbsp;<a href="http://twitter.com/musou1500/status/861615669569232900">Twitter / @musou1500</a></li>
+<li><a href="/shimooka/20160701#tb">2016-07-01</a>&nbsp;<a href="http://twitter.com/EY1961/status/767362629216067584">Twitter / @EY1961</a></li>
+<li><a href="/shimooka/20160425#tb">2016-04-25</a>&nbsp;<a href="http://twitter.com/brr890/status/735694428275232769">Twitter / @brr890</a></li>
+</ul>
+</div>
+</div>
+
+  <div class="hatena-module hatena-module-asinlog">
+<div class="hatena-moduletitle">ここのエントリで紹介したもの</div>
+<div class="hatena-modulebody">
+<ul class="hatena-asinlog">
+<li><a href="/shimooka/20160412" title="PFU Happy Hacking Keyboard Professional BT 英語配列/墨 PD-KB600B"><img src="https://images-fe.ssl-images-amazon.com/images/I/41wysLyIk2L._SL75_.jpg" alt="PFU Happy Hacking Keyboard Professional BT 英語配列/墨 PD-KB600B" title="PFU Happy Hacking Keyboard Professional BT 英語配列/墨 PD-KB600B" class="asin"></a></li>
+<li><a href="/shimooka/20160412" title="PFU Happy Hacking Keyboard Professional BT 英語配列/墨 PD-KB600B"><img src="https://images-fe.ssl-images-amazon.com/images/I/41wysLyIk2L._SL75_.jpg" alt="PFU Happy Hacking Keyboard Professional BT 英語配列/墨 PD-KB600B" title="PFU Happy Hacking Keyboard Professional BT 英語配列/墨 PD-KB600B" class="asin"></a></li>
+<li><a href="/shimooka/20160412" title="PFU Happy Hacking Keyboard Professional BT 無刻印/墨 PD-KB600BN"><img src="https://images-fe.ssl-images-amazon.com/images/I/41YmO-VVJnL._SL75_.jpg" alt="PFU Happy Hacking Keyboard Professional BT 無刻印/墨 PD-KB600BN" title="PFU Happy Hacking Keyboard Professional BT 無刻印/墨 PD-KB600BN" class="asin"></a></li>
+<li><a href="/shimooka/20160412" title="PFU Happy Hacking Keyboard Professional BT 日本語配列/墨 PD-KB620B"><img src="https://images-fe.ssl-images-amazon.com/images/I/41hjxEdYwiL._SL75_.jpg" alt="PFU Happy Hacking Keyboard Professional BT 日本語配列/墨 PD-KB620B" title="PFU Happy Hacking Keyboard Professional BT 日本語配列/墨 PD-KB620B" class="asin"></a></li>
+<li><a href="/shimooka/20151110" title="Anker スマホ&amp;タブレット用スタンド 角度調整可能 iPhone X・iPhone 8 Plus・iPhone 8・iPad・iPad mini・Nexus 7等(ブラック)"><img src="http://d.hatena.ne.jp/images/hatena_aws.gif" alt="Anker スマホ&タブレット用スタンド 角度調整可能 iPhone X・iPhone 8 Plus・iPhone 8・iPad・iPad mini・Nexus 7等(ブラック)" title="Anker スマホ&タブレット用スタンド 角度調整可能 iPhone X・iPhone 8 Plus・iPhone 8・iPad・iPad mini・Nexus 7等(ブラック)" class="asin"></a></li>
+</ul>
+</div>
+</div>
+
+  <div class="hatena-module">
+    <div class="hatena-moduletitle">TopHatenar</div>
+    <div class="hatena-modulebody">
+      <a target="_tophatenar" href="http://tophatenar.com/view/shimooka"><img width="160" alt="TopHatenar" src="http://tophatenar.com/chart/correlation_small/shimooka" height="120" border="0"></a>
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  var days = document.getElementById('days');
+  if (days && days.innerHTML.indexOf("今週のお題") != -1) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'odai', 3]);
+  }
+
+  if (days && /\u4eca\u9031\u306e\u304a\u984c/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'odai', 3]);
+  }
+
+  if (days && /ScanSnap\u7279\u5225\u30e2\u30c7\u30eb\u30fb\u30d6\u30ed\u30b0\u3067\u5ba3\u4f1d\u30b3\u30f3\u30c6\u30b9\u30c8/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'scansnap1401bcn4ssacro', 3]);
+  }
+
+  if (days && /\u7279\u5225\u304a\u984c\u300c\u9752\u6625\u306e\u4e00\u518a\u300d/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'pdmagazine', 3]);
+  }
+
+  if (days && /\u7279\u5225\u304a\u984c\u300c\u5fc3\u6e29\u307e\u308b\u30de\u30ca\u30fc\u306e\u8a71\u300d/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'jrwest', 3]);
+  }
+
+  if (days && /Presso\u4f7f\u3063\u3066\u307f\u305f/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'presso1404', 3]);
+  }
+
+  if (days && /CodeIQ\u306e\u554f\u984c\u30fb\u30d1\u30ba\u30eb\u3092\u8003\u3048\u3088\u3046\uff01/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'codeiq_matsuri2013_2_2', 3]);
+  }
+
+  if (days && /2013\u5e74\u306b\u3084\u308a\u305f\u3044\u3053\u3068/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'newyear2013', 3]);
+  }
+
+  if (days && /2012\u5e74\u30dc\u30c4\u738b\u6c7a\u5b9a\u6226\uff01\u30d5\u30eb\u30bf\u88fd\u83d3\ud7\u306f\u3066\u306a\u30d6\u30ed\u30b0\u304a\u984c\u30ad\u30e3\u30f3\u30da\u30fc\u30f3/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'furuta', 3]);
+  }
+
+  if (days && /\u300c\u884c\u3063\u3066\u307f\u305f\u3044\u304a\u5e97\u30fb\u30ec\u30b9\u30c8\u30e9\u30f3\u300d/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'gnavi201512', 3]);
+  }
+
+  if (days && /\u6d77\u5916\u30c9\u30e9\u30de\u300e\u30e9\u30a4\u30fb\u30c8\u30a5\u30fb\u30df\u30fc \u5618\u306e\u77ac\u9593\u300f\u89b3\u305f\u3044\uff01|\u300e\u30e9\u30a4\u30fb\u30c8\u30a5\u30fb\u30df\u30fc \u5618\u306e\u77ac\u9593\u300f\u7b2c1\u8a71\u306e\u611f\u60f3\u3092\u6559\u3048\u3066\u304f\u3060\u3055\u3044|\u4eca\u3060\u304b\u3089\u8a00\u3048\u308b\u300c\u5618\u3092\u3064\u3044\u3066\u3057\u307e\u3063\u305f\u30a8\u30d4\u30bd\u30fc\u30c9\u300d\u3092\u6559\u3048\u3066\u304f\u3060\u3055\u3044|\u3060\u307e\u3055\u308c\u305f\u3051\u3069\u3001\u8a31\u305b\u3066\u3057\u307e\u3063\u305f\u5618\u3092\u6559\u3048\u3066\u304f\u3060\u3055\u3044/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'lietome', 3]);
+  }
+
+  if (days && /\u30de\u30a4\u30d9\u30b9\u30c8\u30bd\u30f3\u30b02013/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'mybestsong2013', 3]);
+  }
+
+  if (days && /\u7d0d\u6dbc\uff01\u307b\u3093\u3068\u306b\u3042\u3063\u305f\u6016\u3044\u30b3\u30fc\u30c9/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'codeiq_matsuri2013_2_1', 3]);
+  }
+
+  if (days && /\u590f\u306e\u5199\u771f2013/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'photocon2013summer', 3]);
+  }
+
+  if (days && /Windows\/Office\u6b66\u52c7\u4f1d/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'WindowsDevOpen', 3]);
+  }
+
+  if (days && /\u300c\u79c1\u306f\u3007\u3007\u738b\uff01\u300d\u30d0\u30a4\u30af\u738b\ud7\u306f\u3066\u306a\u30d6\u30ed\u30b0\u304a\u984c\u30ad\u30e3\u30f3\u30da\u30fc\u30f3/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'bike-o', 3]);
+  }
+
+  if (days && /Visa\u30d7\u30ea\u30da\u30a4\u30c9\u300cV\u30d7\u30ea\u30ab\u300d\u8a66\u3057\u305f\u3044\uff01|Visa\u30d7\u30ea\u30da\u30a4\u30c9\u300cV\u30d7\u30ea\u30ab\u300d\u3001\u81ea\u5206\u306a\u3089\u3053\u3046\u4f7f\u3046\uff01|V\u30d7\u30ea\u30ab\u304c1\u4e07\u5186\u5206\u3042\u3063\u305f\u3089\u3001\u30cd\u30c3\u30c8\u3067\u4f55\u3092\u8cb7\u3044\u307e\u3059\u304b\uff1f/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'vpreca', 3]);
+  }
+
+  if (days && /\u30a2\u30a4\u30c7\u30e0 \u30a8\u30f3\u30b8\u30cb\u30a2\u30ad\u30e3\u30ea\u30a2Hacks\u5171\u6709\u30d7\u30ed\u30b8\u30a7\u30af\u30c8|\u30a8\u30f3\u30b8\u30cb\u30a2\u3068\u3057\u3066\u306e\u3001\u3068\u3063\u3066\u304a\u304d\u306e\u30ad\u30e3\u30ea\u30a2Hacks\u3092\u6559\u3048\u3066\u304f\u3060\u3055\u3044|\u3042\u306a\u305f\u304c\u30a8\u30f3\u30b8\u30cb\u30a2\u8ee2\u8077\u30b5\u30a4\u30c8\u3092\u4f5c\u308b\u306a\u3089\u3001\u3069\u3093\u306a\u30b5\u30a4\u30c8\u306b\u3057\u307e\u3059\u304b\uff1f|5\u5e74\u5f8c\u306e\u300c\u30a8\u30f3\u30b8\u30cb\u30a2\u306e\u50cd\u304d\u65b9\u300d\u306f\u3001\u3069\u3046\u5909\u308f\u3063\u3066\u3044\u3066\u307b\u3057\u3044\u3067\u3059\u304b\uff1f/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'aidemcareer', 3]);
+  }
+
+  if (days && /\u306f\u3066\u306a\u30c0\u30a4\u30a2\u30ea\u30fc10\u5468\u5e74\u304a\u3081\u3067\u3068\u3046\uff01/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'hatenadiary10th', 3]);
+  }
+
+  if (days && /\u3086\u304f\u5e74\u304f\u308b\u5e742015/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', '2014-2015campaign', 3]);
+  }
+
+  if (days && /\u8aad\u307f\u653e\u984c\u3067\u30b3\u30b9\u30d1\u3088\u3057\uff01\u96fb\u5b50\u66f8\u7c4d\u30a2\u30d7\u30eayomel.jp\u30ad\u30e3\u30f3\u30da\u30fc\u30f3/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'yomel', 3]);
+  }
+
+  if (days && /\u30bb\u30c4\u30e4\u30af\u30a8\u30b9\u30c8/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'setsuyaquest', 3]);
+  }
+
+  if (days && /\u79cb\u306e\u591c\u9577\u306f\u8aad\u66f8\u3068\u30d6\u30ed\u30b0/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'bookreview2013fall', 3]);
+  }
+
+  if (days && /\u7279\u5225\u304a\u984c\u300c\u82b8\u8853\u306e\u79cb\u300d/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'caillebotte', 3]);
+  }
+
+  if (days && /\u30a8\u30a4\u30d7\u30ea\u30eb\u30d5\u30fc\u30eb2014/.test(days.innerHTML)) {
+    _gaq.push(['_setCustomVar', 2, 'campaign', 'aprilfool2014', 3]);
+  }
+
+
+  _gaq.push(['c._setAccount', 'UA-799610-1'], ['c._trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<!-- CG:1,CH:0,ICG:13,ICH:6,T:b -->
+</body>
+</html>

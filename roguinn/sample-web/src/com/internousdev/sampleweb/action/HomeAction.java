@@ -22,13 +22,14 @@ public class HomeAction extends ActionSupport implements SessionAware{
 			 session.put("tempUserId", commonUtility.getRamdomValue());
 		}
 
-		if(!session.containsKey("logined")) {
+		if(!session.containsKey("logined")) {//ログイン判定sessionが存在しなければtrue
 			session.put("logined", 0);
 		}
 
-		if(!session.containsKey("mCategoryList")) {
+		if(!session.containsKey("mCategoryList")) {//カテゴリリストの生成 カテゴリリストが存在していなければtrue
 			MCategoryDAO mCategoryDao = new MCategoryDAO();
 			mCategoryDtoList = mCategoryDao.getMCategoryList();
+
 			session.put("mCategoryDtoList", mCategoryDtoList);
 		}
 		return SUCCESS;
