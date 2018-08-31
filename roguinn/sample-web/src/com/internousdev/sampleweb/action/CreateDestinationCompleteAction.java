@@ -8,8 +8,9 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.sampleweb.dao.DestinationInfoDAO;
 import com.opensymphony.xwork2.ActionSupport;
-
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 public class CreateDestinationCompleteAction extends ActionSupport implements SessionAware{
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	private String familyName;
 	private String firstName;
 	private String familyNameKana;
@@ -21,15 +22,23 @@ public class CreateDestinationCompleteAction extends ActionSupport implements Se
 	private String userAddress;
 	private String categoryId;
 	private Map<String, Object> session;
+
 	public String execute() {
+
 		String result = ERROR;
 		DestinationInfoDAO destinationInfoDao = new DestinationInfoDAO();
+
 		int count = destinationInfoDao.insert(String.valueOf(session.get("loginId")), familyName, firstName, familyNameKana, firstNameKana, email, telNumber, userAddress);
-		if(count > 0) {
-			result = SUCCESS;
-		}
+
+		if
+		(count > 0)
+		{result = SUCCESS;}
+
 		return result;
 	}
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 
 	public String getSex() {
 		return sex;

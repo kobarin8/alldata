@@ -1,0 +1,216 @@
+@charset "UTF-8";
+/* INDIVIDUAL CSS Document for goo blog modulized templates 090924*/
+/* template genre : 1106*/
+
+/*-- ■SECTION 010 全体設定 --*/
+body{background:url(/img/template/user/1106/body_bg.gif) repeat;color:#606060;}
+a{color:#4a51ab; text-decoration:underline;}
+a:visited{color:#606060;}
+a:hover{color:#4a51ab;}
+
+/*-- 不使用拡張部分 --*/
+#main-top,#main-bottom,.content-top,.content-bottom,#footer{display:none;}
+.mod-entry-set-top,.mod-entry-set-bottom{display:none;}
+.mod-comments-top,.mod-comments-bottom,.comment-list-top,.comment-list-bottom,.comment-form-top,.comment-form-bottom{display:none;}
+.mod-trackbacks-top,.mod-trackbacks-bottom,.trackback-list-top,.trackback-list-bottom{display:none;}
+.sidebar-top,.sidebar-bottom,.module-top/*,.module-bottom*/{display:none;}
+
+/*-- ■SECTION 020 レイアウト設定 --*/
+#container{width:90%;margin:0 auto; padding:0;  min-width:840px;}
+#title-banner{margin:10px 0;}
+#main{margin:0 10px;}
+
+/*-- ■SECTION 030 #title-banner 設定 --*/
+#title-banner-top{display:none;}
+#title-banner-bottom{display:none;}
+#title-banner-set{text-align:left; height:80px; padding:10px 0;}
+#title-banner h1{margin-bottom:2px;font-size:139%; font-weight:bold; padding:0 70px 5px 17px;}
+#title-banner h2{color:#606060;font-size:92%;font-weight:normal;padding:0 70px 5px 18px;}
+#title-banner a{color:#4a51ab;text-decoration:none;}
+#title-banner a:hover,#title-banner a:active{color:#4a51ab;text-decoration:underline;}
+
+/*-- ■SECTION 040 #main 設定 --*/
+
+/*-- ■SECTION 050 #main 内レイアウト設定 --*/
+
+/*-- ■SECTION 060 #center-2c/3c 設定 --*/
+.content-top{display:none;}
+.content-bottom{display:none;}
+
+/*-- ■SECTION 070 エントリー設定 --*/
+/*-- 070-010 エントリーセット --*/
+.mod-entry-set{background:#ffffff; border-right:solid 2px #e2e2e2; border-bottom:solid 2px #e2e2e2;}
+.mod-entry-set-top div.lt{display:none;}
+.mod-entry-set-top div.rt{display:none;}
+
+/*-- 070-020 エントリー --*/
+
+/*-- ENTRY TOP --*/
+/*-- 記事タイトル --*/
+.entry-top h3{line-height:1.2; padding:7px 45px 7px 7px; background:url(/img/template/user/1106/entry_bg.gif) no-repeat right top;}
+.entry-top h3{color:#606060;}
+.entry-top h3 a{color:#606060;text-decoration:none;font-weight:bold;}
+.entry-top h3 a:visited{color:#606060;}
+.entry-top h3 a:hover{color:#4a51ab;text-decoration:underline;}
+
+/*-- 投稿日時|カテゴリー --*/
+.entry-top-info{text-align:right;font-weight:normal; padding:3px 6px;}
+.entry-top-info a{color:#606060;text-decoration:none;}
+.entry-top-info a:visited{color:#606060;}
+.entry-top-info a:hover{color:#4a51ab;text-decoration:underline;}
+
+/*-- /ENTRY TOP --*/
+
+/*-- ENTRY BODY --*/
+.entry-body{padding:10px; line-height:1.6; background:#f1f2f7; margin:0 3px; }
+/*-- 記事画像 --*/
+.entry-body-image {margin:15px auto;text-align:center;}
+.entry-body-image a img,.entry-body-text a img {border-color:#ffffff;}
+.entry-body-image a:visited img,.entry-body-text a:visited img {border-color:#ffffff;}
+.entry-body-image a:hover img,.entry-body-text a:hover img {border-color:#ffffff;}
+/*-- 記事本文 --*/
+.entry-body-text{word-break:break-all;}
+.entry-body-text a {color:#4a51ab;text-decoration:none;}
+.entry-body-text a:visited {color:#606060;text-decoration:underline;}
+.entry-body-text a:hover {color:#4a51ab;text-decoration:underline;}
+.entry-body-text a:active {color:#4a51ab;text-decoration:underline;}
+
+/*-- /ENTRY BODY --*/
+
+/*-- ENTRY BOTTOM --*/
+.entry-bottom{padding:4px 6px 4px 6px;}
+/*-- コメント|トラックバック|記事を書く|goo --*/
+.entry-bottom-info{text-align:right;font-weight:normal;}
+.entry-bottom-info a{color:#606060;text-decoration:none;}
+.entry-bottom-info a:visited{color:#606060;}
+.entry-bottom-info a:hover{color:#4a51ab;text-decoration:underline;}
+/*-- /ENTRY BOTTOM --*/
+
+/*-- 070-030 コメント --*/
+/*-- 070-040 トラックバック --*/
+#mod-comments{background:#ffffff; border-right:solid 2px #e2e2e2; border-bottom:solid 2px #e2e2e2;}
+#mod-comments h3,#mod-trackbacks h3{line-height:1.2; padding:7px 45px 7px 7px; background:url(/img/template/user/1106/tarackback_bg.gif) no-repeat right top;}
+.comment-alert,.comment-gooid,.trackback-alert{margin:0 3px 8px 3px;padding:7px 3px 7px 3px; color:#4a51ab; text-align:center;  background:#f1f2f7;}
+#mod-comments .comment-list-body,#mod-trackbacks .trackback-list-body{padding:4px; line-height:1.6; background:#f1f2f7; margin:0 3px 3px 3px;}
+#mod-comments .comment-list-body dl,#mod-trackbacks .trackback-list-body dl{padding:4px; line-height:1.6; background:#f1f2f7; margin:0 3px 3px 3px;}
+
+/*-- 070-030 コメント --*/
+#mod-comments .comment-gooid dl dt{padding:10px 3px; color:#606060;font-weight:bold;}
+#mod-comments .comment-gooid dl dd{padding:10px 3px;}
+#mod-comments .comment-login-link{padding:10px 3px; color:#606060;}
+#mod-comments .comment-submit input{color:#4a51ab;}
+span.comment-list-title{font-weight:bold;color:#606060;}
+#mod-comments .comment-list-body dl dd.comment-list-date{text-align:left; padding-bottom:7px;}
+#mod-comments .comment-list-body dl dd.comment-list-text{word-break:break-all; padding-bottom:7px;}
+#mod-comments .comment-form{ background:#f1f2f7; margin:0 3px 3px 3px; padding:7px 0;}
+
+/*-- 070-040 トラックバック --*/
+#mod-trackbacks{margin:10px 0;background:#ffffff; border-right:solid 2px #e2e2e2; border-bottom:solid 2px #e2e2e2;}
+#mod-trackbacks div.trackback-ping-url{margin:0 3px 0 3px;padding:10px 3px 5px 3px;font-weight:bold; text-align:center; background:#f1f2f7;}
+#mod-trackbacks div.trackback-filter{ margin:0 3px 0 3px; padding:10px; color:#4a51ab;  background:#f1f2f7;}
+#mod-trackbacks div.trackback-filter ul li{padding-left:12px; margin:2px 10px;color:#606060; background:url(/img/template/user/1106/listmark.gif) no-repeat 0 5px;}
+#tb-ping-url-input{color:#606060; text-align:center;}
+
+/*-- 070-050 ナビゲーション --*/
+#mod-prev-next{padding:7px;  font-weight:bold; margin-bottom:10px; border-bottom:solid 2px #cdd1e4; border-top:solid 2px #cdd1e4;}
+#mod-prev-next a{color:#4a51ab;text-decoration:none;}
+#mod-prev-next a:visited{color:#4a51ab;text-decoration:none;}
+#mod-prev-next a:hover{color:#4a51ab;text-decoration:underline;}
+
+/*-- ■SECTION 080 goo ad 設定 --*/
+.mod-entry-set-goo-ad{margin:10px 0 10px 0;text-align:center;}
+
+/*-- MicroAd背景色 --*/
+
+/*-- スポンサーリンク文字 --*/
+a.gooAd_sponsor{color:#606060;}
+/*-- タイトルリンク文字 --*/
+a.gooAd_title{color:#4a51ab;font-weight:bold;text-decoration:none;}
+a:visited.gooAd_title{color:#606060;font-weight:bold;text-decoration:underline;}
+a:hover.gooAd_title{color:#4a51ab;font-weight:bold;text-decoration:underline;}
+
+/*-- URLリンク文字 --*/
+a.gooAd_url{color:#606060;text-decoration:none;}
+a:visited.gooAd_url{color:#606060;}
+a:hover.gooAd_url{color:#4a51ab;text-decoration:underline;}
+
+/*-- テキストリンク文字 --*/
+div.gooAd_text_td{line-height:1.2;}
+a.gooAd_text {color:#606060;text-decoration:none;}
+a:visited.gooAd_text {color:#606060;text-decoration:none;}
+a:hover.gooAd_text  {color:#4a51ab;text-decoration:underline;}
+
+/*-- ■SECTION 090 #sidebar 設定 --*/
+.sidebar-top{display:none;}
+.sidebar-bottom{display:none;}
+
+/*-- ■SECTION 100 サイドバーモジュール共通設定 --*/
+.module {background:#ffffff; margin-bottom:10px; border-right:solid 2px #e2e2e2; border-bottom:solid 2px #e2e2e2; }
+.module .module-top {display:none;}
+.module .module-body {text-align:left; background:url(/img/template/user/1106/sidebar.gif) repeat-y; padding:5px 5px 2px 5px;}
+.module .module-bottom {height:3px;background:#ffffff;}
+.module-body hr {height:1px; color:#cdd1e4; background-color:#cdd1e4; border:0px; margin:3px 7px;}
+.module p {margin:5px 0;}
+.module h4 {color:#606060; padding:5px 3px 5px 7px; background:url(/img/template/user/1106/sidebar_bg.gif) no-repeat right top;}
+.module ul {text-align:left;}
+.module ul li {line-height:1.3; padding: 0 0 0 12px; background:url(/img/template/user/1106/listmark.gif) no-repeat 0 3px;}
+.module dl dt {color:#606060;font-weight:bold;}
+.module a {color:#4a51ab;text-decoration:none;}
+.module a:visited {color:#606060;text-decoration:none;}
+.module a:hover {color:#4a51ab;text-decoration:underline;}
+.module a:active {color:#4a51ab;text-decoration:underline;}
+
+/*-- ■SECTION 110 サイドバーモジュール個別設定 --*/
+
+/*-- 110 カレンダー -*/
+#mod-cal-table{width:90%;color:#606060;padding-right:3px;}
+#mod-cal-table th,#mod-cal-table td{font-size:90%;}
+.mod-cal-caption{font-weight:bold;color:#606060; padding-bottom:4px;}
+.mod-cal-week{font-weight:normal;color:#606060;padding:2px 0; border-bottom:solid 1px #cdd1e4;}
+#mod-cal-table td.mod-cal-day-lin-td{font-weight:bold;}
+#mod-cal-table td{padding:3px; border-bottom:solid 1px #cdd1e4;}
+#mod-cal-table  td.mod-cal-day-lin-td{font-weight:bold;}
+#mod-cal-tablae  td.mod-cal-day-lin-td  a{color:#4a51ab;}
+#mod-cal-table  td.mod-cal-day-lin-td  a:visited{color:#606060; text-decoration:underline;}
+#mod-cal-prev-next{padding-top:7px; font-weight:bold;}
+#mod-cal-prev-next a {color:#4a51ab;}
+#mod-cal-prev-next a:visited{color:#4a51ab;}
+
+/*-- 110 バックナンバー --*/
+/*-- 110 スクロール --*/
+#mod-back-numbers-scroll .module-body{padding:6px 0 6px 4px; width:192px;}
+/*-- 110 スクロールなし --*/
+#mod-back-numbers-noscroll .module-body{padding:6px 0 6px 40px;}
+/*-- 110 お知らせ【ＰＲ】 --*/
+#mod-advertising li{padding:0 2px 0 2px;background:none;}
+/*-- 110 携帯 --*/
+#mod-mobile ul li{text-align:center;padding:0;background:none;margin-bottom:-1px;}
+/*-- 110 goo おすすめ --*/
+#mod-goo-recommends li{background:none;}
+#mod-goo-recommends .module-body {padding:10px 5px 2px 5px;}
+/*-- 110 フォントサイズ変更 --*/
+#font-size-changer ul li{background:none;padding:0;text-align:center;border:none;  font-weight:bold; color:#4a51ab; margin-bottom:1px;}
+#font-size-changer a:visited{color:#4a51ab;}
+#font-size-changer a:hover{color:#4a51ab; text-decoration:underline;}
+/*-- 110 ブックマーク --*/
+#mod-bookmarks dl {padding:0 0 0 10px; margin:-3px 0 -1px 0;}
+/*-- 110 プロフィール --*/
+#mod-profile dl{padding:0 5px;}
+/*-- 110 メッセージ --*/
+#mod-message .module-body {padding:12px 0 10px 0;}
+/*-- 110 ログイン --*/
+#mod-login .module-body {padding:7px 0 6px 0;}
+/*-- 110 RECENT ENTRIES --*/
+#mod-recent-entries .module-body {padding-top:5px; padding-bottom:5px;}
+/*-- 110 CATEGORIES --*/
+#mod-categories .module-body {margin-bottom:-2px;}
+/*-- FREEAREA SIDEBAR --*/
+#mod-freearea-sidebar .module-body {padding:5px 10px 5px 10px;}
+/*-- MESSAGE --*/
+#mod-message .module-body {padding:7px 0 6px 0;}
+
+/*-- ■SECTION 120 HYBRID 設定 --*/
+#mod-freearea-main {margin-bottom:10px;}
+#mod-freearea-main .entry .entry-top h3 {line-height:1.2; padding:7px 40px 7px 7px; background:url(/img/template/user/1106/entry_bg.gif) no-repeat right top; color:#4a51ab;}
+#mod-freearea-main .entry-body{margin-bottom:3px;}
+#mod-freearea-main .entry-bottom{display:none;}

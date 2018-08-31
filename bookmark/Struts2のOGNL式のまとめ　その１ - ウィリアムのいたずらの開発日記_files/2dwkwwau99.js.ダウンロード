@@ -1,0 +1,49 @@
+(function(){
+
+  // ----------------------------------
+  // extract ids from cookies
+  // ----------------------------------
+  var nguserid = document.cookie.match(/NGUserID=([^\;]+);/);
+  if(nguserid){
+    nguserid = nguserid[1];
+  }
+  var xuuid = document.cookie.match(/XUUID=([^\;]+);/);
+  if(xuuid){
+    xuuid = xuuid[1];
+  }
+
+  // ----------------------------------
+  // id_map(TD)
+  // ----------------------------------
+  if(xuuid){
+    var key = '5804/ce5cc8a20566b9da39bc7dd85267b1809999da69';
+    var db    = 'xlisting';
+    var table = 'id_map';
+    var url   = 'https://in.treasuredata.com/postback/v3/event/' + db + '/' + table + '?td_write_key=' + key + '&td_global_id=td_global_id' + '&xuuid=' + xuuid + '&nguserid=' + nguserid;
+    (new Image()).src = url;
+  }
+
+})();
+
+// id:2848 docomo
+(function(){
+    var href = location.href;
+    var pix_status = false;
+
+    if( href.indexOf('sports.goo.ne.jp') != -1 ) {
+        pix_status = true;
+    }
+    if( href.indexOf('news.goo.ne.jp') != -1 && href.indexOf('sports') != -1 ) {
+        pix_status = true;
+    }
+    
+    if( pix_status ) {
+        // goo-pix
+        var script = document.createElement('script');
+        script.charset = 'utf-8';
+        script.async = true;
+        script.defer = true;
+        script.src = '//adcdn.goo.ne.jp/images/pix/u6lo5dywy2.js';
+        (document.head || document.getElementsByTagName('head')[0]).appendChild(script);
+    }
+})();

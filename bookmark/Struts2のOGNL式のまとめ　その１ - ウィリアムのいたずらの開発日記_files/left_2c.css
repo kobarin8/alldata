@@ -1,0 +1,10 @@
+@charset "utf-8";
+/* 2 COLUMNS LEFT-SIDEBAR CSS Document for goo blog modulized templates 080226 */
+
+/*-- ■SECTION 050 #main 内レイアウト設定 --*/
+#center{width:100%;float:right;margin:0 0 0 -200px;}
+#in-center{margin:0 0 0 200px;}
+#side-a{float:left;}
+
+/*-- ■SECTION 060 #content-2c/3c 設定 --*/
+#in-center .content-2c{margin-left:10px;}

@@ -6,9 +6,9 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.sampleweb.dao.UserInfoDAO;
 import com.opensymphony.xwork2.ActionSupport;
-
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 public class CreateUserCompleteAction extends ActionSupport implements SessionAware{
-
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	private String familyName;
 	private String firstName;
 	private String familyNameKana;
@@ -19,15 +19,22 @@ public class CreateUserCompleteAction extends ActionSupport implements SessionAw
 	private String password;
 	private String categoryId;
 	private Map<String, Object> session;
+
 	public String execute() {
+
 		String result = ERROR;
 		UserInfoDAO UserInfoDao = new UserInfoDAO();
+
 		int count = UserInfoDao.createUser(familyName,firstName,familyNameKana,firstNameKana,sex,email,loginId,password);
-		if(count > 0) {
-			result = SUCCESS;
-		}
+
+		if
+		(count > 0)
+		{result = SUCCESS;}
+
 		return result;
 	}
+
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 	public String getCategoryId() {
 		return categoryId;

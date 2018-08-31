@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<!-- saved from url=(0125)https://cdn.api.b.hatena.ne.jp/entry/button/?url=https%3A%2F%2Fblog.goo.ne.jp%2Fxmldtp%2Fe%2F030128bb1cde69c1e37ff6f96d9802b4 -->
+<html lang="ja" class="bbutton-html-wrapper"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>はてなブックマークボタン</title>
+<link rel="canonical" href="http://b.hatena.ne.jp/entry/s/blog.goo.ne.jp/xmldtp/e/030128bb1cde69c1e37ff6f96d9802b4">
+<link rel="stylesheet" href="./reset.css" type="text/css" media="all">
+<link rel="stylesheet" href="./entry-button.css" type="text/css" media="all">
+<script>
+  function clickHandler() {
+    var match = window.name.match(/^(\w+)\|((https?:\/\/[^\/?#]+)[^#]*)/);
+    if (!match) return;
+    window.parent.postMessage('HBMessage@{"type": "click"}', match[3]);
+  }
+</script>
+</head><body>
+
+  <div class="btn-standard lang-en show-count" onclick="if (event.button === 0) { clickHandler(); return false; }">
+    <a href="http://b.hatena.ne.jp/entry/s/blog.goo.ne.jp/xmldtp/e/030128bb1cde69c1e37ff6f96d9802b4" target="_top" title="このエントリーをはてなブックマークに追加">
+      <span class="icon"></span>
+      
+    </a>
+    <a href="http://b.hatena.ne.jp/entry/s/blog.goo.ne.jp/xmldtp/e/030128bb1cde69c1e37ff6f96d9802b4" target="_blank" class="count" onclick="if (event.button === 0) { event.stopPropagation(); }">0</a>
+  </div>
+
+
+
+</body></html>

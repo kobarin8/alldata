@@ -13,6 +13,8 @@ import com.internousdev.sampleweb.dto.CartInfoDTO;
 import com.internousdev.sampleweb.util.CommonUtility;
 import com.opensymphony.xwork2.ActionSupport;
 
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 public class AddCartAction extends ActionSupport implements SessionAware{
 
 	private int productId;
@@ -29,39 +31,63 @@ public class AddCartAction extends ActionSupport implements SessionAware{
 	private String categoryId;
 
 	private Map<String, Object> session;
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	public String execute() {
+
 		String result=ERROR;
 		String userId = null;
 		String tempUserId = null;
-		 if (!(session.containsKey("loginId")) && !(session.containsKey("tempUserId"))) {
-			 CommonUtility commonUtility = new CommonUtility();
-			 session.put("tempUserId", commonUtility.getRamdomValue());
+
+		 if
+		 (!(session.containsKey("loginId")) && !(session.containsKey("tempUserId")))				//ログインしていないかつ、添付ユーザーidがない時true
+		 {
+			 CommonUtility commonUtility = new CommonUtility();												//インスタンス化
+			 session.put("tempUserId", commonUtility.getRamdomValue());									//メソッドの実行、セッション変数化
 		}
-		if(session.containsKey("loginId")) {
-			userId = String.valueOf(session.get("loginId"));
+
+
+		if
+		(session.containsKey("loginId"))																						//ログイン済みの時true
+		{userId = String.valueOf(session.get("loginId"));}															//変数userIdに値を代入する
+
+
+		if
+		(!(session.containsKey("loginId")) && session.containsKey("tempUserId"))					//ログインしておらず、かつセッション変数tempuserIdがない時true
+		{
+			userId = String.valueOf(session.get("tempUserId"));													//変数に値を代入する
+			tempUserId = String.valueOf(session.get("tempUserId"));											//変数に値を代入する
 		}
-		if (!(session.containsKey("loginId")) && session.containsKey("tempUserId")) {
-			userId = String.valueOf(session.get("tempUserId"));
-			tempUserId = String.valueOf(session.get("tempUserId"));
-		}
+
 		productCount = String.valueOf((productCount.split(" ,",0))[0]);
 
-		CartInfoDAO cartInfoDao = new CartInfoDAO();
-		int count = cartInfoDao.regist(userId,tempUserId,productId,productCount,price);
-		if(count > 0) {
-			result=SUCCESS;
-		}
-		List<CartInfoDTO> cartInfoDtoList = new ArrayList<CartInfoDTO>();
-		cartInfoDtoList = cartInfoDao.getCartInfoDtoList(userId);
-		Iterator<CartInfoDTO> iterator = cartInfoDtoList.iterator();
-		if(!(iterator.hasNext())) {
-			cartInfoDtoList = null;
-		}
-		session.put("cartInfoDtoList", cartInfoDtoList);
-		int totalPrice = Integer.parseInt(String.valueOf(cartInfoDao.getTotalPrice(userId)));
-		session.put("totalPrice", totalPrice);
+		CartInfoDAO cartInfoDao = new CartInfoDAO();																//インスタンス化
+		int count = cartInfoDao.regist(userId,tempUserId,productId,productCount,price);			//registメソッドを実行
+
+		if
+		(count > 0)																															//0以上ならtrue 更新できてデータが存在していればtrue
+		{result=SUCCESS;}																												//変数resultにsuccessを代入する
+
+		List<CartInfoDTO> cartInfoDtoList = new ArrayList<CartInfoDTO>();							//リストを作成
+		cartInfoDtoList = cartInfoDao.getCartInfoDtoList(userId);												//getCartInfoDtoListメソッドを実行し、代入する
+		Iterator<CartInfoDTO> iterator = cartInfoDtoList.iterator();											//リストをiterator化する
+
+		if
+		(!(iterator.hasNext()))																										//要素が続かなければtrue
+		{cartInfoDtoList = null;}																									//nullを代入する
+
+		session.put("cartInfoDtoList", cartInfoDtoList);																//セッション変数化
+
+		int totalPrice = Integer.parseInt(String.valueOf(cartInfoDao.getTotalPrice(userId)));	//getTotalPriceメソッドを実行し、値を変数totalPriceに代入する
+
+		session.put("totalPrice", totalPrice);																					//セッション変数化
+
 		return result;
+
 	}
+
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 	public int getProductId() {
 		return productId;
 	}

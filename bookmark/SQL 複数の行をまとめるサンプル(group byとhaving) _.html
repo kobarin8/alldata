@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<!-- saved from url=(0039)https://itsakura.com/sql-groupby-having -->
+<html lang="ja"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>SQL 複数の行をまとめるサンプル(group byとhaving) | </title>
+<!-- This site uses the Google Analytics by MonsterInsights plugin v6.2.7 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+<script src="./SQL 複数の行をまとめるサンプル(group byとhaving) __files/f.txt"></script><script src="./SQL 複数の行をまとめるサンプル(group byとhaving) __files/ca-pub-5968678474670284.js.ダウンロード"></script><script async="" src="./SQL 複数の行をまとめるサンプル(group byとhaving) __files/analytics.js.ダウンロード"></script><script type="text/javascript" data-cfasync="false">
+		var disableStr = 'ga-disable-UA-40633269-1';
+
+	/* Function to detect opted out users */
+	function __gaTrackerIsOptedOut() {
+		return document.cookie.indexOf(disableStr + '=true') > -1;
+	}
+
+	/* Disable tracking if the opt-out cookie exists. */
+	if ( __gaTrackerIsOptedOut() ) {
+		window[disableStr] = true;
+	}
+
+	/* Opt-out function */
+	function __gaTrackerOptout() {
+	  document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+	  window[disableStr] = true;
+	}
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+
+	__gaTracker('create', 'UA-40633269-1', 'auto');
+	__gaTracker('set', 'forceSSL', true);
+	__gaTracker('send','pageview');
+</script>
+<!-- / Google Analytics by MonsterInsights -->
+<link rel="stylesheet" id="its-style-css" href="./SQL 複数の行をまとめるサンプル(group byとhaving) __files/style.css" type="text/css" media="all">
+<link rel="canonical" href="https://itsakura.com/sql-groupby-having">
+<style type="text/css">.broken_link, a.broken_link {
+	text-decoration: line-through;
+}</style><style>caption {text-align:left}.tbl2{width:50%;min-width:300px}.tbl4{width:75%;min-width:300px}</style><link rel="preload" href="./SQL 複数の行をまとめるサンプル(group byとhaving) __files/f(1).txt" as="script"><script type="text/javascript" src="./SQL 複数の行をまとめるサンプル(group byとhaving) __files/f(1).txt"></script><link rel="preload" href="./SQL 複数の行をまとめるサンプル(group byとhaving) __files/f(2).txt" as="script"><script type="text/javascript" src="./SQL 複数の行をまとめるサンプル(group byとhaving) __files/f(2).txt"></script></head>
+<body class="post-template-default single single-post postid-15614 single-format-standard">
+<div id="page" class="hfeed site">
+<header id="masthead" class="site-header">
+<div class="site-branding"><p class="site-title"><a href="https://itsakura.com/" rel="home">ITSakura</a>  <span class="site-description">Blog for business and development</span></p></div>
+	<input type="checkbox" id="primary-menu">
+	<nav id="site-navigation" class="main-navigation">
+	<label for="primary-menu" class="menu-toggle">Menu</label>
+	<div class="menu-%e3%83%88%e3%83%83%e3%83%97%e3%83%a1%e3%83%8b%e3%83%a5%e3%83%bc%ef%bc%91-container"><ul id="menu-%e3%83%88%e3%83%83%e3%83%97%e3%83%a1%e3%83%8b%e3%83%a5%e3%83%bc%ef%bc%91" class="nav-menu"><li id="menu-item-9318" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-9318"><a>Program</a>
+<ul class="sub-menu">
+	<li id="menu-item-9319" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9319"><a href="https://itsakura.com/java">Java</a></li>
+	<li id="menu-item-9320" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9320"><a href="https://itsakura.com/javascript">JavaScript</a></li>
+	<li id="menu-item-9321" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9321"><a href="https://itsakura.com/jquery">jQuery</a></li>
+	<li id="menu-item-9323" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9323"><a href="https://itsakura.com/cpp">C++</a></li>
+	<li id="menu-item-9340" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9340"><a href="https://itsakura.com/csharp">C#</a></li>
+	<li id="menu-item-9335" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9335"><a href="https://itsakura.com/php">PHP</a></li>
+	<li id="menu-item-15295" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15295"><a href="https://itsakura.com/python">Python</a></li>
+	<li id="menu-item-9346" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9346"><a href="https://itsakura.com/html-css">HTML / CSS</a></li>
+	<li id="menu-item-14858" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14858"><a href="https://itsakura.com/html5">HTML5</a></li>
+	<li id="menu-item-9322" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9322"><a href="https://itsakura.com/sql">SQL</a></li>
+</ul>
+</li>
+<li id="menu-item-9324" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9324"><a href="https://itsakura.com/eclipse">Eclipse</a></li>
+<li id="menu-item-9325" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9325"><a href="https://itsakura.com/excel">Excel/VBA</a></li>
+<li id="menu-item-14859" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14859"><a href="https://itsakura.com/network">network/device</a></li>
+<li id="menu-item-14852" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14852"><a href="https://itsakura.com/webtool">Webツール</a></li>
+<li id="menu-item-14851" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14851"><a href="https://itsakura.com/misc">その他</a></li>
+</ul></div>	</nav>
+</header>
+<div id="content" class="site-content">
+		<div id="breadcrumb">
+	<ul><li><a href="https://itsakura.com/">HOME</a></li>
+												<li>&gt;</li>
+			<li><a href="https://itsakura.com/sql">SQL</a></li>
+				</ul></div>
+		<div id="primary" class="content-area">
+		<main id="main" class="site-main">
+
+								<article id="post-15614" class="post-15614 post type-post status-publish format-standard hentry category-sql">
+	<header class="entry-header">
+		<h1 class="entry-title">SQL 複数の行をまとめるサンプル(group byとhaving)</h1>
+		<div class="entry-meta">
+			<span class="byline"> <span class="author vcard"><span class="fn">nas</span></span></span><span class="posted-on"><time class="entry-date" datetime="2018-03-24T00:31:28+00:00">2018/03/24</time><time class="date updated" datetime="2018-03-27T12:00:41+00:00">2018/03/27</time></span>		</div>
+	</header>
+	<div class="entry-content">
+		<p>SQLの複数の行をまとめるサンプルです。<br>
+ 集約関数とgroup by句とhaving句を使用します。</p>
+<p class="midashi">目次</p>
+<ul>
+<li><a href="https://itsakura.com/sql-groupby-having#s1">集約関数</a></li>
+<li><a href="https://itsakura.com/sql-groupby-having#s2">複数の行をグループごとにまとめる</a></li>
+<li><a href="https://itsakura.com/sql-groupby-having#s3">複数の行をグループごとにまとめ、集約関数の値に条件を指定する</a></li>
+</ul>
+<h2 id="s1">集約関数</h2>
+<ul>
+<li>集約関数は、複数の行をまとめて１つの列の平均や合計などの計算結果を返します。</li>
+</ul>
+<table class="tbl2">
+<caption>主な集約関数</caption>
+<tbody>
+<tr>
+<th style="width: 40%;">集約関数</th>
+<th>説明</th>
+</tr>
+<tr>
+<td>AVG()</td>
+<td>平均を返す</td>
+</tr>
+<tr>
+<td>SUM()</td>
+<td>合計を返す</td>
+</tr>
+<tr>
+<td>MAX()</td>
+<td>最大値を返す</td>
+</tr>
+<tr>
+<td>MIN()</td>
+<td>最小値を返す</td>
+</tr>
+<tr>
+<td>COUNT()</td>
+<td>個数を返す</td>
+</tr>
+</tbody>
+</table>
+<h3>サンプル</h3>
+<p>集約関数のサンプルです。<br>
+ 以下の１のテーブルに対して、２のSQLを実行します。</p>
+<p>１．テーブル</p>
+<table class="tbl4">
+<caption>syouhin</caption>
+<tbody>
+<tr>
+<th style="width: 25%;">id</th>
+<th style="width: 25%;">category</th>
+<th style="width: 25%;">name</th>
+<th>price</th>
+</tr>
+<tr>
+<td>1</td>
+<td>魚</td>
+<td>まぐろ</td>
+<td>500</td>
+</tr>
+<tr>
+<td>2</td>
+<td>野菜</td>
+<td>白菜</td>
+<td>200</td>
+</tr>
+<tr>
+<td>3</td>
+<td>魚</td>
+<td>あじ</td>
+<td>200</td>
+</tr>
+<tr>
+<td>4</td>
+<td>野菜</td>
+<td>大根</td>
+<td>100</td>
+</tr>
+</tbody>
+</table>
+<p>２．SQL</p>
+<pre class="line-numbers language-sql" data-line="1" data-start="1" style="counter-reset: linenumber 0;"><code class=" language-sql"><span class="token keyword">SELECT</span> <span class="token function">SUM</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">AVG</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">MAX</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">MIN</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">COUNT</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span> 
+<span class="token keyword">FROM</span> <span class="token punctuation">`</span>syouhin<span class="token punctuation">`</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code><div aria-hidden="true" class=" line-highlight" style="top: 0px;"> 
+</div></pre>
+<p>結果は以下のとおりです。<br>
+ 複数の行が1行になり集約関数の値が表示されます。</p>
+<table>
+<tbody>
+<tr>
+<th style="width: 20%;">SUM(price)</th>
+<th style="width: 20%;">AVG(price)</th>
+<th style="width: 20%;">MAX(price)</th>
+<th style="width: 20%;">MIN(price)</th>
+<th>COUNT(price)</th>
+</tr>
+<tr>
+<td>1000</td>
+<td>250.0000</td>
+<td>500</td>
+<td>100</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<h2 id="s2">複数の行をグループごとにまとめる</h2>
+<table>
+<tbody>
+<tr>
+<td>group by</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>group by句を使用すると、複数の行をグループごとにまとめることができます。</li>
+</ul>
+<h3>サンプル</h3>
+<p>group by句のサンプルです。<br>
+ 以下の１のテーブルに対して、２のSQLを実行します。</p>
+<p>１．テーブル</p>
+<table class="tbl4">
+<caption>syouhin</caption>
+<tbody>
+<tr>
+<th style="width: 25%;">id</th>
+<th style="width: 25%;">category</th>
+<th style="width: 25%;">name</th>
+<th>price</th>
+</tr>
+<tr>
+<td>1</td>
+<td>魚</td>
+<td>まぐろ</td>
+<td>500</td>
+</tr>
+<tr>
+<td>2</td>
+<td>野菜</td>
+<td>白菜</td>
+<td>200</td>
+</tr>
+<tr>
+<td>3</td>
+<td>魚</td>
+<td>あじ</td>
+<td>200</td>
+</tr>
+<tr>
+<td>4</td>
+<td>野菜</td>
+<td>大根</td>
+<td>100</td>
+</tr>
+</tbody>
+</table>
+<p>２．SQL</p>
+<pre class="line-numbers language-sql" data-line="3" data-start="1" style="counter-reset: linenumber 0;"><code class=" language-sql"><span class="token keyword">SELECT</span> category<span class="token punctuation">,</span><span class="token function">AVG</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span> 
+<span class="token keyword">FROM</span> <span class="token punctuation">`</span>syouhin<span class="token punctuation">`</span> 
+<span class="token keyword">group</span> <span class="token keyword">by</span> category<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code><div aria-hidden="true" class=" line-highlight" style="top: 48px;"> 
+</div></pre>
+<p>結果は以下のとおりです。<br>
+ group by句で指定した項目のcategoryごとに行が表示され、それぞれの行ごとの集約関数の値が表示されます。</p>
+<table class="tbl2">
+<caption>syouhin</caption>
+<tbody>
+<tr>
+<th style="width: 50%;">category</th>
+<th>AVG(price)</th>
+</tr>
+<tr>
+<td>野菜</td>
+<td>150.0000</td>
+</tr>
+<tr>
+<td>魚</td>
+<td>350.0000</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<h2 id="s3">複数の行をグループごとにまとめ、集約関数の値に条件を指定する</h2>
+<table>
+<tbody>
+<tr>
+<td>having</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>having句を使用すると、複数の行をグループごとにまとめた列の項目の集約関数の値に条件を指定することができます。</li>
+</ul>
+<h3>サンプル</h3>
+<p>having句のサンプルです。<br>
+ 以下の１のテーブルに対して、２のSQLを実行します。</p>
+<p>１．テーブル</p>
+<table class="tbl4">
+<caption>syouhin</caption>
+<tbody>
+<tr>
+<th style="width: 25%;">id</th>
+<th style="width: 25%;">category</th>
+<th style="width: 25%;">name</th>
+<th>price</th>
+</tr>
+<tr>
+<td>1</td>
+<td>魚</td>
+<td>まぐろ</td>
+<td>500</td>
+</tr>
+<tr>
+<td>2</td>
+<td>野菜</td>
+<td>白菜</td>
+<td>200</td>
+</tr>
+<tr>
+<td>3</td>
+<td>魚</td>
+<td>あじ</td>
+<td>200</td>
+</tr>
+<tr>
+<td>4</td>
+<td>野菜</td>
+<td>大根</td>
+<td>100</td>
+</tr>
+</tbody>
+</table>
+<p>２．SQL</p>
+<pre class="line-numbers language-sql" data-line="4" data-start="1" style="counter-reset: linenumber 0;"><code class=" language-sql"><span class="token keyword">SELECT</span> category<span class="token punctuation">,</span><span class="token function">AVG</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span> 
+<span class="token keyword">FROM</span> <span class="token punctuation">`</span>syouhin<span class="token punctuation">`</span> 
+<span class="token keyword">group</span> <span class="token keyword">by</span> category 
+<span class="token keyword">having</span> <span class="token function">AVG</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">200</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code><div aria-hidden="true" class=" line-highlight" style="top: 72px;"> 
+</div></pre>
+<p>結果は以下のとおりです。<br>
+ group by句で指定した項目のcategoryごとに行のAVG(price)に対して<br>
+ having句で指定した条件を満たす行が表示されます。</p>
+<table class="tbl2">
+<caption>syouhin</caption>
+<tbody>
+<tr>
+<th style="width: 50%;">category</th>
+<th>AVG(price)</th>
+</tr>
+<tr>
+<td>魚</td>
+<td>350.0000</td>
+</tr>
+</tbody>
+</table>
+<h3>where句を使用した場合</h3>
+<p>以下のように、集約関数(AVG)の結果をwhere句で条件にすることはできません。</p>
+<pre class="line-numbers language-sql" data-line="3" data-start="1" style="counter-reset: linenumber 0;"><code class=" language-sql"><span class="token keyword">SELECT</span> category<span class="token punctuation">,</span><span class="token function">AVG</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span> 
+<span class="token keyword">FROM</span> <span class="token punctuation">`</span>syouhin<span class="token punctuation">`</span> 
+<span class="token keyword">where</span> <span class="token function">AVG</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">200</span>
+<span class="token keyword">group</span> <span class="token keyword">by</span> category<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code><div aria-hidden="true" class=" line-highlight" style="top: 48px;"> 
+</div></pre>
+<p>MySQLでは、以下のメッセージが表示されます。<br>
+ #1111 - 集計関数の使用方法が不正です。</p>
+<p>集約関数の結果を条件にする場合は、having句を使用します。</p>
+<p>&nbsp;</p>
+<h2 id="s2">リンク</h2>
+<p>以下は、MySQLのGROUP BY 修飾子のリンクです。<br>
+ <a href="https://dev.mysql.com/doc/refman/5.6/ja/group-by-modifiers.html" target="_blank" rel="noopener">https://dev.mysql.com/doc/refman/5.6/ja/group-by-modifiers.html</a></p>
+<p class="midashi">関連の記事</p>
+<p><a href="https://itsakura.com/sql-insert">SQL INSERT文のサンプル</a><br>
+ <a href="https://itsakura.com/sql-update">SQL UPDATE文とDELETE文のサンプル</a><br>
+ <a href="https://itsakura.com/sql-distinct">SQL 重複行を表示しないサンプル(distinct)</a><br>
+ <a href="https://itsakura.com/sql-left_outer_join">SQL 外部結合のサンプル(left outer join/right outer join)</a><br>
+ <a href="https://itsakura.com/sql_subquery">SQL 副問合せのサンプル(サブクエリ)</a><br>
+ <a href="https://itsakura.com/sql-selfjoin">SQL 自己結合とは</a><br>
+ <a href="https://itsakura.com/sql-inner-join">SQL 内部結合とは (inner join)</a><br>
+ <a href="https://itsakura.com/sql-union">SQL UNIONとは</a></p>
+	</div>
+						
+<div style="margin-top: 65px;border-top: 1px dotted #000;padding-top: 15px;">
+	<div style="float:left;margin-right:10px">
+	<script async="" src="./SQL 複数の行をまとめるサンプル(group byとhaving) __files/f(3).txt"></script>
+	<!-- 2017版3 -->
+	<ins class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-5968678474670284" data-ad-slot="8916578053" data-adsbygoogle-status="done"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><ins id="aswift_0_anchor" style="display:block;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><iframe width="300" height="250" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;width:300px;height:250px;" src="./SQL 複数の行をまとめるサンプル(group byとhaving) __files/saved_resource.html"></iframe></ins></ins></ins>
+	<script>
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	</script>
+	</div>
+				<div><a class="sidead1" href="https://af.moshimo.com/af/c/click?a_id=942047&amp;p_id=966&amp;pc_id=1260&amp;pl_id=13904&amp;guid=ON" target="_blank" rel="nofollow"><img src="./SQL 複数の行をまとめるサンプル(group byとhaving) __files/000000013904.png" width="200" height="200" style="border:none;"></a><img src="./SQL 複数の行をまとめるサンプル(group byとhaving) __files/impression" width="1" height="1" style="border:none;">
+	</div>
+	
+<br><br>
+	<div style="clear:left;">
+<script async="" src="./SQL 複数の行をまとめるサンプル(group byとhaving) __files/f(3).txt"></script>
+<ins class="adsbygoogle" style="display: block; height: 439px;" data-ad-format="autorelaxed" data-ad-client="ca-pub-5968678474670284" data-ad-slot="4293818057" data-adsbygoogle-status="done"><ins id="aswift_1_expand" style="display:inline-table;border:none;height:439px;margin:0;padding:0;position:relative;visibility:visible;width:732px;background-color:transparent;"><ins id="aswift_1_anchor" style="display:block;border:none;height:439px;margin:0;padding:0;position:relative;visibility:visible;width:732px;background-color:transparent;"><iframe width="732" height="439" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;width:732px;height:439px;" src="./SQL 複数の行をまとめるサンプル(group byとhaving) __files/saved_resource(1).html"></iframe></ins></ins></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+	</div>
+</div>
+</article>
+
+					
+		</main><!-- #main -->
+	</div><!-- #primary -->
+<div id="secondary" class="widget-area" role="complementary">
+							<aside id="text-9" class="widget widget_text">
+<div class="textwidget"><p><script async="" src="./SQL 複数の行をまとめるサンプル(group byとhaving) __files/f(3).txt"></script><br>
+<!-- 201708-ver5 --><br>
+<ins class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-5968678474670284" data-ad-slot="5392694383" data-adsbygoogle-status="done"><ins id="aswift_2_expand" style="display:inline-table;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><ins id="aswift_2_anchor" style="display:block;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><iframe width="300" height="250" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_2" name="aswift_2" style="left:0;position:absolute;top:0;width:300px;height:250px;" src="./SQL 複数の行をまとめるサンプル(group byとhaving) __files/saved_resource(2).html"></iframe></ins></ins></ins><br>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p></div></aside>
+			<aside class="widget" style="margin-bottom:10px;">
+<ul>
+<li><a href="https://itsakura.com/video-distribution">動画配信で映画やドラマを視聴できるサービス 9選</a></li>
+<li><a href="https://itsakura.com/it-amazon-prime">Amazonの動画、音楽、書籍サービスの紹介</a></li>
+<li><a href="https://itsakura.com/shop-security-goods">防犯セキュリティカメラ 3選</a></li>
+<li><a href="https://itsakura.com/shop-desk">家で作業する人向けのデスク 7選</a></li>
+<li><a href="https://itsakura.com/it-shigoto-free">IT系のフリーランス/派遣の仕事情報</a></li>
+<li><a href="https://itsakura.com/it-shigoto-crowdsourcing">自宅で稼げるIT系の仕事情報</a></li>
+<li><a href="https://itsakura.com/it-shigoto-tensyoku">IT系の転職支援会社の情報</a></li>
+</ul>
+</aside>
+	<aside class="widget" style="margin-bottom:15px;">
+	<aside id="search-3" class="widget widget_search"><h4 class="widget-title">サイト内検索</h4>
+<form role="search" method="get" id="searchform" class="searchform" action="https://itsakura.com/">
+  <div>
+    <input type="text" value="" name="s" id="s">
+    <input type="submit" id="searchsubmit" value="search">
+  </div>
+</form></aside></aside>
+							<aside id="text-8" class="widget widget_text">
+<div class="textwidget"><script async="" src="./SQL 複数の行をまとめるサンプル(group byとhaving) __files/f(3).txt"></script>
+<!-- 2017版2 -->
+<ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-5968678474670284" data-ad-slot="6976727654" data-adsbygoogle-status="done"><ins id="aswift_3_expand" style="display:inline-table;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><ins id="aswift_3_anchor" style="display:block;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><iframe width="300" height="600" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_3" name="aswift_3" style="left:0;position:absolute;top:0;width:300px;height:600px;" src="./SQL 複数の行をまとめるサンプル(group byとhaving) __files/saved_resource(3).html"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+</aside>			<aside id="categories-2" class="widget widget_categories">
+<h4 class="widget-title">カテゴリー</h4>
+<ul>
+<li class="cat-item cat-item-10"><a href="https://itsakura.com/java">Java</a></li>
+<li class="cat-item cat-item-13"><a href="https://itsakura.com/javascript">JavaScript</a></li>
+<li class="cat-item cat-item-25"><a href="https://itsakura.com/jquery">jQuery</a></li>
+<li class="cat-item cat-item-27"><a href="https://itsakura.com/cpp">C++</a></li>
+<li class="cat-item cat-item-30"><a href="https://itsakura.com/csharp">C#</a></li>
+<li class="cat-item cat-item-31"><a href="https://itsakura.com/php">PHP</a></li>
+<li class="cat-item cat-item-38"><a href="https://itsakura.com/python">Python</a></li>
+<li class="cat-item cat-item-32"><a href="https://itsakura.com/html-css">HTML / CSS</a></li>
+<li class="cat-item cat-item-37"><a href="https://itsakura.com/html5">HTML5</a></li>
+<li class="cat-item cat-item-5"><a href="https://itsakura.com/sql">SQL</a></li>
+<li class="cat-item cat-item-20"><a href="https://itsakura.com/eclipse">Eclipse</a></li>
+<li class="cat-item cat-item-14"><a href="https://itsakura.com/excel">Excel/VBA</a></li>
+<li class="cat-item cat-item-33"><a href="https://itsakura.com/windows">Windows10</a></li>
+<li class="cat-item cat-item-28"><a href="https://itsakura.com/windows">秀丸</a></li>
+<li class="cat-item cat-item-2"><a href="https://itsakura.com/middle-os">CentOS/Middle</a></li>
+<li class="cat-item cat-item-36"><a href="https://itsakura.com/network">ネットワーク/機器</a></li>
+<li class="cat-item cat-item-35"><a href="https://itsakura.com/webtool">Webツール</a></li>
+<li class="cat-item cat-item-24"><a href="https://itsakura.com/misc">その他</a></li>
+</ul>
+</aside><aside class="widget" style="margin-top:10px;">
+<script async="" src="./SQL 複数の行をまとめるサンプル(group byとhaving) __files/f(3).txt"></script>
+<!-- リンクユニット１ -->
+<ins class="adsbygoogle" style="display: block; height: 190px;" data-ad-client="ca-pub-5968678474670284" data-ad-slot="5291636195" data-ad-format="link" data-adsbygoogle-status="done"><ins id="aswift_4_expand" style="display:inline-table;border:none;height:190px;margin:0;padding:0;position:relative;visibility:visible;width:292px;background-color:transparent;"><ins id="aswift_4_anchor" style="display:block;border:none;height:190px;margin:0;padding:0;position:relative;visibility:visible;width:292px;background-color:transparent;"><iframe width="292" height="190" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_4" name="aswift_4" style="left:0;position:absolute;top:0;width:292px;height:190px;" src="./SQL 複数の行をまとめるサンプル(group byとhaving) __files/saved_resource(4).html"></iframe></ins></ins></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+<!-- リンクユニット１ -->
+</aside>
+</div><!-- #secondary -->
+</div><!-- #content -->
+<footer id="colophon" class="site-footer">
+<div class="site-info">
+Copyright © 2013-2018 <a href="http://itsakura.com/" title="ITSakura" rel="home">ITSakura</a> All Rights Reserved.
+</div><!-- .site-info -->
+</footer><!-- #colophon -->
+<p class="back-top" id="backTop" style="display: block;"><a href="https://itsakura.com/sql-groupby-having#top" rel="nofollow">△上に戻る</a></p>
+</div><!-- #page -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var monsterinsights_frontend = {"js_events_tracking":"true","is_debug_mode":"false","download_extensions":"doc,exe,js,pdf,ppt,tgz,zip,xls","inbound_paths":"","home_url":"https:\/\/itsakura.com","track_download_as":"event","internal_label":"int","hash_tracking":"false"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./SQL 複数の行をまとめるサンプル(group byとhaving) __files/frontend.min.js.ダウンロード"></script>
+<script type="text/javascript" src="./SQL 複数の行をまとめるサンプル(group byとhaving) __files/skip-link-focus-fix.js.ダウンロード"></script>
+<script type="text/javascript" src="./SQL 複数の行をまとめるサンプル(group byとhaving) __files/prism.js.ダウンロード"></script>
+
+
+<iframe id="google_osd_static_frame_289514745394" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;" src="./SQL 複数の行をまとめるサンプル(group byとhaving) __files/saved_resource(5).html"></iframe></body></html>

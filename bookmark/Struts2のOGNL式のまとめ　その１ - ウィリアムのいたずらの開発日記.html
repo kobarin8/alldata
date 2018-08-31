@@ -1,0 +1,1641 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0064)https://blog.goo.ne.jp/xmldtp/e/030128bb1cde69c1e37ff6f96d9802b4 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:mixi="http://mixi-platform.com/ns#" xmlns:fb="http://ogp.me/ns/fb#" xmlns:article="http://ogp.me/ns/article#" lang="ja" xml:lang="ja" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title lang="ja" xml:lang="ja">Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記</title>
+
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta name="description" lang="ja" xml:lang="ja" content="まとめてみる。■目的Struts2では、Sタグの属性の中に、＜％＝％＞や、EL式をかけない（実際に書いてみると、５００内部エラーorg.apache.jasper.JasperException:TLD又はタグファイル中のattribute指示子に従って属性valueはどんな式も受け付けませんをエラーとして返す）そこで、Struts2の中のタグで、Actionの中にある属性や、セッションの値を使いたい場合（一部加工もOK)に用いる・・・らしい※なお、・後述するように、Actionの中にある属性や、セッションの値そのものを、表示することもできるが、その場合もsタグを用いる・JSPの中で作成した変数を＜％＝％＞みたいな形で使えるかどうか、よくわかっていない。ただし、後述するように、JSPの中で作った変数を、sess...Struts2のOGNL式のまとめその１">
+<meta property="fb:app_id" content="257130094322958">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.goo.ne.jp/xmldtp/e/030128bb1cde69c1e37ff6f96d9802b4">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記">
+<meta property="og:title" content="Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記">
+<meta property="og:description" content="まとめてみる。■目的Struts2では、Sタグの属性の中に、＜％＝％＞や、EL式をかけない（実際に書いてみると、５００内部エラーorg.apache.jasper.JasperException:TLD又はタグファイル中のattribute指示子に従って属性valueはどんな式も受け付けませんをエラーとして返す）そこで、Struts2の中のタグで、Actionの中にある属性や、セッションの値を使いたい場合（一部加工もOK)に用いる・・・らしい※なお、・後述するように、Actionの中にある属性や、セッションの値そのものを、表示することもできるが、その場合もsタグを用いる・JSPの中で作成した変数を＜％＝％＞みたいな形で使えるかどうか、よくわかっていない。ただし、後述するように、JSPの中で作った変数を、sess...Struts2のOGNL式のまとめその１">
+<meta property="og:image" content="http://u.xgoo.jp/img/sns/blog.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@goo_blog">
+<meta name="twitter:creator" content="@xmldtp">
+<meta name="twitter:title" content="Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記">
+<meta name="twitter:description" content="まとめてみる。■目的Struts2では、Sタグの属性の中に、＜％＝％＞や、EL式をかけない（実際に書いてみると、５００内部エラーorg.apache.jasper.JasperException:TLD又はタグファイル中のattribute指示子に従って属性valueはどんな式も受け付けませんをエラーとして返す）そこで、Struts2の中のタグで、Actionの中にある属性や、セッションの値を使いたい場合（一部加工もOK)に用いる・・・らしい※なお、・後述するように、Actionの中にある属性や、セッションの値そのものを、表示することもできるが、その場合もsタグを用いる・JSPの中で作成した変数を＜％＝％＞みたいな形で使えるかどうか、よくわかっていない。ただし、後述するように、JSPの中で作った変数を、sess...Struts2のOGNL式のまとめその１">
+<link rel="canonical" href="https://blog.goo.ne.jp/xmldtp/e/030128bb1cde69c1e37ff6f96d9802b4">
+<link rel="alternate" media="handheld" href="https://blog.goo.ne.jp/xmldtp/e/030128bb1cde69c1e37ff6f96d9802b4">
+<link rel="alternate" type="application/rss+xml" title="RSS2.0" href="https://blog.goo.ne.jp/xmldtp/rss2.xml">
+<link rel="alternate" type="application/rss+xml" title="RSS1.0" href="https://blog.goo.ne.jp/xmldtp/index.rdf">
+
+<!--[if gt IE 5.5]>
+<style>
+body {font-family:"ＭＳ Ｐゴシック";}
+</style>
+<![endif]-->
+<style>
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) { body {font-family:"ＭＳ Ｐゴシック";}}
+</style>
+<link rel="Stylesheet" type="text/css" media="all" href="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/static.css">
+<link rel="stylesheet" type="text/css" href="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/left_2c.css">
+<link rel="stylesheet" type="text/css" href="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/85ca08beb3e2ade68fc7f0b25faa2a4b.css">
+<style>
+.entry-body-text img, .etBody img, .etImage{max-width:100%;-ms-interpolation-mode:bicubic}
+.entry-body-text img[width], .etBody img[width], .etImage[width]{max-width:none}
+.entry-body-image img{max-width:99%}
+.entry-body-image table img, .entry-body-text table img, .etBody table img{max-width:none}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+.entry-body-image table img,.entry-body-text table img,.etBody table a img{max-width:none}
+}
+</style> 
+<style>
+.module h4,#mod-comments h3,#mod-trackbacks h3,#mod-archive h3,#mod-relation-title h3, #mod-relation h3, #font-resizer ul li{ text-transform: 2 }
+
+</style>
+
+<script type="text/javascript" async="" src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/analytics.js.ダウンロード"></script><script src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/cb=gapi.loaded_1" async=""></script><script src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/cb=gapi(1).loaded_0" async=""></script><script async="" src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/gtm.js.ダウンロード"></script><script><!--
+var USER_NAME = "xmldtp",
+	BID = "3ec8a6c187f0936e4be1ba439ef74ddb",
+	SERVER_NAME = "blog.goo.ne.jp",
+	IMAGE_SERVER = "blogimg.goo.ne.jp",
+	click_count_id = [],
+	CLICK_CONTROL = 0;
+-->
+</script>
+
+
+<script charset="utf-8" async="" defer="" src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/b.js.ダウンロード"></script><script type="text/javascript" charset="utf-8" async="" src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/button.460b6e50c797f0f03177332228ca7d20.js.ダウンロード"></script><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, "hiragino kaku gothic pro",meiryo,"ms pgothic",sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_loader{background-color:#f5f6f7;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{width:auto;height:auto;min-height:initial;min-width:initial;background:none}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{color:#fff;display:block;padding-top:20px;clear:both;font-size:18px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;bottom:0;left:0;right:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:-webkit-sticky;top:0}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29487d;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-repeat:no-repeat;background-position:50% 50%;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}
+.fb_customer_chat_bounce_in_v2{animation-duration:300ms;animation-name:fb_bounce_in_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_v2{animation-duration:300ms;animation-name:fb_bounce_out_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_v2_mobile_chat_started{animation-duration:300ms;animation-name:fb_bounce_in_v2_mobile_chat_started;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_v2_mobile_chat_started{animation-duration:300ms;animation-name:fb_bounce_out_v2_mobile_chat_started;transition-timing-function:ease-in}.fb_customer_chat_bubble_pop_in{animation-duration:250ms;animation-name:fb_customer_chat_bubble_bounce_in_animation}.fb_customer_chat_bubble_animated_no_badge{box-shadow:0 3px 12px rgba(0, 0, 0, .15);transition:box-shadow 150ms linear}.fb_customer_chat_bubble_animated_no_badge:hover{box-shadow:0 5px 24px rgba(0, 0, 0, .3)}.fb_customer_chat_bubble_animated_with_badge{box-shadow:-5px 4px 14px rgba(0, 0, 0, .15);transition:box-shadow 150ms linear}.fb_customer_chat_bubble_animated_with_badge:hover{box-shadow:-5px 8px 24px rgba(0, 0, 0, .2)}.fb_invisible_flow{display:inherit;height:0;overflow-x:hidden;width:0}.fb_mobile_overlay_active{background-color:#fff;height:100%;overflow:hidden;position:fixed;visibility:hidden;width:100%}@keyframes fb_bounce_in_v2{0%{opacity:0;transform:scale(0, 0);transform-origin:bottom right}50%{transform:scale(1.03, 1.03);transform-origin:bottom right}100%{opacity:1;transform:scale(1, 1);transform-origin:bottom right}}@keyframes fb_bounce_in_v2_mobile_chat_started{0%{opacity:0;top:20px}100%{opacity:1;top:0}}@keyframes fb_bounce_out_v2{0%{opacity:1;transform:scale(1, 1);transform-origin:bottom right}100%{opacity:0;transform:scale(0, 0);transform-origin:bottom right}}@keyframes fb_bounce_out_v2_mobile_chat_started{0%{opacity:1;top:0}100%{opacity:0;top:20px}}@keyframes fb_customer_chat_bubble_bounce_in_animation{0%{bottom:6pt;opacity:0;transform:scale(0, 0);transform-origin:center}70%{bottom:18pt;opacity:1;transform:scale(1.2, 1.2)}100%{transform:scale(1, 1)}}</style></head>
+<body>
+<script>dataLayer=[{"_visioparam_p":"usrblog","_visioparam_u1":"blg_adv","_visioparam_is_bz":9,"_visioparam_tag":"16903|1781316|13956","_visioparam_blog_attr":"","_visioparam_entry_time":"201310","_visioparam_bnr":"rank9115-0:mura_it-network","_visioparam_column":"2","skinid":"85ca08beb3e2ade68fc7f0b25faa2a4b","user_attr":"R000M002GF4A24K24C14DF14","dcdc":"B0L1D0C0P13G00","template":"pc","usertype":"notlogin"}];</script>
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NCR8MJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-NCR8MJ');</script>
+<!-- End Google Tag Manager -->
+
+<script>//<!--
+document.write('<img src="/ac.php?type=clickcount&id=body_beacon" style="position: absolute;">');
+// -->
+</script><img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/ac.php" style="position: absolute;">
+<!-- GLOBAL HEADER -->
+<div id="global-header" class="clearfix">
+<!-- GLOBAL HEADER MODULE -->
+<div id="mod-global-header">
+<table><tbody><tr><td id="mod-global-header-l">
+<ul>
+<li><a href="http://www.goo.ne.jp/click.php?ID=bg03&amp;DEST=http://www.goo.ne.jp/" title="goo" class="logo"><img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/mod_global_header_goo_logo.gif" alt="goo"></a><a href="https://blog.goo.ne.jp/">ブログ</a></li>
+<li><a href="https://blog.goo.ne.jp/admin">ログイン</a></li>
+<li><a href="https://blog.goo.ne.jp/api/random_blog">ランダム</a></li>
+<li>
+
+
+<a href="https://form.ambassador.jp/get/goo/form/entry?utm_source=gooblog&amp;utm_medium=webpc&amp;utm_term=article&amp;utm_campaign=cp1_gooblog_webpc_article" rel="nofollow"><span style="color:#ea5506;">gooアンバサダー募集中!!</span></a>
+
+
+
+</li>
+</ul>
+</td>
+<td id="mod-global-header-r">
+<div style="margin-top:1px;*margin-top:0px;white-space:nowrap">
+<ul class="mod-global-header-m" id="mod-global-header-m">
+<li><img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/mod_pen.gif"><a href="https://blog.goo.ne.jp/admin/newentry/">記事を書く</a></li>
+</ul>
+<!-- SEARCH -->
+<form action="https://blog.goo.ne.jp/xmldtp/s" method="post" name="bsearch" id="global_header_search"><input type="hidden" name="m" value="s"><input type="hidden" name="bid" value="3ec8a6c187f0936e4be1ba439ef74ddb"><ul><li><label for="mod-global-header-search">検索</label>&nbsp;</li><li><input type="text" name="sword" id="mod-global-header-search" class="mod-global-header-search" value="">&nbsp;<select name="scope" class="mod-global-header-select"><option value="web" selected="">ウェブ</option><option value="this">このブログ内で</option></select><input type="image" name="" id="mod-global-header-search-button" value="検索" src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/mod_global_header_search.gif" alt="検索" height="20" width="26"></li></ul></form>
+<form name="gsearch" method="get" action="https://blog.goo.ne.jp/search_goo/result/"><input type="hidden" name="MT"><input type="hidden" name="tg" value="all"><input type="hidden" name="da" value="all"><input type="hidden" name="st" value="time"><input type="hidden" name="dp" value="all"><input type="hidden" name="status" value="select"><input type="hidden" name="bu" value=""><input type="hidden" name="TS" value="1"><input type="hidden" name="mode" value="5"></form>
+<form name="wsearch" method="get" action="https://search.goo.ne.jp/web.jsp"><input type="hidden" name="MT"><input type="hidden" name="PT" value="goo_blog"><input type="hidden" name="from" value="goo_blog"><input type="hidden" name="IE" value="utf8"></form>
+<!-- /SEARCH -->
+</div>
+</td></tr></tbody></table>
+</div>
+<div id="mod-global-header-pch" style="top: 26px; left: 0px;">
+<div id="mod-global-header-pch-close" title="閉じる"></div>
+</div>
+<!-- /GLOBAL HEADER MODULE -->
+</div>
+<!-- /GLOBAL HEADER -->
+
+<!-- CONTAINER -->
+<div id="container">
+
+<!-- TITLE BANNER -->
+<div id="title-banner">
+<div id="title-banner-top"></div>
+<div id="title-banner-body">
+<div id="title-banner-set">
+<h1><a href="https://blog.goo.ne.jp/xmldtp">ウィリアムのいたずらの開発日記</a></h1>
+<h2>ウィリアムのいたずらが、コンピューター関係について、思ったことを好き勝手に書いているブログです。</h2>
+</div>
+</div>
+<div id="title-banner-bottom"></div>
+</div>
+<!-- /TITLE BANNER -->
+
+<!-- MAIN -->
+<div id="main" class="clearfix">
+<div id="main-top"></div>
+
+<!-- CENTER -->
+<div id="center">
+
+<!-- IN-CENTER -->
+<div id="in-center">
+
+<!-- CONTENT 2 COLUMNS -->
+<div class="content-2c">
+<div class="content-top"></div>
+<div class="content-body">
+
+<!-- ENTRIES MODULE -->
+ <!-- ENTRY SET -->
+<div class="mod-entry-set">
+<div class="mod-entry-set-top"><div class="lt"><div class="rt"></div></div></div>
+
+<!-- entry -->
+<div class="entry">
+
+<!-- entry-top -->
+<div class="entry-top">
+<h3><a href="https://blog.goo.ne.jp/xmldtp/e/030128bb1cde69c1e37ff6f96d9802b4">Struts2のOGNL式のまとめ　その１</a></h3>
+<div class="entry-top-info"><a href="https://blog.goo.ne.jp/xmldtp/e/030128bb1cde69c1e37ff6f96d9802b4"><span class="entry-top-info-time">2013-10-09 12:28:56</span></a>&nbsp;|&nbsp;<a href="https://blog.goo.ne.jp/xmldtp/c/518f0eb951d9b376aa7cbf13dd0f8d24"><span class="entry-top-info-category">JavaとWeb</span></a></div>
+</div>
+<!-- /entry-top -->
+
+
+<!-- entry-body -->
+<div class="entry-body">
+<div class="entry-body-text">まとめてみる。<br>
+<br>
+<hr><br>
+<br>
+■目的<br>
+<br>
+Struts2では、Sタグの属性の中に、＜％＝　％＞や、EL式をかけない<br>
+（実際に書いてみると、５００内部エラー<br>
+<br>
+　org.apache.jasper.JasperException:<br>
+　　  TLD又はタグファイル中のattribute指示子に従って<br>
+　　　属性valueはどんな式も受け付けません<br>
+<br>
+をエラーとして返す）<br>
+<br>
+そこで、Struts2の中のタグで、Actionの中にある属性や、セッションの<br>
+値を使いたい場合（一部加工もOK)に用いる・・・らしい<br>
+<br>
+※なお、<br>
+・後述するように、Actionの中にある属性や、セッションの値そのものを、<br>
+　表示することもできるが、その場合もsタグを用いる<br>
+<br>
+・JSPの中で作成した変数を＜％＝　％＞みたいな形で使えるかどうか、<br>
+　よくわかっていない。<br>
+　ただし、後述するように、JSPの中で作った変数を、session.setAttribute<br>
+　してしまえば、セッションの変数として、利用できる。<br>
+<br>
+・OGNL式の中に、以下のサイト<br>
+　<a href="http://www.techdoctranslator.com/struts2/tag-developers-guide/ognl">http://www.techdoctranslator.com/struts2/tag-developers-guide/ognl</a><br>
+　の「ラムダ表現式」に示されるように、フィボナッチ数列を生成<br>
+　する式を書き、「どうだ、俺ってすごいだろう！」と自慢することはできるが、<br>
+　たぶん、それは、目的ではないと思われる。<br>
+<br>
+<hr><br>
+<br>
+■EL式との違い<br>
+<br>
+　OGNL式が%{}で書くのに対し、EL式が${}で記述するので、とてもよく似ているが、<br>
+　決定的に違うのは、<br>
+<br>
+EL式は<br>
+　　S式内で書くと、エラーになる<br>
+<br>
+OGNL式は<br>
+　　S式の外で%{abc}とかかくと、そのまま%{abc}と表示される。<br>
+　　EL式は、展開される<br>
+<br>
+※なお、<br>
+OGNL式で、Actionの中にある属性や、セッションの値そのものを、表示したい場合は、<br>
+s:propertyを使う<br>
+＜s:property value='abc'/&gt;<br>
+<br>
+<hr><br>
+<br>
+■基本的な書き方<br>
+<br>
+　基本的に'%{　ここにいろいろかく　}'で書く<br>
+　ただし、value='属性値やセッションの値等'のように%{}でくくらず、直接書くことも<br>
+<br>
+<hr><br>
+<br>
+■書く場所<br>
+<br>
+S式の中なら、好きなところに書いていいんでしょうかね？<br>
+<br>
+<table border="1"><tbody><tr><td><pre>&lt;s:submit type="button" id='%{"id_" + #session.password}' value='%{#session.password}' /&gt;
+&lt;s:submit type="input"  cssClass='%{"class_" + #session.password}' value="実行" /&gt;
+</pre></td></tr></tbody></table><br>
+<br>
+って書くと、（パスワードには、"1234567"と入っている）<br>
+<table border="1"><tbody><tr><td><pre><br>
+&lt;button type="submit" id="id_1234567" value="1234567"&gt;<br>
+1234567<br>
+&lt;/button&gt;<br>
+<br>
+&lt;input type="submit" id="exe_0" value="実行" class="class_1234567"/&gt;<br>
+</pre></td></tr></tbody></table><br>
+って展開されます。<br>
+<br>
+<hr><br>
+<br>
+■表示できるものと書き方<br>
+<br>
+まず、actionクラスの属性の値が、そのままかけます<br>
+たとえば、いま、ExeActionというアクションの中に、abcという属性が有り、<br>
+(abcはExeAction内でセッター、ゲッターが記述されている）<br>
+これを利用したい場合は、<br>
+<br>
+%{abc}<br>
+<br>
+でOK。<br>
+<br>
+次に、セッション、request,response,applicationなどなど・・・<br>
+<br>
+頭に#をつけます。たとえば、セッションの中に、passwordというのが入っていたら、<br>
+<br>
+%{#session.password}<br>
+<br>
+でOK<br>
+<br>
+<hr><br>
+<br>
+■変数の処理加工<br>
+<br>
+●変数そのものでなく、前後に何かつけたりして、処理加工できる。<br>
+　　ふつうに、足し算する。<br>
+<br>
+　　'%{"id_" + #session.password}'<br>
+<br>
+　　は、セッションに入っているpasswordが1234567なら、id_1234567<br>
+　　になる。<br>
+<br>
+●もちろん、変数を２つ足すことも出来る。<br>
+　　セッションの中に、ユーザー名(user)とパスワード(password）が入っていたら、<br>
+<br>
+　　%{#session.user + ":" + #session.password}<br>
+<br>
+　　なども、書ける。<br>
+<br>
+<br>
+●論理式も書ける。s:ifタグのtestできじゅつする<br>
+　パスワードが1234567かどうかのチェック<br>
+<br>
+　'%{#session.password == "1234567"}<br>
+<br>
+　文字列でも、==で比較してしまって大丈夫。<br>
+　""か''かについては、<br>
+<a href="http://mofuken.blogspot.jp/2009/07/struts2-sifognl.html"><br>
+Struts2 s:ifタグの条件判定文(OGNL式)がうまくいかない場合 <br>
+http://mofuken.blogspot.jp/2009/07/struts2-sifognl.html<br>
+</a><br>
+　を参考にしてね！<br>
+<br>
+●さらに、この値は、stringなので、それに、メソッドを適用<br>
+　することも出来たりする。<br>
+<br>
+　　#session.password.length()<br>
+<br>
+　とか。そのサンプルは、このあとすぐ・・・じゃないかな、<br>
+　ちょっと先（「変わったサンプル」参照）<br>
+<br>
+●再帰させた関数を作って、それを実行するということも、<br>
+　できなくはないけど、技巧的すぎるので、やめておく。<br>
+　（「目的」のところ参照）<br>
+<br>
+<hr><br>
+<br>
+■変わったサンプル<br>
+<br>
+パスワードの文字数文、****に置き換えるプログラム<br>
+<table border="1"><tbody><tr><td><pre><br>
+&lt;%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%&gt;<br>
+&lt;%@ taglib prefix="s" uri="/struts-tags" %&gt;<br>
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" <br>
+<br>
+"http://www.w3.org/TR/html4/loose.dtd"&gt;<br>
+&lt;html&gt;<br>
+&lt;head&gt;<br>
+&lt;title&gt;処理メッセージ&lt;/title&gt;<br>
+&lt;/head&gt;<br>
+&lt;%<br>
+	//	パスワード<br>
+	session.setAttribute("password","1234567");<br>
+<br>
+	//	パスワード上、考えられる最大文字数を入れる<br>
+	session.setAttribute("dummyword","**************************************");<br>
+%&gt;<br>
+<br>
+<br>
+&lt;body&gt;<br>
+<br>
+&lt;s:property value='%{#session.dummyword.substring(0,#session.password.length())}'/&gt;<br>
+<br>
+&lt;/body&gt;<br>
+&lt;/html&gt;<br>
+</pre></td></tr></tbody></table><br>
+<br>
+これが変換されると、こんなHTMLになる<br>
+<table border="1"><tbody><tr><td><pre><br>
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"&gt;<br>
+&lt;html&gt;<br>
+&lt;head&gt;<br>
+&lt;title&gt;処理メッセージ&lt;/title&gt;<br>
+&lt;/head&gt;<br>
+<br>
+<br>
+<br>
+&lt;body&gt;<br>
+<br>
+*******<br>
+<br>
+&lt;/body&gt;<br>
+&lt;/html&gt;<br>
+</pre></td></tr></tbody></table><br>
+<br>
+<hr><br>
+<br>
+次回は、ArrayListとかについて・・・<br>
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+  rdf:about="https://blog.goo.ne.jp/xmldtp/e/030128bb1cde69c1e37ff6f96d9802b4"
+  dc:title="Struts2のOGNL式のまとめ　その１"
+  dc:date="2013-10-09T12:28:56+09:00"
+  dc:description="まとめてみる。
+
+
+
+■目的
+
+Struts2では、Sタグの属性の中に、＜％＝　％＞や、EL式をかけない
+（実際に書いてみると、５００内部エラー
+
+　org.apache.jasper.JasperException:
+　　  TLD又はタグファイル中のattribute指示子に従って
+　　　属性valueはどんな式も受け付けません
+
+をエラーとして返す）
+
+そこで、Struts2の中のタグで、A..."
+  dc:identifier="https://blog.goo.ne.jp/xmldtp/e/030128bb1cde69c1e37ff6f96d9802b4" />
+</rdf:RDF>
+--></div>
+</div>
+<!-- /entry-body -->
+
+<!-- entry-bottom -->
+<div class="entry-bottom">
+<div class="entry-bottom-info">
+<dl class="relation_genre"><dt>ジャンル：</dt><dd><a href="https://blog.goo.ne.jp/genre/1004/">ウェブログ</a></dd></dl>
+
+	<div class="ranking-link">
+					<p>ランキングに参加中。クリックして応援お願いします！</p>
+				<ul class="clearfix">
+									<li class="blogranking" id="ranking_bnr_rkg"><a href="https://blog.with2.net/link/?1661991:9115" target="_blank"><img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/br_c_9115_1.gif"><div>人気ブログランキング</div></a></li>
+														<li class="blogmura" id="ranking_bnr_mura"><a href="https://it.blogmura.com/network/" target="_blank"><img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/network88_31.gif"><div>にほんブログ村</div></a></li>
+							</ul>
+	</div>
+
+<!-- ブックマークレット -->
+<a href="http://blog.goo.ne.jp/admin/newentry?fid=bookmarklet&amp;title=Struts2%E3%81%AEOGNL%E5%BC%8F%E3%81%AE%E3%81%BE%E3%81%A8%E3%82%81%E3%80%80%E3%81%9D%E3%81%AE%EF%BC%91&amp;burl=https%3A%2F%2Fblog.goo.ne.jp%2Fxmldtp%2Fe%2F030128bb1cde69c1e37ff6f96d9802b4" rel="nofollow"><img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/mod_pen.gif" border="0" width="16" height="16" alt="この記事についてブログを書く" title="この記事についてブログを書く"></a>
+<br>
+<div style="margin-top:1em;display:inline-block;vertical-align:middle;white-space:nowrap;/display:inline;/zoom:1;">
+<!-- はてなブックマーク -->
+<iframe class="hatena-bookmark-button-frame" title="この記事をはてなブックマークに追加" frameborder="0" scrolling="no" width="50" height="20" src="javascript:false" style="width: 50px; height: 20px;" src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/saved_resource.html"></iframe>
+<!-- twitter -->
+<iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" style="position: static; visibility: visible; width: 75px; height: 20px;" title="Twitter Tweet Button" src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/tweet_button.32d6c6b4cb1ed84df04e7f9705a90c47.ja.html" data-url="https://blog.goo.ne.jp/xmldtp/e/030128bb1cde69c1e37ff6f96d9802b4"></iframe>
+<!-- google plus one-->
+<div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 32px; height: 20px;"><iframe ng-non-bindable="" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 32px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" tabindex="0" vspace="0" width="100%" id="I1_1535696337746" name="I1_1535696337746" src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/fastbutton.html" data-gapiattached="true" title="G+"></iframe></div>
+<!-- facebook -->
+<div class="fb-like fb_iframe_widget" data-href="https://blog.goo.ne.jp/xmldtp/e/030128bb1cde69c1e37ff6f96d9802b4" data-width="21" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true" fb-xfbml-state="rendered" fb-iframe-plugin-query="action=like&amp;app_id=257130094322958&amp;container_width=129&amp;href=https%3A%2F%2Fblog.goo.ne.jp%2Fxmldtp%2Fe%2F030128bb1cde69c1e37ff6f96d9802b4&amp;layout=button_count&amp;locale=ja_JP&amp;sdk=joey&amp;share=true&amp;show_faces=false&amp;size=small&amp;width=21"><span style="vertical-align: bottom; width: 130px; height: 20px;"><iframe name="f273c47c1573378" width="21px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" title="fb:like Facebook Social Plugin" src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/like.html" style="border: none; visibility: visible; width: 130px; height: 20px;" class=""></iframe></span></div>
+</div>
+<script src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/widgets.js.ダウンロード" charset="utf-8" async="async"></script>
+<script src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/bookmark_button.js.ダウンロード" charset="utf-8" async="async"></script>
+<script src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/platform.js.ダウンロード" async="" defer="" gapi_processed="true"></script>
+
+</div>
+</div>
+<!-- /entry-bottom -->
+
+</div>
+<!-- /entry -->
+
+<div class="mod-entry-set-bottom"><div class="lb"><div class="rb"></div></div></div>
+</div>
+
+<!-- goo_ad -->
+<div class="mod-entry-set-goo-ad">
+  </div>
+<!-- /goo_ad -->
+
+<!-- prev next module -->
+<div class="entry-bottom-pn">
+«&nbsp;<a href="https://blog.goo.ne.jp/xmldtp/e/e22c997a24df72e8e45e47cc381e8b03" title="新iPadが１０月２２日に発表されるらしい">新iPadが１０月２２日に発表...</a>&nbsp;|&nbsp;<a href="https://blog.goo.ne.jp/xmldtp">トップ</a>&nbsp;|&nbsp;<a href="https://blog.goo.ne.jp/xmldtp/e/12b0c4c7fd24de973b3a85181640c2a7" title="ITPro Expoに行ってきた！">ITPro Expoに行ってきた！</a>&nbsp;»</div> 
+<!-- /prev next module -->
+
+<!-- /ENTRY SET -->
+<!-- /ENTRIES MODULE -->
+
+
+
+
+
+
+<!-- related topics -->
+<div class="mod-entry-set" id="">
+<div class="mod-entry-set-top"><div class="lt"><div class="rt"></div></div></div>
+
+<!-- entry -->
+<div class="entry">
+
+
+<!-- entry-body -->
+<div class="entry-body">
+<div class="entry-body-text">
+
+<!-- body start -->
+<div id="mod-relation-popular">
+<h3>このブログの人気記事</h3>
+<div class="mod-relation_vertical">
+			<ul class="ranking">
+			<li><i class="ranking_0"></i><a href="https://blog.goo.ne.jp/xmldtp/e/513c525aa1b41929a7e8c49f66ba35b8?fm=entry_awp" target="_blank">１人月あたり、何ステップ？１画面あたり、何人日...</a></li>
+				<li><i class="ranking_1"></i><a href="https://blog.goo.ne.jp/xmldtp/e/20ee95b2f8c620be2b3a211cc8dd7358?fm=entry_awp" target="_blank">Javascript|JSONでの、レコードの表現方法（配列、...</a></li>
+				<li><i class="ranking_2"></i><a href="https://blog.goo.ne.jp/xmldtp/e/109e2e397ff8484af0b8ab1a5c1d040e?fm=entry_awp" target="_blank">単体テスト、結合テスト、総合テストの違い</a></li>
+				<li><i class="ranking_3"></i><a href="https://blog.goo.ne.jp/xmldtp/e/b6a697735a597e8e41af460ae2f2875a?fm=entry_awp" target="_blank">ハッシュ化と暗号化は違う。ハッシュ化（SHA1,MD5)...</a></li>
+				<li><i class="ranking_4"></i><a href="https://blog.goo.ne.jp/xmldtp/e/a416473823c05b2b24108981b3025bad?fm=entry_awp" target="_blank">データベースで使う「マスタ」って言葉の概念って...</a></li>
+			</ul>
+				<ul class="ranking">
+			<li><i class="ranking_5"></i><a href="https://blog.goo.ne.jp/xmldtp/e/a343a14cc5be9fbaf8416678463ae87c?fm=entry_awp" target="_blank">VMWare上のHTTPサーバーを、他のPCのブラウザから...</a></li>
+				<li><i class="ranking_6"></i><a href="https://blog.goo.ne.jp/xmldtp/e/0884dbe92721ab84cb27d212ca631094?fm=entry_awp" target="_blank">HTMLのAタグ（アンカータグ）でPOST型で値を渡したい</a></li>
+				<li><i class="ranking_7"></i><a href="https://blog.goo.ne.jp/xmldtp/e/68654cf0523f6b2c91555a0adca557ae?fm=entry_awp" target="_blank">サーブレットをJUnitでテストしたいとき</a></li>
+				<li><i class="ranking_8"></i><a href="https://blog.goo.ne.jp/xmldtp/e/ad6b4d6777c85c3aca8048515ea9b369?fm=entry_awp" target="_blank">Stateパターンのどこがすごいのか、感心されたので...</a></li>
+				<li><i class="ranking_9"></i><a href="https://blog.goo.ne.jp/xmldtp/e/98fd7f80af414f1ba3d321b27823cba7?fm=entry_awp" target="_blank">Excelで難しい方程式の解を求める　－　ソルバー</a></li>
+			</ul>
+	</div>
+<div class="clearboth"></div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+<div class="mod-entry-set-bottom"><div class="lb"><div class="rb"></div></div></div>
+
+</div>
+
+<!-- entry image list module -->
+<div class="mod-entry-image entry-bottom-pn">
+<div class="mod-entry-image-list-head" id="mod-entry-image-more">最近の画像<span><span>［<a href="https://blog.goo.ne.jp/xmldtp/images">もっと見る</a>］</span></span></div>
+<div class="mod-entry-image-list-wrapper">
+<ul class="mod-entry-image-list clearfix">
+<li>
+<a href="https://blog.goo.ne.jp/xmldtp/e/fa4ed5d20b5fad26d731854ef8d8358c" class="mod-entry-image-thumbnail slide-caption">
+<img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/2f17f5ce84c1867ef43e88233a434383.jpg" alt="MySQL8.0はドキュメントストアがすごいらしい">
+<span class="mod-entry-image-text li-en-title">MySQL8.0はドキュメントストアがすごいらしい</span>
+</a>
+<span class="li-en-time">1ヶ月前</span>
+</li>
+<li>
+<a href="https://blog.goo.ne.jp/xmldtp/e/7bba07ea3fe5c5231ea47511b22b481a" class="mod-entry-image-thumbnail slide-caption">
+<img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/2f1e511e9a504a5e46353a8fab3e6904.png" alt="Excelのシート数を知るのに=INFO(&quot;NUMFILE&quot;)は便利だけど・・・注意！">
+<span class="mod-entry-image-text li-en-title">Excelのシート数を知るのに=INFO("NUMFILE")は便利だけど・・・注意！</span>
+</a>
+<span class="li-en-time">1ヶ月前</span>
+</li>
+<li>
+<a href="https://blog.goo.ne.jp/xmldtp/e/7bba07ea3fe5c5231ea47511b22b481a" class="mod-entry-image-thumbnail slide-caption">
+<img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/d1e07ed3e36fc094392a8f7a0b42c52e.png" alt="Excelのシート数を知るのに=INFO(&quot;NUMFILE&quot;)は便利だけど・・・注意！">
+<span class="mod-entry-image-text li-en-title">Excelのシート数を知るのに=INFO("NUMFILE")は便利だけど・・・注意！</span>
+</a>
+<span class="li-en-time">1ヶ月前</span>
+</li>
+<li>
+<a href="https://blog.goo.ne.jp/xmldtp/e/188f3a75abc58afde9ae93cabd70530c" class="mod-entry-image-thumbnail slide-caption">
+<img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/3d2cdac5daad08076e237e24e144df38.png" alt="今日で5000日目だそうです。">
+<span class="mod-entry-image-text li-en-title">今日で5000日目だそうです。</span>
+</a>
+<span class="li-en-time">1ヶ月前</span>
+</li>
+<li>
+<a href="https://blog.goo.ne.jp/xmldtp/e/0b6de4b4aa90e22b520b35a76ca506ab" class="mod-entry-image-thumbnail slide-caption">
+<img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/932788fec8fe8f6140555178c4d08940.png" alt="「ASIMO開発終了」っていうけど・・・">
+<span class="mod-entry-image-text li-en-title">「ASIMO開発終了」っていうけど・・・</span>
+</a>
+<span class="li-en-time">2ヶ月前</span>
+</li>
+<li>
+<a href="https://blog.goo.ne.jp/xmldtp/e/e2b4e4a0f756c3d3fa8871ac693c92a8" class="mod-entry-image-thumbnail slide-caption">
+<img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/932788fec8fe8f6140555178c4d08940.png" alt="プログラミング教育市場、2023年に226億円">
+<span class="mod-entry-image-text li-en-title">プログラミング教育市場、2023年に226億円</span>
+</a>
+<span class="li-en-time">4ヶ月前</span>
+</li>
+<li>
+<a href="https://blog.goo.ne.jp/xmldtp/e/07bc0eabd64c6f8a6d532b0c08e77db5" class="mod-entry-image-thumbnail slide-caption">
+<img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/06606bd7bcd93eb0a679470fa1a700d8.png" alt="「新・日経平均騰落予想AI」の実力">
+<span class="mod-entry-image-text li-en-title">「新・日経平均騰落予想AI」の実力</span>
+</a>
+<span class="li-en-time">4ヶ月前</span>
+</li>
+<li>
+<a href="https://blog.goo.ne.jp/xmldtp/e/53999ed57bf4b09493b9c8c19b9a9e72" class="mod-entry-image-thumbnail slide-caption">
+<img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/2f17f5ce84c1867ef43e88233a434383.jpg" alt="自動運転車に「知恵マーク」　―　千葉電波大学">
+<span class="mod-entry-image-text li-en-title">自動運転車に「知恵マーク」　―　千葉電波大学</span>
+</a>
+<span class="li-en-time">5ヶ月前</span>
+</li>
+<li>
+<a href="https://blog.goo.ne.jp/xmldtp/e/8d7ba6b4df6929ee9136e3959ba7662f" class="mod-entry-image-thumbnail slide-caption">
+<img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/c4db3b6602b39f02cec24e192b496435.png" alt="net viewでシステムエラー6118">
+<span class="mod-entry-image-text li-en-title">net viewでシステムエラー6118</span>
+</a>
+<span class="li-en-time">5ヶ月前</span>
+</li>
+<li>
+<a href="https://blog.goo.ne.jp/xmldtp/e/e0c11e4e23bdbcbc3b86f257faa945ae" class="mod-entry-image-thumbnail slide-caption">
+<img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/693fa4dc82a09522ea013474a5fc7fa1.png" alt="機械学習工学研究会のキックオフシンポジウムが・・・">
+<span class="mod-entry-image-text li-en-title">機械学習工学研究会のキックオフシンポジウムが・・・</span>
+</a>
+<span class="li-en-time">5ヶ月前</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- /entry image list module -->
+
+
+
+<!-- related topics -->
+<div class="mod-entry-set" id="mod-freearea-main">
+<div class="mod-entry-set-top"><div class="lt"><div class="rt"></div></div></div>
+
+<!-- entry -->
+<div class="entry">
+
+<!-- entry-top -->
+<div class="entry-top" id="mod-relation-title">
+<h3>「<a href="https://blog.goo.ne.jp/xmldtp/c/518f0eb951d9b376aa7cbf13dd0f8d24">JavaとWeb</a>」カテゴリの最新記事</h3>
+</div>
+<!-- /entry-top -->
+
+<!-- entry-body -->
+<div class="entry-body">
+<div class="entry-body-text">
+
+<!-- body start -->
+<div class="mod-relation-thumb">
+
+<ul class="mod-relation-cat">
+<li><a href="https://blog.goo.ne.jp/xmldtp/e/9b329f1bc31c1655967628fb5504b047?fm=entry_awc" target="_blank"><span class="thumb"><img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/noimage_w43_entry.jpg" width="43" height="43"></span><span class="text">Spring5の変更店などを聞いてきた！</span></a></li>
+<li><a href="https://blog.goo.ne.jp/xmldtp/e/6d77073f5fe1b035b4096675218b74c5?fm=entry_awc" target="_blank"><span class="thumb"><img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/noimage_w43_entry.jpg" width="43" height="43"></span><span class="text">Variable Handlesって、何？</span></a></li>
+<li><a href="https://blog.goo.ne.jp/xmldtp/e/9e73fa7214f3d4114ebbd2966923f669?fm=entry_awc" target="_blank"><span class="thumb"><img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/noimage_w43_entry.jpg" width="43" height="43"></span><span class="text">JUnit4とJUnit5の違い（境界値テストのパラメータ化の際等、いろいろと）を聞いて...</span></a></li>
+<li><a href="https://blog.goo.ne.jp/xmldtp/e/24080bd7c7152e29c9e871a58dfeea92?fm=entry_awc" target="_blank"><span class="thumb"><img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/noimage_w43_entry.jpg" width="43" height="43"></span><span class="text">「なくなるJava SE無償版」って、まじ！（＠＿＠！）</span></a></li>
+<li><a href="https://blog.goo.ne.jp/xmldtp/e/6d67a26c60fd5cbc4b0906d976ef1df1?fm=entry_awc" target="_blank"><span class="thumb"><img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/noimage_w43_entry.jpg" width="43" height="43"></span><span class="text">JavaEE8の後、Eclipseが引き取り、EE4JじゃなくってJakarta EEになった？</span></a></li>
+<li><a href="https://blog.goo.ne.jp/xmldtp/e/c55df2ea845c3fd6540d624c4fac1490?fm=entry_awc" target="_blank"><span class="thumb"><img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/noimage_w43_entry.jpg" width="43" height="43"></span><span class="text">イマドキのJavaScript</span></a></li>
+<li><a href="https://blog.goo.ne.jp/xmldtp/e/fd91a9d4953c8416de17a5af83970095?fm=entry_awc" target="_blank"><span class="thumb"><img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/noimage_w43_entry.jpg" width="43" height="43"></span><span class="text">JavaSE9のつぎは、18.3じゃなく、やっぱ10にする、テヘペロ（＾＾；）だって</span></a></li>
+<li><a href="https://blog.goo.ne.jp/xmldtp/e/d64b34786df55e5b2db4b45aec4fbf7f?fm=entry_awc" target="_blank"><span class="thumb"><img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/noimage_w43_entry.jpg" width="43" height="43"></span><span class="text">JavaSE9に移行するには、module-info.java書いてrequires等するとか</span></a></li>
+<li><a href="https://blog.goo.ne.jp/xmldtp/e/5bcbb2505950b26418ab54bf615079d6?fm=entry_awc" target="_blank"><span class="thumb"><img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/noimage_w43_entry.jpg" width="43" height="43"></span><span class="text">JavaEE8のあと、Eclipseが引き取って、EE4Jになる件</span></a></li>
+<li><a href="https://blog.goo.ne.jp/xmldtp/e/5357c0375a6bf89d7b22e8fd3ccbacb2?fm=entry_awc" target="_blank"><span class="thumb"><img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/noimage_w43_entry.jpg" width="43" height="43"></span><span class="text">Javaのリリース方法とバージョン、サポートが来年から大幅に変わる件</span></a></li>
+</ul>
+<div class="clearboth"></div>
+
+</div>
+<!-- / body start-->
+</div>
+</div>
+<!-- /entry-body -->
+
+<!-- entry-bottom -->
+<div class="entry-bottom"></div>
+<!-- /entry-bottom -->
+
+</div>
+<!-- /entry -->
+
+<div class="mod-entry-set-bottom"><div class="lb"><div class="rb"></div></div></div>
+
+</div>
+<!-- / related topics -->
+
+
+<!-- related topics -->
+<div class="mod-entry-set" id="mod-freearea-main">
+<div class="mod-entry-set-top"><div class="lt"><div class="rt"></div></div></div>
+
+<!-- entry -->
+<div class="entry">
+
+<!-- entry-top -->
+<div class="entry-top" id="mod-relation-title">
+<h3>関連するみんなの記事</h3>
+</div>
+<!-- /entry-top -->
+
+<!-- entry-body -->
+<div class="entry-body">
+<div class="entry-body-text">
+
+<!-- body start -->
+<div id="mod-relation">
+
+<div class="mod-relation_vertical">
+<ul class="mod-relation-tag"><li><a href="https://blog.goo.ne.jp/kano08/e/9b9803ee3ce55c75a3bc243d1d7f95e6">JavaでC言語みたいに少数何桁表示とかさせたい</a></li>
+<li><a href="https://blog.goo.ne.jp/fukae321_1965/e/0589288bf2eab71091037e836238bcc1">JavaのコードをObjective-Cへ変換「J2ObjC」 - MOO...</a></li>
+<li><a href="https://blog.goo.ne.jp/goodchilipeppers/e/7703c5913ae5690d57a98785cf9de587">classpath地獄</a></li>
+<li><a href="https://blog.goo.ne.jp/akblog/e/36d791284e941b8166a69bff18c98c24">Javaのswitch文</a></li>
+<li><a href="https://blog.goo.ne.jp/xypenguin/e/f8adbe9357da31ac9ef26062c85cb25a">ファイルを分けてmainメソッドを作る</a></li>
+</ul><ul class="mod-relation-tag"><li><a href="https://blog.goo.ne.jp/takafumifujiwara/e/7bb0fa1ae1cb50002fb77c50fe80efd9">新聞やWEBニュースでJavaを無効化するように言われ...</a></li>
+<li><a href="https://blog.goo.ne.jp/korondemo/e/5cea498c697c04f6c30965887b8bf25b">Mindstorms NXT を Java で (Eclipse)</a></li>
+<li><a href="https://blog.goo.ne.jp/1-hrd/e/3b925b47bf8059aae41a3c21a2db4fbf">Javaで台形の面積を求める</a></li>
+<li><a href="https://blog.goo.ne.jp/benly90s/e/181be99a0d213c0a171928a2f03857a5">javaのインストール方法...</a></li>
+<li><a href="https://blog.goo.ne.jp/harch_2004/e/f908bd1f684f2dee88ee44bac410f72d">Doja用SDK（旧）との併用</a></li>
+</ul></div>
+<div class="clearboth"></div>
+
+</div>
+<!-- / body start-->
+</div>
+</div>
+<!-- /entry-body -->
+
+<!-- entry-bottom -->
+<div class="entry-bottom"></div>
+<!-- /entry-bottom -->
+
+</div>
+<!-- /entry -->
+
+<div class="mod-entry-set-bottom"><div class="lb"><div class="rb"></div></div></div>
+
+</div>
+<!-- / related topics -->
+
+<!-- PREV NEXT MODULE -->
+<div id="mod-prev-next">
+<div class="mod-prev-next-top"><div class="lt"><div class="rt"></div></div></div>
+<div class="mod-prev-next-body">
+<ul>
+<li class="mod-pre-nex-top">
+<a href="https://blog.goo.ne.jp/xmldtp/arcv">記事一覧</a>&nbsp;|&nbsp;<a href="https://blog.goo.ne.jp/xmldtp/images" class="imglist-menu">画像一覧</a>&nbsp;|&nbsp;<a href="https://blog.goo.ne.jp/xmldtp/follower">読者一覧</a>&nbsp;|&nbsp;<a href="https://blog.goo.ne.jp/xmldtp/pch">フォトチャンネル一覧</a></li>
+<li class="mod-pre-nex-prev">«&nbsp;<a href="https://blog.goo.ne.jp/xmldtp/e/e22c997a24df72e8e45e47cc381e8b03" title="新iPadが１０月２２日に発表されるらしい">新iPadが１０月２２日に発表...</a></li>
+<li class="mod-pre-nex-next"><a href="https://blog.goo.ne.jp/xmldtp/e/12b0c4c7fd24de973b3a85181640c2a7" title="ITPro Expoに行ってきた！">ITPro Expoに行ってきた！</a>&nbsp;»</li>
+</ul>
+<div class="clearboth"></div>
+</div>
+<div class="mod-prev-next-bottom"><div class="lb"><div class="rb"></div></div></div>
+</div>
+<!-- /PREV NEXT MODULE -->
+
+
+
+
+
+</div>
+<div class="content-bottom"></div>
+</div>
+<!-- /CONTENT 2 COLUMNS -->
+
+</div>
+<!-- /IN-CENTER -->
+
+</div>
+<!-- /CENTER -->
+
+<!-- SIDE A -->
+<div id="side-a">
+
+<!-- SIDEBAR -->
+<div class="sidebar-top"></div>
+<div class="sidebar">
+
+<div id="sidebar-opt-top"></div>
+<!-- CALENDAR MODULE -->
+<div id="mod-calendar" class="module">
+<div class="module-top"></div>
+<h4>カレンダー</h4>
+<div class="module-body">
+<!-- mod-cal-table -->
+<div id="mod-cal-table">
+<table cellpadding="0" cellspacing="0">
+<caption class="mod-cal-caption">2018年8月</caption>
+<tbody><tr>
+<th class="mod-cal-week">日</th>
+<th class="mod-cal-week">月</th>
+<th class="mod-cal-week">火</th>
+<th class="mod-cal-week">水</th>
+<th class="mod-cal-week">木</th>
+<th class="mod-cal-week">金</th>
+<th class="mod-cal-week">土</th>
+</tr>
+<tr>
+<td class="mod-cal-day"> </td>
+<td class="mod-cal-day"> </td>
+<td class="mod-cal-day"> </td>
+<td class="mod-cal-day-lin-td"><a href="https://blog.goo.ne.jp/xmldtp/d/20180801"><span class="mod_cal_day_linked">1</span></a></td>
+<td class="mod-cal-day-lin-td"><a href="https://blog.goo.ne.jp/xmldtp/d/20180802"><span class="mod_cal_day_linked">2</span></a></td>
+<td class="mod-cal-day-lin-td"><a href="https://blog.goo.ne.jp/xmldtp/d/20180803"><span class="mod_cal_day_linked">3</span></a></td>
+<td class="mod-cal-day-lin-td"><a href="https://blog.goo.ne.jp/xmldtp/d/20180804"><span class="mod_cal_day_linked">4</span></a></td>
+</tr>
+<tr>
+<td class="mod-cal-day-lin-td"><a href="https://blog.goo.ne.jp/xmldtp/d/20180805"><span class="mod_cal_day_linked">5</span></a></td>
+<td class="mod-cal-day-lin-td"><a href="https://blog.goo.ne.jp/xmldtp/d/20180806"><span class="mod_cal_day_linked">6</span></a></td>
+<td class="mod-cal-day-lin-td"><a href="https://blog.goo.ne.jp/xmldtp/d/20180807"><span class="mod_cal_day_linked">7</span></a></td>
+<td class="mod-cal-day-lin-td"><a href="https://blog.goo.ne.jp/xmldtp/d/20180808"><span class="mod_cal_day_linked">8</span></a></td>
+<td class="mod-cal-day-lin-td"><a href="https://blog.goo.ne.jp/xmldtp/d/20180809"><span class="mod_cal_day_linked">9</span></a></td>
+<td class="mod-cal-day">10</td>
+<td class="mod-cal-day-lin-td"><a href="https://blog.goo.ne.jp/xmldtp/d/20180811"><span class="mod_cal_day_linked">11</span></a></td>
+</tr>
+<tr>
+<td class="mod-cal-day-lin-td"><a href="https://blog.goo.ne.jp/xmldtp/d/20180812"><span class="mod_cal_day_linked">12</span></a></td>
+<td class="mod-cal-day-lin-td"><a href="https://blog.goo.ne.jp/xmldtp/d/20180813"><span class="mod_cal_day_linked">13</span></a></td>
+<td class="mod-cal-day-lin-td"><a href="https://blog.goo.ne.jp/xmldtp/d/20180814"><span class="mod_cal_day_linked">14</span></a></td>
+<td class="mod-cal-day-lin-td"><a href="https://blog.goo.ne.jp/xmldtp/d/20180815"><span class="mod_cal_day_linked">15</span></a></td>
+<td class="mod-cal-day-lin-td"><a href="https://blog.goo.ne.jp/xmldtp/d/20180816"><span class="mod_cal_day_linked">16</span></a></td>
+<td class="mod-cal-day-lin-td"><a href="https://blog.goo.ne.jp/xmldtp/d/20180817"><span class="mod_cal_day_linked">17</span></a></td>
+<td class="mod-cal-day-lin-td"><a href="https://blog.goo.ne.jp/xmldtp/d/20180818"><span class="mod_cal_day_linked">18</span></a></td>
+</tr>
+<tr>
+<td class="mod-cal-day-lin-td"><a href="https://blog.goo.ne.jp/xmldtp/d/20180819"><span class="mod_cal_day_linked">19</span></a></td>
+<td class="mod-cal-day-lin-td"><a href="https://blog.goo.ne.jp/xmldtp/d/20180820"><span class="mod_cal_day_linked">20</span></a></td>
+<td class="mod-cal-day-lin-td"><a href="https://blog.goo.ne.jp/xmldtp/d/20180821"><span class="mod_cal_day_linked">21</span></a></td>
+<td class="mod-cal-day-lin-td"><a href="https://blog.goo.ne.jp/xmldtp/d/20180822"><span class="mod_cal_day_linked">22</span></a></td>
+<td class="mod-cal-day-lin-td"><a href="https://blog.goo.ne.jp/xmldtp/d/20180823"><span class="mod_cal_day_linked">23</span></a></td>
+<td class="mod-cal-day-lin-td"><a href="https://blog.goo.ne.jp/xmldtp/d/20180824"><span class="mod_cal_day_linked">24</span></a></td>
+<td class="mod-cal-day-lin-td"><a href="https://blog.goo.ne.jp/xmldtp/d/20180825"><span class="mod_cal_day_linked">25</span></a></td>
+</tr>
+<tr>
+<td class="mod-cal-day-lin-td"><a href="https://blog.goo.ne.jp/xmldtp/d/20180826"><span class="mod_cal_day_linked">26</span></a></td>
+<td class="mod-cal-day-lin-td"><a href="https://blog.goo.ne.jp/xmldtp/d/20180827"><span class="mod_cal_day_linked">27</span></a></td>
+<td class="mod-cal-day-lin-td"><a href="https://blog.goo.ne.jp/xmldtp/d/20180828"><span class="mod_cal_day_linked">28</span></a></td>
+<td class="mod-cal-day-lin-td"><a href="https://blog.goo.ne.jp/xmldtp/d/20180829"><span class="mod_cal_day_linked">29</span></a></td>
+<td class="mod-cal-day-lin-td"><a href="https://blog.goo.ne.jp/xmldtp/d/20180830"><span class="mod_cal_day_linked">30</span></a></td>
+<td class="mod-cal-day">31</td>
+<td class="mod-cal-day"> </td>
+</tr>
+</tbody></table>
+<div id="mod-cal-prev-next">
+<div id="mod-cal-prev"><a href="https://blog.goo.ne.jp/xmldtp/m/201807" rel="nofollow">前月</a></div>
+<div id="mod-cal-next"><a href="https://blog.goo.ne.jp/xmldtp/m/201809" rel="nofollow">次月</a></div>
+</div>
+<div class="clearboth"></div>
+</div>
+<!-- /mod-cal-table -->
+</div>
+<div class="module-bottom"></div>
+</div>
+<!-- /CALENDAR MODULE -->
+<!-- LOGIN MODULE -->
+<div id="mod-login" class="module">
+<div class="module-top"></div>
+<h4>ログイン</h4>
+<div class="module-body">
+
+<img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/mod_pen.gif" width="16" height="16" alt="ログイン"><a href="https://blog.goo.ne.jp/admin">編集画面にログイン</a>
+
+<hr size="1" noshade="">
+<a href="https://blog.goo.ne.jp/info/blog_hajimeru.html?source=s_login">ブログの新規登録</a>
+</div>
+<div class="module-bottom"></div>
+</div>
+<!-- LOGIN MODULE -->
+<!-- FREEAREA SIDEBAR MODULE -->
+<div id="mod-freearea-sidebar" class="module">
+<div class="module-top"></div>
+<h4>ブログランキング</h4>
+<div class="module-body">
+<a href="http://blog.with2.net/link.php?1661991" title="人気ブログランキングへ"><img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/banner_21.gif" width="88" height="31" border="0"></a><br><a href="http://blog.with2.net/link.php?1661991" style="font-size:12px;">人気ブログランキングへ</a><div class="clearboth"></div>
+</div>
+<div class="module-bottom"></div>
+</div>
+<!-- /FREEAREA SIDEBAR MODULE -->
+<!-- ACCESS STATUS MODULE -->
+<div id="mod-access-status" class="module">
+<div class="module-top"></div>
+<h4>アクセス状況</h4>
+<div class="module-body">
+<!-- mod-acc-sta-table -->
+<div id="mod-acc-sta-table">
+<table cellpadding="0" cellspacing="0" border="0">
+<!-- daily access -->
+<tbody><tr>
+<th colspan="4"><img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/m_0092.gif" border="0" width="16" height="16" alt="アクセス">アクセス</th>
+</tr>
+<tr>
+<td class="mod-acc-sta-name">閲覧</td>
+<td class="mod-acc-sta-num">17,097</td>
+<td class="mod-acc-sta-unit">PV</td>
+<td class="mod-acc-sta-rate"><img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/dotarrow_up.gif" border="0" width="16" height="16" alt="UP!"></td>
+</tr>
+<tr>
+<td class="mod-acc-sta-name">訪問者</td>
+<td class="mod-acc-sta-num">2,685</td>
+<td class="mod-acc-sta-unit">IP</td>
+<td class="mod-acc-sta-rate"><img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/dotarrow_up.gif" border="0" width="16" height="16" alt="UP!"></td>
+</tr>
+<!-- /daily access -->
+<!-- total access -->
+<tr>
+<th colspan="4"><img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/m_0070.gif" border="0" width="16" height="16" alt="トータル">トータル</th>
+</tr>
+<tr>
+<td class="mod-acc-sta-name">閲覧</td>
+<td class="mod-acc-sta-num">26,305,703</td>
+<td class="mod-acc-sta-unit">PV</td><td>&nbsp;</td>
+</tr>
+<tr>
+<td class="mod-acc-sta-name">訪問者</td>
+<td class="mod-acc-sta-num">5,799,121</td>
+<td class="mod-acc-sta-unit">IP</td><td>&nbsp;</td>
+</tr>
+<!-- /total access -->
+<!-- ranking -->
+<tr>
+<th colspan="4"><img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/m_0191.gif" border="0" width="16" height="16" alt="ランキング">ランキング</th>
+</tr>
+<tr>
+<td class="mod-acc-sta-name">日別</td>
+<td class="mod-acc-sta-num">58</td>
+<td class="mod-acc-sta-unit">位</td>
+<td class="mod-acc-sta-rate"><img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/dotarrow_down.gif" border="0" width="16" height="16" alt="DOWN!"></td>
+</tr>
+<tr>
+<td class="mod-acc-sta-name">週別</td>
+<td class="mod-acc-sta-num">76</td>
+<td class="mod-acc-sta-unit">位</td>
+<td class="mod-acc-sta-rate"><img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/dotarrow_up.gif" border="0" width="16" height="16" alt="UP!"></td>
+</tr>
+<!-- /ranking -->
+</tbody></table>
+</div>
+<!-- /mod-acc-sta-table -->
+<div class="clearboth"></div>
+</div>
+<div class="module-bottom"></div>
+</div>
+<!-- /ACCESS STATUS MODULE -->
+<!-- PROFILE MODULE -->
+<div id="mod-profile" class="module">
+<div class="module-top"></div>
+<h4>プロフィール</h4>
+<div class="module-body">
+<dl>
+
+<div class="mod-prof_btns clearfix">
+<!-- 読者ボタン -->
+	<p><a href="https://blog.goo.ne.jp/xmldtp/e/030128bb1cde69c1e37ff6f96d9802b4#" unfollow_blog_id="3ec8a6c187f0936e4be1ba439ef74ddb" class="mod-btn following" style="display:none;" title="このブログの読者をやめる">読者登録中</a><a href="https://blog.goo.ne.jp/xmldtp/e/030128bb1cde69c1e37ff6f96d9802b4#" follow_blog_id="3ec8a6c187f0936e4be1ba439ef74ddb" class="mod-btn follow" style="" title="このブログの読者になる">読者になる</a><span class="mod-btn disabled" id="owner-3ec8a6c187f0936e4be1ba439ef74ddb" style="display:none;">読者になる</span><a href="https://blog.goo.ne.jp/xmldtp/follower" id="follow-reader-count-span-3ec8a6c187f0936e4be1ba439ef74ddb" class="mod-btn reader-count" style=""><span class="bounder" id="follow-reader-count-3ec8a6c187f0936e4be1ba439ef74ddb">2231</span></a></p>
+
+	<div class="social_btns">
+		<div><a href="https://twitter.com/xmldtp" class="mod-btn" title="xmldtp" target="_blank"><span class="icon-birdtw">twitter</span></a></div>
+	</div>
+
+</div>
+
+<dt>都道府県</dt>
+<dd>東京都</dd>
+<dt>自己紹介</dt>
+<dd>ろくでもない人です。</dd></dl>
+
+</div>
+<div class="module-bottom"></div>
+</div>
+<!-- /PROFILE MODULE -->
+<!-- RECENT ENTRIES MODULE -->
+<div id="mod-recent-entries" class="module">
+<div class="module-top"></div>
+<h4>最新記事</h4>
+<div class="module-body">
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/e/bf693c65965aa44a5c0202f706bfbb15">ただで使えるRPA</a></li><li><a href="https://blog.goo.ne.jp/xmldtp/e/3be2abf6514ea8ddd9e96394dbe9f012">オープンソースのChat Bot（Botフレームワーク）といえば、Hubotってことは、わかった！</a></li><li><a href="https://blog.goo.ne.jp/xmldtp/e/c1bba34daf5aa90439d353fe9af84650">ランベックとチョムスキーによる、「計算主義的言語論理」？を聞いてきた！</a></li><li><a href="https://blog.goo.ne.jp/xmldtp/e/10f560ce4f8d21cc2352169f1c623e78">国はAIとかIoTとか叫んでいるのに、なんで五輪はボランティアなの？</a></li><li><a href="https://blog.goo.ne.jp/xmldtp/e/22adb91673b060ed049a499f82fe4b61">会社の英会話の目標を、「東京オリンピックの外国人案内ボランティアをすること」にすれば</a></li><li><a href="https://blog.goo.ne.jp/xmldtp/e/a011ad69974a26e6452135c261c655af">「IoTプラットフォームはオープンソースであるべき」という話を聞いてきた！</a></li><li><a href="https://blog.goo.ne.jp/xmldtp/e/f408aad470d9286de9724414962f3ae4">ArmがIoTプラットフォームの国内提供を開始したことより</a></li><li><a href="https://blog.goo.ne.jp/xmldtp/e/3dbe05ee7da408b3739c1af761f35979">地震は、ぷよぷよだ！</a></li><li><a href="https://blog.goo.ne.jp/xmldtp/e/0023fa2c23ecc489418af952f0a645e7">RPAしくじり先生</a></li><li><a href="https://blog.goo.ne.jp/xmldtp/e/21afb54e99d3a9235261379d387d0b2b">電動車は終わる？</a></li></ul>
+<div class="arcv-link"><a href="https://blog.goo.ne.jp/xmldtp/arcv">&gt;&gt; もっと見る</a></div>
+<div class="clearboth"></div>
+</div>
+<div class="module-bottom"></div>
+</div>
+<!-- /RECENT ENTRIES MODULE -->
+<!-- CATEGORIES MODULE -->
+<div id="mod-categories" class="module">
+<div class="module-top"></div>
+<h4>カテゴリー</h4>
+<div class="module-body">
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/c/f611993ba8a8fa9cecfc72081ba428c1"><span class="mod-cat-name">ネットワーク</span></a><span class="mod-cat-count">(968)</span></li>
+<li><a href="https://blog.goo.ne.jp/xmldtp/c/5e643b33b6bef99c06ef5e46b228e3b6"><span class="mod-cat-name">BigData</span></a><span class="mod-cat-count">(396)</span></li>
+<li><a href="https://blog.goo.ne.jp/xmldtp/c/db5abb2cbbda7926da2923b2aadafe1d"><span class="mod-cat-name">Twitter</span></a><span class="mod-cat-count">(2117)</span></li>
+<li><a href="https://blog.goo.ne.jp/xmldtp/c/a27296d11d520f86ab7a75d40061e1f7"><span class="mod-cat-name">Weblog</span></a><span class="mod-cat-count">(6570)</span></li>
+<li><a href="https://blog.goo.ne.jp/xmldtp/c/331677181d3527856aec0ba86b406a26"><span class="mod-cat-name">トピックス</span></a><span class="mod-cat-count">(590)</span></li>
+<li><a href="https://blog.goo.ne.jp/xmldtp/c/e15e088b605f701620d5e8baeb6b57e1"><span class="mod-cat-name">そのほか</span></a><span class="mod-cat-count">(497)</span></li>
+<li><a href="https://blog.goo.ne.jp/xmldtp/c/7d6f967965166988dc693d1e86f709c0"><span class="mod-cat-name">Ruby</span></a><span class="mod-cat-count">(70)</span></li>
+<li><a href="https://blog.goo.ne.jp/xmldtp/c/40c0926e37d1b9578d00771ec2d1de7c"><span class="mod-cat-name">PHP</span></a><span class="mod-cat-count">(114)</span></li>
+<li><a href="https://blog.goo.ne.jp/xmldtp/c/31029e4884ce7195dd523dd149359aec"><span class="mod-cat-name">正規表現</span></a><span class="mod-cat-count">(12)</span></li>
+<li><a href="https://blog.goo.ne.jp/xmldtp/c/61575cbcf696b9e33db898652550c1ed"><span class="mod-cat-name">ケータイ</span></a><span class="mod-cat-count">(319)</span></li>
+<li><a href="https://blog.goo.ne.jp/xmldtp/c/ea74ea30283fdfa1c8fee94fbe3cce8a"><span class="mod-cat-name">コピーされるほど儲かるシステム！</span></a><span class="mod-cat-count">(79)</span></li>
+<li><a href="https://blog.goo.ne.jp/xmldtp/c/379afe31121562e31a7a19ac800895bf"><span class="mod-cat-name">開発ネタ</span></a><span class="mod-cat-count">(629)</span></li>
+<li><a href="https://blog.goo.ne.jp/xmldtp/c/518f0eb951d9b376aa7cbf13dd0f8d24"><span class="mod-cat-name">JavaとWeb</span></a><span class="mod-cat-count">(479)</span></li>
+<li><a href="https://blog.goo.ne.jp/xmldtp/c/c6891b47262d90db2227304f97efeb32"><span class="mod-cat-name">Linux</span></a><span class="mod-cat-count">(42)</span></li>
+<li><a href="https://blog.goo.ne.jp/xmldtp/c/f4de494635d5a1c8cc793a0bf2a23d76"><span class="mod-cat-name">業務のモデル化</span></a><span class="mod-cat-count">(24)</span></li>
+<li><a href="https://blog.goo.ne.jp/xmldtp/c/0669586173e48cecf34fed3712ec8bfd"><span class="mod-cat-name">Officeソフト＆VBA</span></a><span class="mod-cat-count">(80)</span></li>
+<li><a href="https://blog.goo.ne.jp/xmldtp/c/576e1c530f46a6f366f05ac6c5e627d3"><span class="mod-cat-name">一人勉強会</span></a><span class="mod-cat-count">(22)</span></li>
+<li><a href="https://blog.goo.ne.jp/xmldtp/c/c45eedb5c99fa7f4b16526dccea0be72"><span class="mod-cat-name">リンク集</span></a><span class="mod-cat-count">(2)</span></li>
+<li><a href="https://blog.goo.ne.jp/xmldtp/c/7b96da485e1d2f70627fb9d39fa007af"><span class="mod-cat-name">XML</span></a><span class="mod-cat-count">(10)</span></li>
+<li><a href="https://blog.goo.ne.jp/xmldtp/c/b6c96dc87284fd6d60d37becf878b153"><span class="mod-cat-name">土日シリーズ</span></a><span class="mod-cat-count">(109)</span></li>
+<li><a href="https://blog.goo.ne.jp/xmldtp/c/ad3c9118464544fd5fb1f22de09eee0d"><span class="mod-cat-name">OpenOffice</span></a><span class="mod-cat-count">(14)</span></li>
+<li><a href="https://blog.goo.ne.jp/xmldtp/c/24f7a1aed54108a076a8c87795f23f39"><span class="mod-cat-name">SugarCRM</span></a><span class="mod-cat-count">(26)</span></li>
+</ul>
+<div class="clearboth"></div>
+</div>
+<div class="module-bottom"></div>
+</div>
+<!-- /CATEGORIES MODULE -->
+<!-- RECENT COMMENTS MODULE -->
+<div id="mod-recent-comments" class="module">
+<div class="module-top"></div>
+<h4>最新コメント</h4>
+<div class="module-body">
+<ul>
+</ul>
+<div class="clearboth"></div>
+</div>
+<div class="module-bottom"></div>
+</div>
+<!-- /RECENT COMMENTS MODULE -->
+<!-- BACK NUMBERS MODULE -->
+<div id="mod-back-numbers-scroll" class="module">
+<div class="module-top"></div>
+<h4>バックナンバー</h4>
+<div class="module-body">
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201808">2018年08月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201807">2018年07月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201806">2018年06月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201805">2018年05月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201804">2018年04月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201803">2018年03月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201802">2018年02月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201801">2018年01月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201712">2017年12月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201711">2017年11月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201710">2017年10月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201709">2017年09月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201708">2017年08月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201707">2017年07月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201706">2017年06月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201705">2017年05月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201704">2017年04月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201703">2017年03月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201702">2017年02月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201701">2017年01月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201612">2016年12月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201611">2016年11月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201610">2016年10月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201609">2016年09月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201608">2016年08月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201607">2016年07月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201606">2016年06月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201605">2016年05月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201604">2016年04月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201603">2016年03月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201602">2016年02月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201601">2016年01月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201512">2015年12月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201511">2015年11月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201510">2015年10月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201509">2015年09月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201508">2015年08月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201507">2015年07月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201506">2015年06月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201505">2015年05月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201504">2015年04月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201503">2015年03月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201502">2015年02月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201501">2015年01月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201412">2014年12月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201411">2014年11月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201410">2014年10月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201409">2014年09月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201408">2014年08月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201407">2014年07月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201406">2014年06月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201405">2014年05月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201404">2014年04月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201403">2014年03月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201402">2014年02月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201401">2014年01月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201312">2013年12月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201311">2013年11月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201310">2013年10月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201309">2013年09月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201308">2013年08月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201307">2013年07月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201306">2013年06月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201305">2013年05月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201304">2013年04月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201303">2013年03月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201302">2013年02月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201301">2013年01月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201212">2012年12月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201211">2012年11月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201210">2012年10月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201209">2012年09月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201208">2012年08月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201207">2012年07月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201206">2012年06月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201205">2012年05月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201204">2012年04月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201203">2012年03月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201202">2012年02月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201201">2012年01月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201112">2011年12月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201111">2011年11月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201110">2011年10月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201109">2011年09月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201108">2011年08月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201107">2011年07月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201106">2011年06月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201105">2011年05月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201104">2011年04月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201103">2011年03月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201102">2011年02月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201101">2011年01月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201012">2010年12月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201011">2010年11月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201010">2010年10月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201009">2010年09月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201008">2010年08月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201007">2010年07月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201006">2010年06月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201005">2010年05月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201004">2010年04月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201003">2010年03月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201002">2010年02月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/201001">2010年01月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200912">2009年12月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200911">2009年11月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200910">2009年10月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200909">2009年09月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200908">2009年08月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200907">2009年07月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200906">2009年06月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200905">2009年05月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200904">2009年04月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200903">2009年03月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200902">2009年02月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200901">2009年01月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200812">2008年12月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200811">2008年11月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200810">2008年10月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200809">2008年09月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200808">2008年08月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200807">2008年07月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200806">2008年06月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200805">2008年05月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200804">2008年04月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200803">2008年03月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200802">2008年02月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200801">2008年01月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200712">2007年12月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200711">2007年11月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200710">2007年10月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200709">2007年09月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200708">2007年08月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200707">2007年07月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200706">2007年06月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200705">2007年05月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200704">2007年04月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200703">2007年03月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200702">2007年02月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200701">2007年01月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200612">2006年12月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200611">2006年11月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200610">2006年10月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200609">2006年09月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200608">2006年08月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200607">2006年07月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200606">2006年06月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200605">2006年05月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200604">2006年04月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200603">2006年03月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200602">2006年02月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200601">2006年01月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200512">2005年12月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200511">2005年11月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200510">2005年10月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200509">2005年09月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200508">2005年08月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200507">2005年07月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200506">2005年06月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200505">2005年05月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200504">2005年04月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200503">2005年03月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200502">2005年02月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200501">2005年01月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200412">2004年12月</a></li>
+</ul>
+<ul>
+<li><a href="https://blog.goo.ne.jp/xmldtp/m/200411">2004年11月</a></li>
+</ul>
+<div class="clearboth"></div>
+</div>
+<div class="module-bottom"></div>
+</div>
+<!-- /BACK NUMBERS MODULE -->
+<!-- BOOKMARKS MODULE -->
+<div id="mod-bookmarks" class="module">
+<div class="module-top"></div>
+<h4>ブックマーク</h4>
+<div class="module-body">
+<dl>
+<dt><span class="mod-boo-name"><a href="http://www.goo.ne.jp/" target="_self" rel="nofollow">goo</a></span></dt>
+<dd><span class="mod-boo-description">最初はgoo</span></dd>
+</dl>
+<div class="clearboth"></div>
+</div>
+<div class="module-bottom"></div>
+</div>
+<!-- /BOOKMARKS MODULE -->
+<!-- goo RECOMMENDS MODULE -->
+<div id="mod-goo-recommends" class="module">
+<div class="module-top"></div>
+<h4><span id="mod-goo-rec-goo">gooブログ&nbsp;</span>おすすめ</h4>
+<div class="module-body">
+
+
+
+<!-- goo blog -->
+<table width="100%" border="0" cellpadding="0">
+<tbody>
+<tr><td colspan="2" align="center"><span>今週のgoodなブログ！</span></td></tr>
+<tr><td valign="top" width="21px">
+<img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/icon-no1.png" border="0">
+</td>
+<td height="23px"><a href="https://blog.goo.ne.jp/keijikidokoro/e/bd3152712d36f5fd673c3107f5e0582f?share" rel="nofollow">ドイツ・オランダ出張彫刻の旅　その16　販売用作品制作～ムスタングまで</a></td></tr>
+<tr><td valign="top" width="21px">
+<img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/icon-no2.png" border="0">
+</td>
+<td height="23px"><a href="https://blog.goo.ne.jp/genmainodesi/e/92b9ac5fd01a3b9a481738519d4a14c3?share" rel="nofollow">みたか食堂＠郡山</a></td></tr>
+<tr><td valign="top" width="21px">
+<img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/icon-no3.png" border="0">
+</td>
+<td height="23px"><a href="https://blog.goo.ne.jp/kuma9320/e/835e469d13e291b07eafd069facc84c9?share" rel="nofollow">晩夏の里山～野の花散歩</a></td></tr>
+<tr><td valign="top" width="21px">
+<img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/icon-no4.png" border="0">
+</td>
+<td height="23px"><a href="https://blog.goo.ne.jp/onozeki5/e/afab5aca3b9f3a72c344505841010d79?share" rel="nofollow">ひたち海浜公園のコキア2018</a></td></tr>
+<tr><td valign="top" width="21px">
+<img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/icon-no5.png" border="0">
+</td>
+<td height="23px"><a href="https://blog.goo.ne.jp/yutarou-22/e/9b6d3f228c662a49737b3188164040f5?share" rel="nofollow">2018年3月 カンボジア(7) プノンペン街中の観光</a></td></tr>
+</tbody></table>
+
+
+<!-- /goo blog -->
+
+<!-- goo BLOG -->
+
+<!--ch枠-->
+
+<table width="100%" border="0" cellpadding="0">
+<tbody><tr><td valign="top" width="10%"><img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/m_0120.gif" width="16" height="16"></td><td><a href="https://blog.goo.ne.jp/portal/recent_entry/" rel="nofollow">最新記事一覧</a></td></tr>
+</tbody></table>
+<hr size="1" noshade="">
+
+<table width="100%" border="0" cellpadding="0">
+<tbody><tr><td valign="top" width="10%"><img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/f_logo.gif" width="16" height="16"></td><td><a href="https://www.facebook.com/blog.goo.ne.jp" rel="nofollow">公式Facebook</a></td>  </tr>
+<tr><td valign="top" width="10%"><img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/twitter_logo.gif" width="16" height="16"></td><td><a href="https://twitter.com/goo_blog" rel="nofollow">公式Twitter</a></td>  </tr>
+</tbody></table>
+<!-- /goo BLOG -->
+
+<hr size="1" noshade="">
+
+<!-- goo PT -->
+<!-- /goo PT -->
+
+<div style="width:100%;text-align:center;margin-top:10px;"><a href="https://blog.goo.ne.jp/info/blog_hajimeru.html?fm=modrec2&amp;source=modrec2" rel="nofollow"><img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/mod_newmake.gif" border="0"></a></div>
+
+</div>
+<div class="module-bottom"></div>
+</div>
+<!-- /goo RECOMMENDS MODULE -->
+<!-- POWERED BY MODULE -->
+<div id="mod-powered-by">
+<ul><li><a href="http://blog.goo.ne.jp/xmldtp/index.rdf"><img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/mod_rss1.gif" border="0" width="55" height="15" alt="RSS1.0"></a>&nbsp;<a href="http://blog.goo.ne.jp/xmldtp/rss2.xml"><img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/mod_rss2.gif" border="0" width="55" height="15" alt="RSS2.0"></a></li><li><a href="https://blog.goo.ne.jp/info/advance/advance.html?fm=entry"><img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/icon_poweredbygooblog_p.gif" border="0"></a></li></ul>
+</div>
+<!-- /POWERED BY MODULE -->
+<!-- ADVERTISING MODULE -->
+<div id="mod-advertising" class="module">
+<div class="module-top"></div>
+<h4>gooブログ&nbsp;お知らせ</h4>
+<div class="module-body">
+
+<table width="100%" border="0" cellpadding="0">
+<tbody><tr><td valign="top" width="10%"><img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/m_0146.gif" border="0"></td><td><a href="http://blog.goo.ne.jp/info/sp/" rel="nofollow">gooブログ公式スマホアプリ</a></td></tr>
+<tr><td valign="top" width="10%"><img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/m_0148.gif" border="0"></td><td><a href="http://blog.goo.ne.jp/portal/access_ranking/" rel="nofollow">みんなが見ているブログをランキングで確認</a></td></tr>
+<tr><td valign="top" width="10%"><img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/m_0235.gif" border="0"></td><td><a href="https://blog.goo.ne.jp/info/blog_hajimeru.html?fm=modadv" rel="nofollow">無料で安心、写真も便利なgooブログ♪</a></td></tr>
+<tr><td valign="top" width="10%"><img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/m_0160.gif" border="0"></td><td><a href="https://form.ambassador.jp/get/goo/form/entry?utm_source=gooblog&amp;utm_medium=webpc&amp;utm_term=article&amp;utm_campaign=cp1_gooblog_webpc_article" rel="nofollow">gooアンバサダー募集中!!</a></td></tr>
+<tr><td valign="top" width="10%"><img src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/m_0151.gif" border="0"></td><td><a href="https://mamanowa.mamatenna.jp/" rel="nofollow">ママコミュニティ「ままのわ」</a></td></tr>
+</tbody></table>
+
+</div>
+<div class="module-bottom"></div>
+</div>
+<!-- /ADVERTISING MODULE -->
+<div id="sidebar-opt-bottom"></div>
+
+</div>
+<div class="sidebar-bottom"></div>
+<!-- /SIDEBAR -->
+
+</div>
+<!-- /SIDE A -->
+
+<div class="clearboth"></div>
+
+<div id="main-bottom"></div>
+</div>
+<!-- /MAIN -->
+
+<!-- FOOTER -->
+<div id="footer"></div>
+<!-- /FOOTER -->
+
+<div class="clearboth"></div>
+
+</div>
+<!-- /CONTAINER -->
+
+<!-- GLOBAL FOOTER -->
+<div id="global-footer"></div>
+<!-- /GLOBAL FOOTER -->
+
+
+
+
+
+
+<script src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/1.8.js.ダウンロード"></script><iframe name="oauth2relay413554978" id="oauth2relay413554978" src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/postmessageRelay.html" tabindex="-1" aria-hidden="true" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe>
+<script src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/gjquery.js.ダウンロード"></script>
+<script src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/85ca08beb3e2ade68fc7f0b25faa2a4b.js.ダウンロード"></script>
+<script src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/plusone.js.ダウンロード" gapi_processed="true">{lang: 'ja'}</script>
+<script src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/sdk.js.ダウンロード"></script>
+<script>//<!--
+$(document).ready(function(){
+	$gbQuery(this).follow({
+		show_counter: true
+	});
+
+$('#comment-more').on('click',function(){
+  $(this).remove();
+  $('#comment-nodisplay-area').show();
+});
+$('#comment-show').on('click',function(){
+  $(this).remove();
+  $('.comment-form').show();
+});
+
+
+
+});
+//-->
+</script>
+<script src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/VLTraceDMD.js.ダウンロード"></script>
+
+
+<iframe scrolling="no" frameborder="0" allowtransparency="true" src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/widget_iframe.32d6c6b4cb1ed84df04e7f9705a90c47.html" title="Twitter settings iframe" style="display: none;"></iframe><div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/0P3pVtbsZok.html" style="border: none;"></iframe></div></div></div><iframe id="rufous-sandbox" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: none;" title="Twitter analytics iframe" src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/saved_resource(1).html"></iframe><iframe id="bta" width="0" height="0" frameborder="0" style="display: none;" src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/saved_resource(2).html"></iframe><script src="./Struts2のOGNL式のまとめ　その１ - ウィリアムのいたずらの開発日記_files/2dwkwwau99.js.ダウンロード" type="text/javascript" async="" defer=""></script></body></html>

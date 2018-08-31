@@ -125,7 +125,6 @@ public class InputChecker {
 				return stringList;
 			}
 
-
 	//一度目のパスワードと二度目のパスワードが同じかを検証します。
 	public List<String> doPasswordCheck(String password,String reConfirmationPassword){
 		List<String> stringList = new ArrayList<String>();
